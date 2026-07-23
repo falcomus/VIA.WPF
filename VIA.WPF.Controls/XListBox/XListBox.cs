@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="XListBox.cs" company="VIA.WPF">
 //   Copyright (c) VIA.WPF. All rights reserved.
 // </copyright>
@@ -216,7 +216,7 @@ public class XListBox : ListBox
     /// <param name="item">The source item.</param>
     private void BindListItem(XListBoxItem listItem, object item)
     {
-        if (listItem.ReadLocalValue(XListBoxItem.TitleProperty) == DependencyProperty.UnsetValue)
+        if (!HasExplicitContainerValue(listItem, XListBoxItem.TitleProperty))
         {
             string titlePath = HasReadableProperty(item, "Title")
                 ? "Title"
@@ -230,7 +230,7 @@ public class XListBox : ListBox
                 CreateItemBinding(item, titlePath, item.ToString() ?? string.Empty));
         }
 
-        if (listItem.ReadLocalValue(XListBoxItem.SubTitleProperty) == DependencyProperty.UnsetValue)
+        if (!HasExplicitContainerValue(listItem, XListBoxItem.SubTitleProperty))
         {
             string? subTitlePath = HasReadableProperty(item, "SubTitle")
                 ? "SubTitle"
@@ -297,6 +297,27 @@ public class XListBox : ListBox
     /// <summary>
     /// Gets a value indicating whether the item exposes a readable public property.
     /// </summary>
+    private static bool HasExplicitContainerValue(
+        DependencyObject target,
+        DependencyProperty property)
+    {
+        System.Windows.ValueSource valueSource =
+            DependencyPropertyHelper.GetValueSource(target, property);
+
+        if (valueSource.IsExpression ||
+            valueSource.IsAnimated ||
+            valueSource.IsCoerced)
+        {
+            return true;
+        }
+
+        return valueSource.BaseValueSource is
+            System.Windows.BaseValueSource.Local or
+            System.Windows.BaseValueSource.Style or
+            System.Windows.BaseValueSource.StyleTrigger or
+            System.Windows.BaseValueSource.ParentTemplate or
+            System.Windows.BaseValueSource.ParentTemplateTrigger;
+    }
     private static bool HasReadableProperty(object item, string propertyName)
     {
         return item.GetType()
