@@ -1,0 +1,139 @@
+<!--=====================================================================================================================
+  <copyright file="XToolbarPresenterDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XToolbarPresenterDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XToolbarPresenterDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,10,0" Spacing="16">
+                    <via:XInfoBar
+                        Message="Compose search, view selection and commands explicitly. Generic headers no longer own fixed New/Edit/Delete property pairs."
+                        Title="Header composition"
+                        Variant="Info" />
+
+                    <via:XGroup
+                        ContentPadding="0"
+                        Subtitle="A page header with contextual search, view mode and arbitrary actions."
+                        Title="Full workbench header">
+                        <via:XHeaderBar Subtitle="12 active projects" Title="Projects" TitleWidth="210">
+                            <via:XHeaderBar.Actions>
+                                <via:XStackPanel Orientation="Horizontal" Spacing="5">
+                                    <via:XButton
+                                        Appearance="Ghost"
+                                        Command="{Binding PrimaryToolbar.NewCommand}"
+                                        Content="New"
+                                        Icon="{via:MaterialIcon Kind=Plus}"
+                                        Size="Small" />
+                                    <via:XButton
+                                        Appearance="Ghost"
+                                        Content="Refresh"
+                                        Icon="{via:MaterialIcon Kind=Refresh}"
+                                        Size="Small" />
+                                    <via:XMoreButton>
+                                        <via:XMoreButton.Menu>
+                                            <ContextMenu>
+                                                <MenuItem Header="Export list" />
+                                                <MenuItem Header="Reset view" />
+                                            </ContextMenu>
+                                        </via:XMoreButton.Menu>
+                                    </via:XMoreButton>
+                                </via:XStackPanel>
+                            </via:XHeaderBar.Actions>
+
+                            <via:XStackPanel Orientation="Horizontal">
+                                <via:XHeaderGroup Header="Search">
+                                    <via:XSearchBox
+                                        Width="250"
+                                        Placeholder="Search projects"
+                                        Text="{Binding SearchContext.SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </via:XHeaderGroup>
+                                <via:XHeaderGroup Header="View" IsSeparatorVisible="False">
+                                    <via:XButtonGroup ItemMinWidth="38" SelectedValue="Grid" Size="Small">
+                                        <via:XButtonGroupItem Icon="{via:MaterialIcon Kind=ViewGridOutline}" Value="Grid" />
+                                        <via:XButtonGroupItem Icon="{via:MaterialIcon Kind=FormatListBulleted}" Value="List" />
+                                    </via:XButtonGroup>
+                                </via:XHeaderGroup>
+                            </via:XStackPanel>
+                        </via:XHeaderBar>
+                    </via:XGroup>
+
+                    <via:XAdaptiveGrid ColumnSpacing="14" MaxColumns="2" MinItemWidth="360" RowSpacing="14">
+                        <via:XGroup
+                            ContentPadding="0"
+                            Subtitle="Useful when the surrounding page already provides identity."
+                            Title="Compact command strip">
+                            <via:XHeaderBar TitleWidth="0">
+                                <via:XHeaderBar.Actions>
+                                    <via:XStackPanel Orientation="Horizontal" Spacing="3">
+                                        <via:XIconButton
+                                            Appearance="Ghost"
+                                            Command="{Binding CompactToolbar.NewCommand}"
+                                            Icon="{via:MaterialIcon Kind=Plus}"
+                                            Size="Small"
+                                            ToolTip="New" />
+                                        <via:XIconButton
+                                            Appearance="Ghost"
+                                            Command="{Binding CompactToolbar.EditCommand}"
+                                            Icon="{via:MaterialIcon Kind=PencilOutline}"
+                                            Size="Small"
+                                            ToolTip="Edit" />
+                                        <via:XMoreButton />
+                                    </via:XStackPanel>
+                                </via:XHeaderBar.Actions>
+                                <via:XHeaderGroup Header="Filter" IsSeparatorVisible="False">
+                                    <via:XSearchBox
+                                        Width="230"
+                                        Placeholder="Search"
+                                        Text="{Binding CompactSearchContext.SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </via:XHeaderGroup>
+                            </via:XHeaderBar>
+                        </via:XGroup>
+
+                        <via:XGroup
+                            ContentPadding="0"
+                            Subtitle="Search is a normal composable control, not a toolbar special case."
+                            Title="Search-only strip">
+                            <via:XHeaderBar TitleWidth="0">
+                                <via:XHeaderGroup Header="Search" IsSeparatorVisible="False">
+                                    <via:XSearchBox
+                                        Width="320"
+                                        Placeholder="Search everything"
+                                        Text="{Binding SearchOnlyContext.SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </via:XHeaderGroup>
+                            </via:XHeaderBar>
+                        </via:XGroup>
+                    </via:XAdaptiveGrid>
+
+                    <via:XGroup
+                        Subtitle="Header groups give repeated controls a stable label and optional separator."
+                        Title="Command anatomy">
+                        <via:XAdaptiveGrid ColumnSpacing="0" MaxColumns="3" MinItemWidth="180">
+                            <via:XMetric Label="Search" SupportingText="XSearchBox or a custom filter" Value="Context" />
+                            <via:XMetric Label="Actions" SupportingText="Any buttons or menus" Value="Arbitrary" />
+                            <via:XMetric Label="View" SupportingText="Segmented mode selection" Value="Optional" />
+                        </via:XAdaptiveGrid>
+                    </via:XGroup>
+
+                    <via:XInfoBar
+                        Message="{Binding LastToolbarAction}"
+                        Title="Last command"
+                        Variant="Success" />
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

@@ -1,0 +1,32 @@
+<Solution>
+  <Folder Name="/Demo/">
+    <Project Path="VIA.WPF.Demo/VIA.WPF.Demo.csproj" />
+  </Folder>
+  <Folder Name="/Icons/">
+    <Project Path="VIA.WPF.Icons.Bootstrap/VIA.WPF.Icons.Bootstrap.csproj" />
+    <Project Path="VIA.WPF.Icons.Core/VIA.WPF.Icons.Core.csproj" />
+    <Project Path="VIA.WPF.Icons.File/VIA.WPF.Icons.File.csproj" />
+    <Project Path="VIA.WPF.Icons.Fluent/VIA.WPF.Icons.Fluent.csproj" />
+    <Project Path="VIA.WPF.Icons.FontAwesome/VIA.WPF.Icons.FontAwesome.csproj" />
+    <Project Path="VIA.WPF.Icons.Material/VIA.WPF.Icons.Material.csproj" />
+    <Project Path="VIA.WPF.Icons.MaterialDesign/VIA.WPF.Icons.MaterialDesign.csproj" />
+    <Project Path="VIA.WPF.Icons.Modern/VIA.WPF.Icons.Modern.csproj" />
+    <Project Path="VIA.WPF.Icons.Phosphor/VIA.WPF.Icons.Phosphor.csproj" />
+    <Project Path="VIA.WPF.Icons/VIA.WPF.Icons.csproj" Id="6a2ed252-66ba-4513-a338-5c7ba8c62b85" />
+  </Folder>
+  <Folder Name="/Mockup/">
+    <Project Path="VIA.WPF.Mockup.Core/VIA.WPF.Mockup.Core.csproj" />
+    <Project Path="VIA.WPF.Mockup.Desktop/VIA.WPF.Mockup.Desktop.csproj" />
+    <Project Path="VIA.WPF.Mockup.Mobile/VIA.WPF.Mockup.Mobile.csproj" />
+    <Project Path="VIA.WPF.Mockup.Skia/VIA.WPF.Mockup.Skia.csproj" />
+    <Project Path="VIA.WPF.Mockup.Storage/VIA.WPF.Mockup.Storage.csproj" />
+    <Project Path="VIA.WPF.Mockup.Wpf/VIA.WPF.Mockup.Wpf.csproj" />
+    <Project Path="VIA.WPF.Mockup/VIA.WPF.Mockup.csproj" />
+  </Folder>
+  <Project Path="VIA.WPF.Controls/VIA.WPF.Controls.csproj" Id="71765316-d240-4eed-adf5-5b1e1bb992ad" />
+  <Project Path="VIA.WPF.MVVM/VIA.WPF.MVVM.csproj" Id="4ad48022-26c5-47b0-a094-d401a5a94462" />
+  <Project Path="VIA.WPF.Tests/VIA.WPF.Tests.csproj" Id="9b8f8d62-e643-48fb-8832-dc94e5e5bf3e" />
+  <Project Path="VIA.WPF.Themes/VIA.WPF.Themes.csproj" Id="486556ea-d5c1-4c8a-afd9-73000732d761" />
+  <Project Path="VIA.WPF.Windowing/VIA.WPF.Windowing.csproj" Id="e053ce76-b437-4d22-b5c5-88aa07b5b0cb" />
+  <Project Path="VIA.WPF/VIA.WPF.csproj" Id="03161ff8-ad68-49fb-8139-6ffc708c19c7" />
+</Solution>

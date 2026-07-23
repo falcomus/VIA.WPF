@@ -1,0 +1,215 @@
+<!--=====================================================================================================================
+  <copyright file="XComboBoxDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XComboBoxDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XComboBoxDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XComboBox" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A themed selector for forms, filters and compact command surfaces. It supports headers, helper descriptions, editable mode, reset behavior, size variants and disabled states."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid
+                        ColumnSpacing="18"
+                        Columns="*,*"
+                        RowSpacing="18"
+                        Rows="Auto,Auto">
+
+                        <via:XBorder
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Status selection" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Use the built-in header, description and reset button for business-state fields."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XComboBox
+                                    Width="320"
+                                    HorizontalAlignment="Left"
+                                    Description="Reset clears the selected item."
+                                    Header="Document state"
+                                    ResetButtonForeground="{DynamicResource {x:Static via:XBrushKeys.Danger}}"
+                                    ResetIconSize="12"
+                                    SelectedIndex="1"
+                                    ShowResetButton="True">
+                                    <via:XComboBoxItem Content="Draft" />
+                                    <via:XComboBoxItem Content="In review" />
+                                    <via:XComboBoxItem Content="Approved" />
+                                    <via:XComboBoxItem Content="Published" />
+                                </via:XComboBox>
+
+                                <via:XBorder
+                                    Padding="12"
+                                    Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
+                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Good default for status, category, priority and workflow fields."
+                                        TextRole="Caption" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Editable picker" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Editable mode keeps the same field chrome while allowing typed values."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XComboBox
+                                    Width="320"
+                                    HorizontalAlignment="Left"
+                                    Description="Users may select or type a matching person."
+                                    Header="Owner"
+                                    IsEditable="True"
+                                    SelectedIndex="0"
+                                    ShowResetButton="True">
+                                    <via:XComboBoxItem Content="Anna Schneider" />
+                                    <via:XComboBoxItem Content="Claus Meyer" />
+                                    <via:XComboBoxItem Content="Mira Hoffmann" />
+                                    <via:XComboBoxItem Content="Tobias Kern" />
+                                </via:XComboBox>
+
+                                <via:XButton
+                                    Width="150"
+                                    HorizontalAlignment="Left"
+                                    Appearance="Subtle"
+                                    Content="Preview state"
+                                    Icon="{via:BootstrapIcon Kind=EyeFill}" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Row="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Size variants" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Small fields work well in toolbars. Large fields fit prominent dialogs or onboarding screens."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XWrapPanel HorizontalSpacing="14" VerticalSpacing="14">
+                                    <via:XComboBox
+                                        Width="170"
+                                        Header="Small"
+                                        SelectedIndex="0"
+                                        ShowResetButton="True"
+                                        Size="Small">
+                                        <via:XComboBoxItem Content="Compact" />
+                                        <via:XComboBoxItem Content="Regular" />
+                                    </via:XComboBox>
+                                    <via:XComboBox
+                                        Width="200"
+                                        Header="Medium"
+                                        SelectedIndex="1"
+                                        ShowResetButton="True"
+                                        Size="Medium">
+                                        <via:XComboBoxItem Content="Regular" />
+                                        <via:XComboBoxItem Content="Comfortable" />
+                                    </via:XComboBox>
+                                    <via:XComboBox
+                                        Width="220"
+                                        Header="Large"
+                                        SelectedIndex="1"
+                                        ShowResetButton="True"
+                                        Size="Large">
+                                        <via:XComboBoxItem Content="Regular" />
+                                        <via:XComboBoxItem Content="Comfortable" />
+                                    </via:XComboBox>
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="States" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Disabled and empty selectors should remain visually aligned with active fields."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XWrapPanel HorizontalSpacing="14" VerticalSpacing="14">
+                                    <via:XComboBox
+                                        Width="230"
+                                        Header="Disabled"
+                                        IsEnabled="False"
+                                        SelectedIndex="0">
+                                        <via:XComboBoxItem Content="Locked value" />
+                                    </via:XComboBox>
+                                    <via:XComboBox Width="230" Header="No selection" />
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

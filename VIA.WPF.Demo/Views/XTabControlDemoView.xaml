@@ -1,0 +1,163 @@
+<!--=====================================================================================================================
+  <copyright file="XTabControlDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XTabControlDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XTabControlDemoViewModel}"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="RuntimeTabHeaderTemplate">
+            <via:XStackPanel Orientation="Horizontal" Spacing="8">
+                <ContentControl
+                    VerticalAlignment="Center"
+                    Content="{via:BootstrapIcon Kind=FileTextFill}" />
+                <via:XTextBlock VerticalAlignment="Center" Text="{Binding Title}" />
+            </via:XStackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="RuntimeTabContentTemplate">
+            <via:XBorder
+                Margin="14"
+                Padding="14"
+                Appearance="VerySubtle"
+                BorderThickness="1"
+                CornerRadius="6">
+                <via:XStackPanel Spacing="6">
+                    <via:XTextBlock Text="{Binding Title}" TextRole="SectionTitle" />
+                    <via:XTextBlock
+                        IsMultiline="True"
+                        Text="{Binding Description}"
+                        TextRole="Description" />
+                </via:XStackPanel>
+            </via:XBorder>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XTabControl" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="XTabControl supports underlined, segmented and contained header styles, icon tabs, add buttons, close buttons and ItemsSource-driven document tabs."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Underlined headers" TextRole="SectionTitle" />
+                                <via:XTabControl
+                                    HeaderAppearance="Underlined"
+                                    SelectedIndex="0"
+                                    ShowBorder="False">
+                                    <via:XTabItem Header="Overview" Icon="{via:BootstrapIcon Kind=GridFill}">
+                                        <via:XBorder Margin="14" Padding="14" Appearance="VerySubtle" BorderThickness="1" CornerRadius="6">
+                                            <via:XTextBlock
+                                                IsMultiline="True"
+                                                Text="Underlined tabs are ideal for document sections and clean page-level content."
+                                                TextRole="Description" />
+                                        </via:XBorder>
+                                    </via:XTabItem>
+                                    <via:XTabItem Header="Details" Icon="{via:BootstrapIcon Kind=InfoCircleFill}">
+                                        <via:XBorder Margin="14" Padding="14" Appearance="VerySubtle" BorderThickness="1" CornerRadius="6">
+                                            <via:XTextBlock
+                                                IsMultiline="True"
+                                                Text="Icons, regular header text and standard tab content are supported."
+                                                TextRole="Description" />
+                                        </via:XBorder>
+                                    </via:XTabItem>
+                                </via:XTabControl>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Segmented headers" TextRole="SectionTitle" />
+                                <via:XTabControl
+                                    HeaderAppearance="Segmented"
+                                    HeaderSpacing="6"
+                                    SelectedIndex="1"
+                                    ShowBorder="False">
+                                    <via:XTabItem Header="Grid" Icon="{via:BootstrapIcon Kind=Grid3x3GapFill}">
+                                        <via:XTextBlock Margin="14" IsMultiline="True" Text="Segmented headers work well for lightweight mode switching." TextRole="Description" />
+                                    </via:XTabItem>
+                                    <via:XTabItem Header="List" Icon="{via:BootstrapIcon Kind=ListUl}">
+                                        <via:XTextBlock Margin="14" IsMultiline="True" Text="Only the selected segment is emphasized." TextRole="Description" />
+                                    </via:XTabItem>
+                                    <via:XTabItem Header="Cards" Icon="{via:BootstrapIcon Kind=CollectionFill}">
+                                        <via:XTextBlock Margin="14" IsMultiline="True" Text="Use this style for compact view-mode choices inside tool areas." TextRole="Description" />
+                                    </via:XTabItem>
+                                </via:XTabControl>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XBorder
+                        Padding="20"
+                        Appearance="Solid"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="14">
+                            <via:XStackPanel Spacing="4">
+                                <via:XTextBlock Text="Add and close tabs at runtime" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="The add button is bound to AddButtonCommand. Each generated item provides its own close command through the item container style."
+                                    TextRole="Description" />
+                            </via:XStackPanel>
+
+                            <via:XTabControl
+                                AddButtonCommand="{Binding AddTabCommand}"
+                                AddButtonContent="{via:BootstrapIcon Kind=PlusCircleFill}"
+                                CornerRadius="8"
+                                HeaderAppearance="Underlined"
+                                ItemHeaderTemplate="{StaticResource RuntimeTabHeaderTemplate}"
+                                ItemsSource="{Binding RuntimeTabs}"
+                                SelectedItem="{Binding SelectedRuntimeTab, Mode=TwoWay}"
+                                ShowAddButton="True"
+                                ShowTabCloseButton="True">
+                                <via:XTabControl.ItemContainerStyle>
+                                    <Style TargetType="{x:Type via:XTabItem}">
+                                        <Setter Property="CanClose" Value="True" />
+                                        <Setter Property="CloseCommand" Value="{Binding CloseCommand}" />
+                                        <Setter Property="ContentTemplate" Value="{StaticResource RuntimeTabContentTemplate}" />
+                                    </Style>
+                                </via:XTabControl.ItemContainerStyle>
+                            </via:XTabControl>
+                            <via:XTextBlock Text="{Binding LastTabAction}" TextRole="Caption" />
+                        </via:XStackPanel>
+                    </via:XBorder>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

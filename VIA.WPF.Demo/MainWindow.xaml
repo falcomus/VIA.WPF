@@ -1,0 +1,291 @@
+<!--=====================================================================================================================
+  <copyright file="MainWindow.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<via:XWindow
+    x:Class="VIA.WPF.Demo.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:via="http://schemas.via.dev/wpf"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    Title="VIA.WPF Demo"
+    Width="1480"
+    Height="920"
+    MinWidth="1080"
+    MinHeight="640"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
+    ResizeMode="CanResize"
+    ShowLanguageSelector="True"
+    ShowThemeModeButton="True"
+    ShowThemeSelector="True"
+    WindowState="Maximized"
+    mc:Ignorable="d">
+
+    <via:XWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/VIA.WPF.Demo;component/Resources/DemoViewTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="DemoPaneTitleStyle" TargetType="{x:Type TextBlock}">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}" />
+            </Style>
+
+            <Style x:Key="DemoCountStyle" TargetType="{x:Type TextBlock}">
+                <Setter Property="MinWidth" Value="24" />
+                <Setter Property="Padding" Value="5,1" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="TextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="11" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}" />
+            </Style>
+        </ResourceDictionary>
+    </via:XWindow.Resources>
+
+    <via:XWindow.StatusBarContent>
+        <Grid Margin="10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <via:XStackPanel Orientation="Horizontal" Spacing="7">
+                <Ellipse
+                    Width="7"
+                    Height="7"
+                    VerticalAlignment="Center"
+                    Fill="{DynamicResource {x:Static via:XBrushKeys.Success}}" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
+                    Text="Ready" />
+            </via:XStackPanel>
+
+            <TextBlock
+                Grid.Column="1"
+                Margin="16,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}">
+                <Run Text="{Binding SelectedGroup.Title}" />
+                <Run Text=" / " />
+                <Run Text="{Binding SelectedDemo.Title}" />
+            </TextBlock>
+
+            <TextBlock
+                Grid.Column="2"
+                VerticalAlignment="Center"
+                Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
+                Text="{Binding NavigationResultText}" />
+        </Grid>
+    </via:XWindow.StatusBarContent>
+
+    <Grid Background="{DynamicResource {x:Static via:XBrushKeys.Canvas}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="1" />
+            <ColumnDefinition Width="244" />
+            <ColumnDefinition Width="1" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Group rail -->
+        <Grid Grid.Column="0" Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceSunken}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border
+                Padding="14,15,12,12"
+                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderSubtle}}"
+                BorderThickness="0,0,0,1">
+                <via:XStackPanel Spacing="3">
+                    <TextBlock Style="{StaticResource DemoPaneTitleStyle}" Text="GROUPS" />
+                    <TextBlock
+                        FontSize="11"
+                        Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
+                        Text="Control families" />
+                </via:XStackPanel>
+            </Border>
+
+            <via:XListBox
+                Grid.Row="1"
+                Margin="6,8"
+                Background="Transparent"
+                BorderThickness="0"
+                ItemsSource="{Binding NavigationGroups}"
+                Mode="CompactNavigation"
+                SelectedItem="{Binding SelectedGroup, Mode=TwoWay}">
+                <via:XListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontWeight="Medium"
+                                Text="{Binding Title}"
+                                TextTrimming="CharacterEllipsis" />
+                            <TextBlock
+                                Grid.Column="1"
+                                Style="{StaticResource DemoCountStyle}"
+                                Text="{Binding Count}" />
+                        </Grid>
+                    </DataTemplate>
+                </via:XListBox.ItemTemplate>
+            </via:XListBox>
+        </Grid>
+
+        <Border
+            Grid.Column="1"
+            Background="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}" />
+
+        <!-- Control list -->
+        <Grid Grid.Column="2" Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border
+                Padding="14,13,14,12"
+                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderSubtle}}"
+                BorderThickness="0,0,0,1">
+                <via:XStackPanel Spacing="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock
+                                FontSize="16"
+                                FontWeight="SemiBold"
+                                Foreground="{DynamicResource {x:Static via:XBrushKeys.TextPrimary}}"
+                                Text="VIA.WPF Demo" />
+                            <TextBlock
+                                Margin="0,2,0,0"
+                                FontSize="11"
+                                Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
+                                Text="Workbench control reference" />
+                        </StackPanel>
+                        <via:XIconButton
+                            Grid.Column="1"
+                            Width="28"
+                            Height="28"
+                            MinWidth="28"
+                            MinHeight="28"
+                            Appearance="Ghost"
+                            Icon="{via:MaterialIcon Kind=DotsVertical}"
+                            IconSize="17"
+                            ToolTip="Demo options" />
+                    </Grid>
+
+                    <via:XSearchBox
+                        Height="30"
+                        Placeholder="Search controls..."
+                        Text="{Binding NavigationSearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </via:XStackPanel>
+            </Border>
+
+            <Grid Grid.Row="1" Margin="14,9,12,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Style="{StaticResource DemoPaneTitleStyle}"
+                    Text="{Binding SelectedGroup.Title}" />
+                <TextBlock
+                    Grid.Column="1"
+                    FontSize="11"
+                    Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
+                    Text="{Binding NavigationMatchCount}" />
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <via:XListBox
+                    Margin="6,0,6,8"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    ItemsSource="{Binding VisibleDemoItems}"
+                    Mode="Navigation"
+                    SelectedItem="{Binding SelectedDemo, Mode=TwoWay}">
+                    <via:XListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,1">
+                                <TextBlock
+                                    FontWeight="SemiBold"
+                                    Text="{Binding Title}"
+                                    TextTrimming="CharacterEllipsis" />
+                                <TextBlock
+                                    Margin="0,3,0,0"
+                                    FontSize="11"
+                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
+                                    Text="{Binding Summary}"
+                                    TextTrimming="CharacterEllipsis"
+                                    TextWrapping="NoWrap" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </via:XListBox.ItemTemplate>
+                </via:XListBox>
+
+                <via:XContentStatePresenter State="Empty">
+                    <via:XContentStatePresenter.Style>
+                        <Style BasedOn="{StaticResource {x:Type via:XContentStatePresenter}}" TargetType="{x:Type via:XContentStatePresenter}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding HasNavigationMatches}" Value="False">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </via:XContentStatePresenter.Style>
+                    <via:XContentStatePresenter.EmptyContent>
+                        <via:XStackPanel
+                            Margin="18"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Spacing="6">
+                            <via:XIcon
+                                HorizontalAlignment="Center"
+                                Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
+                                Kind="MagnifyClose"
+                                Size="24" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontWeight="SemiBold"
+                                Text="No controls found" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
+                                Text="Adjust the group or search term."
+                                TextAlignment="Center"
+                                TextWrapping="Wrap" />
+                        </via:XStackPanel>
+                    </via:XContentStatePresenter.EmptyContent>
+                </via:XContentStatePresenter>
+            </Grid>
+        </Grid>
+
+        <Border
+            Grid.Column="3"
+            Background="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}" />
+
+        <!-- Workbench content -->
+        <Border Grid.Column="4" Background="{DynamicResource {x:Static via:XBrushKeys.Canvas}}">
+            <ContentControl Content="{Binding SelectedDemo.ViewModel}" />
+        </Border>
+    </Grid>
+</via:XWindow>

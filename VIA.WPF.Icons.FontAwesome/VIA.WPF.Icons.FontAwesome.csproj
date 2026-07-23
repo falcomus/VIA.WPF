@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageId>VIA.WPF.Icons.FontAwesome</PackageId>
+		<Title>VIA.WPF Icons FontAwesome</Title>
+		<Version>1.0.0</Version>
+		<Authors>Claus Falkenstein</Authors>
+		<Description>Optional Font Awesome icon controls and markup extensions for VIA.WPF.</Description>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MahApps.Metro.IconPacks.FontAwesome6" Version="6.2.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\VIA.WPF.Icons.Core\VIA.WPF.Icons.Core.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,107 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
+    <!-- The document preview keeps a stable light palette independent from the application theme. -->
+    <SolidColorBrush x:Key="MockupPreview.Surface" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="MockupPreview.SurfaceSubtle" Color="#FFF8FAFC" />
+    <SolidColorBrush x:Key="MockupPreview.SurfaceMuted" Color="#FFF1F5F9" />
+    <SolidColorBrush x:Key="MockupPreview.Border" Color="#FFE2E8F0" />
+    <SolidColorBrush x:Key="MockupPreview.BorderStrong" Color="#FFCBD5E1" />
+    <SolidColorBrush x:Key="MockupPreview.Text" Color="#FF172033" />
+    <SolidColorBrush x:Key="MockupPreview.TextSecondary" Color="#FF64748B" />
+    <SolidColorBrush x:Key="MockupPreview.TextMuted" Color="#FF94A3B8" />
+    <SolidColorBrush x:Key="MockupPreview.Primary" Color="#FF2563EB" />
+    <SolidColorBrush x:Key="MockupPreview.PrimaryText" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="MockupPreview.PrimarySubtle" Color="#FFDBEAFE" />
+    <SolidColorBrush x:Key="MockupPreview.Hero" Color="#FFEEF5FF" />
+    <SolidColorBrush x:Key="MockupPreview.Media" Color="#FFD9E7F8" />
+    <DropShadowEffect
+        x:Key="MockupPreview.DeviceShadow"
+        BlurRadius="18"
+        Color="#FF000000"
+        Direction="270"
+        Opacity="0.22"
+        ShadowDepth="4" />
+
+    <Style x:Key="MockupSectionHeaderTextStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="MockupToolbarGroupHeaderBorderStyle" TargetType="{x:Type Border}">
+        <Setter Property="Padding" Value="8,2,8,0" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Background}}" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+    </Style>
+
+    <Style x:Key="MockupToolbarGroupHeaderTextStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="Margin" Value="2,2,0,0" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="MockupFieldLabelStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
+        <Setter Property="Opacity" Value="0.72" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="MockupDetailValueTextStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="MockupListBoxStyle" TargetType="{x:Type ListBox}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+    </Style>
+
+    <Style x:Key="MockupScreenListItemStyle" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Margin" Value="0,0,0,6" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border
+                        x:Name="Root"
+                        Padding="28"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5"
+                        SnapsToDevicePixels="True">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Root" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.HoverBackground}}" />
+                            <Setter TargetName="Root" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PanelBorder}}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Root" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SelectionBackground}}" />
+                            <Setter TargetName="Root" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.SelectionBorder}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,49 @@
+<!--=====================================================================================================================
+  <copyright file="XTypographyResources.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
+    <!-- Font families -->
+    <FontFamily x:Key="{x:Static themes:XTypographyKeys.FontFamilyBody}">Segoe UI</FontFamily>
+    <FontFamily x:Key="{x:Static themes:XTypographyKeys.FontFamilyCode}">Consolas</FontFamily>
+
+    <!-- Font sizes -->
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.FontSizeOverline}">10</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.FontSizeCaption}">11</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.FontSizeBodySmall}">12</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.FontSizeBody}">13</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.FontSizeBodyLarge}">14</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.FontSizeSubtitle}">15</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.FontSizeSectionTitle}">17</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.FontSizeHeading}">18</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.FontSizeLargeHeading}">22</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.FontSizeTitle}">24</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.FontSizeDisplay}">30</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.FontSizeCode}">12</sys:Double>
+
+    <!-- Line heights -->
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.LineHeightOverline}">14</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.LineHeightCaption}">16</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.LineHeightBodySmall}">18</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.LineHeightBody}">20</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.LineHeightBodyLarge}">22</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.LineHeightSubtitle}">21</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.LineHeightSectionTitle}">23</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.LineHeightHeading}">24</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.LineHeightLargeHeading}">28</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.LineHeightTitle}">30</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.LineHeightDisplay}">38</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XTypographyKeys.LineHeightCode}">18</sys:Double>
+
+    <!-- Font weights -->
+    <FontWeight x:Key="{x:Static themes:XTypographyKeys.FontWeightRegular}">Regular</FontWeight>
+    <FontWeight x:Key="{x:Static themes:XTypographyKeys.FontWeightMedium}">Medium</FontWeight>
+    <FontWeight x:Key="{x:Static themes:XTypographyKeys.FontWeightSemiBold}">SemiBold</FontWeight>
+</ResourceDictionary>

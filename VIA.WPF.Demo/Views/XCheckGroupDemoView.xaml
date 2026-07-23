@@ -1,0 +1,141 @@
+<!--=====================================================================================================================
+  <copyright file="XCheckGroupDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XCheckGroupDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XCheckGroupDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XCheckGroup" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A grouped multi-selection control with title, description, semantic item variants and MVVM-backed selected items."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Grid.Column="0"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Descriptive options" TextRole="SectionTitle" />
+                                <via:XCheckGroup
+                                    Title="Notification channels"
+                                    HorizontalAlignment="Left"
+                                    ItemSpacing="8"
+                                    ItemsPadding="12">
+                                    <via:XCheckGroupItem
+                                        Content="Email"
+                                        Description="Send important updates to the mailbox."
+                                        IsChecked="True"
+                                        Variant="Primary" />
+                                    <via:XCheckGroupItem
+                                        Content="Desktop"
+                                        Description="Show local toast notifications."
+                                        IsChecked="True"
+                                        Variant="Info" />
+                                    <via:XCheckGroupItem
+                                        Content="SMS"
+                                        Description="Use only for urgent alerts."
+                                        Variant="Warning" />
+                                </via:XCheckGroup>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Bound selected items" TextRole="SectionTitle" />
+                                <via:XCheckGroup
+                                    Title="Bound notification options"
+                                    HorizontalAlignment="Left"
+                                    ItemSpacing="8"
+                                    ItemsPadding="12"
+                                    ItemsSource="{Binding NotificationOptions}"
+                                    SelectedItems="{Binding SelectedNotificationOptions}">
+                                    <via:XCheckGroup.ItemTemplate>
+                                        <DataTemplate>
+                                            <via:XStackPanel Spacing="2">
+                                                <via:XTextBlock Text="{Binding Name}" TextRole="Body" />
+                                                <via:XTextBlock
+                                                    IsMultiline="True"
+                                                    Text="{Binding Description}"
+                                                    TextRole="Description" />
+                                            </via:XStackPanel>
+                                        </DataTemplate>
+                                    </via:XCheckGroup.ItemTemplate>
+                                </via:XCheckGroup>
+                                <via:XBorder
+                                    Padding="12"
+                                    CornerRadius="6"
+                                    Elevation="None"
+                                    Variant="Info">
+                                    <via:XTextBlock
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.InfoText}}"
+                                        IsMultiline="True"
+                                        Text="{Binding NotificationSummary, FallbackValue='Description'}"
+                                        TextRole="Description" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XBorder
+                        Padding="20"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="14">
+                            <via:XTextBlock Text="Compact horizontal filters" TextRole="SectionTitle" />
+                            <via:XCheckGroup
+                                HorizontalAlignment="Left"
+                                ItemSpacing="24"
+                                ItemsPadding="12,5"
+                                Orientation="Horizontal"
+                                ShowTitle="False">
+                                <via:XCheckGroupItem
+                                    Content="Open"
+                                    IsChecked="True"
+                                    Variant="Primary" />
+                                <via:XCheckGroupItem
+                                    Content="Assigned"
+                                    IsChecked="True"
+                                    Variant="Info" />
+                                <via:XCheckGroupItem Content="Overdue" Variant="Danger" />
+                                <via:XCheckGroupItem Content="Archived" />
+                            </via:XCheckGroup>
+                        </via:XStackPanel>
+                    </via:XBorder>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

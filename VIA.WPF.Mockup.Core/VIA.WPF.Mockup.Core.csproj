@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>VIA.WPF.Mockup.Core</PackageId>
+    <Title>VIA.WPF Mockup Core</Title>
+    <Version>1.0.0</Version>
+    <Authors>Claus Falkenstein</Authors>
+    <Description>UI-neutral document, layout and designer state contracts for VIA.WPF mockup applications.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,155 @@
+<!--=====================================================================================================================
+  <copyright file="XListBoxDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XListBoxDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XListBoxDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XListBox" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="900"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A themed list surface for page navigation, compact selectors and selectable card-like item templates."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*" RowSpacing="18">
+                        <via:XBorder
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Navigation mode" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Regular navigation mode is useful for sidebars and page lists. Separators make larger sections easier to scan."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+                                </via:XStackPanel>
+
+                                <via:XListBox
+                                    Width="360"
+                                    Height="320"
+                                    HorizontalAlignment="Left"
+                                    ItemsSource="{Binding NavigationItems}"
+                                    Mode="Navigation"
+                                    SelectedItem="{Binding SelectedNavigationItem, Mode=TwoWay}"
+                                    ShowSeparators="True">
+                                    <via:XListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <via:XStackPanel Spacing="3">
+                                                <via:XTextBlock FontWeight="SemiBold" Text="{Binding Title}" />
+                                                <via:XTextBlock
+                                                    IsMultiline="True"
+                                                    Opacity="0.74"
+                                                    Text="{Binding Description}"
+                                                    TextRole="Description"
+                                                    TextWrapping="Wrap" />
+                                            </via:XStackPanel>
+                                        </DataTemplate>
+                                    </via:XListBox.ItemTemplate>
+                                </via:XListBox>
+
+                                <via:XBorder
+                                    Padding="12"
+                                    Appearance="VerySubtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="{Binding SelectedNavigationItem.Title, StringFormat=Selected: {0}, TargetNullValue=Selected: -}"
+                                        TextWrapping="Wrap" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Compact navigation" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Compact mode keeps the same selection model but uses denser chrome for tool panels and smaller navigation areas."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+                                </via:XStackPanel>
+
+                                <via:XListBox
+                                    Width="320"
+                                    Height="260"
+                                    HorizontalAlignment="Left"
+                                    ItemsSource="{Binding CompactItems}"
+                                    Mode="CompactNavigation"
+                                    SelectedItem="{Binding SelectedCompactItem, Mode=TwoWay}">
+                                    <via:XListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <via:XGrid Columns="Auto,*" ColumnSpacing="10">
+                                                <via:XBorder
+                                                    Width="8"
+                                                    Margin="-3 0 0 0"
+                                                    Appearance="Subtle"
+                                                    CornerRadius="3"
+                                                    BorderThickness="0"
+                                                    Padding="0"
+                                                    Variant="Primary">
+                                                </via:XBorder>
+
+                                                <via:XStackPanel Grid.Column="1" Spacing="2">
+                                                    <via:XTextBlock FontWeight="SemiBold" Text="{Binding Title}" />
+                                                    <via:XTextBlock
+                                                        Opacity="0.72"
+                                                        Text="{Binding Description}"
+                                                        TextRole="Description" />
+                                                </via:XStackPanel>
+                                            </via:XGrid>
+                                        </DataTemplate>
+                                    </via:XListBox.ItemTemplate>
+                                </via:XListBox>
+
+                                <via:XGrid ColumnSpacing="10" Columns="Auto,Auto,Auto">
+                                    <via:XBorder Padding="10,6" Appearance="VerySubtle" BorderThickness="1" CornerRadius="6">
+                                        <via:XTextBlock Text="Mode" />
+                                    </via:XBorder>
+                                    <via:XBorder Grid.Column="1" Padding="10,6" Appearance="VerySubtle" BorderThickness="1" CornerRadius="6">
+                                        <via:XTextBlock Text="Selection" />
+                                    </via:XBorder>
+                                    <via:XBorder Grid.Column="2" Padding="10,6" Appearance="VerySubtle" BorderThickness="1" CornerRadius="6">
+                                        <via:XTextBlock Text="Templates" />
+                                    </via:XBorder>
+                                </via:XGrid>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

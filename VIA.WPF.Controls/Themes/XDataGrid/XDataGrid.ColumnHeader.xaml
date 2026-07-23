@@ -1,0 +1,219 @@
+<!--
+    ===========================================================================================================
+    file="XDataGrid.ColumnHeader.xaml" company="VIA.WPF">
+    Contains the XDataGrid column-header style including sort and filter UI.
+    ===========================================================================================================
+-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:via="http://schemas.via.dev/wpf">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XDataGrid/XDataGrid.FilterPopup.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <SolidColorBrush x:Key="FilterIconBrush" Color="#A080828A" />
+
+    <Style x:Key="XDataGridColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.GridHeaderForeground}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static via:XBrushKeys.GridHeaderBackground}}" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+                    <Border
+                        x:Name="HeaderBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="0,0,0.5,0.5"
+                        SnapsToDevicePixels="True">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="1" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0" Grid.ColumnSpan="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock
+                                    x:Name="SortGlyph"
+                                    Grid.Column="0"
+                                    VerticalAlignment="Center"
+                                    FontSize="10"
+                                    FontWeight="SemiBold"
+                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.Primary}}"
+                                    Opacity="0.8"
+                                    Visibility="Collapsed" />
+
+                                <!--#region HEADER CONTENT-->
+
+                                <TextBlock
+                                    x:Name="HeaderContentText"
+                                    Grid.Column="1"
+                                    Margin="8,3,1,3"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Center"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    Text="{TemplateBinding Content}"
+                                    TextTrimming="CharacterEllipsis"
+                                    ToolTip="{TemplateBinding Content}" />
+
+                                <!--#endregion-->
+
+                                <controls:XButton
+                                    x:Name="PART_FilterButton"
+                                    Grid.Column="2"
+                                    Width="18"
+                                    Height="20"
+                                    MinWidth="20"
+                                    MinHeight="20"
+                                    Margin="2,2,1,0"
+                                    Padding="0,1,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    controls:XDataGridFilterButtonBehavior.Attach="True"
+                                    controls:XDataGridFilterButtonBehavior.ColumnHeader="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
+                                    ClickMode="Release"
+                                    CornerRadius="3"
+                                    Focusable="False"
+                                    Foreground="{StaticResource FilterIconBrush}"
+                                    Icon="{via:MaterialIcon Kind=Filter}"
+                                    IconSize="10"
+                                    Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                                    ToolTip="Filter">
+                                    <TextBlock
+                                        x:Name="ActionColumnResetAllText"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButton}}}"
+                                        Text="{Binding Content, RelativeSource={RelativeSource AncestorType={x:Type DataGridColumnHeader}}}"
+                                        TextAlignment="Center"
+                                        TextTrimming="CharacterEllipsis"
+                                        Visibility="Collapsed" />
+                                </controls:XButton>
+                            </Grid>
+
+                            <Popup
+                                x:Name="PART_FilterPopup"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="4"
+                                AllowsTransparency="True"
+                                Focusable="False"
+                                HorizontalOffset="-20"
+                                Placement="Bottom"
+                                PlacementTarget="{Binding ElementName=PART_FilterButton}"
+                                StaysOpen="False"
+                                VerticalOffset="-5">
+                                <Control DataContext="{Binding PlacementTarget.Tag, ElementName=PART_FilterPopup}" Template="{StaticResource XDataGridFilterPopupContentTemplate}" />
+                            </Popup>
+
+                            <Border
+                                Grid.Column="3"
+                                Width="1"
+                                Background="{DynamicResource {x:Static via:XBrushKeys.GridLine}}"
+                                Opacity="0.75"
+                                SnapsToDevicePixels="True" />
+
+                            <Thumb
+                                x:Name="PART_LeftHeaderGripper"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="4"
+                                Width="4"
+                                HorizontalAlignment="Left"
+                                Background="Transparent"
+                                Cursor="SizeWE"
+                                Focusable="False">
+                                <Thumb.Template>
+                                    <ControlTemplate TargetType="{x:Type Thumb}">
+                                        <Border Background="Transparent" />
+                                    </ControlTemplate>
+                                </Thumb.Template>
+                            </Thumb>
+
+                            <Thumb
+                                x:Name="PART_RightHeaderGripper"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="4"
+                                Width="4"
+                                HorizontalAlignment="Right"
+                                Background="Transparent"
+                                Cursor="SizeWE"
+                                Focusable="False">
+                                <Thumb.Template>
+                                    <ControlTemplate TargetType="{x:Type Thumb}">
+                                        <Border Background="Transparent" />
+                                    </ControlTemplate>
+                                </Thumb.Template>
+                            </Thumb>
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="SortDirection" Value="Ascending">
+                            <Setter TargetName="SortGlyph" Property="Text" Value="▲" />
+                            <Setter TargetName="SortGlyph" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="SortGlyph" Property="Margin" Value="6,0,0,1" />
+                        </Trigger>
+
+                        <Trigger Property="SortDirection" Value="Descending">
+                            <Setter TargetName="SortGlyph" Property="Text" Value="▼" />
+                            <Setter TargetName="SortGlyph" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="SortGlyph" Property="Margin" Value="6,0.5,0,0" />
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="HeaderBorder" Property="Background" Value="{DynamicResource {x:Static via:XBrushKeys.StateHover}}" />
+                        </Trigger>
+
+                        <DataTrigger Binding="{Binding Column.(controls:XDataGrid.IsGeneratedActionColumn), RelativeSource={RelativeSource TemplatedParent}}" Value="True">
+                            <Setter TargetName="SortGlyph" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="HeaderContentText" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="PART_FilterButton" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="PART_FilterButton" Property="Grid.ColumnSpan" Value="3" />
+                            <Setter TargetName="PART_FilterButton" Property="Width" Value="Auto" />
+                            <Setter TargetName="PART_FilterButton" Property="Height" Value="Auto" />
+                            <Setter TargetName="PART_FilterButton" Property="MinWidth" Value="0" />
+                            <Setter TargetName="PART_FilterButton" Property="MinHeight" Value="0" />
+                            <Setter TargetName="PART_FilterButton" Property="Margin" Value="0" />
+                            <Setter TargetName="PART_FilterButton" Property="Padding" Value="4,0" />
+                            <Setter TargetName="PART_FilterButton" Property="HorizontalAlignment" Value="Stretch" />
+                            <Setter TargetName="PART_FilterButton" Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter TargetName="PART_FilterButton" Property="VerticalAlignment" Value="Stretch" />
+                            <Setter TargetName="PART_FilterButton" Property="VerticalContentAlignment" Value="Center" />
+                            <Setter TargetName="PART_FilterButton" Property="Background" Value="Transparent" />
+                            <Setter TargetName="PART_FilterButton" Property="BorderBrush" Value="Transparent" />
+                            <Setter TargetName="PART_FilterButton" Property="BorderThickness" Value="0" />
+                            <Setter TargetName="PART_FilterButton" Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.GridHeaderForeground}}" />
+                            <Setter TargetName="PART_FilterButton" Property="Icon" Value="{x:Null}" />
+                            <Setter TargetName="PART_FilterButton" Property="IconSize" Value="0" />
+                            <Setter TargetName="PART_FilterButton" Property="ToolTip" Value="Clear all filters" />
+                            <Setter TargetName="ActionColumnResetAllText" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Tag.ShowFilterButtons, ElementName=PART_FilterButton}" Value="False">
+                            <Setter TargetName="PART_FilterButton" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,95 @@
+<!--
+    ===========================================================================================================
+    file="XDataGrid.ActionColumn.xaml" company="VIA.WPF">
+    Contains the XDataGrid action-column cell template.
+    ===========================================================================================================
+-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:via="http://schemas.via.dev/wpf">
+
+    <DataTemplate x:Key="XDataGridActionCellTemplate">
+        <Border
+            x:Name="ActionSurface"
+            Padding="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            BorderThickness="1"
+            CornerRadius="3"
+            SnapsToDevicePixels="True">
+            <controls:XStackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Horizontal"
+                Spacing="{Binding ActionButtonSpacing, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}">
+
+                <controls:XIconButton
+                    Width="{Binding ActionButtonSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    Height="{Binding ActionButtonSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    MinWidth="{Binding ActionButtonSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    MinHeight="{Binding ActionButtonSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    Margin="0,0.5,0,0"
+                    Padding="0"
+                    Appearance="VerySubtle"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding ViewItemCommand, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    CommandParameter="{Binding}"
+                    CornerRadius="5"
+                    Icon="{via:BootstrapIcon Kind=EyeFill}"
+                    IconSize="15"
+                    Size="Small"
+                    ToolTip="{Binding ViewButtonToolTip, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    Variant="Primary"
+                    Visibility="{Binding ShowViewButton, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}, Converter={via:BooleanToVisibility}}" />
+                <!--  IconSize="{Binding ActionButtonIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"  -->
+
+                <controls:XIconButton
+                    Width="{Binding ActionButtonSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    Height="{Binding ActionButtonSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    MinWidth="{Binding ActionButtonSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    MinHeight="{Binding ActionButtonSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    Padding="0"
+                    Appearance="VerySubtle"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding EditItemCommand, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    CommandParameter="{Binding}"
+                    CornerRadius="5"
+                    Icon="{via:MaterialIcon Kind=OpenInNew}"
+                    IconSize="13"
+                    Size="Small"
+                    ToolTip="{Binding EditButtonToolTip, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    Variant="Primary"
+                    Visibility="{Binding ShowEditButton, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}, Converter={via:BooleanToVisibility}}" />
+                <!--  IconSize="{Binding ActionButtonIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"  -->
+
+                <controls:XIconButton
+                    Width="{Binding ActionButtonSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    Height="{Binding ActionButtonSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    MinWidth="{Binding ActionButtonSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    MinHeight="{Binding ActionButtonSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    Padding="0"
+                    Appearance="VerySubtle"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding DeleteItemCommand, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    CommandParameter="{Binding}"
+                    CornerRadius="5"
+                    Icon="{via:FontAwesomeIcon Kind=TrashCanRegular}"
+                    IconSize="14"
+                    Size="Small"
+                    ToolTip="{Binding DeleteButtonToolTip, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"
+                    Variant="Danger"
+                    Visibility="{Binding ShowDeleteButton, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}, Converter={via:BooleanToVisibility}}" />
+                <!--  IconSize="{Binding ActionButtonIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"  -->
+            </controls:XStackPanel>
+        </Border>
+    </DataTemplate>
+
+</ResourceDictionary>

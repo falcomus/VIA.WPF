@@ -1,0 +1,390 @@
+<!--=====================================================================================================================
+  <copyright file="XButtonGroup.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:fluent="clr-namespace:FluentIcons.Wpf;assembly=FluentIcons.Wpf"
+    xmlns:icons="clr-namespace:VIA.WPF.Icons;assembly=VIA.WPF.Icons"
+    xmlns:pack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
+    <Style x:Key="{x:Type controls:XButtonGroupItem}" TargetType="{x:Type controls:XButtonGroupItem}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Surface}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.ControlBorder}}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="10,4,10,4" />
+        <Setter Property="MinWidth" Value="34" />
+        <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.MediumHeight}" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="StretchContent" Value="False" />
+        <Setter Property="IconSize" Value="{x:Static controls:XControlSizeMetrics.MediumIconSize}" />
+        <Setter Property="IconTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <ContentControl Content="{Binding}" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:XButtonGroupItem}">
+                    <Border
+                        x:Name="RootBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        SnapsToDevicePixels="True"
+                        UseLayoutRounding="True">
+
+                        <Grid>
+                            <Border
+                                x:Name="InteractionOverlay"
+                                Background="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Opacity="0"
+                                SnapsToDevicePixels="True"
+                                UseLayoutRounding="True" />
+
+                            <Grid
+                                Margin="{TemplateBinding Padding}"
+                                SnapsToDevicePixels="True"
+                                UseLayoutRounding="True">
+                                <Grid
+                                    x:Name="ContentGrid"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <ContentPresenter
+                                        x:Name="IconPresenter"
+                                        Grid.Column="0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Content="{TemplateBinding Icon}"
+                                        ContentTemplate="{TemplateBinding IconTemplate}"
+                                        RecognizesAccessKey="True">
+                                        <ContentPresenter.Resources>
+                                            <Style TargetType="{x:Type icons:XIcon}">
+                                                <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type icons:XMaterialDesignIcon}">
+                                                <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type icons:XMaterialIcon}">
+                                                <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type icons:XBootstrapIcon}">
+                                                <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type icons:XFontAwesomeIcon}">
+                                                <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type icons:XModernIcon}">
+                                                <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type icons:XPhosphorIcon}">
+                                                <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type icons:XFileIcon}">
+                                                <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type icons:XFluentIcon}">
+                                                <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type pack:PackIconMaterialDesign}">
+                                                <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type pack:PackIconMaterial}">
+                                                <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type pack:PackIconBootstrapIcons}">
+                                                <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type pack:PackIconFontAwesome6}">
+                                                <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type pack:PackIconModern}">
+                                                <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type pack:PackIconPhosphorIcons}">
+                                                <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type pack:PackIconFileIcons}">
+                                                <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+
+                                            <Style TargetType="{x:Type fluent:FluentIcon}">
+                                                <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="FontSize" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroupItem}}}" />
+                                            </Style>
+                                        </ContentPresenter.Resources>
+                                    </ContentPresenter>
+
+                                    <Border
+                                        x:Name="ContentSpacer"
+                                        Grid.Column="1"
+                                        Width="6" />
+
+                                    <ContentPresenter
+                                        x:Name="MainContentPresenter"
+                                        Grid.Column="2"
+                                        Margin="0,0,0,1.5"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        RecognizesAccessKey="True" />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IconPlacement" Value="{x:Static controls:XIconPlacement.Right}">
+                            <Setter TargetName="IconPresenter" Property="Grid.Column" Value="2" />
+                            <Setter TargetName="MainContentPresenter" Property="Grid.Column" Value="0" />
+                        </Trigger>
+
+                        <Trigger Property="StretchContent" Value="True">
+                            <Setter TargetName="ContentGrid" Property="HorizontalAlignment" Value="Stretch" />
+                            <Setter TargetName="MainContentPresenter" Property="HorizontalAlignment" Value="Stretch" />
+                        </Trigger>
+
+                        <Trigger Property="Icon" Value="{x:Null}">
+                            <Setter TargetName="IconPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="ContentSpacer" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <Trigger Property="Content" Value="{x:Null}">
+                            <Setter TargetName="MainContentPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="ContentSpacer" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <Trigger Property="Content" Value="">
+                            <Setter TargetName="MainContentPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="ContentSpacer" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="InteractionOverlay" Property="Opacity" Value="0.08" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="InteractionOverlay" Property="Opacity" Value="0.14" />
+                        </Trigger>
+
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="RootBorder" Property="Opacity" Value="0.55" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">
+                <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallHeight}" />
+                <Setter Property="Padding" Value="8,2,8,2" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
+                <Setter Property="IconSize" Value="{x:Static controls:XControlSizeMetrics.SmallIconSize}" />
+            </Trigger>
+
+            <Trigger Property="Size" Value="{x:Static controls:XControlSize.Large}">
+                <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeHeight}" />
+                <Setter Property="Padding" Value="12,6,12,6" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodyLarge}}" />
+                <Setter Property="IconSize" Value="{x:Static controls:XControlSizeMetrics.LargeIconSize}" />
+            </Trigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="True" />
+                    <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Default}" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceDark}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.ControlBorderStrong}}" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="True" />
+                    <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Primary}" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryText}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="True" />
+                    <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Accent}" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Accent}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentText}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Accent}}" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="True" />
+                    <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Success}" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SuccessText}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="True" />
+                    <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Warning}" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.WarningText}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="True" />
+                    <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Danger}" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.DangerText}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="True" />
+                    <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Info}" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.InfoText}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="{x:Type controls:XButtonGroup}" TargetType="{x:Type controls:XButtonGroup}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="Size" Value="Medium" />
+        <Setter Property="Variant" Value="Primary" />
+        <Setter Property="ItemMinWidth" Value="34" />
+        <Setter Property="IconSize" Value="{x:Static controls:XControlSizeMetrics.MediumIconSize}" />
+        <Setter Property="IconPlacement" Value="Left" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="{Binding Orientation, RelativeSource={RelativeSource AncestorType={x:Type controls:XButtonGroup}}}" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:XButtonGroup}">
+                    <ItemsPresenter />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

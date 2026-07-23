@@ -1,0 +1,195 @@
+<!--=====================================================================================================================
+  <copyright file="XRecentItemTreeDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XRecentItemTreeDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XRecentItemTreeDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XRecentItemTree" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="920"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A composite navigation control with a real hierarchy and a separate recent-items area for shortcuts, pinning and quick-open workflows."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XGrid ColumnSpacing="18" Columns="620,*" RowSpacing="18">
+                        <via:XBorder
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XRecentItemTree
+                                Width="580"
+                                Height="620"
+                                HorizontalAlignment="Left"
+                                AllowNodeDragDrop="True"
+                                ChildrenMemberPath="Children"
+                                DeleteItemCommand="{Binding DeleteTreeItemCommand}"
+                                DropHintAfterText="After"
+                                DropHintBeforeText="Before"
+                                DropHintIntoText="Into"
+                                EditItemCommand="{Binding EditTreeItemCommand}"
+                                ExpandedMemberPath="IsExpanded"
+                                NewItemCommand="{Binding NewTreeItemCommand}"
+                                NodeDropHandler="{Binding NodeDropHandler}"
+                                NodeDropMode="BeforeAfterInto"
+                                OpenRecentItemCommand="{Binding OpenRecentItemCommand}"
+                                OpenRecentItemToolTip="Open"
+                                PinRecentItemToolTip="Pin"
+                                RecentHeader="Recent"
+                                RecentHeaderToolTip="Recent shortcuts stay separate from the real tree hierarchy."
+                                RecentItemDescriptionMemberPath="Description"
+                                RecentItemIsPinnedMemberPath="IsPinned"
+                                RecentItemTextMemberPath="Title"
+                                RecentItemToolTipMemberPath="ToolTip"
+                                RecentItemsMaxHeight="220"
+                                RecentItemsSource="{Binding RecentItems}"
+                                RemoveRecentItemCommand="{Binding RemoveRecentItemCommand}"
+                                RemoveRecentItemToolTip="Remove from recent"
+                                SelectedRecentItem="{Binding SelectedRecentItem, Mode=TwoWay}"
+                                SelectedTreeItem="{Binding SelectedTreeNode, Mode=TwoWay}"
+                                ShowCollapseAllButton="True"
+                                ShowDeleteButton="True"
+                                ShowEditButton="True"
+                                ShowExpandAllButton="True"
+                                ShowNewButton="True"
+                                ShowRecentItems="True"
+                                ShowRootNewButton="True"
+                                Size="Medium"
+                                TogglePinRecentItemCommand="{Binding TogglePinRecentItemCommand}"
+                                TreeHeader="Navigation"
+                                TreeHeaderToolTip="Primary business navigation."
+                                TreeItemsSource="{Binding NavigationNodes}"
+                                UnpinRecentItemToolTip="Unpin">
+                                <via:XRecentItemTree.TreeItemTemplate>
+                                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                        <via:XGrid ToolTip="{Binding ToolTip}" Columns="Auto,*" ColumnSpacing="8">
+                                            <via:XMaterialIcon
+                                                Width="15"
+                                                Height="15"
+                                                VerticalAlignment="Center"
+                                                Kind="{Binding IconKind}" />
+                                            <via:XTextBlock
+                                                Grid.Column="1"
+                                                VerticalAlignment="Center"
+                                                Text="{Binding Title}"
+                                                TextTrimming="CharacterEllipsis" />
+                                        </via:XGrid>
+                                    </HierarchicalDataTemplate>
+                                </via:XRecentItemTree.TreeItemTemplate>
+
+                                <via:XRecentItemTree.RecentItemTemplate>
+                                    <DataTemplate>
+                                        <via:XGrid Columns="Auto,*" ColumnSpacing="8">
+                                            <via:XMaterialIcon
+                                                Width="14"
+                                                Height="14"
+                                                VerticalAlignment="Center"
+                                                Kind="{Binding IconKind}" />
+
+                                            <via:XStackPanel Grid.Column="1" Spacing="1">
+                                                <via:XTextBlock
+                                                    FontSize="13"
+                                                    Text="{Binding Title}"
+                                                    TextTrimming="CharacterEllipsis" />
+                                                <via:XTextBlock
+                                                    FontSize="11"
+                                                    Opacity="0.64"
+                                                    Text="{Binding Description}"
+                                                    TextTrimming="CharacterEllipsis" />
+                                            </via:XStackPanel>
+                                        </via:XGrid>
+                                    </DataTemplate>
+                                </via:XRecentItemTree.RecentItemTemplate>
+                            </via:XRecentItemTree>
+                        </via:XBorder>
+
+                        <via:XStackPanel Grid.Column="1" Spacing="18">
+                            <via:XBorder
+                                Padding="20"
+                                Appearance="Solid"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Elevation="Low">
+                                <via:XStackPanel Spacing="12">
+                                    <via:XTextBlock Text="Tree first, shortcuts second" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="The hierarchy remains clean. Recent items are shortcuts that can be opened, pinned or removed without changing the real tree data."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+
+                                    <via:XGrid ColumnSpacing="12" Columns="150,*" RowSpacing="8" Rows="Auto,Auto,Auto">
+                                        <via:XTextBlock FontWeight="SemiBold" Text="Selected tree" />
+                                        <via:XTextBlock Grid.Column="1" Text="{Binding SelectedTreeNode.Title, TargetNullValue=-}" />
+
+                                        <via:XTextBlock Grid.Row="1" FontWeight="SemiBold" Text="Selected recent" />
+                                        <via:XTextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SelectedRecentItem.Title, TargetNullValue=-}" />
+
+                                        <via:XTextBlock Grid.Row="2" FontWeight="SemiBold" Text="Last action" />
+                                        <via:XTextBlock
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            IsMultiline="True"
+                                            Text="{Binding LastActionText}"
+                                            TextWrapping="Wrap" />
+                                    </via:XGrid>
+                                </via:XStackPanel>
+                            </via:XBorder>
+
+                            <via:XBorder
+                                Padding="18"
+                                Appearance="VerySubtle"
+                                BorderThickness="1"
+                                CornerRadius="8">
+                                <via:XStackPanel Spacing="10">
+                                    <via:XTextBlock Text="What this demonstrates" TextRole="SectionTitle" />
+                                    <via:XGrid ColumnSpacing="10" Columns="Auto,*" RowSpacing="8" Rows="Auto,Auto,Auto">
+                                        <via:XBorder Padding="10,6" Appearance="Subtle" CornerRadius="6" Variant="Primary">
+                                            <via:XTextBlock Text="Separate sources" />
+                                        </via:XBorder>
+                                        <via:XTextBlock Grid.Column="1" VerticalAlignment="Center" Text="TreeItemsSource and RecentItemsSource" TextRole="Description" />
+
+                                        <via:XBorder Grid.Row="1" Padding="10,6" Appearance="Subtle" CornerRadius="6" Variant="Accent">
+                                            <via:XTextBlock Text="Commands" />
+                                        </via:XBorder>
+                                        <via:XTextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="Open, pin/unpin, remove and tree CRUD" TextRole="Description" />
+
+                                        <via:XBorder Grid.Row="2" Padding="10,6" Appearance="Subtle" CornerRadius="6" Variant="Info">
+                                            <via:XTextBlock Text="Drag/drop" />
+                                        </via:XBorder>
+                                        <via:XTextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Text="Forwarded to the internal XTreeView" TextRole="Description" />
+                                    </via:XGrid>
+                                </via:XStackPanel>
+                            </via:XBorder>
+                        </via:XStackPanel>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

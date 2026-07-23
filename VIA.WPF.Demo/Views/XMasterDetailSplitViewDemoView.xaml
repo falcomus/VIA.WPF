@@ -1,0 +1,245 @@
+<!--=====================================================================================================================
+  <copyright file="XMasterDetailSplitViewDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XMasterDetailSplitViewDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:via="http://schemas.via.dev/wpf"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XMasterDetailSplitViewDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <via:XMasterDetailSplitView
+                MinHeight="560"
+                DetailButtonText="Details"
+                DetailCommand="{Binding OpenDetailsCommand}"
+                DetailTitle="Article details"
+                EditButtonText="Edit"
+                EditCommand="{Binding EditArticleCommand}"
+                FirstLength="520"
+                IsDetailPaneOpen="{Binding IsDetailPaneOpen, Mode=TwoWay}"
+                MasterTitle="Articles"
+                MinFirstLength="420"
+                MinSecondLength="420"
+                NewCommand="{Binding NewArticleCommand}">
+
+                <via:XMasterDetailSplitView.FirstContent>
+                    <via:XDataGrid
+                        MinHeight="0"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        HeadersVisibility="Column"
+                        IsReadOnly="True"
+                        ItemsSource="{Binding Articles}"
+                        MouseDoubleClick="OnArticlesGridMouseDoubleClick"
+                        SelectedItem="{Binding SelectedArticle, Mode=TwoWay}"
+                        SelectionMode="Single"
+                        ShowActionColumn="True"
+                        ShowDeleteButton="True"
+                        ShowEditButton="True">
+                        <via:XDataGrid.Columns>
+                            <via:XDataGridTextColumn
+                                Width="120"
+                                Binding="{Binding Number}"
+                                Header="Number" />
+                            <via:XDataGridTextColumn
+                                Width="*"
+                                Binding="{Binding Name}"
+                                Header="Name" />
+                            <via:XDataGridTextColumn
+                                Width="110"
+                                Binding="{Binding Status}"
+                                Header="Status" />
+                            <via:XDataGridTextColumn
+                                Width="80"
+                                Binding="{Binding Stock}"
+                                Header="Stock" />
+                        </via:XDataGrid.Columns>
+                    </via:XDataGrid>
+                </via:XMasterDetailSplitView.FirstContent>
+
+                <via:XMasterDetailSplitView.SecondContent>
+                    <Grid MinHeight="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="12" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <via:XBorder
+                            Padding="5,0,0,15"
+                            BorderThickness="0,0,0,1"
+                            CornerRadius="0"
+                            Variant="Default">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <via:XStackPanel Spacing="10">
+                                    <via:XStackPanel Spacing="5">
+                                        <via:XTextBlock Text="{Binding SelectedArticle.Name}" TextRole="Heading" />
+                                        <via:XTextBlock Text="{Binding SelectedArticle.Number}" TextRole="Description" />
+                                    </via:XStackPanel>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="110" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <via:XTextBlock Text="Barcode" TextRole="Caption" />
+                                        <via:XTextBlock Grid.Column="1" Text="{Binding SelectedArticle.Barcode}" />
+
+                                        <via:XTextBlock
+                                            Grid.Row="1"
+                                            Text="Group"
+                                            TextRole="Caption" />
+                                        <via:XTextBlock
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Text="{Binding SelectedArticle.Group}" />
+
+                                        <via:XTextBlock
+                                            Grid.Row="2"
+                                            Text="Weight"
+                                            TextRole="Caption" />
+                                        <via:XTextBlock
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            Text="{Binding SelectedArticle.Weight}" />
+
+                                        <via:XTextBlock
+                                            Grid.Row="3"
+                                            Text="Stock"
+                                            TextRole="Caption" />
+                                        <via:XTextBlock
+                                            Grid.Row="3"
+                                            Grid.Column="1"
+                                            Text="{Binding SelectedArticle.Stock}" />
+
+                                        <via:XTextBlock
+                                            Grid.Row="4"
+                                            Text="Description"
+                                            TextRole="Caption" />
+                                        <via:XTextBlock
+                                            Grid.Row="4"
+                                            Grid.Column="1"
+                                            Text="{Binding SelectedArticle.Description}"
+                                            TextWrapping="Wrap" />
+                                    </Grid>
+                                </via:XStackPanel>
+
+                                <via:XBadge
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Content="{Binding SelectedArticle.Status}"
+                                    Size="Large"
+                                    Variant="Primary" />
+                            </Grid>
+                        </via:XBorder>
+
+                        <via:XTabControl
+                            Grid.Row="2"
+                            MinHeight="0"
+                            HeaderAppearance="Underlined"
+                            HeaderHostPadding="0"
+                            HeaderPadding="0,8,28,8"
+                            ShowBorder="False">
+                            <via:XTabItem Header="Categories">
+                                <via:XGroup ContentPadding="0" Title="Category records">
+                                    <via:XGroup.Actions>
+                                        <via:XButton
+                                            Appearance="Ghost"
+                                            Command="{Binding NewCategoryCommand}"
+                                            Content="New"
+                                            Icon="{via:MaterialIcon Kind=Plus}"
+                                            Size="Small" />
+                                    </via:XGroup.Actions>
+                                    <via:XDataGrid
+                                        MinHeight="0"
+                                        AutoGenerateColumns="False"
+                                        CanUserAddRows="False"
+                                        HeadersVisibility="Column"
+                                        IsReadOnly="True"
+                                        ItemsSource="{Binding Categories}"
+                                        ShowActionColumn="True"
+                                        ShowDeleteButton="True"
+                                        ShowEditButton="True">
+                                        <via:XDataGrid.Columns>
+                                            <via:XDataGridTextColumn
+                                                Width="2*"
+                                                Binding="{Binding Name}"
+                                                Header="Category" />
+                                            <via:XDataGridTextColumn
+                                                Width="*"
+                                                Binding="{Binding Role}"
+                                                Header="Role" />
+                                            <via:XDataGridTextColumn
+                                                Width="2*"
+                                                Binding="{Binding Info}"
+                                                Header="Info" />
+                                        </via:XDataGrid.Columns>
+                                    </via:XDataGrid>
+                                </via:XGroup>
+                            </via:XTabItem>
+
+                            <via:XTabItem Header="Companies">
+                                <via:XGroup ContentPadding="0" Title="Company records">
+                                    <via:XGroup.Actions>
+                                        <via:XButton
+                                            Appearance="Ghost"
+                                            Command="{Binding NewCompanyCommand}"
+                                            Content="New"
+                                            Icon="{via:MaterialIcon Kind=Plus}"
+                                            Size="Small" />
+                                    </via:XGroup.Actions>
+                                    <via:XDataGrid
+                                        MinHeight="0"
+                                        AutoGenerateColumns="False"
+                                        CanUserAddRows="False"
+                                        HeadersVisibility="Column"
+                                        IsReadOnly="True"
+                                        ItemsSource="{Binding Companies}">
+                                        <via:XDataGrid.Columns>
+                                            <via:XDataGridTextColumn
+                                                Width="2*"
+                                                Binding="{Binding Name}"
+                                                Header="Company" />
+                                            <via:XDataGridTextColumn
+                                                Width="*"
+                                                Binding="{Binding Role}"
+                                                Header="Role" />
+                                            <via:XDataGridTextColumn
+                                                Width="2*"
+                                                Binding="{Binding Info}"
+                                                Header="Info" />
+                                        </via:XDataGrid.Columns>
+                                    </via:XDataGrid>
+                                </via:XGroup>
+                            </via:XTabItem>
+                        </via:XTabControl>
+                    </Grid>
+                </via:XMasterDetailSplitView.SecondContent>
+            </via:XMasterDetailSplitView>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

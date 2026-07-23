@@ -1,0 +1,285 @@
+<!--=====================================================================================================================
+  <copyright file="XSliderDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XSliderDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XSliderDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XSlider" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="XSlider extends the standard WPF Slider with VIA sizing, header text, descriptions, value display, value hints, variants and track customization."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Header, description and value" TextRole="SectionTitle" />
+                                <via:XSlider
+                                    Description="The value is bound and shown in the header row."
+                                    Header="Volume"
+                                    Maximum="100"
+                                    Minimum="0"
+                                    ShowValue="True"
+                                    Value="{Binding Volume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ValueFormatString="F0" />
+                                <via:XTextBlock Text="{Binding VolumeSummary}" TextRole="Description" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Formatted values" TextRole="SectionTitle" />
+                                <via:XSlider
+                                    Description="Use ValueFormatString for decimal or unit-style displays."
+                                    Header="Precision"
+                                    Maximum="1"
+                                    Minimum="0"
+                                    ShowValue="True"
+                                    SmallChange="0.01"
+                                    Value="{Binding Precision, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ValueFormatString="F2" />
+                                <via:XSlider
+                                    Description="A negative/positive range works like a normal WPF Slider."
+                                    Header="Balance"
+                                    Maximum="50"
+                                    Minimum="-50"
+                                    ShowValue="True"
+                                    TickFrequency="25"
+                                    TickPlacement="BottomRight"
+                                    Value="{Binding Balance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ValueFormatString="+0;-0;0" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XBorder
+                        Padding="20"
+                        Appearance="Solid"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="16">
+                            <via:XStackPanel Spacing="4">
+                                <via:XTextBlock Text="Sizes and variants" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Size controls height and thumb proportions. Variant colors the active track and thumb unless custom brushes are set explicitly."
+                                    TextRole="Description" />
+                            </via:XStackPanel>
+
+                            <via:XGrid ColumnSpacing="18" Columns="*,*,*">
+                                <via:XSlider Header="Small" Maximum="100" Minimum="0" ShowValue="True" Size="Small" Value="35" />
+                                <via:XSlider Grid.Column="1" Header="Medium" Maximum="100" Minimum="0" ShowValue="True" Size="Medium" Value="55" />
+                                <via:XSlider Grid.Column="2" Header="Large" Maximum="100" Minimum="0" ShowValue="True" Size="Large" Value="75" />
+                            </via:XGrid>
+
+                            <via:XGrid ColumnSpacing="18" RowSpacing="12" Columns="*,*,*" Rows="Auto,Auto">
+                                <via:XSlider Header="Default" Maximum="100" Minimum="0" ShowValue="True" Variant="Default" Value="30" />
+                                <via:XSlider Grid.Column="1" Header="Primary" Maximum="100" Minimum="0" ShowValue="True" Variant="Primary" Value="45" />
+                                <via:XSlider Grid.Column="2" Header="Accent" Maximum="100" Minimum="0" ShowValue="True" Variant="Accent" Value="60" />
+                                <via:XSlider Grid.Row="1" Header="Success" Maximum="100" Minimum="0" ShowValue="True" Variant="Success" Value="72" />
+                                <via:XSlider Grid.Column="1" Grid.Row="1" Header="Warning" Maximum="100" Minimum="0" ShowValue="True" Variant="Warning" Value="50" />
+                                <via:XSlider Grid.Column="2" Grid.Row="1" Header="Danger" Maximum="100" Minimum="0" ShowValue="True" Variant="Danger" Value="38" />
+                            </via:XGrid>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Value hint at the thumb" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="ShowValueHint displays a compact badge near the thumb while dragging."
+                                    TextRole="Description" />
+                                <via:XSlider
+                                    Description="Drag the thumb to see the badge hint."
+                                    Header="Brightness"
+                                    Maximum="100"
+                                    Minimum="0"
+                                    ShowValue="True"
+                                    ShowValueHint="True"
+                                    Value="{Binding Brightness, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ValueFormatString="F0"
+                                    ValueHintAppearance="Solid"
+                                    ValueHintVariant="Info"
+                                    Variant="Info" />
+                                <via:XSlider
+                                    Header="Temperature"
+                                    Maximum="100"
+                                    Minimum="0"
+                                    ShowValue="True"
+                                    ShowValueHint="True"
+                                    Value="{Binding Temperature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ValueHintAppearance="Subtle"
+                                    ValueHintVariant="Warning"
+                                    Variant="Warning" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Ticks and snapping" TextRole="SectionTitle" />
+                                <via:XSlider
+                                    Description="BottomRight tick marks with snapping."
+                                    Header="Zoom"
+                                    IsSnapToTickEnabled="True"
+                                    Maximum="200"
+                                    Minimum="50"
+                                    ShowValue="True"
+                                    TickFrequency="25"
+                                    TickPlacement="BottomRight"
+                                    Value="125"
+                                    ValueFormatString="F0" />
+                                <via:XSlider
+                                    Description="Custom Ticks can define irregular steps."
+                                    Header="Custom ticks"
+                                    IsSnapToTickEnabled="True"
+                                    Maximum="100"
+                                    Minimum="0"
+                                    ShowValue="True"
+                                    TickPlacement="BottomRight"
+                                    Ticks="0,10,25,50,75,90,100"
+                                    Value="50" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Track customization" TextRole="SectionTitle" />
+                                <via:XSlider
+                                    ActiveTrackBrush="{DynamicResource {x:Static via:XBrushKeys.Primary}}"
+                                    Description="Custom brushes, track thickness and thumb size."
+                                    Header="Primary track"
+                                    InactiveTrackBrush="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
+                                    Maximum="100"
+                                    Minimum="0"
+                                    ShowValue="True"
+                                    ThumbBrush="{DynamicResource {x:Static via:XBrushKeys.Primary}}"
+                                    ThumbSize="22"
+                                    TrackThickness="7"
+                                    Value="62" />
+                                <via:XSlider
+                                    Description="SmallChange and LargeChange remain available from the base Slider."
+                                    Header="Step control"
+                                    IsSnapToTickEnabled="True"
+                                    LargeChange="20"
+                                    Maximum="100"
+                                    Minimum="0"
+                                    ShowValue="True"
+                                    SmallChange="5"
+                                    TickFrequency="5"
+                                    TickPlacement="BottomRight"
+                                    Value="{Binding StepValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Vertical orientation and states" TextRole="SectionTitle" />
+                                <via:XGrid ColumnSpacing="18" Columns="Auto,Auto,Auto,*">
+                                    <via:XSlider
+                                        Height="150"
+                                        Header="Primary"
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Orientation="Vertical"
+                                        ShowValue="True"
+                                        TickFrequency="25"
+                                        TickPlacement="BottomRight"
+                                        Variant="Primary"
+                                        Value="70" />
+                                    <via:XSlider
+                                        Grid.Column="1"
+                                        Height="150"
+                                        Header="Accent"
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Orientation="Vertical"
+                                        ShowValue="True"
+                                        Variant="Accent"
+                                        Value="45" />
+                                    <via:XSlider
+                                        Grid.Column="2"
+                                        Height="150"
+                                        Header="Info"
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Orientation="Vertical"
+                                        ShowValue="True"
+                                        ShowValueHint="True"
+                                        ValueHintVariant="Info"
+                                        Variant="Info"
+                                        Value="55" />
+                                    <via:XStackPanel Grid.Column="3" VerticalAlignment="Center" Spacing="10">
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="Vertical sliders are useful for mixer-like UIs. Drag the Info slider to test the value hint vertically."
+                                            TextRole="Description" />
+                                        <via:XSlider Header="Disabled" IsEnabled="False" Maximum="100" Minimum="0" ShowValue="True" Value="45" />
+                                    </via:XStackPanel>
+                                </via:XGrid>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

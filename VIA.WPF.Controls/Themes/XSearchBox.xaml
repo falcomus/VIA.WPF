@@ -1,0 +1,104 @@
+<!--=====================================================================================================================
+  <copyright file="XSearchBox.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:icons="clr-namespace:VIA.WPF.Icons;assembly=VIA.WPF.Icons"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
+    <Style TargetType="{x:Type controls:XSearchBox}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.InputBackground}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}" />
+        <Setter Property="controls:XInputAssist.HoverBackground" Value="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}" />
+        <Setter Property="controls:XInputAssist.FocusedBackground" Value="{DynamicResource {x:Static themes:XBrushKeys.InputBackground}}" />
+        <Setter Property="controls:XInputAssist.HoverBorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}" />
+        <Setter Property="controls:XInputAssist.FocusedBorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.FocusRing}}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="1,0,1,1" />
+        <!--<Setter Property="Width" Value="140" />-->
+        <Setter Property="MinWidth" Value="80" />
+        <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.MediumHeight}" />
+        <Setter Property="FontFamily" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontFamilyBody}}" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
+        <Setter Property="Size" Value="Medium" />
+        <Setter Property="Placeholder" Value="Search" />
+        <Setter Property="Header" Value="" />
+        <Setter Property="Description" Value="" />
+        <Setter Property="HeaderFontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
+        <Setter Property="HeaderFontWeight" Value="SemiBold" />
+        <Setter Property="SearchIcon" Value="{icons:MaterialDesignIcon Kind=Search}" />
+        <Setter Property="SearchIconSize" Value="{x:Static controls:XControlSizeMetrics.MediumIconSize}" />
+        <Setter Property="ResetIconSize" Value="{x:Static controls:XControlSizeMetrics.SmallIconSize}" />
+        <Setter Property="ResetButtonForeground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}" />
+        <Setter Property="ShowResetButton" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:XSearchBox}">
+                    <controls:XTextBox
+                        x:Name="PART_SearchTextBox"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        MinWidth="{TemplateBinding MinWidth}"
+                        MinHeight="{TemplateBinding MinHeight}"
+                        MaxWidth="{TemplateBinding MaxWidth}"
+                        MaxHeight="{TemplateBinding MaxHeight}"
+                        Padding="{TemplateBinding Padding}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        controls:XInputAssist.HoverBackground="{Binding Path=(controls:XInputAssist.HoverBackground), RelativeSource={RelativeSource TemplatedParent}}"
+                        controls:XInputAssist.FocusedBackground="{Binding Path=(controls:XInputAssist.FocusedBackground), RelativeSource={RelativeSource TemplatedParent}}"
+                        controls:XInputAssist.HoverBorderBrush="{Binding Path=(controls:XInputAssist.HoverBorderBrush), RelativeSource={RelativeSource TemplatedParent}}"
+                        controls:XInputAssist.FocusedBorderBrush="{Binding Path=(controls:XInputAssist.FocusedBorderBrush), RelativeSource={RelativeSource TemplatedParent}}"
+                        Description="{TemplateBinding Description}"
+                        FontFamily="{TemplateBinding FontFamily}"
+                        FontSize="{TemplateBinding FontSize}"
+                        FontStretch="{TemplateBinding FontStretch}"
+                        FontStyle="{TemplateBinding FontStyle}"
+                        FontWeight="{TemplateBinding FontWeight}"
+                        Foreground="{TemplateBinding Foreground}"
+                        Header="{TemplateBinding Header}"
+                        HeaderFontSize="{TemplateBinding HeaderFontSize}"
+                        HeaderFontWeight="{TemplateBinding HeaderFontWeight}"
+                        IsEnabled="{TemplateBinding IsEnabled}"
+                        IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}"
+                        LeadingIcon="{Binding SearchIcon, RelativeSource={RelativeSource TemplatedParent}}"
+                        LeadingIconSize="{Binding SearchIconSize, RelativeSource={RelativeSource TemplatedParent}}"
+                        LeadingIconTemplate="{Binding SearchIconTemplate, RelativeSource={RelativeSource TemplatedParent}}"
+                        Placeholder="{TemplateBinding Placeholder}"
+                        ResetButtonForeground="{Binding ResetButtonForeground, RelativeSource={RelativeSource TemplatedParent}}"
+                        ResetCommand="{Binding ClearSearchCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                        ResetCommandParameter="{Binding ResetSearchCommandParameter, RelativeSource={RelativeSource TemplatedParent}}"
+                        ResetIcon="{Binding ResetIcon, RelativeSource={RelativeSource TemplatedParent}}"
+                        ResetIconSize="{Binding ResetIconSize, RelativeSource={RelativeSource TemplatedParent}}"
+                        ResetIconTemplate="{Binding ResetIconTemplate, RelativeSource={RelativeSource TemplatedParent}}"
+                        ShowResetButton="{Binding ShowResetButton, RelativeSource={RelativeSource TemplatedParent}}"
+                        Size="{Binding Size, RelativeSource={RelativeSource TemplatedParent}}"
+                        Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">
+                <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallHeight}" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
+                <Setter Property="SearchIconSize" Value="{x:Static controls:XControlSizeMetrics.SmallIconSize}" />
+            </Trigger>
+
+            <Trigger Property="Size" Value="{x:Static controls:XControlSize.Large}">
+                <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeHeight}" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodyLarge}}" />
+                <Setter Property="SearchIconSize" Value="{x:Static controls:XControlSizeMetrics.LargeIconSize}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

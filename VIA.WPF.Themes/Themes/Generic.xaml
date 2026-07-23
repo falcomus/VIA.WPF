@@ -1,0 +1,15 @@
+<!--=====================================================================================================================
+  <copyright file="Generic.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/VIA.WPF.Themes;component/Themes/XLayoutResources.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Themes;component/Themes/XTypographyResources.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Themes;component/Themes/XDefaultBrushes.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Themes;component/Themes/XThemeSelector.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

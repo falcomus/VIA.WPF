@@ -1,0 +1,223 @@
+<!--=====================================================================================================================
+  <copyright file="XLocalizationDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XLocalizationDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resources="clr-namespace:VIA.WPF.Demo.Resources"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XLocalizationDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="Localization" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="920"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A complete DE/EN test surface for XLanguageSelector, XLoc resource bindings, culture-aware formatting, code messages and the optional selector in XWindow."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid
+                        ColumnSpacing="18"
+                        Columns="*,*"
+                        RowSpacing="18"
+                        Rows="Auto,Auto">
+
+                        <!--#region ### Language Selection ###-->
+                        <via:XBorder
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Language selector" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="The built-in selector renders compact vector flags before every language item. Open the drop-down and switch between German and English."
+                                    TextRole="Description" />
+
+                                <via:XLanguageSelector
+                                    Width="320"
+                                    HorizontalAlignment="Left"
+                                    Description="{via:XLoc SelectorDescription, ResourceManager={x:Static resources:LocalizationDemoResources.ResourceManager}, Fallback=Selecting a language updates resources and formatting.}"
+                                    Header="{via:XLoc SelectorHeader, ResourceManager={x:Static resources:LocalizationDemoResources.ResourceManager}, Fallback=Application language}"
+                                    SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" />
+
+                                <via:XBorder
+                                    Padding="12"
+                                    Appearance="Subtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XStackPanel Spacing="4">
+                                        <via:XTextBlock
+                                            Text="{via:XLoc CurrentLanguageLabel, ResourceManager={x:Static resources:LocalizationDemoResources.ResourceManager}, Fallback=Current UI culture}"
+                                            TextRole="Caption" />
+                                        <via:XTextBlock
+                                            Text="{Binding CurrentCultureName}"
+                                            TextRole="Label"
+                                            Variant="Primary" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                        <!--#endregion-->
+
+                        <!--#region ### Dynamic XAML Resources ###-->
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Dynamic XAML resources" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="These two texts use the XLoc markup extension and refresh immediately when XLocalizationService changes the UI culture."
+                                    TextRole="Description" />
+
+                                <via:XBorder
+                                    Padding="16"
+                                    Appearance="Subtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XStackPanel Spacing="8">
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="{via:XLoc GreetingTitle, ResourceManager={x:Static resources:LocalizationDemoResources.ResourceManager}, Fallback=Welcome to the localization demo}"
+                                            TextRole="Heading"
+                                            Variant="Primary" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="{via:XLoc GreetingBody, ResourceManager={x:Static resources:LocalizationDemoResources.ResourceManager}, Fallback=This text comes from application resources.}"
+                                            TextRole="Body" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                        <!--#endregion-->
+
+                        <!--#region ### Formatting ###-->
+                        <via:XBorder
+                            Grid.Row="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock
+                                    Text="{via:XLoc FormattingTitle, ResourceManager={x:Static resources:LocalizationDemoResources.ResourceManager}, Fallback=Culture-aware formatting}"
+                                    TextRole="SectionTitle" />
+
+                                <via:XGrid
+                                    ColumnSpacing="12"
+                                    Columns="120,*"
+                                    RowSpacing="10"
+                                    Rows="Auto,Auto">
+
+                                    <via:XTextBlock
+                                        Text="{via:XLoc DateLabel, ResourceManager={x:Static resources:LocalizationDemoResources.ResourceManager}, Fallback=Date and time}"
+                                        TextRole="Caption" />
+                                    <via:XTextBlock
+                                        Grid.Column="1"
+                                        IsMultiline="True"
+                                        Text="{Binding DatePreview}"
+                                        TextRole="Label" />
+
+                                    <via:XTextBlock
+                                        Grid.Row="1"
+                                        Text="{via:XLoc NumberLabel, ResourceManager={x:Static resources:LocalizationDemoResources.ResourceManager}, Fallback=Number}"
+                                        TextRole="Caption" />
+                                    <via:XTextBlock
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{Binding NumberPreview}"
+                                        TextRole="Label" />
+                                </via:XGrid>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                        <!--#endregion-->
+
+                        <!--#region ### Code Messages ###-->
+                        <via:XBorder
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock
+                                    Text="{via:XLoc MessageTitle, ResourceManager={x:Static resources:LocalizationDemoResources.ResourceManager}, Fallback=Localized code message}"
+                                    TextRole="SectionTitle" />
+
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="{Binding LocalizedMessage}"
+                                    TextRole="Body" />
+
+                                <via:XButton
+                                    HorizontalAlignment="Left"
+                                    Command="{Binding CreateMessageCommand}"
+                                    Content="{via:XLoc MessageButton, ResourceManager={x:Static resources:LocalizationDemoResources.ResourceManager}, Fallback=Create localized message}"
+                                    Variant="Primary" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+                        <!--#endregion-->
+                    </via:XGrid>
+
+                    <via:XBorder
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8">
+                        <via:XStackPanel Spacing="6">
+                            <via:XTextBlock
+                                Text="{via:XLoc WindowHintTitle, ResourceManager={x:Static resources:LocalizationDemoResources.ResourceManager}, Fallback=XWindow integration}"
+                                TextRole="SectionTitle" />
+                            <via:XTextBlock
+                                IsMultiline="True"
+                                Text="{via:XLoc WindowHintBody, ResourceManager={x:Static resources:LocalizationDemoResources.ResourceManager}, Fallback=The title bar selector uses the same localization service.}"
+                                TextRole="Description" />
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

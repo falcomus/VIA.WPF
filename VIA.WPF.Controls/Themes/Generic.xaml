@@ -1,0 +1,73 @@
+<!--=====================================================================================================================
+  <copyright file="Generic.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XInputShared.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/Converters.xaml" />
+
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XListBox.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XButton.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XBadge.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XIconButton.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XPanel.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XGroup.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XComposition.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XBorder.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XTabControl.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XTabItem.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XSplitView.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XMasterDetailSplitView.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XDataSection.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XExpander.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XToggleSwitch.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XCheckBox.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XToggleButton.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XComboBox.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XLanguageSelector.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XRadioButton.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XToggleDropdown.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XComboBoxItem.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XScrollBar.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XTextBox.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XTextBlock.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XSearchBox.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XPasswordBox.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XSecurePasswordBox.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XNumberBox.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XCalendar.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XDatePicker.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XTimePicker.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XSlider.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XProgressBar.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XNavigationList.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XNavigationListItem.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XNavigationTemplates.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XCheckGroup.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XRadioGroup.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XTreeView.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XRecentItemTree.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XSeparator.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XButtonGroup.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XDataGrid.xaml" />
+        
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XViewContainer.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XHeaderBar.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XToolbarPresenter.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XCheckerBoard.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XLookupComboBox.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XLookupTreeComboBox.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XValidationSummary.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XValidationHintPopup.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

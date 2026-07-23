@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageId>VIA.WPF.Themes</PackageId>
+		<Title>VIA.WPF Themes</Title>
+		<Version>1.0.0</Version>
+		<Authors>Claus Falkenstein</Authors>
+		<Description>Theme resources, brush keys, runtime theme switching and color presets for VIA.WPF applications.</Description>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+</Project>

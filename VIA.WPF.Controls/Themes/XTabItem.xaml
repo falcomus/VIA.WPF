@@ -1,0 +1,253 @@
+<!--=====================================================================================================================
+  <copyright file="XTabItem.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:icons="clr-namespace:VIA.WPF.Icons;assembly=VIA.WPF.Icons"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
+    <Style x:Key="XTabHeaderActionButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="28" />
+        <Setter Property="Height" Value="28" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        x:Name="RootBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="3">
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatePressed}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.FocusRing}}" />
+                            <Setter TargetName="RootBorder" Property="BorderThickness" Value="2" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.45" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type controls:XTabItem}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Panel.ZIndex" Value="0" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
+        <Setter Property="IconSize" Value="16" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:XTabItem}">
+                    <Grid
+                        x:Name="RootGrid"
+                        Margin="1"
+                        ClipToBounds="False"
+                        SnapsToDevicePixels="True"
+                        UseLayoutRounding="True">
+                        <Border
+                            x:Name="HeaderOuterBorder"
+                            Margin="0,1,10,1"
+                            Padding="0"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="1"
+                            ClipToBounds="False"
+                            CornerRadius="4"
+                            SnapsToDevicePixels="True">
+                            <Border
+                                x:Name="HeaderInnerBorder"
+                                Padding="{Binding HeaderPadding, RelativeSource={RelativeSource AncestorType={x:Type controls:XTabControl}}, FallbackValue='10,5,10,5'}"
+                                Background="Transparent"
+                                ClipToBounds="False"
+                                CornerRadius="3"
+                                SnapsToDevicePixels="True">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <ContentPresenter
+                                        x:Name="IconPresenter"
+                                        Grid.Column="0"
+                                        Margin="0,0,8,0"
+                                        VerticalAlignment="Center"
+                                        Content="{TemplateBinding Icon}"
+                                        ContentTemplate="{TemplateBinding IconTemplate}"
+                                        Visibility="Visible">
+                                        <ContentPresenter.Resources>
+                                            <Style TargetType="{x:Type icons:XIcon}">
+                                                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XTabItem}}}" />
+                                                <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XTabItem}}}" />
+                                            </Style>
+                                        </ContentPresenter.Resources>
+                                    </ContentPresenter>
+
+                                    <Grid
+                                        x:Name="HeaderTextHost"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <ContentPresenter
+                                            x:Name="HeaderContentPresenter"
+                                            Grid.Row="0"
+                                            Margin="{Binding HeaderContentMargin, RelativeSource={RelativeSource AncestorType={x:Type controls:XTabControl}}, FallbackValue='4,0,0,-2'}"
+                                            HorizontalAlignment="Center"
+                                            Content="{TemplateBinding Header}"
+                                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                            ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                            RecognizesAccessKey="True"
+                                            TextElement.FontSize="{TemplateBinding FontSize}"
+                                            TextElement.FontWeight="{TemplateBinding FontWeight}"
+                                            TextElement.Foreground="{TemplateBinding Foreground}" />
+
+                                        <Border
+                                            x:Name="UnderlineBorder"
+                                            Grid.Row="1"
+                                            Height="3"
+                                            Margin="{Binding HeaderUnderlineMargin, RelativeSource={RelativeSource AncestorType={x:Type controls:XTabControl}}, FallbackValue='4,3,0,0'}"
+                                            HorizontalAlignment="Stretch"
+                                            Background="{DynamicResource {x:Static themes:XBrushKeys.TabItemUnderline}}"
+                                            CornerRadius="1"
+                                            Visibility="Collapsed" />
+                                    </Grid>
+
+                                    <Button
+                                        x:Name="CloseButton"
+                                        Grid.Column="2"
+                                        Width="20"
+                                        Height="20"
+                                        Margin="8,0,0,0"
+                                        Command="{TemplateBinding CloseCommand}"
+                                        Style="{StaticResource XTabHeaderActionButtonStyle}"
+                                        Visibility="Collapsed">
+                                        <icons:XMaterialIcon Kind="Close" Size="12" />
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Icon" Value="{x:Null}">
+                            <Setter TargetName="IconPresenter" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:XTabControl}}, Path=HeaderAppearance}" Value="{x:Static controls:XTabHeaderAppearance.Default}">
+                            <Setter TargetName="HeaderOuterBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="HeaderInnerBorder" Property="Background" Value="Transparent" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:XTabControl}}, Path=HeaderAppearance}" Value="{x:Static controls:XTabHeaderAppearance.Segmented}">
+                            <Setter TargetName="HeaderOuterBorder" Property="CornerRadius" Value="4" />
+                            <Setter TargetName="HeaderInnerBorder" Property="CornerRadius" Value="3" />
+                            <Setter TargetName="HeaderOuterBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="HeaderInnerBorder" Property="Background" Value="Transparent" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:XTabControl}}, Path=HeaderAppearance}" Value="{x:Static controls:XTabHeaderAppearance.Underlined}">
+                            <Setter TargetName="RootGrid" Property="Margin" Value="0" />
+                            <Setter TargetName="HeaderOuterBorder" Property="Margin" Value="0,0,10,0" />
+                            <Setter TargetName="HeaderOuterBorder" Property="Padding" Value="0" />
+                            <Setter TargetName="HeaderOuterBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="HeaderOuterBorder" Property="CornerRadius" Value="0" />
+                            <Setter TargetName="HeaderInnerBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="HeaderInnerBorder" Property="CornerRadius" Value="0" />
+                            <Setter TargetName="UnderlineBorder" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Panel.ZIndex" Value="50" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+                            <Setter TargetName="HeaderOuterBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}" />
+                            <Setter TargetName="HeaderInnerBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Panel.ZIndex" Value="100" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+                            <Setter Property="FontWeight" Value="SemiBold" />
+                            <Setter TargetName="HeaderOuterBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}" />
+                            <Setter TargetName="HeaderInnerBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Surface}}" />
+                            <Setter TargetName="UnderlineBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Accent}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.45" />
+                        </Trigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=CanClose}" Value="True" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:XTabControl}}, Path=ShowTabCloseButton}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="CloseButton" Property="Visibility" Value="Visible" />
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:XTabControl}}, Path=HeaderAppearance}" Value="{x:Static controls:XTabHeaderAppearance.Underlined}" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="HeaderOuterBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="HeaderInnerBorder" Property="Background" Value="Transparent" />
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:XTabControl}}, Path=HeaderAppearance}" Value="{x:Static controls:XTabHeaderAppearance.Underlined}" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="HeaderOuterBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="HeaderInnerBorder" Property="Background" Value="Transparent" />
+                        </MultiDataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

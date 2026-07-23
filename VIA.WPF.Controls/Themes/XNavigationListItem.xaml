@@ -1,0 +1,317 @@
+<!--=====================================================================================================================
+  <copyright file="XNavigationListItem.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:icons="clr-namespace:VIA.WPF.Icons;assembly=VIA.WPF.Icons"
+    xmlns:pack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
+    <Style TargetType="{x:Type controls:XNavigationListItem}">
+        <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationList}}}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="{Binding ItemMargin, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationList}}}" />
+        <Setter Property="MinHeight" Value="{DynamicResource {x:Static themes:XLayoutKeys.NavigationItemHeight}}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="IconSize" Value="{x:Static controls:XControlSizeMetrics.MediumIconSize}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:XNavigationListItem}">
+                    <Grid SnapsToDevicePixels="True">
+                        <Border
+                            x:Name="ItemBorder"
+                            Padding="{Binding ItemPadding, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationList}}}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{Binding ItemCornerRadius, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationList}}}"
+                            SnapsToDevicePixels="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition x:Name="IconColumn" Width="28" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <ContentPresenter
+                                    x:Name="IconPresenter"
+                                    Grid.Column="0"
+                                    Width="24"
+                                    Height="24"
+                                    Margin="0,0,10,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="{TemplateBinding Icon}"
+                                    ContentTemplate="{TemplateBinding IconTemplate}">
+                                    <ContentPresenter.Resources>
+                                        <Style TargetType="{x:Type icons:XIcon}">
+                                            <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                            <Setter Property="controls:XIconAssist.Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XFluentIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                            <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XMaterialIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                            <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XMaterialDesignIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                            <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XBootstrapIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                            <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XFontAwesomeIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                            <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XModernIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                            <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XPhosphorIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                            <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XFileIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                            <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type pack:PackIconMaterialDesign}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                            <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                            <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}" />
+                                        </Style>
+                                    </ContentPresenter.Resources>
+                                </ContentPresenter>
+
+                                <Grid Grid.Column="1" VerticalAlignment="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock
+                                            Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            FontSize="{TemplateBinding FontSize}"
+                                            FontWeight="{TemplateBinding FontWeight}"
+                                            Foreground="{TemplateBinding Foreground}"
+                                            Text="{TemplateBinding Title}"
+                                            TextTrimming="CharacterEllipsis" />
+
+                                        <controls:XBadge
+                                            x:Name="Badge"
+                                            Grid.Column="1"
+                                            Width="21"
+                                            Height="21"
+                                            MinWidth="21"
+                                            MinHeight="21"
+                                            Margin="8,0,0,0"
+                                            Padding="0"
+                                            VerticalAlignment="Center"
+                                            Appearance="Solid"
+                                            BorderThickness="0"
+                                            Content="{TemplateBinding BadgeContent}"
+                                            CornerRadius="11"
+                                            FontSize="11"
+                                            FontWeight="Medium"
+                                            Size="Small"
+                                            Variant="{Binding BadgeVariant, RelativeSource={RelativeSource TemplatedParent}}"
+                                            Visibility="Collapsed" />
+
+                                        <controls:XStackPanel
+                                            x:Name="ActionPanel"
+                                            Grid.Column="2"
+                                            Margin="0"
+                                            VerticalAlignment="Center"
+                                            Orientation="Horizontal"
+                                            Spacing="2"
+                                            Visibility="Hidden">
+                                            <controls:XIconButton
+                                                x:Name="EditButton"
+                                                Width="22"
+                                                Height="22"
+                                                MinWidth="22"
+                                                MinHeight="22"
+                                                Padding="0"
+                                                Appearance="Ghost"
+                                                Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                                CommandParameter="{Binding EditCommandParameter, RelativeSource={RelativeSource TemplatedParent}}"
+                                                Cursor="Hand"
+                                                Focusable="True"
+                                                Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationListItem}}}"
+                                                IconSize="12"
+                                                IsTabStop="True"
+                                                Size="Small"
+                                                ToolTip="Edit"
+                                                Visibility="Collapsed">
+                                                <controls:XIconButton.Icon>
+                                                    <pack:PackIconMaterialDesign Kind="Launch" />
+                                                </controls:XIconButton.Icon>
+                                            </controls:XIconButton>
+
+                                            <controls:XIconButton
+                                                x:Name="DeleteButton"
+                                                Width="22"
+                                                Height="22"
+                                                MinWidth="22"
+                                                MinHeight="22"
+                                                Padding="0"
+                                                Appearance="Ghost"
+                                                Command="{Binding DeleteCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                                CommandParameter="{Binding DeleteCommandParameter, RelativeSource={RelativeSource TemplatedParent}}"
+                                                Cursor="Hand"
+                                                Focusable="True"
+                                                Foreground="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                                                IconSize="12"
+                                                IsTabStop="True"
+                                                Size="Small"
+                                                ToolTip="Delete"
+                                                Variant="Danger"
+                                                Visibility="Collapsed">
+                                                <controls:XIconButton.Icon>
+                                                    <pack:PackIconMaterialDesign Kind="Close" />
+                                                </controls:XIconButton.Icon>
+                                            </controls:XIconButton>
+                                        </controls:XStackPanel>
+                                    </Grid>
+
+                                    <TextBlock
+                                        x:Name="SubTitleText"
+                                        Grid.Row="1"
+                                        Margin="0,2,0,0"
+                                        FontSize="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}"
+                                        FontWeight="Normal"
+                                        Foreground="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}"
+                                        Text="{TemplateBinding SubTitle}"
+                                        TextTrimming="CharacterEllipsis"
+                                        Visibility="Collapsed" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                        <Border
+                            x:Name="SelectionIndicator"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Stretch"
+                            Panel.ZIndex="2"
+                            Background="{Binding SelectionIndicatorBrush, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationList}}}"
+                            CornerRadius="{Binding SelectionIndicatorCornerRadius, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationList}}}"
+                            IsHitTestVisible="False"
+                            Visibility="Collapsed"
+                            Width="{Binding SelectionIndicatorWidth, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationList}}}" />
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Icon" Value="{x:Null}">
+                            <Setter TargetName="IconColumn" Property="Width" Value="0" />
+                            <Setter TargetName="IconPresenter" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <Trigger Property="HasSubTitle" Value="True">
+                            <Setter TargetName="SubTitleText" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ShowBadge" Value="True" />
+                                <Condition Property="HasBadgeContent" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Badge" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+
+                        <Trigger Property="ShowEdit" Value="True">
+                            <Setter TargetName="ActionPanel" Property="Margin" Value="6,0,0,0" />
+                            <Setter TargetName="EditButton" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="ShowDelete" Value="True">
+                            <Setter TargetName="ActionPanel" Property="Margin" Value="6,0,0,0" />
+                            <Setter TargetName="DeleteButton" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ItemBorder" Property="Background" Value="{Binding ItemHoverBackground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationList}}}" />
+                            <Setter TargetName="ActionPanel" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="{Binding SelectedItemForeground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationList}}}" />
+                            <Setter Property="FontWeight" Value="SemiBold" />
+                            <Setter TargetName="ItemBorder" Property="Background" Value="{Binding SelectedItemBackground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationList}}}" />
+                            <Setter TargetName="ItemBorder" Property="BorderBrush" Value="Transparent" />
+                            <Setter TargetName="ActionPanel" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="True" />
+                                <Condition Binding="{Binding ShowSelectionIndicator, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationList}}}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="SelectionIndicator" Property="Visibility" Value="Visible" />
+                        </MultiDataTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsKeyboardFocusWithin" Value="True" />
+                                <Condition Property="IsSelected" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ItemBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.FocusRing}}" />
+                            <Setter TargetName="ActionPanel" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="Selector.IsSelectionActive" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Foreground" Value="{Binding SelectedItemForeground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationList}}}" />
+                            <Setter Property="FontWeight" Value="SemiBold" />
+                            <Setter TargetName="ItemBorder" Property="Background" Value="{Binding SelectedItemBackground, RelativeSource={RelativeSource AncestorType={x:Type controls:XNavigationList}}}" />
+                            <Setter TargetName="ItemBorder" Property="BorderBrush" Value="Transparent" />
+                            <Setter TargetName="ActionPanel" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.55" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,273 @@
+<!--=====================================================================================================================
+  <copyright file="XGridDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XGridDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XGridDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XGrid" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A compact Grid helper with string-based row and column definitions, logical spacing and optional named areas. Child placement uses normal WPF Grid.Row and Grid.Column."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Compact definitions" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Rows and Columns accept Auto, star and fixed sizing without verbose RowDefinition and ColumnDefinition blocks."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XGrid
+                                    ColumnSpacing="12"
+                                    Columns="*,Auto"
+                                    RowSpacing="12"
+                                    Rows="Auto,Auto,Auto">
+                                    <via:XBorder
+                                        Padding="14"
+                                        Appearance="VerySubtle"
+                                        CornerRadius="6"
+                                        Variant="Primary">
+                                        <via:XStackPanel Spacing="4">
+                                            <via:XTextBlock Text="Project Alpha" TextRole="Subtitle" />
+                                            <via:XTextBlock Text="Flexible content column" TextRole="Caption" />
+                                        </via:XStackPanel>
+                                    </via:XBorder>
+
+                                    <via:XButton
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Right"
+                                        Content="Open"
+                                        Icon="{via:BootstrapIcon Kind=EyeFill}"
+                                        Variant="Primary" />
+
+                                    <via:XBorder
+                                        Grid.Row="1"
+                                        Grid.ColumnSpan="2"
+                                        Padding="14"
+                                        Appearance="VerySubtle"
+                                        CornerRadius="6"
+                                        Variant="Info">
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="The button is placed with Grid.Column=1. XGrid keeps the public placement syntax identical to a normal Grid."
+                                            TextRole="Description" />
+                                    </via:XBorder>
+
+                                    <via:XButton
+                                        Grid.Row="2"
+                                        HorizontalAlignment="Left"
+                                        Appearance="Outline"
+                                        Content="Refresh"
+                                        Icon="{via:BootstrapIcon Kind=ArrowClockwise}"
+                                        Variant="Info" />
+
+                                    <via:XButton
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Right"
+                                        Appearance="Subtle"
+                                        Content="Settings"
+                                        Icon="{via:BootstrapIcon Kind=GearFill}"
+                                        Variant="Default" />
+                                </via:XGrid>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Logical spacing" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="RowSpacing and ColumnSpacing insert internal gutters while the child placement stays logical."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XGrid
+                                    ColumnSpacing="10"
+                                    Columns="*,*,*"
+                                    RowSpacing="10"
+                                    Rows="Auto,Auto">
+                                    <via:XBorder
+                                        Padding="16"
+                                        Appearance="Subtle"
+                                        CornerRadius="6"
+                                        Variant="Primary">
+                                        <via:XTextBlock Text="Column 0" TextRole="Subtitle" />
+                                    </via:XBorder>
+
+                                    <via:XBorder
+                                        Grid.Column="1"
+                                        Padding="16"
+                                        Appearance="Subtle"
+                                        CornerRadius="6"
+                                        Variant="Accent">
+                                        <via:XTextBlock Text="Column 1" TextRole="Subtitle" />
+                                    </via:XBorder>
+
+                                    <via:XBorder
+                                        Grid.Column="2"
+                                        Padding="16"
+                                        Appearance="Subtle"
+                                        CornerRadius="6"
+                                        Variant="Success">
+                                        <via:XTextBlock Text="Column 2" TextRole="Subtitle" />
+                                    </via:XBorder>
+
+                                    <via:XBorder
+                                        Grid.Row="1"
+                                        Grid.ColumnSpan="3"
+                                        Padding="16"
+                                        Appearance="VerySubtle"
+                                        CornerRadius="6"
+                                        Variant="Default">
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="Grid.ColumnSpan=3 spans all logical columns. Spacing columns are handled internally by XGrid."
+                                            TextRole="Description" />
+                                    </via:XBorder>
+                                </via:XGrid>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XStackPanel Spacing="12">
+                        <via:XTextBlock Text="Named areas" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="Areas make larger layouts easier to read. Use standard Grid placement for precise cells, and XGrid.Area when semantic names are clearer."
+                            TextRole="Description" />
+
+                        <via:XBorder
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XGrid
+                                MinHeight="300"
+                                Areas="toolbar toolbar toolbar; nav content aside; status status status"
+                                ColumnSpacing="12"
+                                Columns="180,*,240"
+                                RowSpacing="12"
+                                Rows="Auto,*,Auto">
+                                <via:XBorder
+                                    Padding="14"
+                                    via:XGrid.Area="toolbar"
+                                    Appearance="Subtle"
+                                    CornerRadius="6"
+                                    Variant="Primary">
+                                    <via:XGrid Columns="*,Auto" ColumnSpacing="12">
+                                        <via:XTextBlock Text="Inventory workspace" TextRole="Subtitle" />
+                                        <via:XButton
+                                            Grid.Column="1"
+                                            HorizontalAlignment="Right"
+                                            Content="Create"
+                                            Icon="{via:BootstrapIcon Kind=PlusCircleFill}"
+                                            Variant="Primary" />
+                                    </via:XGrid>
+                                </via:XBorder>
+
+                                <via:XBorder
+                                    Padding="14"
+                                    via:XGrid.Area="nav"
+                                    Appearance="VerySubtle"
+                                    CornerRadius="6"
+                                    Variant="Info">
+                                    <via:XStackPanel Spacing="8">
+                                        <via:XTextBlock Text="Navigation" TextRole="Subtitle" />
+                                        <via:XTextBlock Text="Categories" TextRole="Caption" />
+                                        <via:XTextBlock Text="Warehouses" TextRole="Caption" />
+                                        <via:XTextBlock Text="Checks" TextRole="Caption" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+
+                                <via:XBorder
+                                    Padding="16"
+                                    via:XGrid.Area="content"
+                                    Appearance="VerySubtle"
+                                    CornerRadius="6"
+                                    Variant="Default">
+                                    <via:XStackPanel Spacing="10">
+                                        <via:XTextBlock Text="Content area" TextRole="Subtitle" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="This is the main area. The XAML names the area instead of repeating row and column numbers across the page."
+                                            TextRole="Description" />
+                                        <via:XWrapPanel HorizontalSpacing="8" VerticalSpacing="8">
+                                            <via:XButton Content="Filter" Appearance="Outline" Icon="{via:BootstrapIcon Kind=FunnelFill}" />
+                                            <via:XButton Content="Export" Appearance="Outline" Icon="{via:BootstrapIcon Kind=Download}" />
+                                            <via:XButton Content="Refresh" Appearance="Outline" Icon="{via:BootstrapIcon Kind=ArrowClockwise}" />
+                                        </via:XWrapPanel>
+                                    </via:XStackPanel>
+                                </via:XBorder>
+
+                                <via:XBorder
+                                    Padding="14"
+                                    via:XGrid.Area="aside"
+                                    Appearance="VerySubtle"
+                                    CornerRadius="6"
+                                    Variant="Warning">
+                                    <via:XStackPanel Spacing="8">
+                                        <via:XTextBlock Text="Inspector" TextRole="Subtitle" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="Secondary information stays in a named side region."
+                                            TextRole="Caption" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+
+                                <via:XBorder
+                                    Padding="10,8"
+                                    via:XGrid.Area="status"
+                                    Appearance="Subtle"
+                                    CornerRadius="6"
+                                    Variant="Success">
+                                    <via:XTextBlock Text="Ready · 24 items loaded · layout uses named areas" TextRole="Caption" />
+                                </via:XBorder>
+                            </via:XGrid>
+                        </via:XBorder>
+                    </via:XStackPanel>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

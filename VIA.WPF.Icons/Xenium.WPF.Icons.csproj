@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageId>VIA.WPF.Icons</PackageId>
+		<Title>VIA.WPF Icons</Title>
+		<Version>1.0.0</Version>
+		<Authors>Claus Falkenstein</Authors>
+		<Description>Icon controls and icon-pack wrappers for VIA.WPF, including Fluent, Material, Bootstrap, Font Awesome, Modern, File and Phosphor icons.</Description>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentIcons.Wpf" Version="2.1.325" />
+		<PackageReference Include="MahApps.Metro.IconPacks.FileIcons" Version="6.2.1" />
+		<PackageReference Include="MahApps.Metro.IconPacks.FontAwesome6" Version="6.2.1" />
+		<PackageReference Include="MahApps.Metro.IconPacks.Material" Version="6.2.1" />
+		<PackageReference Include="MahApps.Metro.IconPacks.MaterialDesign" Version="6.2.1" />
+		<PackageReference Include="MahApps.Metro.IconPacks.BootstrapIcons" Version="6.2.1" />
+		<PackageReference Include="MahApps.Metro.IconPacks.Modern" Version="6.2.1" />
+		<PackageReference Include="MahApps.Metro.IconPacks.PhosphorIcons" Version="6.2.1" />
+	</ItemGroup>
+
+</Project>

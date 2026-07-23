@@ -1,0 +1,136 @@
+<!--=====================================================================================================================
+  <copyright file="XToggleDropdownDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XToggleDropDownDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XToggleDropDownDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XToggleDropDown" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="920"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A toggle button with hosted popup content for command menus, filters and compact tool panels."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XGrid Columns="*,*" ColumnSpacing="18" RowSpacing="18">
+                        <via:XBorder
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Command menu" TextRole="SectionTitle" />
+                                <via:XToggleDropDown
+                                    HorizontalAlignment="Left"
+                                    CheckedIcon="{via:BootstrapIcon Kind=ChevronUp}"
+                                    CheckedVariant="Primary"
+                                    Content="Export"
+                                    DropDownPlacement="Bottom"
+                                    IconSize="17"
+                                    UncheckedIcon="{via:BootstrapIcon Kind=Download}"
+                                    Variant="Primary">
+                                    <via:XToggleDropDown.DropDownContent>
+                                        <via:XBorder Padding="12" Appearance="Solid" CornerRadius="8" Elevation="Low">
+                                            <via:XStackPanel MinWidth="240" Spacing="8">
+                                                <via:XButton Appearance="Ghost" Content="Export as PDF" HorizontalAlignment="Stretch" Icon="{via:BootstrapIcon Kind=FileEarmarkTextFill}" />
+                                                <via:XButton Appearance="Ghost" Content="Export as Excel" HorizontalAlignment="Stretch" Icon="{via:BootstrapIcon Kind=Table}" />
+                                                <via:XButton Appearance="Ghost" Content="Copy link" HorizontalAlignment="Stretch" Icon="{via:BootstrapIcon Kind=Link45deg}" />
+                                            </via:XStackPanel>
+                                        </via:XBorder>
+                                    </via:XToggleDropDown.DropDownContent>
+                                </via:XToggleDropDown>
+
+                                <via:XBorder
+                                    Padding="12"
+                                    Appearance="Subtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    Variant="Info">
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Drop-down content is arbitrary XAML, so menus, filters and short forms can share the same host."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Filter panel" TextRole="SectionTitle" />
+                                <via:XToggleDropDown
+                                    HorizontalAlignment="Left"
+                                    Appearance="Outline"
+                                    CheckedIcon="{via:BootstrapIcon Kind=ChevronUp}"
+                                    CheckedVariant="Accent"
+                                    Content="Filters"
+                                    DropDownPlacement="Bottom"
+                                    IconSize="17"
+                                    UncheckedIcon="{via:BootstrapIcon Kind=Sliders}"
+                                    Variant="Accent">
+                                    <via:XToggleDropDown.DropDownContent>
+                                        <via:XBorder Padding="14" Appearance="Solid" CornerRadius="8" Elevation="Low">
+                                            <via:XStackPanel MinWidth="260" Spacing="10">
+                                                <via:XTextBlock Text="Quick filters" TextRole="SectionTitle" />
+                                                <via:XCheckBox Content="Only active entries" IsChecked="True" />
+                                                <via:XCheckBox Content="Show archived" />
+                                                <via:XSeparator />
+                                                <via:XButton Content="Apply filters" HorizontalAlignment="Left" Icon="{via:BootstrapIcon Kind=CheckCircleFill}" Size="Small" Variant="Primary" />
+                                            </via:XStackPanel>
+                                        </via:XBorder>
+                                    </via:XToggleDropDown.DropDownContent>
+                                </via:XToggleDropDown>
+
+                                <via:XGrid Columns="Auto,Auto,Auto" ColumnSpacing="10">
+                                    <via:XToggleDropDown
+                                        HorizontalAlignment="Left"
+                                        Content="Small"
+                                        Size="Small"
+                                        UncheckedIcon="{via:BootstrapIcon Kind=GearFill}" />
+                                    <via:XToggleDropDown
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Left"
+                                        Content="Default"
+                                        UncheckedIcon="{via:BootstrapIcon Kind=GearFill}" />
+                                    <via:XToggleDropDown
+                                        Grid.Column="2"
+                                        HorizontalAlignment="Left"
+                                        Content="Large"
+                                        Size="Large"
+                                        UncheckedIcon="{via:BootstrapIcon Kind=GearFill}" />
+                                </via:XGrid>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

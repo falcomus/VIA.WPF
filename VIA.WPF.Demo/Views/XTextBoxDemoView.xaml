@@ -1,0 +1,259 @@
+<!--=====================================================================================================================
+  <copyright file="XTextBoxDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XTextBoxDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XTextBoxDemoViewModel}"
+    d:DesignWidth="1180"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XTextBox" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A themed text input for forms, search boxes and editor dialogs. It supports headers, descriptions, placeholders, size variants, icon slots, reset commands, read-only state and multiline usage."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid
+                        ColumnSpacing="18"
+                        Columns="*,*"
+                        RowSpacing="18"
+                        Rows="Auto,Auto,Auto">
+
+                        <via:XBorder
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Basic form fields" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Headers and helper descriptions are built into the control, so form layouts stay simple."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XTextBox
+                                    Header="Project name"
+                                    Placeholder="Enter project name"
+                                    Text="VIA.WPF Pro" />
+
+                                <via:XTextBox
+                                    Description="Short helper descriptions stay aligned with the field."
+                                    Header="Package id"
+                                    Placeholder="Company.Product.Package"
+                                    Text="VIA.WPF.Controls" />
+
+                                <via:XTextBox
+                                    Header="Placeholder only"
+                                    Placeholder="Waiting for user input..." />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Icon slots" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Use leading and trailing icons to make field intent visible without extra layout."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XTextBox
+                                    Header="User name"
+                                    LeadingIcon="{via:MaterialIcon Kind=Account}"
+                                    LeadingIconSize="14"
+                                    Placeholder="User or account name"
+                                    Text="claus.winter" />
+
+                                <via:XTextBox
+                                    Header="Validated e-mail"
+                                    Placeholder="name@example.com"
+                                    Text="demo@via.dev"
+                                    TrailingIcon="{via:MaterialIcon Kind=CheckCircleOutline}"
+                                    TrailingIconSize="14" />
+
+                                <via:XTextBox
+                                    HasClearButton="True"
+                                    Header="Search"
+                                    LeadingIcon="{via:MaterialIcon Kind=Magnify}"
+                                    LeadingIconSize="14"
+                                    Placeholder="Search controls..."
+                                    Text="TextBox"
+                                    TrailingIcon="{via:MaterialIcon Kind=TuneVariant}"
+                                    TrailingIconSize="14" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Row="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Size variants" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Small works in toolbars, medium in standard forms and large in prominent dialog fields."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XWrapPanel HorizontalSpacing="14" VerticalSpacing="14">
+                                    <via:XTextBox Width="180" Header="Small" Placeholder="Compact" Size="Small" Text="active" />
+                                    <via:XTextBox Width="220" Header="Medium" Placeholder="Default" Size="Medium" Text="Medium input" />
+                                    <via:XTextBox Width="240" Header="Large" Placeholder="Prominent" Size="Large" Text="Large input" />
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Reset command" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="ShowResetButton can clear the text directly or delegate to a view-model command."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XTextBox
+                                    Header="Live search"
+                                    LeadingIcon="{via:MaterialIcon Kind=Magnify}"
+                                    Placeholder="Type to update the view model"
+                                    ResetCommand="{Binding ClearSearchQueryCommand}"
+                                    ShowResetButton="True"
+                                    Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" />
+
+                                <via:XBorder
+                                    Padding="12"
+                                    Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
+                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XStackPanel Spacing="4">
+                                        <via:XTextBlock Text="{Binding ResetFeedback}" TextRole="Caption" />
+                                        <via:XTextBlock Text="{Binding ResetCount}" TextRole="Caption" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Row="2"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="States" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Readonly and disabled fields remain visually aligned with editable fields."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XTextBox
+                                    Header="Read-only"
+                                    IsReadOnly="True"
+                                    LeadingIcon="{via:MaterialIcon Kind=LockOutline}"
+                                    Text="Read-only value" />
+                                <via:XTextBox
+                                    Header="Disabled"
+                                    IsEnabled="False"
+                                    Text="Disabled value" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Multiline editor" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Use the same control for notes, descriptions and short comments."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XTextBox
+                                    Height="128"
+                                    AcceptsReturn="True"
+                                    Header="Release notes"
+                                    Placeholder="Write release notes..."
+                                    ShowResetButton="True"
+                                    Text="XTextBox can be used for notes, descriptions and longer comments."
+                                    TextWrapping="Wrap"
+                                    VerticalContentAlignment="Top"
+                                    VerticalScrollBarVisibility="Auto" />
+
+                                <via:XButton
+                                    Width="140"
+                                    Appearance="Subtle"
+                                    Content="Preview notes"
+                                    HorizontalAlignment="Left"
+                                    Icon="{via:BootstrapIcon Kind=EyeFill}" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

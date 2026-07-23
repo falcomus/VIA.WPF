@@ -1,0 +1,291 @@
+<!--=====================================================================================================================
+  <copyright file="XSlider.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
+    <Style x:Key="XSliderThumbStyle" TargetType="{x:Type Thumb}">
+        <Setter Property="Width" Value="{Binding ThumbSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XSlider}}}" />
+        <Setter Property="Height" Value="{Binding ThumbSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XSlider}}}" />
+        <Setter Property="Background" Value="{Binding ThumbBrush, RelativeSource={RelativeSource AncestorType={x:Type controls:XSlider}}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Grid
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        ClipToBounds="False">
+                        <Border
+                            x:Name="RootBorder"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="999">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="8"
+                                    Direction="270"
+                                    Opacity="0.14"
+                                    ShadowDepth="1" />
+                            </Border.Effect>
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RootBorder" Property="Opacity" Value="0.92" />
+                        </Trigger>
+
+                        <Trigger Property="IsDragging" Value="True">
+                            <Setter TargetName="RootBorder" Property="Opacity" Value="0.86" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="RootBorder" Property="Opacity" Value="0.55" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type controls:XSlider}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}" />
+        <Setter Property="MinWidth" Value="120" />
+        <Setter Property="MinHeight" Value="34" />
+        <Setter Property="TickPlacement" Value="None" />
+        <Setter Property="TrackThickness" Value="4" />
+        <Setter Property="ThumbSize" Value="18" />
+        <Setter Property="ActiveTrackBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
+        <Setter Property="InactiveTrackBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}" />
+        <Setter Property="ThumbBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:XSlider}">
+                    <Grid SnapsToDevicePixels="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid
+                            x:Name="HeaderRow"
+                            Grid.Row="0"
+                            Margin="0,0,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock
+                                x:Name="HeaderPresenter"
+                                Grid.Column="0"
+                                FontSize="12"
+                                FontWeight="SemiBold"
+                                Foreground="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}"
+                                Opacity="0.90"
+                                Text="{TemplateBinding Header}" />
+
+                            <TextBlock
+                                x:Name="ValuePresenter"
+                                Grid.Column="1"
+                                Margin="12,0,0,0"
+                                HorizontalAlignment="Right"
+                                FontSize="12"
+                                FontWeight="SemiBold"
+                                Foreground="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}"
+                                Text="{TemplateBinding FormattedValue}" />
+                        </Grid>
+
+                        <Border
+                            x:Name="SliderHostBorder"
+                            Grid.Row="1"
+                            Padding="0,4"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="2"
+                            CornerRadius="3">
+                            <Track x:Name="PART_Track">
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Command="Slider.DecreaseLarge" Focusable="False">
+                                        <RepeatButton.Template>
+                                            <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                                <Border
+                                                    Height="{Binding TrackThickness, RelativeSource={RelativeSource AncestorType={x:Type controls:XSlider}}}"
+                                                    Background="{Binding ActiveTrackBrush, RelativeSource={RelativeSource AncestorType={x:Type controls:XSlider}}}"
+                                                    CornerRadius="4 0 0 4" />
+                                            </ControlTemplate>
+                                        </RepeatButton.Template>
+                                    </RepeatButton>
+                                </Track.DecreaseRepeatButton>
+
+                                <Track.Thumb>
+                                    <Thumb Style="{StaticResource XSliderThumbStyle}" />
+                                </Track.Thumb>
+
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Command="Slider.IncreaseLarge" Focusable="False">
+                                        <RepeatButton.Template>
+                                            <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                                <Border
+                                                    Height="{Binding TrackThickness, RelativeSource={RelativeSource AncestorType={x:Type controls:XSlider}}}"
+                                                    Background="{Binding InactiveTrackBrush, RelativeSource={RelativeSource AncestorType={x:Type controls:XSlider}}}"
+                                                    CornerRadius="4" />
+                                            </ControlTemplate>
+                                        </RepeatButton.Template>
+                                    </RepeatButton>
+                                </Track.IncreaseRepeatButton>
+                            </Track>
+                        </Border>
+
+                        <TickBar
+                            x:Name="TopTickBar"
+                            Grid.Row="2"
+                            Height="4"
+                            Margin="7,0,7,0"
+                            Fill="{DynamicResource {x:Static themes:XBrushKeys.BorderText}}"
+                            Maximum="{TemplateBinding Maximum}"
+                            Minimum="{TemplateBinding Minimum}"
+                            Placement="Top"
+                            TickFrequency="{TemplateBinding TickFrequency}"
+                            Ticks="{TemplateBinding Ticks}"
+                            Visibility="Collapsed" />
+
+                        <TickBar
+                            x:Name="BottomTickBar"
+                            Grid.Row="2"
+                            Height="4"
+                            Margin="7,0,7,0"
+                            Fill="{DynamicResource {x:Static themes:XBrushKeys.BorderText}}"
+                            Maximum="{TemplateBinding Maximum}"
+                            Minimum="{TemplateBinding Minimum}"
+                            Placement="Bottom"
+                            TickFrequency="{TemplateBinding TickFrequency}"
+                            Ticks="{TemplateBinding Ticks}"
+                            Visibility="Collapsed" />
+
+                        <TextBlock
+                            x:Name="DescriptionPresenter"
+                            Grid.Row="3"
+                            Margin="0,8,0,0"
+                            FontSize="12"
+                            Foreground="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}"
+                            Opacity="0.68"
+                            Text="{TemplateBinding Description}"
+                            TextWrapping="Wrap" />
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Header" Value="">
+                            <Setter TargetName="HeaderPresenter" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <Trigger Property="ShowValue" Value="False">
+                            <Setter TargetName="ValuePresenter" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Header" Value="" />
+                                <Condition Property="ShowValue" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="HeaderRow" Property="Visibility" Value="Collapsed" />
+                        </MultiTrigger>
+
+                        <Trigger Property="Description" Value="">
+                            <Setter TargetName="DescriptionPresenter" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <Trigger Property="TickPlacement" Value="TopLeft">
+                            <Setter TargetName="TopTickBar" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="TickPlacement" Value="BottomRight">
+                            <Setter TargetName="BottomTickBar" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="TickPlacement" Value="Both">
+                            <Setter TargetName="TopTickBar" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="BottomTickBar" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter TargetName="SliderHostBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.FocusRing}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="SliderHostBorder" Property="Opacity" Value="0.55" />
+                            <Setter TargetName="HeaderPresenter" Property="Opacity" Value="0.55" />
+                            <Setter TargetName="ValuePresenter" Property="Opacity" Value="0.55" />
+                            <Setter TargetName="DescriptionPresenter" Property="Opacity" Value="0.55" />
+                        </Trigger>
+
+                        <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">
+                            <Setter Property="MinHeight" Value="30" />
+                            <Setter Property="TrackThickness" Value="3" />
+                            <Setter Property="ThumbSize" Value="14" />
+                        </Trigger>
+
+                        <Trigger Property="Size" Value="{x:Static controls:XControlSize.Large}">
+                            <Setter Property="MinHeight" Value="40" />
+                            <Setter Property="TrackThickness" Value="6" />
+                            <Setter Property="ThumbSize" Value="20" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Default}">
+                <Setter Property="ActiveTrackBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.ControlBorderStrong}}" />
+                <Setter Property="ThumbBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.ControlBorderStrong}}" />
+            </Trigger>
+
+            <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Primary}">
+                <Setter Property="ActiveTrackBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
+                <Setter Property="ThumbBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
+            </Trigger>
+
+            <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Accent}">
+                <Setter Property="ActiveTrackBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Accent}}" />
+                <Setter Property="ThumbBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Accent}}" />
+            </Trigger>
+
+            <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Success}">
+                <Setter Property="ActiveTrackBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+                <Setter Property="ThumbBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+            </Trigger>
+
+            <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Warning}">
+                <Setter Property="ActiveTrackBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+                <Setter Property="ThumbBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+            </Trigger>
+
+            <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Danger}">
+                <Setter Property="ActiveTrackBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                <Setter Property="ThumbBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+            </Trigger>
+
+            <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Info}">
+                <Setter Property="ActiveTrackBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                <Setter Property="ThumbBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

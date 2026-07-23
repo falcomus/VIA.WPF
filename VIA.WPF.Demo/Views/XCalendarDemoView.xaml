@@ -1,0 +1,84 @@
+<!--=====================================================================================================================
+  <copyright file="XCalendarDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XCalendarDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XCalendarDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,10,0" Spacing="16">
+                    <via:XInfoBar
+                        Message="XCalendar uses the same semantic surface, border, text, selection, hover, focus and disabled tokens as the rest of VIA.WPF."
+                        Title="Native VIA.WPF calendar"
+                        Variant="Info" />
+
+                    <via:XAdaptiveGrid ColumnSpacing="14" MaxColumns="2" MinItemWidth="360" RowSpacing="14">
+                        <via:XGroup
+                            Subtitle="Culture-aware labels, compact navigation and visible day states."
+                            Title="Single date">
+                            <via:XGrid ColumnSpacing="18" Columns="Auto,*">
+                                <via:XCalendar
+                                    DisplayDate="2026-05-01"
+                                    FirstDayOfWeek="Monday"
+                                    SelectedDate="{Binding SelectedDate, Mode=TwoWay}" />
+
+                                <via:XStackPanel Grid.Column="1" MinWidth="190" Spacing="8">
+                                    <via:XPropertyRow
+                                        Content="{Binding SelectedDate, StringFormat={}{0:dd.MM.yyyy}, TargetNullValue=No date}"
+                                        Label="Selected" />
+                                    <via:XPropertyRow Content="Monday" Label="First day" />
+                                    <via:XPropertyRow Content="SingleDate" Label="Mode" />
+                                    <via:XInfoBar
+                                        Message="Choose another day to update the selected value."
+                                        Title="Interactive"
+                                        Variant="Success" />
+                                </via:XStackPanel>
+                            </via:XGrid>
+                        </via:XGroup>
+
+                        <via:XGroup
+                            Subtitle="Unavailable dates remain readable without competing with selection."
+                            Title="Blackout and range states">
+                            <via:XCalendar
+                                DisplayDate="2026-05-01"
+                                FirstDayOfWeek="Monday"
+                                SelectionMode="SingleRange">
+                                <via:XCalendar.BlackoutDates>
+                                    <CalendarDateRange End="2026-05-20" Start="2026-05-18" />
+                                </via:XCalendar.BlackoutDates>
+                            </via:XCalendar>
+                        </via:XGroup>
+
+                        <via:XGroup
+                            Subtitle="The header changes levels without switching visual language."
+                            Title="Year selection">
+                            <via:XCalendar DisplayDate="2026-05-01" DisplayMode="Year" />
+                        </via:XGroup>
+
+                        <via:XGroup
+                            Subtitle="Disabled content uses semantic disabled colors and keeps its structure."
+                            Title="Disabled">
+                            <via:XCalendar
+                                DisplayDate="2026-05-01"
+                                IsEnabled="False"
+                                SelectedDate="2026-05-04" />
+                        </via:XGroup>
+                    </via:XAdaptiveGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

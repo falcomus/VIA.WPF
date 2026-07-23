@@ -1,0 +1,175 @@
+<!--=====================================================================================================================
+  <copyright file="XRadioButtonDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XRadioButtonDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XRadioButtonDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XRadioButton" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A single-choice option control for small grouped decisions. Use it when exactly one option in a visible group should be selected."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Grid.Column="0"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Layout mode" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Radio buttons work best when all options are visible and comparable."
+                                    TextRole="Description" />
+                                <via:XStackPanel Spacing="10">
+                                    <via:XRadioButton
+                                        HorizontalAlignment="Left"
+                                        Content="List layout"
+                                        GroupName="LayoutMode"
+                                        IsChecked="True" />
+                                    <via:XRadioButton
+                                        HorizontalAlignment="Left"
+                                        Content="Grid layout"
+                                        GroupName="LayoutMode" />
+                                    <via:XRadioButton
+                                        HorizontalAlignment="Left"
+                                        Content="Compact cards"
+                                        GroupName="LayoutMode" />
+                                </via:XStackPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="MVVM digest frequency" TextRole="SectionTitle" />
+                                <via:XStackPanel Spacing="10">
+                                    <via:XRadioButton
+                                        HorizontalAlignment="Left"
+                                        Content="Daily"
+                                        GroupName="DigestFrequency"
+                                        IsChecked="{Binding IsDailyDigest, Mode=TwoWay}" />
+                                    <via:XRadioButton
+                                        HorizontalAlignment="Left"
+                                        Content="Weekly"
+                                        GroupName="DigestFrequency"
+                                        IsChecked="{Binding IsWeeklyDigest, Mode=TwoWay}" />
+                                    <via:XRadioButton
+                                        HorizontalAlignment="Left"
+                                        Content="Monthly"
+                                        GroupName="DigestFrequency"
+                                        IsChecked="{Binding IsMonthlyDigest, Mode=TwoWay}" />
+                                </via:XStackPanel>
+                                <via:XBorder
+                                    Padding="12"
+                                    CornerRadius="6"
+                                    Elevation="None"
+                                    Variant="Info">
+                                    <via:XTextBlock
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.InfoText}}"
+                                        IsMultiline="True"
+                                        Text="{Binding DigestSummary, FallbackValue='Description'}"
+                                        TextRole="Description" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*,*">
+                        <via:XBorder
+                            Grid.Column="0"
+                            Padding="18"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="10">
+                                <via:XTextBlock Text="Small" TextRole="SectionTitle" />
+                                <via:XRadioButton
+                                    HorizontalAlignment="Left"
+                                    Content="Small option"
+                                    GroupName="SmallOptions"
+                                    Size="Small" />
+                                <via:XRadioButton
+                                    HorizontalAlignment="Left"
+                                    Content="Selected small"
+                                    GroupName="SmallOptions"
+                                    IsChecked="True"
+                                    Size="Small" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="18"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="10">
+                                <via:XTextBlock Text="Medium" TextRole="SectionTitle" />
+                                <via:XRadioButton
+                                    HorizontalAlignment="Left"
+                                    Content="Default option"
+                                    GroupName="MediumOptions" />
+                                <via:XRadioButton
+                                    HorizontalAlignment="Left"
+                                    Content="Selected default"
+                                    GroupName="MediumOptions"
+                                    IsChecked="True" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="2"
+                            Padding="18"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="10">
+                                <via:XTextBlock Text="Disabled" TextRole="SectionTitle" />
+                                <via:XRadioButton
+                                    HorizontalAlignment="Left"
+                                    Content="Disabled checked"
+                                    GroupName="DisabledOptions"
+                                    IsChecked="True"
+                                    IsEnabled="False" />
+                                <via:XRadioButton
+                                    HorizontalAlignment="Left"
+                                    Content="Disabled unchecked"
+                                    GroupName="DisabledOptions"
+                                    IsEnabled="False" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

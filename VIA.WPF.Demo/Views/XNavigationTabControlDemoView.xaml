@@ -1,0 +1,129 @@
+<!--=====================================================================================================================
+  <copyright file="XNavigationTabControlDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XNavigationTabControlDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XNavigationTabControlDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XNavigationTabControl" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="900"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="Top-level navigation based on XTabControl chrome. It shows selectable tab headers and intentionally suppresses hosted tab content."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XBorder
+                        Padding="20"
+                        Appearance="Solid"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="16">
+                            <via:XStackPanel Spacing="4">
+                                <via:XTextBlock Text="Main module navigation" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Use it for application sections where the content is resolved by the shell or navigation manager instead of by the tab control itself."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+                            </via:XStackPanel>
+
+                            <via:XNavigationTabControl
+                                HorizontalAlignment="Left"
+                                HeaderPadding="14,8"
+                                HeaderSpacing="10"
+                                SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
+                                <via:XNavigationTabItem Header="Dashboard" Icon="{via:BootstrapIcon Kind=GridFill}" />
+                                <via:XNavigationTabItem Header="Bookings" Icon="{via:BootstrapIcon Kind=ArrowRepeat}" />
+                                <via:XNavigationTabItem Header="Articles" Icon="{via:BootstrapIcon Kind=BoxSeamFill}" />
+                                <via:XNavigationTabItem Header="Reports" Icon="{via:BootstrapIcon Kind=BarChartFill}" />
+                                <via:XNavigationTabItem Header="Settings" Icon="{via:BootstrapIcon Kind=GearFill}" />
+                            </via:XNavigationTabControl>
+
+                            <via:XGrid Columns="Auto,*" ColumnSpacing="12">
+                                <via:XBorder
+                                    Padding="12"
+                                    Appearance="Subtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    Variant="Primary">
+                                    <via:XTextBlock
+                                        FontWeight="SemiBold"
+                                        Text="{Binding SelectedIndex, StringFormat=Selected index: {0}}" />
+                                </via:XBorder>
+
+                                <via:XTextBlock
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    IsMultiline="True"
+                                    Text="The selected index can drive a shell route, a section workspace or a navigation manager."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+                            </via:XGrid>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Padding="18"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="10">
+                                <via:XTextBlock Text="Dense toolbar style" TextRole="SectionTitle" />
+                                <via:XNavigationTabControl
+                                    HorizontalAlignment="Left"
+                                    FontSize="15"
+                                    HeaderPadding="10,6"
+                                    HeaderSpacing="6"
+                                    SelectedIndex="1">
+                                    <via:XNavigationTabItem Header="Open" Icon="{via:BootstrapIcon Kind=FolderFill}" />
+                                    <via:XNavigationTabItem Header="Pinned" Icon="{via:BootstrapIcon Kind=PinAngleFill}" />
+                                    <via:XNavigationTabItem Header="Recent" Icon="{via:BootstrapIcon Kind=ClockFill}" />
+                                </via:XNavigationTabControl>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="18"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="10">
+                                <via:XTextBlock Text="Why not XTabControl?" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="XNavigationTabControl is for navigation only. Use XTabControl when tab headers should own and render the selected content area."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

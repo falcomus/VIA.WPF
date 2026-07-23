@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>VIA.WPF.Mockup.Mobile</PackageId>
+    <Title>VIA.WPF Mockup Mobile</Title>
+    <Version>1.0.0</Version>
+    <Authors>Claus Falkenstein</Authors>
+    <Description>Mobile target presets and safe-area contracts for VIA.WPF mockup designers.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VIA.WPF.Mockup.Core\VIA.WPF.Mockup.Core.csproj" />
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+</Project>

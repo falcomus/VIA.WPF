@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SelectorHeader" xml:space="preserve">
+    <value>Application language</value>
+  </data>
+  <data name="SelectorDescription" xml:space="preserve">
+    <value>Selecting a language updates resource bindings, code messages and optional formatting culture.</value>
+  </data>
+  <data name="GreetingTitle" xml:space="preserve">
+    <value>Welcome to the VIA.WPF localization demo</value>
+  </data>
+  <data name="GreetingBody" xml:space="preserve">
+    <value>This text comes from application resources and changes immediately without recreating the view.</value>
+  </data>
+  <data name="CurrentLanguageLabel" xml:space="preserve">
+    <value>Current UI culture</value>
+  </data>
+  <data name="FormattingTitle" xml:space="preserve">
+    <value>Culture-aware formatting</value>
+  </data>
+  <data name="DateLabel" xml:space="preserve">
+    <value>Date and time</value>
+  </data>
+  <data name="NumberLabel" xml:space="preserve">
+    <value>Number</value>
+  </data>
+  <data name="MessageTitle" xml:space="preserve">
+    <value>Localized code message</value>
+  </data>
+  <data name="MessageButton" xml:space="preserve">
+    <value>Create localized message</value>
+  </data>
+  <data name="MessageInitial" xml:space="preserve">
+    <value>Choose a language and create a message.</value>
+  </data>
+  <data name="MessageCreated" xml:space="preserve">
+    <value>The localized message was created at {0:T}.</value>
+  </data>
+  <data name="WindowHintTitle" xml:space="preserve">
+    <value>XWindow integration</value>
+  </data>
+  <data name="WindowHintBody" xml:space="preserve">
+    <value>The selector in the title bar uses the same localization service. Both selectors stay synchronized.</value>
+  </data>
+</root>

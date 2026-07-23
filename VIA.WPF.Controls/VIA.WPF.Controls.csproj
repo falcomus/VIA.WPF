@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageId>VIA.WPF.Controls</PackageId>
+		<Title>VIA.WPF Controls</Title>
+		<Version>1.0.0</Version>
+		<Authors>Claus Falkenstein</Authors>
+		<Description>Modern WPF controls, templates, converters, behaviours, validation UI and navigation helpers for VIA.WPF applications.</Description>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+		<PackageReference Include="gong-wpf-dragdrop" Version="4.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\VIA.WPF.Icons\VIA.WPF.Icons.csproj" />
+		<ProjectReference Include="..\VIA.WPF.MVVM\VIA.WPF.MVVM.csproj" />
+		<ProjectReference Include="..\VIA.WPF.Themes\VIA.WPF.Themes.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Behaviours\" />
+		<Folder Include="Extensions\MarkupExtensions\" />
+		<Folder Include="Extensions\AdornerExtensions\" />
+		<Folder Include="Helper\DesignModeHelper\" />
+		<Folder Include="Extensions\ResourceDictionaryExtensions\" />
+		<Folder Include="Helper\" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,148 @@
+<!--=====================================================================================================================
+  <copyright file="XExtensionsDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XExtensionsDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XExtensionsDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="Extensions" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="VIA includes small extension helpers for common WPF and MVVM tasks: bindings, commands, collections, dispatcher usage, visual-tree navigation and resource access."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="XAML markup extensions" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Use markup extensions to keep XAML compact without moving simple UI concerns into view models."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+
+                                <via:XBorder Padding="12" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                    <via:XStackPanel Spacing="6">
+                                        <via:XTextBlock Text="EnumValuesExtension" TextRole="Label" Variant="Primary" />
+                                        <via:XTextBlock Text="Provides enum values directly to ItemsSource." TextRole="Caption" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="ItemsSource=&quot;{via:EnumValues {x:Type via:XControlVariant}}&quot;"
+                                            TextRole="Code"
+                                            TextWrapping="Wrap" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+
+                                <via:XBorder Padding="12" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                    <via:XStackPanel Spacing="6">
+                                        <via:XTextBlock Text="ThemeResourceExtension" TextRole="Label" Variant="Primary" />
+                                        <via:XTextBlock Text="Resolves themed resources through the VIA resource model." TextRole="Caption" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="Background=&quot;{DynamicResource {x:Static via:XBrushKeys.Surface}}&quot;"
+                                            TextRole="Code"
+                                            TextWrapping="Wrap" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+
+                                <via:XBorder Padding="12" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                    <via:XStackPanel Spacing="6">
+                                        <via:XTextBlock Text="ResourceOrDefaultExtension" TextRole="Label" Variant="Primary" />
+                                        <via:XTextBlock Text="Uses a resource when present and a fallback otherwise." TextRole="Caption" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Code extensions" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="The code-side helpers are intentionally small and composable. They are useful in controls, demos and host applications."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+
+                                <via:XUniformGrid Columns="2" ColumnSpacing="10" RowSpacing="10">
+                                    <via:XBorder Padding="12" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                        <via:XStackPanel Spacing="4">
+                                            <via:XTextBlock Text="DependencyObject" TextRole="Label" />
+                                            <via:XTextBlock Text="Visual-tree and parent lookup helpers." TextRole="Caption" />
+                                        </via:XStackPanel>
+                                    </via:XBorder>
+
+                                    <via:XBorder Padding="12" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                        <via:XStackPanel Spacing="4">
+                                            <via:XTextBlock Text="Binding" TextRole="Label" />
+                                            <via:XTextBlock Text="Compact binding helper methods." TextRole="Caption" />
+                                        </via:XStackPanel>
+                                    </via:XBorder>
+
+                                    <via:XBorder Padding="12" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                        <via:XStackPanel Spacing="4">
+                                            <via:XTextBlock Text="Collections" TextRole="Label" />
+                                            <via:XTextBlock Text="AddRange and view utilities." TextRole="Caption" />
+                                        </via:XStackPanel>
+                                    </via:XBorder>
+
+                                    <via:XBorder Padding="12" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                        <via:XStackPanel Spacing="4">
+                                            <via:XTextBlock Text="Dispatcher" TextRole="Label" />
+                                            <via:XTextBlock Text="Safe UI-thread scheduling helpers." TextRole="Caption" />
+                                        </via:XStackPanel>
+                                    </via:XBorder>
+                                </via:XUniformGrid>
+
+                                <via:XBorder Padding="12" Appearance="Subtle" BorderThickness="1" CornerRadius="6" Variant="Info">
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Guideline: keep extension methods focused. They should remove noise, not hide control behavior."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

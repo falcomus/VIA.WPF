@@ -1,0 +1,528 @@
+<!--=====================================================================================================================
+  <copyright file="XButtonDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XButtonDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XButtonDemoViewModel}"
+    mc:Ignorable="d">
+
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XButton" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            IsMultiline="True"
+                            HorizontalAlignment="Left"
+                            Text="A semantic command button with variants, appearances, sizes, icons, loading state, elevation, rounded corners and layout helpers."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XStackPanel Spacing="12">
+                        <via:XTextBlock Text="Variants" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="Use variants for semantic intent. The same control can represent default actions, primary calls to action, status actions and destructive operations."
+                            TextRole="Description" />
+
+                        <via:XWrapPanel HorizontalSpacing="12" VerticalSpacing="12">
+                            <via:XButton Content="Default" Variant="Default" />
+                            <via:XButton Content="Primary" Variant="Primary" />
+                            <via:XButton Content="Accent" Variant="Accent" />
+                            <via:XButton Content="Success" Variant="Success" />
+                            <via:XButton Content="Warning" Variant="Warning" />
+                            <via:XButton Content="Danger" Variant="Danger" />
+                            <via:XButton Content="Info" Variant="Info" />
+                        </via:XWrapPanel>
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XStackPanel Spacing="12">
+                        <via:XTextBlock Text="Appearances" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="Appearance controls the amount of visual chrome. Combine it with a variant to keep meaning and visual weight separate."
+                            TextRole="Description" />
+
+                        <via:XGrid
+                            ColumnSpacing="18"
+                            Columns="Auto,Auto,Auto,Auto,Auto,Auto"
+                            RowSpacing="10"
+                            Rows="Auto,Auto,Auto">
+                            <via:XTextBlock Text="Solid" TextRole="Caption" />
+                            <via:XTextBlock
+                                Grid.Column="1"
+                                Text="Outline"
+                                TextRole="Caption" />
+                            <via:XTextBlock
+                                Grid.Column="2"
+                                Text="Subtle"
+                                TextRole="Caption" />
+                            <via:XTextBlock
+                                Grid.Column="3"
+                                Text="VerySubtle"
+                                TextRole="Caption" />
+                            <via:XTextBlock
+                                Grid.Column="4"
+                                Text="Ghost"
+                                TextRole="Caption" />
+                            <via:XTextBlock
+                                Grid.Column="5"
+                                Text="Link"
+                                TextRole="Caption" />
+
+                            <via:XButton
+                                Grid.Row="1"
+                                Appearance="Solid"
+                                Content="Primary"
+                                Variant="Primary" />
+                            <via:XButton
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Appearance="Outline"
+                                Content="Primary"
+                                Variant="Primary" />
+                            <via:XButton
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Appearance="Subtle"
+                                Content="Primary"
+                                Variant="Primary" />
+                            <via:XButton
+                                Grid.Row="1"
+                                Grid.Column="3"
+                                Appearance="VerySubtle"
+                                Content="Primary"
+                                Variant="Primary" />
+                            <via:XButton
+                                Grid.Row="1"
+                                Grid.Column="4"
+                                Appearance="Ghost"
+                                Content="Primary"
+                                Variant="Primary" />
+                            <via:XButton
+                                Grid.Row="1"
+                                Grid.Column="5"
+                                Appearance="Link"
+                                Content="Primary"
+                                Variant="Primary" />
+
+                            <via:XButton
+                                Grid.Row="2"
+                                Appearance="Solid"
+                                Content="Danger"
+                                Variant="Danger" />
+                            <via:XButton
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Appearance="Outline"
+                                Content="Danger"
+                                Variant="Danger" />
+                            <via:XButton
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Appearance="Subtle"
+                                Content="Danger"
+                                Variant="Danger" />
+                            <via:XButton
+                                Grid.Row="2"
+                                Grid.Column="3"
+                                Appearance="VerySubtle"
+                                Content="Danger"
+                                Variant="Danger" />
+                            <via:XButton
+                                Grid.Row="2"
+                                Grid.Column="4"
+                                Appearance="Ghost"
+                                Content="Danger"
+                                Variant="Danger" />
+                            <via:XButton
+                                Grid.Row="2"
+                                Grid.Column="5"
+                                Appearance="Link"
+                                Content="Danger"
+                                Variant="Danger" />
+                        </via:XGrid>
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XStackPanel Spacing="12">
+                        <via:XTextBlock Text="Sizes" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="Small, Medium and Large adjust height, font size, corner radius and icon size consistently."
+                            TextRole="Description" />
+
+                        <via:XWrapPanel HorizontalSpacing="12" VerticalSpacing="12">
+                            <via:XButton
+                                Content="Small"
+                                Size="Small"
+                                Variant="Default" />
+                            <via:XButton
+                                Content="Medium"
+                                Size="Medium"
+                                Variant="Primary" />
+                            <via:XButton
+                                Content="Large"
+                                Size="Large"
+                                Variant="Accent" />
+                            <via:XButton
+                                Appearance="Outline"
+                                Content="Small Outline"
+                                Size="Small"
+                                Variant="Info" />
+                            <via:XButton
+                                Appearance="Outline"
+                                Content="Medium Outline"
+                                Size="Medium"
+                                Variant="Info" />
+                            <via:XButton
+                                Appearance="Outline"
+                                Content="Large Outline"
+                                Size="Large"
+                                Variant="Info" />
+                        </via:XWrapPanel>
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XStackPanel Spacing="12">
+                        <via:XTextBlock Text="Icons and placement" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="XButton supports leading and trailing icons through Icon, IconPlacement, IconSize and IconTemplate."
+                            TextRole="Description" />
+
+                        <via:XWrapPanel HorizontalSpacing="12" VerticalSpacing="12">
+                            <via:XButton
+                                Content="Create"
+                                Icon="{via:MaterialIcon Kind=RocketLaunch}"
+                                IconSize="14"
+                                Variant="Primary" />
+
+                            <via:XButton
+                                Appearance="Outline"
+                                Content="Download"
+                                Icon="{via:MaterialIcon Kind=Download}"
+                                IconSize="14"
+                                Variant="Info" />
+
+                            <via:XButton
+                                Appearance="Subtle"
+                                Content="Delete"
+                                Icon="{via:MaterialIcon Kind=Delete}"
+                                IconSize="14"
+                                Variant="Danger" />
+
+                            <via:XButton
+                                Appearance="Outline"
+                                Content="Next step"
+                                Icon="{via:MaterialIcon Kind=ArrowRight}"
+                                IconPlacement="Right"
+                                IconSize="16"
+                                Variant="Primary" />
+
+                            <via:XButton
+                                Content="Templated"
+                                Icon="{via:MaterialIcon Kind=Check}"
+                                IconSize="16"
+                                Variant="Success" />
+                        </via:XWrapPanel>
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XStackPanel Spacing="12">
+                        <via:XTextBlock Text="Icon animation" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="Icons can use XIconAssist for fixed rotation and continuous rotation animation. This is useful for refresh, sync, loading and direction indicators without changing the button layout."
+                            TextRole="Description" />
+
+                        <via:XWrapPanel HorizontalSpacing="12" VerticalSpacing="12">
+                            <via:XButton
+                                Appearance="Outline"
+                                Content="Refresh"
+                                Icon="{via:MaterialIcon Kind=Refresh}"
+                                IconSize="16"
+                                via:XIconAssist.IsRotationAnimated="True"
+                                via:XIconAssist.RotationAnimationDuration="0:0:0.9"
+                                Variant="Primary" />
+
+                            <via:XButton
+                                Content="Processing"
+                                Icon="{via:MaterialIcon Kind=ProgressClock}"
+                                IconSize="16"
+                                via:XIconAssist.IsRotationAnimated="True"
+                                via:XIconAssist.RotationAnimationDuration="0:0:1.2"
+                                Variant="Accent" />
+
+                            <via:XButton
+                                Appearance="Subtle"
+                                Content="Fast sync"
+                                Icon="{via:MaterialIcon Kind=Refresh}"
+                                IconSize="16"
+                                via:XIconAssist.IsRotationAnimated="True"
+                                via:XIconAssist.RotationAnimationDuration="0:0:0.55"
+                                Variant="Success" />
+
+                            <via:XButton
+                                Appearance="Ghost"
+                                Content="Rotated right"
+                                Icon="{via:MaterialIcon Kind=ArrowRight}"
+                                IconPlacement="Right"
+                                IconSize="16"
+                                via:XIconAssist.Rotation="-35"
+                                Variant="Info" />
+                        </via:XWrapPanel>
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XStackPanel Spacing="12">
+                        <via:XTextBlock Text="Icon-only buttons" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="When Content is empty or null, the icon is centered without manual padding hacks. Use a tooltip for accessibility."
+                            TextRole="Description" />
+
+                        <via:XWrapPanel HorizontalSpacing="10" VerticalSpacing="10">
+                            <via:XButton
+                                Icon="{via:FluentIcon Kind=Search}"
+                                IconSize="20"
+                                ToolTip="Search"
+                                Variant="Default" />
+
+                            <via:XButton
+                                Appearance="Outline"
+                                Icon="{via:FluentIcon Kind=Edit}"
+                                IconSize="18"
+                                ToolTip="Edit"
+                                Variant="Info" />
+
+                            <via:XButton
+                                Appearance="Subtle"
+                                Icon="{via:FluentIcon Kind=Delete}"
+                                IconSize="18"
+                                ToolTip="Delete"
+                                Variant="Danger" />
+
+                            <via:XButton
+                                Icon="{via:MaterialIcon Kind=RocketLaunch}"
+                                IconSize="16"
+                                Size="Medium"
+                                ToolTip="Large action"
+                                Variant="Accent" />
+                        </via:XWrapPanel>
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XStackPanel Spacing="12">
+                        <via:XTextBlock Text="Loading, disabled and elevation" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="Loading buttons disable themselves while displaying LoadingContent. Elevation can be used to emphasize primary actions."
+                            TextRole="Description" />
+
+                        <via:XWrapPanel HorizontalSpacing="12" VerticalSpacing="12">
+                            <via:XButton
+                                Content="Save"
+                                IsLoading="True"
+                                LoadingContent="Saving..."
+                                Variant="Primary" />
+
+                            <via:XButton
+                                Content="Generating"
+                                Icon="{via:MaterialIcon Kind=Loading}"
+                                IconSize="18"
+                                IsLoading="True"
+                                LoadingContent="Report"
+                                Variant="Accent" />
+
+                            <via:XButton
+                                Content="Disabled"
+                                IsEnabled="False"
+                                Variant="Default" />
+
+                            <via:XButton
+                                Appearance="Outline"
+                                Content="Disabled outline"
+                                IsEnabled="False"
+                                Variant="Info" />
+
+                            <via:XButton
+                                Content="Low"
+                                Elevation="Low"
+                                Variant="Primary" />
+
+                            <via:XButton
+                                Content="Medium"
+                                Elevation="Medium"
+                                Variant="Primary" />
+
+                            <via:XButton
+                                Content="High"
+                                Elevation="High"
+                                Variant="Primary" />
+                        </via:XWrapPanel>
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XStackPanel Spacing="12">
+                        <via:XTextBlock Text="Layout helpers" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="StretchContent, CornerRadius and normal WPF alignment properties make XButton suitable for forms, footers and command bars."
+                            TextRole="Description" />
+
+                        <via:XGrid
+                            ColumnSpacing="14"
+                            Columns="260,260,*"
+                            RowSpacing="12"
+                            Rows="Auto,Auto">
+                            <via:XButton
+                                HorizontalContentAlignment="Stretch"
+                                Content="Stretch content"
+                                StretchContent="True"
+                                Variant="Primary" />
+
+                            <via:XButton
+                                Grid.Column="1"
+                                Content="Rounded pill"
+                                CornerRadius="18"
+                                Variant="Accent" />
+
+                            <via:XButton
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                Content="Full width action"
+                                Variant="Success" />
+                        </via:XGrid>
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XStackPanel Spacing="12">
+                        <via:XTextBlock Text="Command binding" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="The demo uses CommunityToolkit.Mvvm commands to show clean MVVM binding without code-behind."
+                            TextRole="Description" />
+
+                        <via:XWrapPanel HorizontalSpacing="12" VerticalSpacing="12">
+                            <via:XButton
+                                Command="{Binding RunPrimaryActionCommand}"
+                                Content="Run command"
+                                Icon="{via:MaterialIcon Kind=Play}"
+                                IconSize="14"
+                                Variant="Primary" />
+
+                            <via:XButton
+                                Appearance="Outline"
+                                Command="{Binding RunParameterizedActionCommand}"
+                                CommandParameter="Export"
+                                Content="Export"
+                                Variant="Info">
+                                <via:XButton.Icon>
+                                    <via:XIcon Kind="Download" />
+                                </via:XButton.Icon>
+                            </via:XButton>
+
+                            <via:XButton
+                                Appearance="Subtle"
+                                Command="{Binding RunParameterizedActionCommand}"
+                                CommandParameter="Archive"
+                                Content="Archive"
+                                Variant="Warning">
+                                <via:XButton.Icon>
+                                    <via:XIcon Kind="Archive" />
+                                </via:XButton.Icon>
+                            </via:XButton>
+                        </via:XWrapPanel>
+
+                        <via:XTextBlock Text="{Binding LastAction}" TextRole="Info" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XStackPanel Spacing="12">
+                        <via:XTextBlock Text="Typical command rows" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="Use neutral buttons for secondary actions and stronger variants for the recommended or destructive action."
+                            TextRole="Description" />
+
+                        <via:XGrid
+                            ColumnSpacing="18"
+                            Columns="Auto,Auto"
+                            RowSpacing="12"
+                            Rows="Auto,Auto">
+                            <via:XTextBlock Text="Dialog footer" TextRole="Caption" />
+                            <via:XTextBlock
+                                Grid.Column="1"
+                                Text="Danger confirmation"
+                                TextRole="Caption" />
+
+                            <via:XWrapPanel
+                                Grid.Row="1"
+                                HorizontalSpacing="10"
+                                VerticalSpacing="10">
+                                <via:XButton
+                                    Appearance="Ghost"
+                                    Content="Cancel"
+                                    Variant="Default" />
+                                <via:XButton
+                                    Appearance="Outline"
+                                    Content="Back"
+                                    Variant="Default" />
+                                <via:XButton Content="Save changes" Variant="Primary" />
+                            </via:XWrapPanel>
+
+                            <via:XWrapPanel
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                HorizontalSpacing="10"
+                                VerticalSpacing="10">
+                                <via:XButton
+                                    Appearance="Ghost"
+                                    Content="Cancel"
+                                    Variant="Default" />
+                                <via:XButton
+                                    Appearance="Outline"
+                                    Content="Review"
+                                    Variant="Warning" />
+                                <via:XButton Content="Delete item" Variant="Danger" />
+                            </via:XWrapPanel>
+                        </via:XGrid>
+                    </via:XStackPanel>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

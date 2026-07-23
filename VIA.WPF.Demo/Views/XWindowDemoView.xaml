@@ -1,0 +1,382 @@
+<!--=====================================================================================================================
+  <copyright file="XWindowDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XWindowDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XWindowDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XWindow" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="920"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="The application shell for VIA.WPF: custom chrome, themed title bar, Light/Dark switching, flyout layers, busy state, toast host and resize-aware page content."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <!--#region ### Shell Anatomy ###-->
+                    <via:XStackPanel Spacing="12">
+                        <via:XTextBlock Text="Shell anatomy" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="XWindow should frame the application, not own page logic. Keep shell concerns at the window level and place CRUD/editing flows in page-level controls such as XViewContainer."
+                            TextRole="Description" />
+
+                        <via:XBorder
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Medium">
+                            <via:XGrid RowSpacing="14" Rows="Auto,*,Auto">
+
+                                <via:XBorder
+                                    Padding="14,12"
+                                    Appearance="VerySubtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    Variant="Default">
+                                    <via:XGrid ColumnSpacing="12" Columns="Auto,*,Auto">
+                                        <via:XMaterialIcon
+                                            VerticalAlignment="Center"
+                                            Kind="ApplicationOutline"
+                                            Size="22" />
+
+                                        <via:XStackPanel Grid.Column="1" Spacing="2">
+                                            <via:XTextBlock Text="VIA.WPF Shell" TextRole="Heading" />
+                                            <via:XTextBlock Text="Themed chrome, window commands and page host" TextRole="Caption" />
+                                        </via:XStackPanel>
+
+                                        <via:XWrapPanel
+                                            Grid.Column="2"
+                                            VerticalAlignment="Center"
+                                            HorizontalSpacing="8">
+                                            <via:XButton
+                                                Appearance="Subtle"
+                                                Content="Theme"
+                                                Icon="{via:MaterialIcon Kind=ThemeLightDark}"
+                                                Size="Small" />
+                                            <via:XButton
+                                                Appearance="Subtle"
+                                                Content="Min"
+                                                Size="Small" />
+                                            <via:XButton
+                                                Content="Close"
+                                                Size="Small"
+                                                Variant="Danger" />
+                                        </via:XWrapPanel>
+                                    </via:XGrid>
+                                </via:XBorder>
+
+                                <via:XGrid
+                                    Grid.Row="1"
+                                    MinHeight="320"
+                                    ColumnSpacing="14"
+                                    Columns="250,*">
+                                    <via:XBorder
+                                        Padding="16"
+                                        Appearance="VerySubtle"
+                                        BorderThickness="1"
+                                        CornerRadius="6"
+                                        Variant="Default">
+                                        <via:XGrid RowSpacing="14" Rows="Auto,*,Auto">
+                                            <via:XStackPanel Spacing="4">
+                                                <via:XTextBlock Text="Navigation" TextRole="Heading" />
+                                                <via:XTextBlock
+                                                    IsMultiline="True"
+                                                    Text="The shell hosts navigation, but page logic remains in page view models."
+                                                    TextRole="Caption" />
+                                            </via:XStackPanel>
+
+                                            <via:XStackPanel Grid.Row="1" Spacing="8">
+                                                <via:XButton
+                                                    HorizontalContentAlignment="Left"
+                                                    Content="Dashboard"
+                                                    Icon="{via:MaterialIcon Kind=ViewDashboardOutline}"
+                                                    Variant="Primary" />
+                                                <via:XButton
+                                                    HorizontalContentAlignment="Left"
+                                                    Appearance="Subtle"
+                                                    Content="Orders"
+                                                    Icon="{via:MaterialIcon Kind=FormatListBulleted}" />
+                                                <via:XButton
+                                                    HorizontalContentAlignment="Left"
+                                                    Appearance="Subtle"
+                                                    Content="Reports"
+                                                    Icon="{via:MaterialIcon Kind=ChartLine}" />
+                                                <via:XButton
+                                                    HorizontalContentAlignment="Left"
+                                                    Appearance="Subtle"
+                                                    Content="Settings"
+                                                    Icon="{via:MaterialIcon Kind=CogOutline}" />
+                                            </via:XStackPanel>
+
+                                            <via:XBadge
+                                                Grid.Row="2"
+                                                HorizontalAlignment="Left"
+                                                Appearance="Subtle"
+                                                Content="Lock-aware navigation"
+                                                Variant="Info" />
+                                        </via:XGrid>
+                                    </via:XBorder>
+
+                                    <via:XBorder
+                                        Grid.Column="1"
+                                        Padding="18"
+                                        Appearance="VerySubtle"
+                                        BorderThickness="1"
+                                        CornerRadius="6"
+                                        Variant="Default">
+                                        <via:XGrid RowSpacing="14" Rows="Auto,*,Auto">
+                                            <via:XGrid ColumnSpacing="12" Columns="*,Auto">
+                                                <via:XStackPanel Spacing="4">
+                                                    <via:XTextBlock Text="Workspace" TextRole="Heading" />
+                                                    <via:XTextBlock Text="Hosted page content with local controls and dialogs" TextRole="Caption" />
+                                                </via:XStackPanel>
+
+                                                <via:XButton
+                                                    Grid.Column="1"
+                                                    VerticalAlignment="Top"
+                                                    Content="New item"
+                                                    Icon="{via:MaterialIcon Kind=Plus}"
+                                                    Variant="Primary" />
+                                            </via:XGrid>
+
+                                            <via:XGrid
+                                                Grid.Row="1"
+                                                ColumnSpacing="12"
+                                                Columns="2*,*">
+                                                <via:XBorder
+                                                    Padding="16"
+                                                    Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                                    BorderThickness="1"
+                                                    CornerRadius="6">
+                                                    <via:XStackPanel Spacing="10">
+                                                        <via:XTextBlock Text="Main page area" TextRole="Heading" />
+                                                        <via:XTextBlock
+                                                            IsMultiline="True"
+                                                            Text="Pages can use XViewContainer for modal CRUD dialogs while the shell navigation is automatically locked."
+                                                            TextRole="Description" />
+                                                        <via:XWrapPanel HorizontalSpacing="8" VerticalSpacing="8">
+                                                            <via:XBadge Content="ViewContainer" Variant="Primary" />
+                                                            <via:XBadge Content="Toolbar" Variant="Accent" />
+                                                            <via:XBadge Content="Validation" Variant="Warning" />
+                                                        </via:XWrapPanel>
+                                                    </via:XStackPanel>
+                                                </via:XBorder>
+
+                                                <via:XBorder
+                                                    Grid.Column="1"
+                                                    Padding="16"
+                                                    Appearance="VerySubtle"
+                                                    BorderThickness="1"
+                                                    CornerRadius="6"
+                                                    Variant="Info">
+                                                    <via:XStackPanel Spacing="10">
+                                                        <via:XTextBlock Text="Side tools" TextRole="Heading" />
+                                                        <via:XTextBlock
+                                                            IsMultiline="True"
+                                                            Text="Inspectors, filters and transient tools belong here or in flyouts."
+                                                            TextRole="Caption" />
+                                                        <via:XButton
+                                                            Appearance="Outline"
+                                                            Content="Open inspector"
+                                                            Icon="{via:BootstrapIcon Kind=EyeFill}"
+                                                            Variant="Info" />
+                                                    </via:XStackPanel>
+                                                </via:XBorder>
+                                            </via:XGrid>
+
+                                            <via:XGrid Grid.Row="2" Columns="*,Auto">
+                                                <via:XTextBlock Text="Status: Ready" TextRole="Caption" />
+                                                <via:XBadge
+                                                    Grid.Column="1"
+                                                    Appearance="Subtle"
+                                                    Content="Dark mode ready"
+                                                    Variant="Success" />
+                                            </via:XGrid>
+                                        </via:XGrid>
+                                    </via:XBorder>
+                                </via:XGrid>
+
+                                <via:XWrapPanel
+                                    Grid.Row="2"
+                                    HorizontalSpacing="8"
+                                    VerticalSpacing="8">
+                                    <via:XBadge Content="Chrome" Variant="Default" />
+                                    <via:XBadge Content="Flyouts" Variant="Primary" />
+                                    <via:XBadge Content="Busy overlay" Variant="Warning" />
+                                    <via:XBadge Content="Toast host" Variant="Success" />
+                                    <via:XBadge Content="Theme switcher" Variant="Info" />
+                                </via:XWrapPanel>
+                            </via:XGrid>
+                        </via:XBorder>
+                    </via:XStackPanel>
+                    <!--#endregion-->
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <!--#region ### Live Commands ###-->
+                    <via:XStackPanel Spacing="12">
+                        <via:XTextBlock Text="Live shell commands" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="These buttons call the real demo shell. Use them to verify the window flyout layer, outside-click behavior and overlay animation."
+                            TextRole="Description" />
+
+                        <via:XBorder
+                            Padding="18"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XGrid ColumnSpacing="18" Columns="2*,*">
+                                <via:XStackPanel Spacing="12">
+                                    <via:XTextBlock Text="Flyout layer" TextRole="Heading" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Flyouts are shell-level panels. They are good for navigation, inspectors, logs and temporary tools. Do not use them for page editing when XViewContainer dialog mode is the better fit."
+                                        TextRole="Description" />
+
+                                    <via:XWrapPanel HorizontalSpacing="10" VerticalSpacing="10">
+                                        <via:XButton
+                                            Command="{Binding DataContext.ToggleLeftFlyoutCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                            Content="Left"
+                                            Icon="{via:MaterialIcon Kind=ChevronLeft}" />
+                                        <via:XButton
+                                            Command="{Binding DataContext.ToggleRightFlyoutCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                            Content="Right"
+                                            Icon="{via:MaterialIcon Kind=ChevronRight}" />
+                                        <via:XButton
+                                            Command="{Binding DataContext.ToggleTopFlyoutCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                            Content="Top"
+                                            Icon="{via:MaterialIcon Kind=ChevronUp}" />
+                                        <via:XButton
+                                            Command="{Binding DataContext.ToggleBottomFlyoutCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                            Content="Bottom"
+                                            Icon="{via:MaterialIcon Kind=ChevronDown}" />
+                                    </via:XWrapPanel>
+                                </via:XStackPanel>
+
+                                <via:XBorder
+                                    Grid.Column="1"
+                                    Padding="16"
+                                    Appearance="VerySubtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    Variant="Info">
+                                    <via:XStackPanel Spacing="12">
+                                        <via:XTextBlock Text="Comparison" TextRole="Heading" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="Open the plain WPF comparison window to see how much shell and control styling VIA adds."
+                                            TextRole="Caption" />
+                                        <via:XButton
+                                            Click="OpenDefaultWpfDemo_Click"
+                                            Content="Open comparison"
+                                            Icon="{via:MaterialIcon Kind=OpenInNew}"
+                                            Variant="Info" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                            </via:XGrid>
+                        </via:XBorder>
+                    </via:XStackPanel>
+                    <!--#endregion-->
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <!--#region ### Design Guidance ###-->
+                    <via:XStackPanel Spacing="12">
+                        <via:XTextBlock Text="Recommended composition" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="A clean VIA application has a small shell, focused pages and local modal dialogs for editing. This keeps architecture simple and behavior predictable."
+                            TextRole="Description" />
+
+                        <via:XGrid ColumnSpacing="14" Columns="*,*,*">
+                            <via:XBorder
+                                Padding="18"
+                                Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Elevation="Low">
+                                <via:XStackPanel Spacing="10">
+                                    <via:XMaterialIcon Kind="ApplicationOutline" Size="22" />
+                                    <via:XTextBlock Text="Shell" TextRole="Heading" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Use XWindow for chrome, shell flyouts, status bar, busy overlay and theme controls."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+                            </via:XBorder>
+
+                            <via:XBorder
+                                Grid.Column="1"
+                                Padding="18"
+                                Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Elevation="Low">
+                                <via:XStackPanel Spacing="10">
+                                    <via:XMaterialIcon Kind="ViewDashboardOutline" Size="22" />
+                                    <via:XTextBlock Text="Pages" TextRole="Heading" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Use page view models, XToolbarContext and XViewContainer for the real application workflow."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+                            </via:XBorder>
+
+                            <via:XBorder
+                                Grid.Column="2"
+                                Padding="18"
+                                Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Elevation="Low">
+                                <via:XStackPanel Spacing="10">
+                                    <via:XMaterialIcon Kind="ShieldCheckOutline" Size="22" />
+                                    <via:XTextBlock Text="State" TextRole="Heading" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Keep navigation, modal dialog state and validation explicit in view models."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+                            </via:XBorder>
+                        </via:XGrid>
+                    </via:XStackPanel>
+                    <!--#endregion-->
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

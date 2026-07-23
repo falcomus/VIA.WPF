@@ -1,0 +1,211 @@
+<!--=====================================================================================================================
+  <copyright file="XNumberBoxDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XNumberBoxDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XNumberBoxDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XNumberBox" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A themed numeric input for quantities, prices, percentages and bounded values. It combines formatting, min/max validation, spinner buttons, step sizes, icons and readonly states."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid
+                        ColumnSpacing="18"
+                        Columns="*,*"
+                        RowSpacing="18"
+                        Rows="Auto,Auto,Auto">
+
+                        <via:XBorder
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Business quantity" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Bound values update the view model while staying constrained to a safe range."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XNumberBox
+                                    Width="300"
+                                    Description="0 to 100 items, one item per step."
+                                    Header="Quantity"
+                                    Maximum="100"
+                                    Minimum="0"
+                                    Step="1"
+                                    TrailingIcon="{via:MaterialIcon Kind=PackageVariantClosed}"
+                                    Value="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                                <via:XBorder
+                                    Padding="12"
+                                    Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
+                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XTextBlock
+                                        Text="Live value is bound to Quantity in the page view model."
+                                        TextRole="Caption" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Formatted numbers" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="FormatString keeps display values readable without changing the underlying numeric value."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XNumberBox
+                                    Width="300"
+                                    Description="Two decimals with half-unit steps."
+                                    FormatString="N2"
+                                    Header="Price"
+                                    LeadingIcon="{via:MaterialIcon Kind=Cash}"
+                                    Minimum="0"
+                                    Step="0.5"
+                                    Value="{Binding Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                                <via:XNumberBox
+                                    Width="300"
+                                    FormatString="N1"
+                                    Header="Completion"
+                                    Maximum="100"
+                                    Minimum="0"
+                                    Step="0.25"
+                                    TrailingIcon="{via:MaterialIcon Kind=PercentOutline}"
+                                    Value="42.5" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Row="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Spinner behavior" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Spinner buttons are useful for bounded values and can be hidden for plain numeric input."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XGrid ColumnSpacing="14" Columns="*,*">
+                                    <via:XNumberBox
+                                        Header="With spinner"
+                                        Maximum="20"
+                                        Minimum="0"
+                                        Step="2"
+                                        Value="8" />
+                                    <via:XNumberBox
+                                        Grid.Column="1"
+                                        Header="Without spinner"
+                                        ShowSpinnerButtons="False"
+                                        Value="12" />
+                                </via:XGrid>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Sizes and states" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Use sizes for dense grids, standard forms and prominent dialog fields."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XWrapPanel HorizontalSpacing="14" VerticalSpacing="14">
+                                    <via:XNumberBox Width="160" Header="Small" Size="Small" Value="8" />
+                                    <via:XNumberBox Width="190" Header="Medium" Size="Medium" Value="24" />
+                                    <via:XNumberBox Width="210" Header="Large" Size="Large" Value="42" />
+                                    <via:XNumberBox Width="210" Header="Read only" IsReadOnly="True" Value="99" />
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Row="2"
+                            Grid.ColumnSpan="2"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XGrid ColumnSpacing="18" Columns="Auto,*">
+                                <via:XButton
+                                    Appearance="Subtle"
+                                    Content="Inspect value"
+                                    Icon="{via:BootstrapIcon Kind=EyeFill}" />
+                                <via:XTextBlock
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    IsMultiline="True"
+                                    Text="Use XNumberBox in CRUD dialogs, data filters and property editors when typed numeric text would otherwise need custom parsing."
+                                    TextRole="Description" />
+                            </via:XGrid>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

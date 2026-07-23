@@ -1,0 +1,106 @@
+<!--=====================================================================================================================
+  <copyright file="XGroupDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XGroupDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XGroupDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,10,0" Spacing="16">
+                    <via:XInfoBar
+                        Message="XGroup replaces fixed CRUD containers with arbitrary header actions, optional footer content and a single composition vocabulary."
+                        Title="Composition guidance"
+                        Variant="Info" />
+
+                    <via:XGroup
+                        ContentPadding="16"
+                        Subtitle="Arbitrary actions keep the container independent from business commands."
+                        Title="Customers">
+                        <via:XGroup.Actions>
+                            <via:XStackPanel Orientation="Horizontal" Spacing="5">
+                                <via:XButton
+                                    Appearance="Ghost"
+                                    Content="New"
+                                    Icon="{via:MaterialIcon Kind=Plus}"
+                                    Size="Small" />
+                                <via:XIconButton
+                                    Appearance="Ghost"
+                                    Icon="{via:MaterialIcon Kind=Refresh}"
+                                    Size="Small"
+                                    ToolTip="Refresh" />
+                                <via:XMoreButton />
+                            </via:XStackPanel>
+                        </via:XGroup.Actions>
+
+                        <via:XAdaptiveGrid ColumnSpacing="10" MaxColumns="3" MinItemWidth="150">
+                            <via:XMetric Label="Active" SupportingText="Across all teams" Value="128" />
+                            <via:XMetric Label="New" SupportingText="Last 30 days" Value="24" />
+                            <via:XMetric Label="Pending" SupportingText="Requires review" Value="3" Variant="Warning" />
+                        </via:XAdaptiveGrid>
+                    </via:XGroup>
+
+                    <via:XAdaptiveGrid ColumnSpacing="14" MaxColumns="2" MinItemWidth="300" RowSpacing="14">
+                        <via:XGroup
+                            ContentPadding="16"
+                            Subtitle="Footer commands remain visually attached to their content."
+                            Title="Deployment">
+                            <via:XGroup.Actions>
+                                <via:XIconButton
+                                    Appearance="Ghost"
+                                    Icon="{via:MaterialIcon Kind=CogOutline}"
+                                    Size="Small"
+                                    ToolTip="Deployment settings" />
+                            </via:XGroup.Actions>
+                            <via:XGroup.Footer>
+                                <via:XStackPanel Orientation="Horizontal" Spacing="7">
+                                    <via:XButton
+                                        Content="Deploy"
+                                        Icon="{via:BootstrapIcon Kind=RocketTakeoffFill}"
+                                        Size="Small"
+                                        Variant="Primary" />
+                                    <via:XButton
+                                        Appearance="Ghost"
+                                        Content="Preview"
+                                        Icon="{via:BootstrapIcon Kind=EyeFill}"
+                                        Size="Small" />
+                                </via:XStackPanel>
+                            </via:XGroup.Footer>
+
+                            <via:XStackPanel Spacing="8">
+                                <via:XTextBlock Text="Ready for production" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="The content area remains focused while actions use explicit, composable slots."
+                                    TextRole="Description" />
+                            </via:XStackPanel>
+                        </via:XGroup>
+
+                        <via:XGroup
+                            ContentPadding="16"
+                            Subtitle="Semantic color is reserved for actual status."
+                            Title="Service health">
+                            <via:XStackPanel Spacing="8">
+                                <via:XInfoBar Message="All services are healthy." Title="Operational" Variant="Success" />
+                                <via:XPropertyRow Content="15 minutes" Label="Next sync" />
+                                <via:XPropertyRow Content="West Europe" Label="Region" />
+                            </via:XStackPanel>
+                        </via:XGroup>
+                    </via:XAdaptiveGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

@@ -1,0 +1,186 @@
+<!--=====================================================================================================================
+  <copyright file="XToggleSwitchDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XToggleSwitchDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XToggleSwitchDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XToggleSwitch" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A switch-style Boolean control for application settings. It is best for immediate on/off preferences and persistent configuration flags."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Grid.Column="0"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Settings panel" TextRole="SectionTitle" />
+                                <via:XToggleSwitch
+                                    HorizontalAlignment="Left"
+                                    Content="Enable cloud backup"
+                                    IsChecked="{Binding CloudBackupEnabled, Mode=TwoWay}" />
+                                <via:XToggleSwitch
+                                    HorizontalAlignment="Left"
+                                    Content="Auto-save changes"
+                                    IsChecked="{Binding AutoSaveEnabled, Mode=TwoWay}" />
+                                <via:XToggleSwitch
+                                    HorizontalAlignment="Left"
+                                    Content="Show advanced options"
+                                    IsChecked="{Binding AdvancedOptionsVisible, Mode=TwoWay}" />
+                                <via:XBorder
+                                    Padding="12"
+                                    CornerRadius="6"
+                                    Elevation="None"
+                                    Variant="Info">
+                                    <via:XTextBlock
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.InfoText}}"
+                                        IsMultiline="True"
+                                        Text="{Binding SettingsSummary, FallbackValue='Description'}"
+                                        TextRole="Description" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Variants" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Use semantic variants when the enabled state carries meaning beyond a neutral preference."
+                                    TextRole="Description" />
+                                <via:XGrid ColumnSpacing="18" Columns="*,*">
+                                    <via:XStackPanel Grid.Column="0" Spacing="10">
+                                        <via:XToggleSwitch
+                                            HorizontalAlignment="Left"
+                                            Content="Default"
+                                            IsChecked="True" />
+                                        <via:XToggleSwitch
+                                            HorizontalAlignment="Left"
+                                            Content="Primary"
+                                            IsChecked="True"
+                                            Variant="Primary" />
+                                        <via:XToggleSwitch
+                                            HorizontalAlignment="Left"
+                                            Content="Success"
+                                            IsChecked="True"
+                                            Variant="Success" />
+                                    </via:XStackPanel>
+                                    <via:XStackPanel Grid.Column="1" Spacing="10">
+                                        <via:XToggleSwitch
+                                            HorizontalAlignment="Left"
+                                            Content="Warning"
+                                            IsChecked="True"
+                                            Variant="Warning" />
+                                        <via:XToggleSwitch
+                                            HorizontalAlignment="Left"
+                                            Content="Danger"
+                                            IsChecked="True"
+                                            Variant="Danger" />
+                                        <via:XToggleSwitch
+                                            HorizontalAlignment="Left"
+                                            Content="Info"
+                                            IsChecked="True"
+                                            Variant="Info" />
+                                    </via:XStackPanel>
+                                </via:XGrid>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*,*">
+                        <via:XBorder
+                            Grid.Column="0"
+                            Padding="18"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="10">
+                                <via:XTextBlock Text="Small" TextRole="SectionTitle" />
+                                <via:XToggleSwitch
+                                    HorizontalAlignment="Left"
+                                    Content="Compact switch"
+                                    Size="Small" />
+                                <via:XToggleSwitch
+                                    HorizontalAlignment="Left"
+                                    Content="Compact on"
+                                    IsChecked="True"
+                                    Size="Small" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="18"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="10">
+                                <via:XTextBlock Text="Medium" TextRole="SectionTitle" />
+                                <via:XToggleSwitch
+                                    HorizontalAlignment="Left"
+                                    Content="Default switch"
+                                    Size="Medium" />
+                                <via:XToggleSwitch
+                                    HorizontalAlignment="Left"
+                                    Content="Default on"
+                                    IsChecked="True"
+                                    Size="Medium" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="2"
+                            Padding="18"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="10">
+                                <via:XTextBlock Text="Large / disabled" TextRole="SectionTitle" />
+                                <via:XToggleSwitch
+                                    HorizontalAlignment="Left"
+                                    Content="Large switch"
+                                    Size="Large" />
+                                <via:XToggleSwitch
+                                    HorizontalAlignment="Left"
+                                    Content="Disabled on"
+                                    IsChecked="True"
+                                    IsEnabled="False" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

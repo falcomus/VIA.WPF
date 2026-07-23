@@ -1,0 +1,63 @@
+<!--=====================================================================================================================
+  <copyright file="XLayoutResources.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
+    <!-- Corner radius -->
+    <CornerRadius x:Key="{x:Static themes:XLayoutKeys.CornerRadiusSmall}">2</CornerRadius>
+    <CornerRadius x:Key="{x:Static themes:XLayoutKeys.CornerRadiusStandard}">3</CornerRadius>
+    <CornerRadius x:Key="{x:Static themes:XLayoutKeys.CornerRadiusLarge}">4</CornerRadius>
+    <CornerRadius x:Key="{x:Static themes:XLayoutKeys.CornerRadiusExtraLarge}">6</CornerRadius>
+    <CornerRadius x:Key="{x:Static themes:XLayoutKeys.CornerRadiusPill}">999</CornerRadius>
+
+    <!-- Spacing as Thickness -->
+    <Thickness x:Key="{x:Static themes:XLayoutKeys.SpacingXXSmall}">2</Thickness>
+    <Thickness x:Key="{x:Static themes:XLayoutKeys.SpacingXSmall}">4</Thickness>
+    <Thickness x:Key="{x:Static themes:XLayoutKeys.SpacingSmall}">8</Thickness>
+    <Thickness x:Key="{x:Static themes:XLayoutKeys.SpacingMedium}">12</Thickness>
+    <Thickness x:Key="{x:Static themes:XLayoutKeys.SpacingStandard}">16</Thickness>
+    <Thickness x:Key="{x:Static themes:XLayoutKeys.SpacingLarge}">20</Thickness>
+    <Thickness x:Key="{x:Static themes:XLayoutKeys.SpacingXLarge}">24</Thickness>
+
+    <!-- Spacing as scalar values -->
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.SpacingValueXXSmall}">2</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.SpacingValueXSmall}">4</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.SpacingValueSmall}">8</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.SpacingValueMedium}">12</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.SpacingValueStandard}">16</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.SpacingValueLarge}">20</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.SpacingValueXLarge}">24</sys:Double>
+
+    <!-- Border thickness -->
+    <Thickness x:Key="{x:Static themes:XLayoutKeys.BorderThicknessHairline}">0.5</Thickness>
+    <Thickness x:Key="{x:Static themes:XLayoutKeys.BorderThicknessSubtle}">1</Thickness>
+    <Thickness x:Key="{x:Static themes:XLayoutKeys.BorderThicknessStandard}">1</Thickness>
+    <Thickness x:Key="{x:Static themes:XLayoutKeys.BorderThicknessEmphasis}">2</Thickness>
+
+    <!-- Control heights, aligned with current XControlSizeMetrics -->
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.ControlHeightSmall}">26</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.ControlHeightMedium}">30</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.ControlHeightLarge}">32</sys:Double>
+
+    <!-- Workbench component metrics -->
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.DataGridRowHeight}">32</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.DataGridHeaderHeight}">30</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.NavigationItemHeight}">34</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.CommandBarHeight}">40</sys:Double>
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.CommandBarItemHeight}">32</sys:Double>
+    <Thickness x:Key="{x:Static themes:XLayoutKeys.PagePadding}">20</Thickness>
+    <Thickness x:Key="{x:Static themes:XLayoutKeys.GroupPadding}">16</Thickness>
+    <sys:Double x:Key="{x:Static themes:XLayoutKeys.IconSizeStandard}">16</sys:Double>
+
+    <!-- Animation durations -->
+    <Duration x:Key="{x:Static themes:XLayoutKeys.AnimationDurationFast}">0:0:0.10</Duration>
+    <Duration x:Key="{x:Static themes:XLayoutKeys.AnimationDurationStandard}">0:0:0.15</Duration>
+    <Duration x:Key="{x:Static themes:XLayoutKeys.AnimationDurationSlow}">0:0:0.25</Duration>
+</ResourceDictionary>

@@ -1,0 +1,437 @@
+<!--=====================================================================================================================
+  <copyright file="XRecentItemTree.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:converters="clr-namespace:VIA.WPF.Converters"
+    xmlns:icons="clr-namespace:VIA.WPF.Icons;assembly=VIA.WPF.Icons"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
+    <converters:NullToVisibilityConverter
+        x:Key="XRecentItemTreeNullToVisibleConverter"
+        NotNullVisibility="Collapsed"
+        NullVisibility="Visible" />
+
+    <converters:NullToVisibilityConverter
+        x:Key="XRecentItemTreeNotNullToVisibleConverter"
+        NotNullVisibility="Visible"
+        NullVisibility="Collapsed" />
+
+    <converters:ObjectMemberPathValueConverter x:Key="XRecentItemTreeObjectMemberPathValueConverter" />
+
+    <Style x:Key="XRecentItemTreeHeaderTextStyle" TargetType="{x:Type ContentControl}">
+        <Setter Property="Margin" Value="0,0,0,6" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeCaption}}" />
+        <Setter Property="FontWeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontWeightSemiBold}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}" />
+        <Setter Property="Opacity" Value="0.92" />
+    </Style>
+
+    <Style x:Key="XRecentItemTreeRecentListBoxStyle" TargetType="{x:Type ListBox}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Padding" Value="0" />
+                    <Setter Property="Margin" Value="0,0,0,2" />
+                    <Setter Property="HorizontalContentAlignment" Value="Left" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                    <Setter Property="BorderThickness" Value="2" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <Grid Background="Transparent" SnapsToDevicePixels="True">
+                                    <Border
+                                        x:Name="RootBorder"
+                                        HorizontalAlignment="Left"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="3"
+                                        SnapsToDevicePixels="True">
+                                        <ContentPresenter
+                                            Margin="0"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                </Grid>
+
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}" />
+                                    </Trigger>
+
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StateSelected}}" />
+                                    </Trigger>
+
+                                    <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                        <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.FocusRing}}" />
+                                    </Trigger>
+
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="RootBorder" Property="Opacity" Value="0.55" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <DataTemplate x:Key="XRecentItemTreeRecentItemTemplate">
+        <Grid
+            x:Name="RecentItemRoot"
+            MinHeight="30"
+            HorizontalAlignment="Left"
+            Background="Transparent">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <controls:XButton
+                Grid.Column="0"
+                Padding="6,4"
+                HorizontalContentAlignment="Stretch"
+                Appearance="Ghost"
+                BorderThickness="0"
+                Command="{Binding OpenRecentItemProxyCommand, RelativeSource={RelativeSource AncestorType={x:Type controls:XRecentItemTree}}}"
+                CommandParameter="{Binding}"
+                StretchContent="True"
+                Variant="Default">
+                <controls:XButton.ToolTip>
+                    <MultiBinding Converter="{StaticResource XRecentItemTreeObjectMemberPathValueConverter}">
+                        <Binding />
+                        <Binding Path="RecentItemToolTipMemberPath" RelativeSource="{RelativeSource AncestorType={x:Type controls:XRecentItemTree}}" />
+                    </MultiBinding>
+                </controls:XButton.ToolTip>
+                <Grid>
+                    <Grid x:Name="DefaultRecentContent" Visibility="{Binding RecentItemTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:XRecentItemTree}}, Converter={StaticResource XRecentItemTreeNullToVisibleConverter}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <ContentPresenter
+                            x:Name="RecentIconPresenter"
+                            Grid.Column="0"
+                            Margin="0,0,7,0"
+                            VerticalAlignment="Center">
+                            <ContentPresenter.Content>
+                                <MultiBinding Converter="{StaticResource XRecentItemTreeObjectMemberPathValueConverter}">
+                                    <Binding />
+                                    <Binding Path="RecentItemIconMemberPath" RelativeSource="{RelativeSource AncestorType={x:Type controls:XRecentItemTree}}" />
+                                </MultiBinding>
+                            </ContentPresenter.Content>
+                        </ContentPresenter>
+
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <controls:XTextBlock
+                                FontSize="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}"
+                                Foreground="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}"
+                                TextRole="Label"
+                                TextTrimming="CharacterEllipsis">
+                                <controls:XTextBlock.Text>
+                                    <MultiBinding Converter="{StaticResource XRecentItemTreeObjectMemberPathValueConverter}" ConverterParameter="FallbackToString">
+                                        <Binding />
+                                        <Binding Path="RecentItemTextMemberPath" RelativeSource="{RelativeSource AncestorType={x:Type controls:XRecentItemTree}}" />
+                                    </MultiBinding>
+                                </controls:XTextBlock.Text>
+                            </controls:XTextBlock>
+                            <controls:XTextBlock
+                                x:Name="RecentDescriptionTextBlock"
+                                Margin="0,1,0,0"
+                                FontSize="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeCaption}}"
+                                Foreground="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}"
+                                Opacity="0.74"
+                                TextRole="Caption"
+                                TextTrimming="CharacterEllipsis">
+                                <controls:XTextBlock.Text>
+                                    <MultiBinding Converter="{StaticResource XRecentItemTreeObjectMemberPathValueConverter}">
+                                        <Binding />
+                                        <Binding Path="RecentItemDescriptionMemberPath" RelativeSource="{RelativeSource AncestorType={x:Type controls:XRecentItemTree}}" />
+                                    </MultiBinding>
+                                </controls:XTextBlock.Text>
+                            </controls:XTextBlock>
+                        </StackPanel>
+                    </Grid>
+
+                    <ContentPresenter
+                        x:Name="CustomRecentContent"
+                        Content="{Binding}"
+                        ContentTemplate="{Binding RecentItemTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:XRecentItemTree}}}"
+                        Visibility="{Binding RecentItemTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:XRecentItemTree}}, Converter={StaticResource XRecentItemTreeNotNullToVisibleConverter}}" />
+                </Grid>
+            </controls:XButton>
+
+            <Grid
+                x:Name="PinTogglePanel"
+                Grid.Column="1"
+                Margin="4,0,2,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Visibility="Collapsed">
+                <controls:XIconButton
+                    x:Name="PinButton"
+                    Width="22"
+                    Height="22"
+                    MinWidth="22"
+                    MinHeight="22"
+                    Padding="0"
+                    Appearance="VerySubtle"
+                    Command="{Binding TogglePinRecentItemProxyCommand, RelativeSource={RelativeSource AncestorType={x:Type controls:XRecentItemTree}}}"
+                    CommandParameter="{Binding}"
+                    Icon="{icons:MaterialIcon Kind=PinOutline}"
+                    IconSize="13"
+                    Size="Small"
+                    ToolTip="{Binding PinRecentItemToolTip, RelativeSource={RelativeSource AncestorType={x:Type controls:XRecentItemTree}}}"
+                    Variant="Primary"
+                    Visibility="Collapsed" />
+
+                <controls:XIconButton
+                    x:Name="UnpinButton"
+                    Width="22"
+                    Height="22"
+                    MinWidth="22"
+                    MinHeight="22"
+                    Padding="0"
+                    Appearance="Subtle"
+                    Command="{Binding TogglePinRecentItemProxyCommand, RelativeSource={RelativeSource AncestorType={x:Type controls:XRecentItemTree}}}"
+                    CommandParameter="{Binding}"
+                    Icon="{icons:MaterialIcon Kind=Pin}"
+                    IconSize="11"
+                    Size="Small"
+                    ToolTip="{Binding UnpinRecentItemToolTip, RelativeSource={RelativeSource AncestorType={x:Type controls:XRecentItemTree}}}"
+                    Variant="Primary"
+                    Visibility="Collapsed" />
+            </Grid>
+
+            <StackPanel
+                x:Name="RecentActionButtons"
+                Grid.Column="2"
+                Margin="2,0,4,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Orientation="Horizontal"
+                Visibility="Collapsed">
+                <controls:XIconButton
+                    Width="22"
+                    Height="22"
+                    MinWidth="22"
+                    MinHeight="22"
+                    Padding="0"
+                    Appearance="VerySubtle"
+                    Command="{Binding OpenRecentItemProxyCommand, RelativeSource={RelativeSource AncestorType={x:Type controls:XRecentItemTree}}}"
+                    CommandParameter="{Binding}"
+                    Icon="{icons:MaterialIcon Kind=OpenInNew}"
+                    IconSize="13"
+                    Size="Small"
+                    ToolTip="{Binding OpenRecentItemToolTip, RelativeSource={RelativeSource AncestorType={x:Type controls:XRecentItemTree}}}"
+                    Variant="Primary" />
+
+                <controls:XIconButton
+                    Width="22"
+                    Height="22"
+                    MinWidth="22"
+                    MinHeight="22"
+                    Margin="2,0,0,0"
+                    Padding="0"
+                    Appearance="VerySubtle"
+                    Command="{Binding RemoveRecentItemProxyCommand, RelativeSource={RelativeSource AncestorType={x:Type controls:XRecentItemTree}}}"
+                    CommandParameter="{Binding}"
+                    Icon="{icons:MaterialIcon Kind=Close}"
+                    IconSize="10"
+                    Size="Small"
+                    ToolTip="{Binding RemoveRecentItemToolTip, RelativeSource={RelativeSource AncestorType={x:Type controls:XRecentItemTree}}}"
+                    Variant="Danger" />
+            </StackPanel>
+        </Grid>
+
+        <DataTemplate.Triggers>
+            <Trigger SourceName="RecentItemRoot" Property="IsMouseOver" Value="True">
+                <Setter TargetName="PinTogglePanel" Property="Visibility" Value="Visible" />
+                <Setter TargetName="PinButton" Property="Visibility" Value="Visible" />
+                <Setter TargetName="RecentActionButtons" Property="Visibility" Value="Visible" />
+            </Trigger>
+
+            <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" Value="True">
+                <Setter TargetName="PinTogglePanel" Property="Visibility" Value="Visible" />
+                <Setter TargetName="PinButton" Property="Visibility" Value="Visible" />
+                <Setter TargetName="RecentActionButtons" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+
+            <DataTrigger Value="True">
+                <DataTrigger.Binding>
+                    <MultiBinding Converter="{StaticResource XRecentItemTreeObjectMemberPathValueConverter}">
+                        <Binding />
+                        <Binding Path="RecentItemIsPinnedMemberPath" RelativeSource="{RelativeSource AncestorType={x:Type controls:XRecentItemTree}}" />
+                    </MultiBinding>
+                </DataTrigger.Binding>
+                <Setter TargetName="PinTogglePanel" Property="Visibility" Value="Visible" />
+                <Setter TargetName="PinButton" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="UnpinButton" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+
+            <DataTrigger Value="{x:Null}">
+                <DataTrigger.Binding>
+                    <MultiBinding Converter="{StaticResource XRecentItemTreeObjectMemberPathValueConverter}">
+                        <Binding />
+                        <Binding Path="RecentItemIconMemberPath" RelativeSource="{RelativeSource AncestorType={x:Type controls:XRecentItemTree}}" />
+                    </MultiBinding>
+                </DataTrigger.Binding>
+                <Setter TargetName="RecentIconPresenter" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="RecentIconPresenter" Property="Margin" Value="0" />
+            </DataTrigger>
+
+            <DataTrigger Value="{x:Null}">
+                <DataTrigger.Binding>
+                    <MultiBinding Converter="{StaticResource XRecentItemTreeObjectMemberPathValueConverter}">
+                        <Binding />
+                        <Binding Path="RecentItemDescriptionMemberPath" RelativeSource="{RelativeSource AncestorType={x:Type controls:XRecentItemTree}}" />
+                    </MultiBinding>
+                </DataTrigger.Binding>
+                <Setter TargetName="RecentDescriptionTextBlock" Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+
+            <DataTrigger Value="">
+                <DataTrigger.Binding>
+                    <MultiBinding Converter="{StaticResource XRecentItemTreeObjectMemberPathValueConverter}">
+                        <Binding />
+                        <Binding Path="RecentItemDescriptionMemberPath" RelativeSource="{RelativeSource AncestorType={x:Type controls:XRecentItemTree}}" />
+                    </MultiBinding>
+                </DataTrigger.Binding>
+                <Setter TargetName="RecentDescriptionTextBlock" Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <Style x:Key="{x:Type controls:XRecentItemTree}" TargetType="{x:Type controls:XRecentItemTree}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:XRecentItemTree}">
+                    <Border
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        SnapsToDevicePixels="True">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <ContentControl
+                                x:Name="TreeHeaderPresenter"
+                                Grid.Row="0"
+                                Content="{TemplateBinding TreeHeader}"
+                                Style="{StaticResource XRecentItemTreeHeaderTextStyle}"
+                                ToolTip="{TemplateBinding TreeHeaderToolTip}" />
+
+                            <controls:XTreeView
+                                x:Name="PART_TreeView"
+                                Grid.Row="1"
+                                AllowNodeDragDrop="{Binding AllowNodeDragDrop, RelativeSource={RelativeSource TemplatedParent}}"
+                                ChildrenMemberPath="{Binding ChildrenMemberPath, RelativeSource={RelativeSource TemplatedParent}}"
+                                CollapseAllButtonText="Alles reduzieren"
+                                DeleteItemCommand="{Binding DeleteItemCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                DropHintAfterText="{TemplateBinding DropHintAfterText}"
+                                DropHintBeforeText="{TemplateBinding DropHintBeforeText}"
+                                DropHintIntoText="{TemplateBinding DropHintIntoText}"
+                                DropHintRootText="{TemplateBinding DropHintRootText}"
+                                EditItemCommand="{Binding EditItemCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                ExpandedMemberPath="{Binding ExpandedMemberPath, RelativeSource={RelativeSource TemplatedParent}}"
+                                ItemTemplate="{Binding TreeItemTemplate, RelativeSource={RelativeSource TemplatedParent}}"
+                                ItemTemplateSelector="{Binding TreeItemTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}"
+                                ItemsSource="{Binding TreeItemsSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                NewItemCommand="{Binding NewItemCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                NodeDropHandler="{Binding NodeDropHandler, RelativeSource={RelativeSource TemplatedParent}}"
+                                NodeDropMode="{Binding NodeDropMode, RelativeSource={RelativeSource TemplatedParent}}"
+                                SelectedDataItem="{Binding SelectedTreeItem, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                ShowCollapseAllButton="{Binding ShowCollapseAllButton, RelativeSource={RelativeSource TemplatedParent}}"
+                                ShowDeleteButton="{Binding ShowDeleteButton, RelativeSource={RelativeSource TemplatedParent}}"
+                                ShowEditButton="{Binding ShowEditButton, RelativeSource={RelativeSource TemplatedParent}}"
+                                ShowExpandAllButton="{Binding ShowExpandAllButton, RelativeSource={RelativeSource TemplatedParent}}"
+                                ShowNewButton="{Binding ShowNewButton, RelativeSource={RelativeSource TemplatedParent}}"
+                                ShowRootNewButton="{Binding ShowRootNewButton, RelativeSource={RelativeSource TemplatedParent}}"
+                                Size="{Binding Size, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                            <controls:XSeparator
+                                x:Name="RecentSeparator"
+                                Grid.Row="2"
+                                Margin="0,12,0,10"
+                                Orientation="Horizontal"
+                                Visibility="{Binding ShowRecentItems, RelativeSource={RelativeSource TemplatedParent}, Converter={converters:BooleanToVisibility}}" />
+
+                            <ContentControl
+                                x:Name="RecentHeaderPresenter"
+                                Grid.Row="3"
+                                Content="{TemplateBinding RecentHeader}"
+                                Style="{StaticResource XRecentItemTreeHeaderTextStyle}"
+                                ToolTip="{TemplateBinding RecentHeaderToolTip}"
+                                Visibility="{Binding ShowRecentItems, RelativeSource={RelativeSource TemplatedParent}, Converter={converters:BooleanToVisibility}}" />
+
+                            <ListBox
+                                x:Name="PART_RecentListBox"
+                                Grid.Row="4"
+                                MaxHeight="{TemplateBinding RecentItemsMaxHeight}"
+                                ItemTemplate="{StaticResource XRecentItemTreeRecentItemTemplate}"
+                                ItemsSource="{Binding RecentItemsSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                SelectedItem="{Binding SelectedRecentItem, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                Style="{StaticResource XRecentItemTreeRecentListBoxStyle}"
+                                Visibility="{Binding ShowRecentItems, RelativeSource={RelativeSource TemplatedParent}, Converter={converters:BooleanToVisibility}}" />
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="TreeHeader" Value="{x:Null}">
+                            <Setter TargetName="TreeHeaderPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="TreeHeaderPresenter" Property="Margin" Value="0" />
+                        </Trigger>
+
+                        <Trigger Property="TreeHeader" Value="">
+                            <Setter TargetName="TreeHeaderPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="TreeHeaderPresenter" Property="Margin" Value="0" />
+                        </Trigger>
+
+                        <Trigger Property="RecentHeader" Value="{x:Null}">
+                            <Setter TargetName="RecentHeaderPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="RecentHeaderPresenter" Property="Margin" Value="0" />
+                        </Trigger>
+
+                        <Trigger Property="RecentHeader" Value="">
+                            <Setter TargetName="RecentHeaderPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="RecentHeaderPresenter" Property="Margin" Value="0" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.55" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

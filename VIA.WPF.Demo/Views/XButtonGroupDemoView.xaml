@@ -1,0 +1,199 @@
+<!--=====================================================================================================================
+  <copyright file="XButtonGroupDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XButtonGroupDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XButtonGroupDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XButtonGroup" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A segmented single-selection control for view modes, density choices and compact option groups. Use it when exactly one visible option should stay active."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XBorder
+                        Padding="20"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="14">
+                            <via:XTextBlock Text="View mode selection" TextRole="SectionTitle" />
+                            <via:XTextBlock
+                                IsMultiline="True"
+                                Text="Typical use in toolbars: the selected item is persistent and can carry an icon, value and semantic variant."
+                                TextRole="Description" />
+                            <via:XButtonGroup
+                                HorizontalAlignment="Left"
+                                IconSize="15"
+                                ItemMinWidth="118"
+                                SelectedValue="Cards"
+                                Variant="Primary">
+                                <via:XButtonGroupItem
+                                    Content="List"
+                                    Icon="{via:BootstrapIcon Kind=ListUl}"
+                                    Value="List" />
+                                <via:XButtonGroupItem
+                                    Content="Cards"
+                                    Icon="{via:BootstrapIcon Kind=Grid3x3GapFill}"
+                                    Value="Cards" />
+                                <via:XButtonGroupItem
+                                    Content="Preview"
+                                    Icon="{via:BootstrapIcon Kind=EyeFill}"
+                                    Value="Preview" />
+                            </via:XButtonGroup>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Grid.Column="0"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Sizes" TextRole="SectionTitle" />
+                                <via:XWrapPanel HorizontalSpacing="14" VerticalSpacing="12">
+                                    <via:XButtonGroup
+                                        HorizontalAlignment="Left"
+                                        ItemMinWidth="68"
+                                        SelectedIndex="0"
+                                        Size="Small">
+                                        <via:XButtonGroupItem Content="S" />
+                                        <via:XButtonGroupItem Content="M" />
+                                        <via:XButtonGroupItem Content="L" />
+                                    </via:XButtonGroup>
+                                    <via:XButtonGroup
+                                        HorizontalAlignment="Left"
+                                        ItemMinWidth="88"
+                                        SelectedIndex="1"
+                                        Size="Medium"
+                                        Variant="Primary">
+                                        <via:XButtonGroupItem Content="Low" />
+                                        <via:XButtonGroupItem Content="Normal" />
+                                        <via:XButtonGroupItem Content="High" />
+                                    </via:XButtonGroup>
+                                    <via:XButtonGroup
+                                        HorizontalAlignment="Left"
+                                        ItemMinWidth="94"
+                                        SelectedIndex="2"
+                                        Size="Large"
+                                        Variant="Info">
+                                        <via:XButtonGroupItem Content="Day" />
+                                        <via:XButtonGroupItem Content="Week" />
+                                        <via:XButtonGroupItem Content="Month" />
+                                    </via:XButtonGroup>
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Semantic selected states" TextRole="SectionTitle" />
+                                <via:XWrapPanel HorizontalSpacing="14" VerticalSpacing="12">
+                                    <via:XButtonGroup
+                                        HorizontalAlignment="Left"
+                                        ItemMinWidth="78"
+                                        SelectedIndex="0"
+                                        Variant="Success">
+                                        <via:XButtonGroupItem Content="On" />
+                                        <via:XButtonGroupItem Content="Off" />
+                                    </via:XButtonGroup>
+                                    <via:XButtonGroup
+                                        HorizontalAlignment="Left"
+                                        ItemMinWidth="78"
+                                        SelectedIndex="1"
+                                        Variant="Warning">
+                                        <via:XButtonGroupItem Content="Low" />
+                                        <via:XButtonGroupItem Content="High" />
+                                    </via:XButtonGroup>
+                                    <via:XButtonGroup
+                                        HorizontalAlignment="Left"
+                                        ItemMinWidth="82"
+                                        SelectedIndex="1"
+                                        Variant="Danger">
+                                        <via:XButtonGroupItem Content="Safe" />
+                                        <via:XButtonGroupItem Content="Risk" />
+                                    </via:XButtonGroup>
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Grid.Column="0"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Density selector" TextRole="SectionTitle" />
+                                <via:XButtonGroup
+                                    HorizontalAlignment="Left"
+                                    ItemMinWidth="132"
+                                    SelectedValue="Comfortable"
+                                    Variant="Accent">
+                                    <via:XButtonGroupItem Content="Compact" Value="Compact" />
+                                    <via:XButtonGroupItem Content="Comfortable" Value="Comfortable" />
+                                    <via:XButtonGroupItem Content="Spacious" Value="Spacious" />
+                                </via:XButtonGroup>
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Use XButtonGroup for exactly-one choices. Use XToggleButton for independent on/off choices."
+                                    TextRole="Description" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Vertical layout" TextRole="SectionTitle" />
+                                <via:XButtonGroup
+                                    HorizontalAlignment="Left"
+                                    ItemMinWidth="190"
+                                    Orientation="Vertical"
+                                    SelectedIndex="1"
+                                    Variant="Success">
+                                    <via:XButtonGroupItem Content="Compact rows" />
+                                    <via:XButtonGroupItem Content="Comfortable rows" />
+                                    <via:XButtonGroupItem Content="Spacious rows" />
+                                </via:XButtonGroup>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

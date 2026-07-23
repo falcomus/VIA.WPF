@@ -1,0 +1,128 @@
+<!--=====================================================================================================================
+  <copyright file="XNavigationListDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XNavigationListDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XNavigationListDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XNavigationList" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="900"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A dedicated shell navigation list with header and footer slots, icons, item spacing and lock-aware behavior for modal page dialogs."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XGrid ColumnSpacing="18" Columns="380,*" RowSpacing="18">
+                        <via:XBorder
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Application navigation" TextRole="SectionTitle" />
+                                <via:XNavigationList
+                                    Width="330"
+                                    HorizontalAlignment="Left"
+                                    Footer="Signed in as demo.user"
+                                    FooterSpacing="0,10,0,0"
+                                    Header="Application"
+                                    HeaderSpacing="0,0,0,10"
+                                    ItemCornerRadius="8"
+                                    ItemMargin="0,0,0,6"
+                                    ItemPadding="14,11"
+                                    SelectedIndex="{Binding SelectedPrimaryIndex, Mode=TwoWay}">
+                                    <via:XNavigationListItem Icon="{via:BootstrapIcon Kind=HouseFill}" Title="Dashboard" />
+                                    <via:XNavigationListItem Icon="{via:BootstrapIcon Kind=PeopleFill}" Title="Customers" />
+                                    <via:XNavigationListItem Icon="{via:BootstrapIcon Kind=BoxSeamFill}" Title="Inventory" />
+                                    <via:XNavigationListItem Icon="{via:BootstrapIcon Kind=BarChartFill}" Title="Reports" />
+                                    <via:XNavigationListItem Icon="{via:BootstrapIcon Kind=GearFill}" Title="Settings" />
+                                </via:XNavigationList>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XStackPanel Grid.Column="1" Spacing="18">
+                            <via:XBorder
+                                Padding="20"
+                                Appearance="Solid"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Elevation="Low">
+                                <via:XStackPanel Spacing="14">
+                                    <via:XTextBlock Text="Compact secondary navigation" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Use smaller item padding and softer spacing for contextual navigation areas such as filters, folders or subsection menus."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+
+                                    <via:XNavigationList
+                                        Width="300"
+                                        HorizontalAlignment="Left"
+                                        Footer="Context menu"
+                                        Header="Master data"
+                                        ItemCornerRadius="6"
+                                        ItemMargin="0,0,0,4"
+                                        ItemPadding="12,8"
+                                        SelectedIndex="{Binding SelectedSecondaryIndex, Mode=TwoWay}">
+                                        <via:XNavigationListItem Icon="{via:BootstrapIcon Kind=CollectionFill}" Title="Articles" />
+                                        <via:XNavigationListItem Icon="{via:BootstrapIcon Kind=FolderFill}" Title="Categories" />
+                                        <via:XNavigationListItem Icon="{via:BootstrapIcon Kind=ArchiveFill}" Title="Warehouses" />
+                                    </via:XNavigationList>
+                                </via:XStackPanel>
+                            </via:XBorder>
+
+                            <via:XGrid ColumnSpacing="12" Columns="*,*">
+                                <via:XBorder Padding="14" Appearance="VerySubtle" BorderThickness="1" CornerRadius="6">
+                                    <via:XStackPanel Spacing="4">
+                                        <via:XTextBlock Text="Header / footer" FontWeight="SemiBold" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="Text or templates can frame the navigation surface."
+                                            TextRole="Description"
+                                            TextWrapping="Wrap" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                                <via:XBorder
+                                    Grid.Column="1"
+                                    Padding="14"
+                                    Appearance="VerySubtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XStackPanel Spacing="4">
+                                        <via:XTextBlock Text="Dialog safe" FontWeight="SemiBold" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="Navigation controls can react to modal XViewContainer dialogs."
+                                            TextRole="Description"
+                                            TextWrapping="Wrap" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                            </via:XGrid>
+                        </via:XStackPanel>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

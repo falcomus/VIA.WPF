@@ -1,0 +1,177 @@
+<!--=====================================================================================================================
+  <copyright file="XTextBlockDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XTextBlockDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XTextBlockDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XTextBlock" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="Semantic text roles keep typography consistent across pages, cards, dialogs and toolbars without repeating low-level font settings."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XGrid ColumnSpacing="18" Columns="1.15*,0.85*">
+                        <via:XBorder
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Semantic roles" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Use roles for intent first. The active theme supplies the concrete font sizes, weights and colors."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XBorder
+                                    Padding="14"
+                                    Appearance="VerySubtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XStackPanel Spacing="8">
+                                        <via:XTextBlock Text="DISPLAY" TextRole="Display" />
+                                        <via:XTextBlock Text="OVERLINE TEXT" TextRole="Overline" />
+                                        <via:XTextBlock Text="Title" TextRole="Title" />
+                                        <via:XTextBlock Text="Subtitle text for pages, panels and dialogs." TextRole="Subtitle" />
+                                        <via:XTextBlock Text="Large heading" TextRole="LargeHeading" />
+                                        <via:XTextBlock Text="Heading" TextRole="Heading" />
+                                        <via:XTextBlock Text="Section title" TextRole="SectionTitle" />
+                                        <via:XTextBlock Text="Label text for compact command bars and breadcrumbs." TextRole="Label" />
+                                        <via:XTextBlock Text="Body text uses the standard surface foreground and compact line height." />
+                                        <via:XTextBlock Text="Description text is muted and wraps well below headings." TextRole="Description" />
+                                        <via:XTextBlock Text="Caption text for compact metadata." TextRole="Caption" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XStackPanel Grid.Column="1" Spacing="18">
+                            <via:XBorder
+                                Padding="20"
+                                Appearance="Solid"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Elevation="Low">
+                                <via:XStackPanel Spacing="14">
+                                    <via:XStackPanel Spacing="4">
+                                        <via:XTextBlock Text="Variants and status text" TextRole="SectionTitle" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="Variants and status roles are useful for small callouts, validation hints and dashboard summaries."
+                                            TextRole="Description" />
+                                    </via:XStackPanel>
+
+                                    <via:XBorder
+                                        Padding="14"
+                                        Appearance="VerySubtle"
+                                        BorderThickness="1"
+                                        CornerRadius="6">
+                                        <via:XStackPanel Spacing="8">
+                                            <via:XTextBlock Text="Default text" />
+                                            <via:XTextBlock Text="Primary text" Variant="Primary" />
+                                            <via:XTextBlock Text="Accent text" Variant="Accent" />
+                                            <via:XTextBlock Text="Success text" TextRole="Success" />
+                                            <via:XTextBlock Text="Warning text" TextRole="Warning" />
+                                            <via:XTextBlock Text="Error text" TextRole="Error" />
+                                            <via:XTextBlock Text="Info text" TextRole="Info" />
+                                        </via:XStackPanel>
+                                    </via:XBorder>
+                                </via:XStackPanel>
+                            </via:XBorder>
+
+                            <via:XBorder
+                                Padding="20"
+                                Appearance="Solid"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Elevation="Low">
+                                <via:XStackPanel Spacing="14">
+                                    <via:XTextBlock Text="Sizes" TextRole="SectionTitle" />
+                                    <via:XWrapPanel HorizontalSpacing="28" VerticalSpacing="10">
+                                        <via:XTextBlock Size="Small" Text="Small body text" />
+                                        <via:XTextBlock Size="Medium" Text="Medium body text" />
+                                        <via:XTextBlock Size="Large" Text="Large body text" />
+                                    </via:XWrapPanel>
+                                </via:XStackPanel>
+                            </via:XBorder>
+                        </via:XStackPanel>
+                    </via:XGrid>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="12">
+                                <via:XTextBlock Text="Single line and multiline" TextRole="SectionTitle" />
+                                <via:XBorder
+                                    Padding="14"
+                                    Appearance="VerySubtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XStackPanel Spacing="10">
+                                        <via:XTextBlock Width="420" Text="This single-line text trims when it runs out of space and keeps the default body role." />
+                                        <via:XTextBlock
+                                            Width="420"
+                                            IsMultiline="True"
+                                            Text="Set IsMultiline to true when explanatory text should wrap naturally. This keeps XAML short while preserving the same typography and theme brushes across the application."
+                                            TextRole="Description" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="12">
+                                <via:XTextBlock Text="Code role" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="&lt;via:XTextBlock TextRole=&quot;Description&quot; IsMultiline=&quot;True&quot; Text=&quot;...&quot; /&gt;"
+                                    TextRole="Code" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Use Code for compact snippets inside documentation pages or demo cards."
+                                    TextRole="Description" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

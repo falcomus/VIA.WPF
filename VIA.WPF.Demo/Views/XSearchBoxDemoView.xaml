@@ -1,0 +1,216 @@
+<!--=====================================================================================================================
+  <copyright file="XSearchBoxDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XSearchBoxDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XSearchBoxDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XSearchBox" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A compact search field for navigation panes, toolbar filters, command palettes and local list filtering. It supports custom icons, reset behavior and MVVM commands."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Basic usage and widths" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Keep search fields as wide as the context needs. Navigation panes can stay compact, content filters can be wider."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XSearchBox
+                                    Width="180"
+                                    HorizontalAlignment="Left"
+                                    Placeholder="Small search"
+                                    SearchIcon="{via:BootstrapIcon Kind=Search}"
+                                    Text="app" />
+                                <via:XSearchBox
+                                    Width="260"
+                                    HorizontalAlignment="Left"
+                                    Placeholder="Search controls..."
+                                    SearchIcon="{via:BootstrapIcon Kind=Search}"
+                                    Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <via:XSearchBox
+                                    Width="360"
+                                    HorizontalAlignment="Left"
+                                    Placeholder="Search title, summary or tags"
+                                    SearchIcon="{via:BootstrapIcon Kind=Search}"
+                                    Text="navigation" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Search and reset icons" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="SearchIcon and ResetIcon accept the same icon markup extensions as other VIA controls."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XSearchBox
+                                    Width="300"
+                                    HorizontalAlignment="Left"
+                                    Placeholder="Bootstrap search icon"
+                                    SearchIcon="{via:BootstrapIcon Kind=Search}"
+                                    SearchIconSize="16"
+                                    Text="theme" />
+                                <via:XSearchBox
+                                    Width="300"
+                                    HorizontalAlignment="Left"
+                                    Placeholder="Custom reset icon"
+                                    ResetIcon="{via:BootstrapIcon Kind=XCircleFill}"
+                                    SearchIcon="{via:BootstrapIcon Kind=FunnelFill}"
+                                    Text="clear me" />
+                                <via:XSearchBox
+                                    Width="300"
+                                    HorizontalAlignment="Left"
+                                    Placeholder="Neutral reset color"
+                                    ResetButtonForeground="{DynamicResource {x:Static via:XBrushKeys.BorderText}}"
+                                    SearchIcon="{via:BootstrapIcon Kind=Sliders}"
+                                    Text="neutral" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Clear behavior and MVVM command" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Use the default clear behavior for simple fields, or provide ResetSearchCommand for custom reset logic and feedback."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XSearchBox
+                                    Width="300"
+                                    HorizontalAlignment="Left"
+                                    Placeholder="ShowResetButton false"
+                                    SearchIcon="{via:BootstrapIcon Kind=Search}"
+                                    ShowResetButton="False"
+                                    Text="not clearable" />
+                                <via:XSearchBox
+                                    Width="300"
+                                    HorizontalAlignment="Left"
+                                    HasClearButton="False"
+                                    Placeholder="HasClearButton alias"
+                                    SearchIcon="{via:BootstrapIcon Kind=Search}"
+                                    Text="alias sample" />
+                                <via:XSearchBox
+                                    Width="300"
+                                    HorizontalAlignment="Left"
+                                    Placeholder="Reset command"
+                                    ResetIcon="{via:BootstrapIcon Kind=ArrowClockwise}"
+                                    ResetSearchCommand="{Binding ResetSearchCommand}"
+                                    SearchIcon="{via:BootstrapIcon Kind=Search}"
+                                    Text="{Binding CommandSearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <via:XTextBlock Text="{Binding LastResetInfo}" TextRole="Caption" />
+                                <via:XTextBlock Text="{Binding ResetCount, StringFormat='Reset count: {0}'}" TextRole="Caption" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="States and toolbar use" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Read-only and disabled states keep the same compact visual language for locked filters or summaries."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XSearchBox
+                                    Width="300"
+                                    HorizontalAlignment="Left"
+                                    IsReadOnly="True"
+                                    Placeholder="Read-only"
+                                    SearchIcon="{via:BootstrapIcon Kind=EyeFill}"
+                                    Text="read-only search" />
+                                <via:XSearchBox
+                                    Width="300"
+                                    HorizontalAlignment="Left"
+                                    IsEnabled="False"
+                                    Placeholder="Disabled"
+                                    SearchIcon="{via:BootstrapIcon Kind=EyeSlash}"
+                                    Text="disabled search" />
+
+                                <via:XBorder
+                                    Padding="12"
+                                    Appearance="VerySubtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XGrid ColumnSpacing="10" Columns="*,Auto">
+                                        <via:XSearchBox
+                                            HorizontalAlignment="Stretch"
+                                            Placeholder="Toolbar search"
+                                            SearchIcon="{via:BootstrapIcon Kind=Search}"
+                                            Text="toolbar" />
+                                        <via:XButton
+                                            Grid.Column="1"
+                                            HorizontalAlignment="Left"
+                                            Content="Filter"
+                                            Icon="{via:BootstrapIcon Kind=FunnelFill}"
+                                            Size="Small"
+                                            Variant="Primary" />
+                                    </via:XGrid>
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

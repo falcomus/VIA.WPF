@@ -1,0 +1,212 @@
+<!--=====================================================================================================================
+  <copyright file="XSplitViewDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XSplitViewDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XSplitViewDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="Resizable work areas" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="900"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="XSplitView creates resizable master/detail and tool/content layouts. It supports horizontal left/right splits and vertical top/bottom splits with configurable lengths and minimum sizes."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XBorder
+                        Padding="20"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="14">
+                            <via:XTextBlock Text="Horizontal split" TextRole="SectionTitle" />
+                            <via:XTextBlock
+                                IsMultiline="True"
+                                Text="Use horizontal orientation for explorers, master/detail screens and side tool panels."
+                                TextRole="Description"
+                                TextWrapping="Wrap" />
+
+                            <via:XSplitView
+                                Height="300"
+                                FirstLength="230"
+                                MinFirstLength="170"
+                                MinSecondLength="260"
+                                Orientation="Horizontal"
+                                ShowsPreview="True"
+                                SplitterThickness="6">
+                                <via:XSplitView.FirstContent>
+                                    <via:XBorder
+                                        Padding="14"
+                                        Appearance="Subtle"
+                                        BorderThickness="1"
+                                        CornerRadius="6">
+                                        <via:XStackPanel Spacing="8">
+                                            <via:XTextBlock Text="Folders" TextRole="SectionTitle" />
+                                            <via:XButton
+                                                Appearance="Subtle"
+                                                Content="Inbox"
+                                                HorizontalAlignment="Left"
+                                                Icon="{via:BootstrapIcon Kind=InboxFill}"
+                                                Size="Small" />
+                                            <via:XButton
+                                                Appearance="Subtle"
+                                                Content="Archive"
+                                                HorizontalAlignment="Left"
+                                                Icon="{via:BootstrapIcon Kind=ArchiveFill}"
+                                                Size="Small" />
+                                            <via:XButton
+                                                Appearance="Subtle"
+                                                Content="Settings"
+                                                HorizontalAlignment="Left"
+                                                Icon="{via:BootstrapIcon Kind=GearFill}"
+                                                Size="Small" />
+                                        </via:XStackPanel>
+                                    </via:XBorder>
+                                </via:XSplitView.FirstContent>
+
+                                <via:XSplitView.SecondContent>
+                                    <via:XBorder
+                                        Padding="18"
+                                        Appearance="Solid"
+                                        BorderThickness="1"
+                                        CornerRadius="6">
+                                        <via:XStackPanel Spacing="10">
+                                            <via:XTextBlock Text="Detail area" TextRole="SectionTitle" />
+                                            <via:XTextBlock
+                                                IsMultiline="True"
+                                                Text="Drag the splitter to resize the secondary panel. ShowsPreview displays the target position while dragging."
+                                                TextRole="Description"
+                                                TextWrapping="Wrap" />
+                                            <via:XGrid Columns="*,*" ColumnSpacing="10">
+                                                <via:XBorder
+                                                    Padding="12"
+                                                    Appearance="VerySubtle"
+                                                    BorderThickness="1"
+                                                    CornerRadius="6">
+                                                    <via:XTextBlock Text="Preview" />
+                                                </via:XBorder>
+                                                <via:XBorder
+                                                    Grid.Column="1"
+                                                    Padding="12"
+                                                    Appearance="VerySubtle"
+                                                    BorderThickness="1"
+                                                    CornerRadius="6">
+                                                    <via:XTextBlock Text="Properties" />
+                                                </via:XBorder>
+                                            </via:XGrid>
+                                        </via:XStackPanel>
+                                    </via:XBorder>
+                                </via:XSplitView.SecondContent>
+                            </via:XSplitView>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder
+                        Padding="20"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="14">
+                            <via:XTextBlock Text="Vertical split" TextRole="SectionTitle" />
+                            <via:XTextBlock
+                                IsMultiline="True"
+                                Text="Use vertical orientation for preview/output areas, logs, console panes or diagnostics below an editor."
+                                TextRole="Description"
+                                TextWrapping="Wrap" />
+
+                            <via:XSplitView
+                                Height="320"
+                                FirstLength="150"
+                                MinFirstLength="90"
+                                MinSecondLength="120"
+                                Orientation="Vertical"
+                                ShowsPreview="True"
+                                SplitterThickness="6">
+                                <via:XSplitView.FirstContent>
+                                    <via:XBorder
+                                        Padding="16"
+                                        Appearance="Solid"
+                                        BorderThickness="1"
+                                        CornerRadius="6">
+                                        <via:XGrid Columns="*,Auto" ColumnSpacing="14">
+                                            <via:XStackPanel Spacing="8">
+                                                <via:XTextBlock Text="Editor preview" TextRole="SectionTitle" />
+                                                <via:XTextBlock
+                                                    IsMultiline="True"
+                                                    Text="The upper pane keeps the primary workspace visible while the lower pane can be resized for output or diagnostics."
+                                                    TextRole="Description"
+                                                    TextWrapping="Wrap" />
+                                            </via:XStackPanel>
+
+                                            <via:XButton
+                                                Grid.Column="1"
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Top"
+                                                Content="Run"
+                                                Icon="{via:BootstrapIcon Kind=PlayFill}"
+                                                Size="Small"
+                                                Variant="Primary" />
+                                        </via:XGrid>
+                                    </via:XBorder>
+                                </via:XSplitView.FirstContent>
+
+                                <via:XSplitView.SecondContent>
+                                    <via:XBorder
+                                        Padding="14"
+                                        Appearance="VerySubtle"
+                                        BorderThickness="1"
+                                        CornerRadius="6"
+                                        Variant="Accent">
+                                        <via:XStackPanel Spacing="8">
+                                            <via:XTextBlock Text="Output pane" TextRole="SectionTitle" />
+                                            <via:XTextBlock
+                                                IsMultiline="True"
+                                                Text="Build succeeded. 0 warnings. 0 errors. The lower pane can stay compact or be pulled higher when more detail is needed."
+                                                TextWrapping="Wrap" />
+                                        </via:XStackPanel>
+                                    </via:XBorder>
+                                </via:XSplitView.SecondContent>
+                            </via:XSplitView>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder
+                        Padding="16"
+                        Appearance="Subtle"
+                        BorderThickness="1"
+                        CornerRadius="6">
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="Features shown: Orientation, FirstContent, SecondContent, FirstLength, MinFirstLength, MinSecondLength, SplitterThickness and ShowsPreview."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XBorder>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

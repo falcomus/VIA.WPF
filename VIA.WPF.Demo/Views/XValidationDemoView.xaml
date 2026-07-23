@@ -1,0 +1,262 @@
+<!--=====================================================================================================================
+  <copyright file="XValidationDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XValidationDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XValidationDemoViewModel}"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style x:Key="DemoValidationTextBoxStyle" TargetType="{x:Type via:XTextBox}">
+            <Setter Property="MinWidth" Value="280" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HeaderFontSize" Value="14" />
+            <Setter Property="HeaderFontWeight" Value="SemiBold" />
+            <Setter Property="ShowResetButton" Value="False" />
+            <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+        </Style>
+
+        <Style x:Key="DemoOuterCardStyle" TargetType="{x:Type via:XBorder}">
+            <Setter Property="Padding" Value="18" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Elevation" Value="Low" />
+            <Setter Property="Appearance" Value="Solid" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style x:Key="DemoInnerCardStyle" TargetType="{x:Type via:XBorder}">
+            <Setter Property="Padding" Value="12" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="Elevation" Value="None" />
+            <Setter Property="Appearance" Value="VerySubtle" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+    </UserControl.Resources>
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel
+                    Margin="0,0,12,0"
+                    DataContext="{Binding Form}"
+                    Spacing="18">
+
+                    <via:XBorder Style="{StaticResource DemoOuterCardStyle}">
+                        <via:XGrid Columns="*,Auto" ColumnSpacing="18">
+                            <via:XStackPanel Spacing="7">
+                                <via:XTextBlock Text="Validation" TextRole="Title" />
+                                <via:XTextBlock
+                                    MaxWidth="780"
+                                    HorizontalAlignment="Left"
+                                    IsMultiline="True"
+                                    Text="Validation demo for XBind, INotifyDataErrorInfo, field-level messages, warning/information severities, dirty tracking, validation summary and command validation."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+                            </via:XStackPanel>
+
+                            <via:XValidationHintPopup
+                                Grid.Column="1"
+                                Margin="0,2,0,0"
+                                HorizontalAlignment="Right"
+                                Header="Current validation messages"
+                                IncludeInformation="True"
+                                ShowWhenValid="True"
+                                Source="{Binding}" />
+                        </via:XGrid>
+                    </via:XBorder>
+
+                    <via:XGrid Columns="2*,1*" ColumnSpacing="18">
+                        <via:XBorder Style="{StaticResource DemoOuterCardStyle}">
+                            <via:XStackPanel Spacing="16">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Editor fields" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Try empty values, invalid formats and cross-field rules. Each field uses XBind so validation updates remain compact and predictable."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+                                </via:XStackPanel>
+
+                                <via:XGrid
+                                    Columns="*,*"
+                                    ColumnSpacing="18"
+                                    RowSpacing="14"
+                                    Rows="Auto,Auto,Auto,Auto,Auto">
+                                    <via:XTextBox
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Style="{StaticResource DemoValidationTextBoxStyle}"
+                                        Header="Article number"
+                                        Placeholder="Try empty, ABC-1234 or DUP-1000"
+                                        Text="{via:XBind ArticleNumber}" />
+
+                                    <via:XTextBox
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Style="{StaticResource DemoValidationTextBoxStyle}"
+                                        Header="Stock quantity"
+                                        Placeholder="0 to 999"
+                                        Text="{via:XBind StockQuantity}" />
+
+                                    <via:XTextBox
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Style="{StaticResource DemoValidationTextBoxStyle}"
+                                        Header="Email"
+                                        Placeholder="info@example.com"
+                                        Text="{via:XBind Email}" />
+
+                                    <via:XTextBox
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Style="{StaticResource DemoValidationTextBoxStyle}"
+                                        Header="Website"
+                                        Placeholder="https://example.com"
+                                        Text="{via:XBind Website}" />
+
+                                    <via:XTextBox
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Style="{StaticResource DemoValidationTextBoxStyle}"
+                                        Header="Note"
+                                        Placeholder="5 to 30 characters"
+                                        Text="{via:XBind Note}" />
+
+                                    <via:XTextBox
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Style="{StaticResource DemoValidationTextBoxStyle}"
+                                        Description="1 = Anna, 2 = Ben without vehicle permission, 3 = Cara"
+                                        Header="Employee ID"
+                                        Placeholder="1, 2 or 3"
+                                        Text="{via:XBind EmployeeId}" />
+
+                                    <via:XTextBox
+                                        Grid.Row="3"
+                                        Grid.Column="0"
+                                        Style="{StaticResource DemoValidationTextBoxStyle}"
+                                        Header="Begin date"
+                                        Placeholder="yyyy-MM-dd"
+                                        Text="{via:XBind BeginDate}" />
+
+                                    <via:XTextBox
+                                        Grid.Row="3"
+                                        Grid.Column="1"
+                                        Style="{StaticResource DemoValidationTextBoxStyle}"
+                                        Header="End date"
+                                        Placeholder="yyyy-MM-dd"
+                                        Text="{via:XBind EndDate}" />
+
+                                    <via:XCheckBox
+                                        Grid.Row="4"
+                                        Grid.Column="1"
+                                        Margin="0,6,0,0"
+                                        HorizontalAlignment="Left"
+                                        Content="Employee may rent vehicles"
+                                        IsChecked="{via:XBind CanRentVehicles}" />
+                                </via:XGrid>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XStackPanel Grid.Column="1" Spacing="18">
+                            <via:XBorder Style="{StaticResource DemoOuterCardStyle}">
+                                <via:XStackPanel Spacing="12">
+                                    <via:XTextBlock Text="Status" TextRole="SectionTitle" />
+
+                                    <via:XWrapPanel HorizontalSpacing="8" VerticalSpacing="8">
+                                        <via:XBadge
+                                            Appearance="VerySubtle"
+                                            Content="{Binding DirtyBadgeText}"
+                                            Variant="{Binding DirtyBadgeVariant}" />
+                                        <via:XBadge
+                                            Appearance="VerySubtle"
+                                            Content="{Binding ValidationBadgeText}"
+                                            Variant="{Binding ValidationBadgeVariant}" />
+                                        <via:XBadge
+                                            Appearance="VerySubtle"
+                                            Content="{Binding ActivityBadgeText}"
+                                            Variant="{Binding ActivityBadgeVariant}" />
+                                    </via:XWrapPanel>
+
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="{Binding ValidationSummaryText}"
+                                        TextRole="Description"
+                                        TextWrapping="Wrap"
+                                        Visibility="{Binding HasValidationMessages, Converter={via:BooleanToVisibility}}" />
+
+                                    <via:XBorder
+                                        Padding="10"
+                                        Appearance="VerySubtle"
+                                        BorderThickness="1"
+                                        CornerRadius="6"
+                                        Elevation="None"
+                                        Visibility="{Binding LastSaveMessage, Converter={via:StringNullOrWhiteSpaceToVisibility}}">
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="{Binding LastSaveMessage}"
+                                            TextRole="Description"
+                                            TextWrapping="Wrap" />
+                                    </via:XBorder>
+                                </via:XStackPanel>
+                            </via:XBorder>
+
+                            <via:XValidationSummary
+                                Header="Validation summary"
+                                IncludeInformation="True"
+                                IsCollapsible="True"
+                                IsExpanded="True"
+                                Source="{Binding}" />
+
+                            <via:XBorder Style="{StaticResource DemoOuterCardStyle}">
+                                <via:XStackPanel Spacing="12">
+                                    <via:XTextBlock Text="Actions" TextRole="SectionTitle" />
+                                    <via:XWrapPanel HorizontalSpacing="8" VerticalSpacing="8">
+                                        <via:XButton
+                                            HorizontalAlignment="Left"
+                                            Command="{Binding SaveCommand}"
+                                            Content="Save"
+                                            Icon="{via:BootstrapIcon Kind=CheckCircleFill}"
+                                            Variant="Success" />
+                                        <via:XButton
+                                            HorizontalAlignment="Left"
+                                            Command="{Binding ValidateCommand}"
+                                            Content="Validate"
+                                            Icon="{via:BootstrapIcon Kind=ShieldCheck}"
+                                            Variant="Primary" />
+                                        <via:XButton
+                                            HorizontalAlignment="Left"
+                                            Command="{Binding ResetCommand}"
+                                            Content="Reset"
+                                            Icon="{via:BootstrapIcon Kind=ArrowCounterclockwise}" />
+                                    </via:XWrapPanel>
+                                </via:XStackPanel>
+                            </via:XBorder>
+                        </via:XStackPanel>
+                    </via:XGrid>
+
+                    <via:XBorder Style="{StaticResource DemoInnerCardStyle}" Variant="Info">
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="Examples to try: empty Article number, Stock quantity above 500, Employee ID 2 without vehicle permission, or an End date before Begin date."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XBorder>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

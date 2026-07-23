@@ -1,0 +1,235 @@
+<!--=====================================================================================================================
+  <copyright file="DemoPageViewBase.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.DemoPageViewBase"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    MinWidth="400"
+    MinHeight="400"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XWindowDemoViewModel}"
+    mc:Ignorable="d">
+
+    <via:XPage Padding="18,0,18,18">
+        <via:XPage.Header>
+            <via:XHeaderBar
+                Padding="18,14,18,13"
+                ContentHeight="38"
+                Size="Medium"
+                Subtitle="{Binding Description}"
+                Title="{Binding Title}"
+                TitleWidth="*">
+                <via:XHeaderBar.Breadcrumb>
+                    <via:XBreadcrumb Separator="›">
+                        <via:XBreadcrumbItem Content="Controls" />
+                        <via:XBreadcrumbItem Content="{Binding Title}" />
+                    </via:XBreadcrumb>
+                </via:XHeaderBar.Breadcrumb>
+
+                <via:XHeaderBar.Actions>
+                    <via:XStackPanel Orientation="Horizontal" Spacing="6">
+                        <via:XButton
+                            Appearance="Ghost"
+                            Click="OnResetPreviewClicked"
+                            Content="Reset"
+                            Icon="{via:MaterialIcon Kind=Refresh}"
+                            Size="Small"
+                            ToolTip="Reset preview settings" />
+                        <via:XMoreButton>
+                            <via:XMoreButton.Menu>
+                                <ContextMenu>
+                                    <MenuItem Click="OnCopyXamlClicked" Header="Copy XAML" />
+                                    <MenuItem Click="OnCopyCSharpClicked" Header="Copy C#" />
+                                </ContextMenu>
+                            </via:XMoreButton.Menu>
+                        </via:XMoreButton>
+                    </via:XStackPanel>
+                </via:XHeaderBar.Actions>
+            </via:XHeaderBar>
+        </via:XPage.Header>
+
+        <via:XTabControl
+            MinHeight="0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            CornerRadius="4"
+            HeaderAppearance="Underlined"
+            ShowBorder="False">
+            <via:XTabItem
+                Header="Preview"
+                HorizontalContentAlignment="Stretch"
+                VerticalContentAlignment="Stretch">
+                <via:XBorder
+                    x:Name="PreviewFrame"
+                    MinHeight="0"
+                    Margin="0,12,0,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderSubtle}}"
+                    BorderThickness="1"
+                    CornerRadius="4">
+                    <via:XBorder.Style>
+                        <Style TargetType="{x:Type via:XBorder}">
+                            <Setter Property="Background" Value="{DynamicResource {x:Static via:XBrushKeys.Canvas}}" />
+                            <Style.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:DemoPageViewBase}}, Path=PreviewSurface}"
+                                    Value="Surface">
+                                    <Setter Property="Background" Value="{DynamicResource {x:Static via:XBrushKeys.Surface}}" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:DemoPageViewBase}}, Path=PreviewSurface}"
+                                    Value="Sunken">
+                                    <Setter Property="Background" Value="{DynamicResource {x:Static via:XBrushKeys.SurfaceSunken}}" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:DemoPageViewBase}}, Path=PreviewWidth}"
+                                    Value="960">
+                                    <Setter Property="MaxWidth" Value="960" />
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </via:XBorder.Style>
+
+                    <ContentPresenter
+                        MinHeight="0"
+                        Margin="12"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Content="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:DemoPageViewBase}}, Path=PreviewContent}"
+                        IsEnabled="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:DemoPageViewBase}}, Path=IsPreviewEnabled}" />
+                </via:XBorder>
+            </via:XTabItem>
+
+            <via:XTabItem Header="XAML">
+                <via:XBorder
+                    Margin="0,12,0,0"
+                    Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceSunken}}"
+                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
+                    BorderThickness="1"
+                    CornerRadius="4">
+                    <Grid>
+                        <via:XTextBox
+                            Padding="18"
+                            AcceptsReturn="True"
+                            AcceptsTab="True"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            FontFamily="Cascadia Code"
+                            FontSize="12"
+                            Foreground="{DynamicResource {x:Static via:XBrushKeys.TextPrimary}}"
+                            HorizontalScrollBarVisibility="Auto"
+                            IsReadOnly="True"
+                            Text="{Binding XamlCode, Mode=OneWay}"
+                            TextWrapping="NoWrap"
+                            VerticalContentAlignment="Stretch"
+                            VerticalScrollBarVisibility="Auto" />
+
+                        <via:XButton
+                            Margin="0,12,12,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Appearance="Outline"
+                            Click="OnCopyXamlClicked"
+                            Content="Copy XAML"
+                            Icon="{via:MaterialIcon Kind=ContentCopy}"
+                            Size="Small" />
+                    </Grid>
+                </via:XBorder>
+            </via:XTabItem>
+
+            <via:XTabItem Header="C#">
+                <via:XBorder
+                    Margin="0,12,0,0"
+                    Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceSunken}}"
+                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
+                    BorderThickness="1"
+                    CornerRadius="4">
+                    <Grid>
+                        <via:XTextBox
+                            Padding="18"
+                            AcceptsReturn="True"
+                            AcceptsTab="True"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            FontFamily="Cascadia Code"
+                            FontSize="12"
+                            Foreground="{DynamicResource {x:Static via:XBrushKeys.TextPrimary}}"
+                            HorizontalScrollBarVisibility="Auto"
+                            IsReadOnly="True"
+                            Text="{Binding CSharpCode, Mode=OneWay}"
+                            TextWrapping="NoWrap"
+                            VerticalContentAlignment="Stretch"
+                            VerticalScrollBarVisibility="Auto" />
+
+                        <via:XButton
+                            Margin="0,12,12,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Appearance="Outline"
+                            Click="OnCopyCSharpClicked"
+                            Content="Copy C#"
+                            Icon="{via:MaterialIcon Kind=ContentCopy}"
+                            Size="Small" />
+                    </Grid>
+                </via:XBorder>
+            </via:XTabItem>
+        </via:XTabControl>
+
+        <via:XPage.Footer>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <via:XHeaderGroup Header="Surface">
+                    <via:XButtonGroup
+                        ItemMinWidth="58"
+                        SelectedValue="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:DemoPageViewBase}}, Path=PreviewSurface, Mode=TwoWay}"
+                        Size="Small">
+                        <via:XButtonGroupItem Content="Canvas" Value="Canvas" />
+                        <via:XButtonGroupItem Content="Surface" Value="Surface" />
+                        <via:XButtonGroupItem Content="Sunken" Value="Sunken" />
+                    </via:XButtonGroup>
+                </via:XHeaderGroup>
+
+                <via:XHeaderGroup Grid.Column="1" Header="Width">
+                    <via:XButtonGroup
+                        ItemMinWidth="52"
+                        SelectedValue="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:DemoPageViewBase}}, Path=PreviewWidth, Mode=TwoWay}"
+                        Size="Small">
+                        <via:XButtonGroupItem Content="Fill" Value="Fill" />
+                        <via:XButtonGroupItem Content="960" Value="960" />
+                    </via:XButtonGroup>
+                </via:XHeaderGroup>
+
+                <via:XHeaderGroup Grid.Column="2" Header="State" IsSeparatorVisible="False">
+                    <via:XToggleSwitch
+                        Content="Enabled"
+                        IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:DemoPageViewBase}}, Path=IsPreviewEnabled, Mode=TwoWay}"
+                        Size="Small" />
+                </via:XHeaderGroup>
+
+                <via:XTextBlock
+                    Grid.Column="4"
+                    VerticalAlignment="Center"
+                    FontSize="11"
+                    Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
+                    Text="Live preview settings" />
+            </Grid>
+        </via:XPage.Footer>
+    </via:XPage>
+</UserControl>

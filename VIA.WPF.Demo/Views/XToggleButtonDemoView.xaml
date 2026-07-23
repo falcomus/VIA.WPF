@@ -1,0 +1,142 @@
+<!--=====================================================================================================================
+  <copyright file="XToggleButtonDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XToggleButtonDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XToggleButtonDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XToggleButton" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A button-like state control for filters, pinned actions and icon states. Unlike XButtonGroup, every toggle button can be switched independently."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XBorder
+                        Padding="20"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="14">
+                            <via:XTextBlock Text="Filter chips" TextRole="SectionTitle" />
+                            <via:XWrapPanel HorizontalSpacing="12" VerticalSpacing="12">
+                                <via:XToggleButton
+                                    HorizontalAlignment="Left"
+                                    CheckedIcon="{via:BootstrapIcon Kind=CheckCircleFill}"
+                                    Content="Active"
+                                    IsChecked="True"
+                                    UncheckedIcon="{via:BootstrapIcon Kind=Circle}" />
+                                <via:XToggleButton
+                                    HorizontalAlignment="Left"
+                                    CheckedIcon="{via:BootstrapIcon Kind=BellFill}"
+                                    CheckedVariant="Info"
+                                    Content="Notifications"
+                                    UncheckedIcon="{via:BootstrapIcon Kind=Bell}" />
+                                <via:XToggleButton
+                                    HorizontalAlignment="Left"
+                                    CheckedIcon="{via:BootstrapIcon Kind=EyeFill}"
+                                    Content="Preview"
+                                    IsChecked="{Binding IsPreviewMode, Mode=TwoWay}"
+                                    UncheckedIcon="{via:BootstrapIcon Kind=EyeSlash}" />
+                                <via:XToggleButton
+                                    HorizontalAlignment="Left"
+                                    CheckedIcon="{via:BootstrapIcon Kind=StarFill}"
+                                    CheckedVariant="Warning"
+                                    Content="Favorite"
+                                    UncheckedIcon="{via:BootstrapIcon Kind=Star}" />
+                            </via:XWrapPanel>
+                            <via:XBorder
+                                Padding="12"
+                                CornerRadius="6"
+                                Elevation="None"
+                                Variant="Info">
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="{Binding PreviewModeSummary}"
+                                    TextRole="Description" />
+                            </via:XBorder>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Grid.Column="0"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Variants and appearances" TextRole="SectionTitle" />
+                                <via:XWrapPanel HorizontalSpacing="12" VerticalSpacing="12">
+                                    <via:XToggleButton HorizontalAlignment="Left" CheckedVariant="Primary" Content="Primary" IsChecked="True" />
+                                    <via:XToggleButton HorizontalAlignment="Left" CheckedVariant="Success" Content="Success" IsChecked="True" />
+                                    <via:XToggleButton HorizontalAlignment="Left" CheckedVariant="Warning" Content="Warning" IsChecked="True" />
+                                    <via:XToggleButton HorizontalAlignment="Left" CheckedVariant="Danger" Content="Danger" IsChecked="True" />
+                                    <via:XToggleButton HorizontalAlignment="Left" Appearance="Outline" CheckedVariant="Info" Content="Outline" IsChecked="True" />
+                                    <via:XToggleButton HorizontalAlignment="Left" Appearance="Subtle" CheckedVariant="Accent" Content="Subtle" IsChecked="True" />
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Sizes and icon placement" TextRole="SectionTitle" />
+                                <via:XWrapPanel HorizontalSpacing="12" VerticalSpacing="12">
+                                    <via:XToggleButton HorizontalAlignment="Left" Content="Small" Size="Small" />
+                                    <via:XToggleButton HorizontalAlignment="Left" Content="Medium" Size="Medium" />
+                                    <via:XToggleButton HorizontalAlignment="Left" Content="Large" Size="Large" />
+                                    <via:XToggleButton
+                                        HorizontalAlignment="Left"
+                                        CheckedIcon="{via:BootstrapIcon Kind=ArrowRightCircleFill}"
+                                        Content="Right icon"
+                                        IconPlacement="Right"
+                                        IsChecked="True"
+                                        UncheckedIcon="{via:BootstrapIcon Kind=ArrowRightCircle}" />
+                                    <via:XToggleButton
+                                        HorizontalAlignment="Left"
+                                        AutomationProperties.Name="Icon only preview"
+                                        CheckedIcon="{via:BootstrapIcon Kind=EyeFill}"
+                                        IsChecked="True"
+                                        ToolTip="Icon-only toggle"
+                                        UncheckedIcon="{via:BootstrapIcon Kind=EyeSlash}" />
+                                    <via:XToggleButton
+                                        HorizontalAlignment="Left"
+                                        Content="Disabled checked"
+                                        IsChecked="True"
+                                        IsEnabled="False" />
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

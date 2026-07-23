@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageId>VIA.WPF</PackageId>
+		<Title>VIA.WPF</Title>
+		<Version>1.0.0</Version>
+		<Authors>Claus Falkenstein</Authors>
+		<Description>Complete VIA.WPF package for modern .NET 9 WPF applications, including controls, MVVM infrastructure, themes, icons and windowing support.</Description>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentIcons.Common" Version="2.1.328" />
+		<PackageReference Include="FluentIcons.Wpf" Version="2.1.328" />
+		<PackageReference Include="MahApps.Metro.IconPacks.BootstrapIcons" Version="6.2.1" />
+		<PackageReference Include="MahApps.Metro.IconPacks.Core" Version="6.2.1" />
+		<PackageReference Include="MahApps.Metro.IconPacks.FileIcons" Version="6.2.1" />
+		<PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" Version="6.2.1" />
+		<PackageReference Include="MahApps.Metro.IconPacks.FontAwesome6" Version="6.2.1" />
+		<PackageReference Include="MahApps.Metro.IconPacks.Material" Version="6.2.1" />
+		<PackageReference Include="MahApps.Metro.IconPacks.MaterialDesign" Version="6.2.1" />
+		<PackageReference Include="MahApps.Metro.IconPacks.Modern" Version="6.2.1" />
+		<PackageReference Include="MahApps.Metro.IconPacks.PhosphorIcons" Version="6.2.1" />
+		<PackageReference Include="System.Text.Json" Version="10.0.8" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\VIA.WPF.Controls\VIA.WPF.Controls.csproj" />
+		<ProjectReference Include="..\VIA.WPF.Icons\VIA.WPF.Icons.csproj" />
+		<ProjectReference Include="..\VIA.WPF.MVVM\VIA.WPF.MVVM.csproj" />
+		<ProjectReference Include="..\VIA.WPF.Themes\VIA.WPF.Themes.csproj" />
+		<ProjectReference Include="..\VIA.WPF.Windowing\VIA.WPF.Windowing.csproj" />
+		<None Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+</Project>

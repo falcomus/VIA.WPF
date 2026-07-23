@@ -1,0 +1,203 @@
+<!--=====================================================================================================================
+  <copyright file="XLookupComboBoxDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XLookupComboBoxDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XLookupComboBoxDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XLookupComboBox" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="950"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A searchable lookup input for object lists. It supports display paths, selected value paths, editable search text, insert requests, sorting and independent selected item/value binding."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <!--#region ### Lookup scenarios ###-->
+                    <via:XStackPanel Spacing="10">
+                        <via:XTextBlock Text="Lookup scenarios" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            MaxWidth="900"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="Use editable mode for search-oriented lookups. If a typed value is not found, the control can raise RequestInsert so the application can save the new lookup item."
+                            TextRole="Description" />
+
+                        <via:XGrid
+                            ColumnSpacing="22"
+                            Columns="*,*"
+                            RowSpacing="16"
+                            Rows="Auto,Auto,Auto">
+                            <via:XBorder
+                                Padding="16"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Elevation="Low">
+                                <via:XStackPanel Spacing="12">
+                                    <via:XTextBlock Text="Searchable project lookup" TextRole="SectionTitle" />
+                                    <via:XLookupComboBox
+                                        Width="360"
+                                        HorizontalAlignment="Left"
+                                        Description="Type to filter by project name and bind both item and id."
+                                        DisplayMemberPath="Name"
+                                        EmptyOptionText="No project"
+                                        Header="Project"
+                                        Icon="{via:MaterialIcon Kind=FolderOutline}"
+                                        IncludeEmptyOption="True"
+                                        IsEditable="True"
+                                        IsSearchEnabled="True"
+                                        ItemsSource="{Binding Projects}"
+                                        Placeholder="Search project"
+                                        SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                                        SelectedValue="{Binding SelectedProjectId, Mode=TwoWay}"
+                                        SelectedValuePath="Id"
+                                        ShowResetButton="True"
+                                        Variant="Outline" />
+                                    <via:XTextBlock Text="{Binding SelectedProjectId, StringFormat=Selected id: {0}, TargetNullValue=Selected id: -}" TextRole="Description" />
+                                </via:XStackPanel>
+                            </via:XBorder>
+
+                            <via:XBorder
+                                Grid.Column="1"
+                                Padding="16"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Elevation="Low">
+                                <via:XStackPanel Spacing="12">
+                                    <via:XTextBlock Text="Filled and sorted" TextRole="SectionTitle" />
+                                    <via:XLookupComboBox
+                                        Width="360"
+                                        HorizontalAlignment="Left"
+                                        Description="Distinct values with ascending sort."
+                                        DisplayMemberPath="Name"
+                                        Header="Release area"
+                                        Icon="{via:MaterialIcon Kind=Magnify}"
+                                        IsDistinct="True"
+                                        IsEditable="True"
+                                        IsSearchEnabled="True"
+                                        ItemsSource="{Binding Projects}"
+                                        Placeholder="Find area"
+                                        SelectedValuePath="Id"
+                                        ShowResetButton="True"
+                                        SortDirection="Ascending"
+                                        Variant="Filled" />
+                                </via:XStackPanel>
+                            </via:XBorder>
+
+                            <via:XBorder
+                                Grid.Row="1"
+                                Padding="16"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Elevation="Low">
+                                <via:XStackPanel Spacing="12">
+                                    <via:XTextBlock Text="Compact filter" TextRole="SectionTitle" />
+                                    <via:XLookupComboBox
+                                        Width="260"
+                                        HorizontalAlignment="Left"
+                                        DisplayMemberPath="Name"
+                                        Header="Filter"
+                                        ResetIconSize="12"
+                                        Icon="{via:MaterialIcon Kind=FilterOutline}"
+                                        ResetButtonForeground="{DynamicResource {x:Static via:XBrushKeys.Danger}}"
+                                        ItemsSource="{Binding Projects}"
+                                        Placeholder="Any project"
+                                        SelectedValuePath="Id"
+                                        ShowResetButton="True"
+                                        Size="Small" />
+                                </via:XStackPanel>
+                            </via:XBorder>
+
+                            <via:XBorder
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Padding="16"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Elevation="Low">
+                                <via:XStackPanel Spacing="12">
+                                    <via:XTextBlock Text="RequestInsert for new values" TextRole="SectionTitle" />
+                                    <via:XLookupComboBox
+                                        HorizontalAlignment="Left"
+                                        Width="360"
+                                        AllowInsertRequest="True"
+                                        Description="Type a project that does not exist and press Enter. The demo command inserts and selects it."
+                                        DisplayMemberPath="Name"
+                                        Header="Project"
+                                        Icon="{via:BootstrapIcon Kind=PlusCircleFill}"
+                                        InsertRequestTrigger="EnterOrLostFocus"
+                                        IsEditable="True"
+                                        IsSearchEnabled="True"
+                                        ItemsSource="{Binding Projects}"
+                                        Placeholder="Type a new project"
+                                        RequestInsertCommand="{Binding RequestProjectInsertCommand}"
+                                        SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                                        SelectedValue="{Binding SelectedProjectId, Mode=TwoWay}"
+                                        SelectedValuePath="Id"
+                                        ShowResetButton="True"
+                                        Variant="Outline" />
+
+                                    <via:XBorder
+                                        Padding="10"
+                                        Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
+                                        BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                        BorderThickness="1"
+                                        CornerRadius="6">
+                                        <via:XStackPanel Spacing="4">
+                                            <via:XTextBlock Text="{Binding InsertStatusMessage}" TextRole="Description" />
+                                        </via:XStackPanel>
+                                    </via:XBorder>
+                                </via:XStackPanel>
+                            </via:XBorder>
+
+                            <via:XBorder
+                                Grid.Row="2"
+                                Grid.ColumnSpan="2"
+                                Padding="16"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Elevation="Low">
+                                <via:XStackPanel Spacing="8">
+                                    <via:XTextBlock Text="Binding note" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="SelectedItem and SelectedValue can be used independently. That keeps view models free to work either with full objects or stable database ids. Insert requests only report the desired new lookup text; the application remains responsible for validation, saving and refreshing the ItemsSource."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+                            </via:XBorder>
+                        </via:XGrid>
+                    </via:XStackPanel>
+                    <!--#endregion-->
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

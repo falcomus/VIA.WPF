@@ -1,0 +1,182 @@
+<!--=====================================================================================================================
+  <copyright file="XBadgeDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XBadgeDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XBadgeDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="8,0,12,22"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Spacing="18">
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XBadge" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="Compact status, metadata and counter labels. Badges should be short, semantic and visually lighter than buttons."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Grid.Column="0"
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Semantic variants" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Use variants to describe status, not just decoration. The default appearance stays intentionally subtle."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+                                </via:XStackPanel>
+
+                                <via:XWrapPanel HorizontalAlignment="Left" HorizontalSpacing="8" VerticalSpacing="8">
+                                    <via:XBadge Content="Default" />
+                                    <via:XBadge Content="Primary" Variant="Primary" />
+                                    <via:XBadge Content="Accent" Variant="Accent" />
+                                    <via:XBadge Content="Success" Variant="Success" />
+                                    <via:XBadge Content="Warning" Variant="Warning" />
+                                    <via:XBadge Content="Danger" Variant="Danger" />
+                                    <via:XBadge Content="Info" Variant="Info" />
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low"
+                            Variant="Primary">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Appearance modes" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Solid is strongest. Outline, subtle and very subtle are better for dense metadata."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+                                </via:XStackPanel>
+
+                                <via:XWrapPanel HorizontalAlignment="Left" HorizontalSpacing="8" VerticalSpacing="8">
+                                    <via:XBadge Appearance="Solid" Content="Solid" Variant="Primary" />
+                                    <via:XBadge Appearance="Outline" Content="Outline" Variant="Primary" />
+                                    <via:XBadge Appearance="Subtle" Content="Subtle" Variant="Primary" />
+                                    <via:XBadge Appearance="VerySubtle" Content="Very subtle" Variant="Primary" />
+                                    <via:XBadge Appearance="Ghost" Content="Ghost" Variant="Primary" />
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Grid.Column="0"
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low"
+                            Variant="Info">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Sizes" TextRole="SectionTitle" />
+                                <via:XWrapPanel HorizontalAlignment="Left" HorizontalSpacing="8" VerticalSpacing="8">
+                                    <via:XBadge Content="Small" Size="Small" Variant="Info" />
+                                    <via:XBadge Content="Medium" Size="Medium" Variant="Info" />
+                                    <via:XBadge Content="Large" Size="Large" Variant="Info" />
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low"
+                            Variant="Accent">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Elevation" TextRole="SectionTitle" />
+                                <via:XWrapPanel HorizontalAlignment="Left" HorizontalSpacing="12" VerticalSpacing="12">
+                                    <via:XBadge Content="None" Elevation="None" Variant="Accent" />
+                                    <via:XBadge Content="Low" Elevation="Low" Variant="Accent" />
+                                    <via:XBadge Content="Medium" Elevation="Medium" Variant="Accent" />
+                                    <via:XBadge Content="High" Elevation="High" Variant="Accent" />
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XBorder
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="14">
+                            <via:XStackPanel Spacing="4">
+                                <via:XTextBlock Text="Practical combinations" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Examples for tables, cards and detail headers. Keep labels short enough that they still scan like metadata."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+                            </via:XStackPanel>
+
+                            <via:XGrid ColumnSpacing="18" Columns="*,*">
+                                <via:XStackPanel Grid.Column="0" Spacing="10">
+                                    <via:XTextBlock Text="Entity status" FontWeight="SemiBold" TextRole="Body" />
+                                    <via:XWrapPanel HorizontalAlignment="Left" HorizontalSpacing="8" VerticalSpacing="8">
+                                        <via:XBadge Appearance="Solid" Content="Online" Variant="Success" />
+                                        <via:XBadge Appearance="Subtle" Content="Draft" Variant="Warning" />
+                                        <via:XBadge Appearance="VerySubtle" Content="Readonly" Variant="Default" />
+                                        <via:XBadge Appearance="Outline" Content="Beta" Variant="Info" />
+                                        <via:XBadge Appearance="Solid" Content="Blocked" Elevation="Low" Variant="Danger" />
+                                    </via:XWrapPanel>
+                                </via:XStackPanel>
+
+                                <via:XStackPanel Grid.Column="1" Spacing="10">
+                                    <via:XTextBlock Text="Counters and metadata" FontWeight="SemiBold" TextRole="Body" />
+                                    <via:XWrapPanel HorizontalAlignment="Left" HorizontalSpacing="8" VerticalSpacing="8">
+                                        <via:XBadge Content="12 open" Variant="Info" />
+                                        <via:XBadge Appearance="Subtle" Content="3 overdue" Variant="Danger" />
+                                        <via:XBadge Appearance="Outline" Content="v1.4" Variant="Default" />
+                                        <via:XBadge Appearance="VerySubtle" Content="Internal" Variant="Accent" />
+                                        <via:XBadge Appearance="Solid" Content="New" Size="Small" Variant="Primary" />
+                                    </via:XWrapPanel>
+                                </via:XStackPanel>
+                            </via:XGrid>
+                        </via:XStackPanel>
+                    </via:XBorder>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

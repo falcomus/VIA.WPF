@@ -1,0 +1,193 @@
+<!--=====================================================================================================================
+  <copyright file="XCheckBoxDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XCheckBoxDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XCheckBoxDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XCheckBox" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A themed Boolean option control for settings, filters and multi-selection states. It supports stable sizing, indeterminate values, disabled states and direct MVVM binding."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XBorder
+                        Padding="20"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="14">
+                            <via:XTextBlock Text="Basic states" TextRole="SectionTitle" />
+                            <via:XWrapPanel HorizontalSpacing="28" VerticalSpacing="12">
+                                <via:XCheckBox
+                                    HorizontalAlignment="Left"
+                                    Content="Enable notifications"
+                                    IsChecked="{Binding NotificationsEnabled, Mode=TwoWay}" />
+                                <via:XCheckBox HorizontalAlignment="Left" Content="Use compact mode" />
+                                <via:XCheckBox
+                                    HorizontalAlignment="Left"
+                                    Content="Remember filters"
+                                    IsChecked="True" />
+                                <via:XCheckBox
+                                    HorizontalAlignment="Left"
+                                    Content="Partial selection"
+                                    IsChecked="{x:Null}"
+                                    IsThreeState="True" />
+                                <via:XCheckBox
+                                    HorizontalAlignment="Left"
+                                    Content="Disabled unchecked"
+                                    IsEnabled="False" />
+                                <via:XCheckBox
+                                    HorizontalAlignment="Left"
+                                    Content="Disabled checked"
+                                    IsChecked="True"
+                                    IsEnabled="False" />
+                            </via:XWrapPanel>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*,*">
+                        <via:XBorder
+                            Grid.Column="0"
+                            Padding="18"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="10">
+                                <via:XTextBlock Text="Small" TextRole="SectionTitle" />
+                                <via:XCheckBox HorizontalAlignment="Left" Content="Compact option" Size="Small" />
+                                <via:XCheckBox
+                                    HorizontalAlignment="Left"
+                                    Content="Compact checked"
+                                    IsChecked="True"
+                                    Size="Small" />
+                                <via:XCheckBox
+                                    HorizontalAlignment="Left"
+                                    Content="Compact partial"
+                                    IsChecked="{x:Null}"
+                                    IsThreeState="True"
+                                    Size="Small" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="18"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="10">
+                                <via:XTextBlock Text="Medium" TextRole="SectionTitle" />
+                                <via:XCheckBox HorizontalAlignment="Left" Content="Default option" Size="Medium" />
+                                <via:XCheckBox
+                                    HorizontalAlignment="Left"
+                                    Content="Default checked"
+                                    IsChecked="True"
+                                    Size="Medium" />
+                                <via:XCheckBox
+                                    HorizontalAlignment="Left"
+                                    Content="Default partial"
+                                    IsChecked="{x:Null}"
+                                    IsThreeState="True"
+                                    Size="Medium" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="2"
+                            Padding="18"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="10">
+                                <via:XTextBlock Text="Large" TextRole="SectionTitle" />
+                                <via:XCheckBox HorizontalAlignment="Left" Content="Large option" Size="Large" />
+                                <via:XCheckBox
+                                    HorizontalAlignment="Left"
+                                    Content="Large checked"
+                                    IsChecked="True"
+                                    Size="Large" />
+                                <via:XCheckBox
+                                    HorizontalAlignment="Left"
+                                    Content="Large partial"
+                                    IsChecked="{x:Null}"
+                                    IsThreeState="True"
+                                    Size="Large" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Grid.Column="0"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="12">
+                                <via:XTextBlock Text="Indicator shape" TextRole="SectionTitle" />
+                                <via:XCheckBox HorizontalAlignment="Left" Content="Sharp indicator" CornerRadius="0" />
+                                <via:XCheckBox
+                                    HorizontalAlignment="Left"
+                                    Content="Soft indicator"
+                                    CornerRadius="3"
+                                    IsChecked="True" />
+                                <via:XCheckBox
+                                    HorizontalAlignment="Left"
+                                    Content="Rounded indicator"
+                                    CornerRadius="8"
+                                    IsChecked="True" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="12">
+                                <via:XTextBlock Text="MVVM binding" TextRole="SectionTitle" />
+                                <via:XCheckBox
+                                    HorizontalAlignment="Left"
+                                    Content="Notifications enabled"
+                                    IsChecked="{Binding NotificationsEnabled, Mode=TwoWay}" />
+                                <via:XBorder
+                                    Padding="12"
+                                    CornerRadius="6"
+                                    Elevation="None"
+                                    Variant="Info">
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.InfoText}}"
+                                        Text="{Binding NotificationSummary, FallbackValue='Description'}"
+                                        TextRole="Description" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

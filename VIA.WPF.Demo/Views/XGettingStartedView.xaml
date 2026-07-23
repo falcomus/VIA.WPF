@@ -1,0 +1,791 @@
+<!--=====================================================================================================================
+  <copyright file="XGettingStartedView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XGettingStartedView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:via="http://schemas.via.dev/wpf"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style x:Key="SectionTitleTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.BackgroundText}}" />
+        </Style>
+
+        <Style x:Key="SectionDescriptionTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.BorderText}}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+
+        <Style x:Key="CardTitleTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.SurfaceText}}" />
+        </Style>
+
+        <Style x:Key="CardDescriptionTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.BorderText}}" />
+            <Setter Property="LineHeight" Value="18" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+
+        <Style x:Key="CodeTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Cascadia Code, Consolas, Courier New" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.SurfaceText}}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+    </UserControl.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+
+        <via:XStackPanel Margin="36,28,36,52" Spacing="26">
+
+            <!--#region ### Hero ###-->
+            <via:XBorder
+                Padding="30"
+                Appearance="VerySubtle"
+                BorderThickness="1"
+                CornerRadius="8"
+                Elevation="Low"
+                Variant="Primary">
+                <via:XGrid ColumnSpacing="28" Columns="2*,*">
+                    <via:XStackPanel Spacing="18">
+                        <via:XStackPanel Spacing="10">
+                            <via:XStackPanel Orientation="Horizontal" Spacing="8">
+                                <via:XBadge
+                                    Appearance="Subtle"
+                                    Content=".NET 9"
+                                    Variant="Primary" />
+                                <via:XBadge
+                                    Appearance="Outline"
+                                    Content="WPF"
+                                    Variant="Default" />
+                                <via:XBadge
+                                    Appearance="Outline"
+                                    Content="MIT"
+                                    Variant="Success" />
+                            </via:XStackPanel>
+
+                            <TextBlock
+                                FontSize="34"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource {x:Static via:XBrushKeys.BackgroundText}}"
+                                Text="Build modern WPF apps with VIA.WPF"
+                                TextWrapping="Wrap" />
+
+                            <TextBlock
+                                MaxWidth="680"
+                                HorizontalAlignment="Left"
+                                FontSize="15"
+                                Foreground="{DynamicResource {x:Static via:XBrushKeys.BorderText}}"
+                                LineHeight="23"
+                                Text="A themed control library for professional desktop applications: consistent controls, semantic variants, Light/Dark themes, icon integration, MVVM helpers and validation support."
+                                TextWrapping="Wrap" />
+                        </via:XStackPanel>
+
+                        <via:XGrid ColumnSpacing="12" Columns="Auto,Auto,Auto">
+                            <via:XBorder
+                                Padding="14,10"
+                                Appearance="Subtle"
+                                BorderThickness="1"
+                                CornerRadius="6"
+                                Variant="Primary">
+                                <via:XStackPanel Orientation="Horizontal" Spacing="8">
+                                    <via:XMaterialIcon
+                                        VerticalAlignment="Center"
+                                        Kind="PackageVariant"
+                                        Size="16" />
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        FontWeight="SemiBold"
+                                        Text="Combined package" />
+                                </via:XStackPanel>
+                            </via:XBorder>
+
+                            <via:XBorder
+                                Grid.Column="1"
+                                Padding="14,10"
+                                Appearance="VerySubtle"
+                                BorderThickness="1"
+                                CornerRadius="6"
+                                Variant="Success">
+                                <via:XStackPanel Orientation="Horizontal" Spacing="8">
+                                    <via:XMaterialIcon
+                                        VerticalAlignment="Center"
+                                        Kind="CheckCircleOutline"
+                                        Size="16" />
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        FontWeight="SemiBold"
+                                        Text="Theme-ready" />
+                                </via:XStackPanel>
+                            </via:XBorder>
+
+                            <via:XBorder
+                                Grid.Column="2"
+                                Padding="14,10"
+                                Appearance="VerySubtle"
+                                BorderThickness="1"
+                                CornerRadius="6"
+                                Variant="Info">
+                                <via:XStackPanel Orientation="Horizontal" Spacing="8">
+                                    <via:XMaterialIcon
+                                        VerticalAlignment="Center"
+                                        Kind="ViewDashboardOutline"
+                                        Size="16" />
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        FontWeight="SemiBold"
+                                        Text="Demo included" />
+                                </via:XStackPanel>
+                            </via:XBorder>
+                        </via:XGrid>
+                    </via:XStackPanel>
+
+                    <via:XBorder
+                        Grid.Column="1"
+                        Padding="20"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Variant="Default">
+                        <via:XStackPanel Spacing="14">
+                            <TextBlock Style="{StaticResource CardTitleTextBlockStyle}" Text="Recommended start" />
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="Install the meta-package first. Split packages later only when you want tighter dependency boundaries." />
+
+                            <via:XBorder
+                                Padding="14,12"
+                                Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderThickness="1"
+                                CornerRadius="6">
+                                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Text="dotnet add package VIA.WPF" />
+                            </via:XBorder>
+
+                            <via:XSeparator Orientation="Horizontal" />
+
+                            <via:XStackPanel Spacing="8">
+                                <via:XStackPanel Orientation="Horizontal" Spacing="8">
+                                    <via:XMaterialIcon
+                                        VerticalAlignment="Center"
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.Success}}"
+                                        Kind="CheckCircleOutline"
+                                        Size="15" />
+                                    <TextBlock VerticalAlignment="Center" Text="Controls, themes and icons" />
+                                </via:XStackPanel>
+                                <via:XStackPanel Orientation="Horizontal" Spacing="8">
+                                    <via:XMaterialIcon
+                                        VerticalAlignment="Center"
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.Success}}"
+                                        Kind="CheckCircleOutline"
+                                        Size="15" />
+                                    <TextBlock VerticalAlignment="Center" Text="MVVM validation helpers" />
+                                </via:XStackPanel>
+                                <via:XStackPanel Orientation="Horizontal" Spacing="8">
+                                    <via:XMaterialIcon
+                                        VerticalAlignment="Center"
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.Success}}"
+                                        Kind="CheckCircleOutline"
+                                        Size="15" />
+                                    <TextBlock VerticalAlignment="Center" Text="Windowing package" />
+                                </via:XStackPanel>
+                            </via:XStackPanel>
+                        </via:XStackPanel>
+                    </via:XBorder>
+                </via:XGrid>
+            </via:XBorder>
+            <!--#endregion-->
+
+            <!--#region ### Installation ###-->
+            <via:XStackPanel Spacing="14">
+                <via:XStackPanel Spacing="4">
+                    <TextBlock Style="{StaticResource SectionTitleTextBlockStyle}" Text="Installation" />
+                    <TextBlock Style="{StaticResource SectionDescriptionTextBlockStyle}" Text="Use the combined package for applications. Use individual packages when you intentionally want a smaller dependency surface." />
+                </via:XStackPanel>
+
+                <via:XGrid ColumnSpacing="18" Columns="*,*">
+                    <via:XBorder
+                        Padding="20"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low"
+                        Variant="Success">
+                        <via:XStackPanel Spacing="14">
+                            <via:XStackPanel Orientation="Horizontal" Spacing="10">
+                                <via:XMaterialIcon
+                                    VerticalAlignment="Center"
+                                    Kind="PackageVariantClosed"
+                                    Size="18" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource CardTitleTextBlockStyle}"
+                                    Text="Application package" />
+                                <via:XBadge
+                                    Appearance="Subtle"
+                                    Content="Recommended"
+                                    Variant="Success" />
+                            </via:XStackPanel>
+
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="One reference brings in the full stack: Controls, Themes, Icons, MVVM and Windowing." />
+
+                            <via:XBorder
+                                Padding="14,12"
+                                Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderThickness="1"
+                                CornerRadius="6">
+                                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Text="dotnet add package VIA.WPF" />
+                            </via:XBorder>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder
+                        Grid.Column="1"
+                        Padding="20"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low"
+                        Variant="Default">
+                        <via:XStackPanel Spacing="14">
+                            <via:XStackPanel Orientation="Horizontal" Spacing="10">
+                                <via:XMaterialIcon
+                                    VerticalAlignment="Center"
+                                    Kind="PackageVariant"
+                                    Size="18" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource CardTitleTextBlockStyle}"
+                                    Text="Selective packages" />
+                            </via:XStackPanel>
+
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="Useful for libraries or internal packages where every dependency should be explicit." />
+
+                            <via:XGrid
+                                ColumnSpacing="8"
+                                Columns="*,*"
+                                RowSpacing="8" 
+                                Rows="Auto,Auto,Auto">
+                                <via:XBadge
+                                    Padding="8"
+                                    Appearance="Outline"
+                                    Content="VIA.WPF.Controls"
+                                    Variant="Primary" />
+                                <via:XBadge
+                                    Padding="8"
+                                    Grid.Column="1"
+                                    Appearance="Outline"
+                                    Content="VIA.WPF.Themes"
+                                    Variant="Info" />
+                                <via:XBadge
+                                    Grid.Row="1"
+                                    Padding="8"
+                                    Appearance="Outline"
+                                    Content="VIA.WPF.Icons"
+                                    Variant="Accent" />
+                                <via:XBadge
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Appearance="Outline"
+                                    Content="VIA.WPF.MVVM"
+                                    Variant="Success" />
+                                <via:XBadge
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="2"
+                                    Appearance="Outline" Padding="8"
+                                    Content="VIA.WPF.Windowing"
+                                    Variant="Warning" />
+                            </via:XGrid>
+                        </via:XStackPanel>
+                    </via:XBorder>
+                </via:XGrid>
+            </via:XStackPanel>
+            <!--#endregion-->
+
+            <!--#region ### Quick Setup ###-->
+            <via:XStackPanel Spacing="14">
+                <via:XStackPanel Spacing="4">
+                    <TextBlock Style="{StaticResource SectionTitleTextBlockStyle}" Text="Quick setup" />
+                    <TextBlock Style="{StaticResource SectionDescriptionTextBlockStyle}" Text="The minimum setup is intentionally small: reference resources, initialize themes and use the via XAML namespace." />
+                </via:XStackPanel>
+
+                <via:XGrid ColumnSpacing="18" Columns="*,*,*">
+                    <via:XBorder
+                        Padding="20"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low"
+                        Variant="Primary">
+                        <via:XStackPanel Spacing="12">
+                            <via:XStackPanel Orientation="Horizontal" Spacing="10">
+                                <via:XBorder
+                                    Width="30"
+                                    Height="30"
+                                    Padding="0,0,1,2"
+                                    Appearance="Solid"
+                                    BorderThickness="0"
+                                    CornerRadius="15"
+                                    Variant="Primary">
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontWeight="Bold"
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.PrimaryText}}"
+                                        Text="1" />
+                                </via:XBorder>
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource CardTitleTextBlockStyle}"
+                                    Text="Add namespaces" />
+                            </via:XStackPanel>
+
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="Use the VIA XML namespace in application and view XAML files." />
+
+                            <via:XBorder
+                                Padding="12,10"
+                                Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderThickness="1"
+                                CornerRadius="9">
+                                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Text="xmlns:via=&quot;http://schemas.via.dev/wpf&quot;" />
+                            </via:XBorder>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder
+                        Grid.Column="1"
+                        Padding="20"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low"
+                        Variant="Info">
+                        <via:XStackPanel Spacing="12">
+                            <via:XStackPanel Orientation="Horizontal" Spacing="10">
+                                <via:XBorder
+                                    Width="30"
+                                    Height="30"
+                                    Padding="0"
+                                    Appearance="Solid"
+                                    BorderThickness="0"
+                                    CornerRadius="15"
+                                    Variant="Info">
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontWeight="Bold"
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.InfoText}}"
+                                        Text="2" />
+                                </via:XBorder>
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource CardTitleTextBlockStyle}"
+                                    Text="Initialize theme service" />
+                            </via:XStackPanel>
+
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="Call the theme service once when the application starts." />
+
+                            <via:XBorder
+                                Padding="12,10"
+                                Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderThickness="1"
+                                CornerRadius="9">
+                                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Text="XThemeService.Initialize();" />
+                            </via:XBorder>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder
+                        Grid.Column="2"
+                        Padding="20"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low"
+                        Variant="Accent">
+                        <via:XStackPanel Spacing="12">
+                            <via:XStackPanel Orientation="Horizontal" Spacing="10">
+                                <via:XBorder
+                                    Width="30"
+                                    Height="30"
+                                    Padding="0,0,1,2"
+                                    Appearance="Solid"
+                                    BorderThickness="0"
+                                    CornerRadius="15"
+                                    Variant="Accent">
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontWeight="Bold"
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.AccentText}}"
+                                        Text="3" />
+                                </via:XBorder>
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource CardTitleTextBlockStyle}"
+                                    Text="Use themed controls" />
+                            </via:XStackPanel>
+
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="Start with a normal control and add size, variant and icon settings where they improve clarity." />
+
+                            <via:XBorder
+                                Padding="12,10"
+                                Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderThickness="1"
+                                CornerRadius="9">
+                                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Text="&lt;via:XButton Content=&quot;Save&quot; Variant=&quot;Primary&quot; /&gt;" />
+                            </via:XBorder>
+                        </via:XStackPanel>
+                    </via:XBorder>
+                </via:XGrid>
+            </via:XStackPanel>
+            <!--#endregion-->
+
+            <!--#region ### First Form ###-->
+            <via:XStackPanel Spacing="14">
+                <via:XStackPanel Spacing="4">
+                    <TextBlock Style="{StaticResource SectionTitleTextBlockStyle}" Text="First form" />
+                    <TextBlock Style="{StaticResource SectionDescriptionTextBlockStyle}" Text="A small form shows the intended baseline: readable labels, calm borders, semantic actions and no layout jumps." />
+                </via:XStackPanel>
+
+                <via:XBorder
+                    Padding="22"
+                    Appearance="VerySubtle"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Elevation="Low"
+                    Variant="Default">
+                    <via:XGrid ColumnSpacing="24" Columns="*,Auto">
+                        <via:XStackPanel Spacing="14">
+                            <via:XGrid ColumnSpacing="14" Columns="*,*">
+                                <via:XTextBox
+                                    Header="Project name"
+                                    LeadingIcon="{via:MaterialIcon Kind=FolderOutline}"
+                                    Placeholder="Inventory dashboard"
+                                    Text="Inventory dashboard" />
+
+                                <via:XComboBox
+                                    Grid.Column="1"
+                                    Header="Priority"
+                                    SelectedIndex="1">
+                                    <via:XComboBoxItem Content="Low" />
+                                    <via:XComboBoxItem Content="Normal" />
+                                    <via:XComboBoxItem Content="High" />
+                                </via:XComboBox>
+                            </via:XGrid>
+
+                            <via:XTextBox
+                                Header="Description"
+                                LeadingIcon="{via:MaterialIcon Kind=TextBoxOutline}"
+                                Placeholder="Short project description"
+                                Text="Modernize the WPF front-end and align all controls with the VIA theme." />
+
+                            <via:XWrapPanel HorizontalSpacing="18" VerticalSpacing="10">
+                                <via:XCheckBox Content="Enable validation" IsChecked="True" />
+                                <via:XToggleSwitch Content="Dark-mode ready" IsChecked="True" />
+                                <via:XRadioButton
+                                    Content="MVVM first"
+                                    GroupName="GettingStartedApproach"
+                                    IsChecked="True" />
+                            </via:XWrapPanel>
+                        </via:XStackPanel>
+
+                        <via:XStackPanel
+                            Grid.Column="1"
+                            Width="180"
+                            VerticalAlignment="Bottom"
+                            Spacing="10">
+                            <via:XButton
+                                Appearance="Solid"
+                                Content="Save project"
+                                Icon="{via:MaterialIcon Kind=ContentSaveOutline}"
+                                StretchContent="True"
+                                Variant="Primary" />
+                            <via:XButton
+                                Appearance="Outline"
+                                Content="Cancel"
+                                StretchContent="True" />
+                        </via:XStackPanel>
+                    </via:XGrid>
+                </via:XBorder>
+            </via:XStackPanel>
+            <!--#endregion-->
+
+            <!--#region ### Core Concepts ###-->
+            <via:XStackPanel Spacing="14">
+                <via:XStackPanel Spacing="4">
+                    <TextBlock Style="{StaticResource SectionTitleTextBlockStyle}" Text="Core concepts" />
+                    <TextBlock Style="{StaticResource SectionDescriptionTextBlockStyle}" Text="Most controls share the same language: size, variant, appearance, icon placement and theme resources." />
+                </via:XStackPanel>
+
+                <via:XGrid
+                    ColumnSpacing="18"
+                    Columns="*,*,*"
+                    RowSpacing="18"
+                    Rows="Auto,Auto">
+                    <via:XBorder
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low"
+                        Variant="Primary">
+                        <via:XStackPanel Spacing="8">
+                            <via:XMaterialIcon Kind="Resize" Size="20" />
+                            <TextBlock Style="{StaticResource CardTitleTextBlockStyle}" Text="Size" />
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="Small, Medium and Large give controls predictable density without hand-tuned heights." />
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder
+                        Grid.Column="1"
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low"
+                        Variant="Accent">
+                        <via:XStackPanel Spacing="8">
+                            <via:XMaterialIcon Kind="PaletteOutline" Size="20" />
+                            <TextBlock Style="{StaticResource CardTitleTextBlockStyle}" Text="Variant" />
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="Default, Primary, Success, Warning, Danger and Info communicate intent consistently." />
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder Elevation="Low"
+                        Grid.Column="2"
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Variant="Info">
+                        <via:XStackPanel Spacing="8">
+                            <via:XMaterialIcon Kind="LayersOutline" Size="20" />
+                            <TextBlock Style="{StaticResource CardTitleTextBlockStyle}" Text="Appearance" />
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="Solid, Outline, Subtle, VerySubtle and Ghost cover prominent and quiet UI states." />
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder Elevation="Low"
+                        Grid.Row="1"
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Variant="Success">
+                        <via:XStackPanel Spacing="8">
+                            <via:XMaterialIcon Kind="VectorSquare" Size="20" />
+                            <TextBlock Style="{StaticResource CardTitleTextBlockStyle}" Text="Icons" />
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="XIcon and icon markup extensions keep actions readable without custom image assets." />
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder Elevation="Low"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Variant="Warning">
+                        <via:XStackPanel Spacing="8">
+                            <via:XMaterialIcon Kind="ThemeLightDark" Size="20" />
+                            <TextBlock Style="{StaticResource CardTitleTextBlockStyle}" Text="Themes" />
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="Controls use brush keys so Light/Dark mode and presets flow through the entire UI." />
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder Elevation="Low"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Variant="Danger">
+                        <via:XStackPanel Spacing="8">
+                            <via:XMaterialIcon Kind="ShieldCheckOutline" Size="20" />
+                            <TextBlock Style="{StaticResource CardTitleTextBlockStyle}" Text="Validation" />
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="The MVVM package centralizes validation messages, severity and localization." />
+                        </via:XStackPanel>
+                    </via:XBorder>
+                </via:XGrid>
+            </via:XStackPanel>
+            <!--#endregion-->
+
+            <!--#region ### Package Map ###-->
+            <via:XStackPanel Spacing="14">
+                <via:XStackPanel Spacing="4">
+                    <TextBlock Style="{StaticResource SectionTitleTextBlockStyle}" Text="Package map" />
+                    <TextBlock Style="{StaticResource SectionDescriptionTextBlockStyle}" Text="The library is split by responsibility but designed to work as one cohesive toolkit." />
+                </via:XStackPanel>
+
+                <via:XUniformGrid
+                    ColumnSpacing="16"
+                    Columns="3"
+                    RowSpacing="16">
+                    <via:XBorder
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Variant="Primary"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="8">
+                            <TextBlock Style="{StaticResource CardTitleTextBlockStyle}" Text="VIA.WPF.Controls" />
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="Buttons, inputs, layout helpers, navigation controls and data-oriented components." />
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder Elevation="Low"
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Variant="Info">
+                        <via:XStackPanel Spacing="8">
+                            <TextBlock Style="{StaticResource CardTitleTextBlockStyle}" Text="VIA.WPF.Themes" />
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="Brush keys, theme presets, Light/Dark mode and theme service infrastructure." />
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder Elevation="Low"
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Variant="Accent">
+                        <via:XStackPanel Spacing="8">
+                            <TextBlock Style="{StaticResource CardTitleTextBlockStyle}" Text="VIA.WPF.Icons" />
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="Unified icon controls and markup extensions for supported icon packs." />
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder Elevation="Low"
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Variant="Success">
+                        <via:XStackPanel Spacing="8">
+                            <TextBlock Style="{StaticResource CardTitleTextBlockStyle}" Text="VIA.WPF.MVVM" />
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="Observable base classes, validation context, localization and messenger services." />
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder Elevation="Low"
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Variant="Warning">
+                        <via:XStackPanel Spacing="8">
+                            <TextBlock Style="{StaticResource CardTitleTextBlockStyle}" Text="VIA.WPF.Windowing" />
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="XWindow, custom chrome, flyouts, overlays, status areas and theme-aware shell UI." />
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder Elevation="Low"
+                        Padding="18"
+                        Appearance="Subtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Variant="Default">
+                        <via:XStackPanel Spacing="8">
+                            <TextBlock Style="{StaticResource CardTitleTextBlockStyle}" Text="VIA.WPF" />
+                            <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="Convenience meta-package for application projects. Start here unless you have a reason not to." />
+                            <via:XBadge
+                                HorizontalAlignment="Left"
+                                Appearance="Subtle"
+                                Content="Start here"
+                                Variant="Primary" />
+                        </via:XStackPanel>
+                    </via:XBorder>
+                </via:XUniformGrid>
+            </via:XStackPanel>
+            <!--#endregion-->
+
+            <!--#region ### Requirements ###-->
+            <via:XGrid ColumnSpacing="18" Columns="*,*">
+                <via:XBorder
+                    Padding="20"
+                    Appearance="VerySubtle"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Variant="Success"
+                    Elevation="Low">
+                    <via:XStackPanel Spacing="12">
+                        <TextBlock Style="{StaticResource CardTitleTextBlockStyle}" Text="Requirements" />
+
+                        <via:XStackPanel Spacing="8">
+                            <via:XStackPanel Orientation="Horizontal" Spacing="8">
+                                <via:XMaterialIcon
+                                    VerticalAlignment="Center"
+                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.Success}}"
+                                    Kind="CheckCircleOutline"
+                                    Size="15" />
+                                <TextBlock Text=".NET 9 or later" />
+                            </via:XStackPanel>
+                            <via:XStackPanel Orientation="Horizontal" Spacing="8">
+                                <via:XMaterialIcon
+                                    VerticalAlignment="Center"
+                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.Success}}"
+                                    Kind="CheckCircleOutline"
+                                    Size="15" />
+                                <TextBlock Text="WPF desktop project" />
+                            </via:XStackPanel>
+                            <via:XStackPanel Orientation="Horizontal" Spacing="8">
+                                <via:XMaterialIcon
+                                    VerticalAlignment="Center"
+                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.Success}}"
+                                    Kind="CheckCircleOutline"
+                                    Size="15" />
+                                <TextBlock Text="Windows target framework" />
+                            </via:XStackPanel>
+                        </via:XStackPanel>
+                    </via:XStackPanel>
+                </via:XBorder>
+
+                <via:XBorder Elevation="Low"
+                    Grid.Column="1"
+                    Padding="20"
+                    Appearance="VerySubtle"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Variant="Default">
+                    <via:XStackPanel Spacing="12">
+                        <TextBlock Style="{StaticResource CardTitleTextBlockStyle}" Text="License and credits" />
+                        <TextBlock Style="{StaticResource CardDescriptionTextBlockStyle}" Text="VIA.WPF is released under the MIT license. Third-party icon packages keep their own licenses and are documented separately." />
+                        <via:XStackPanel Orientation="Horizontal" Spacing="8">
+                            <via:XBadge
+                                Appearance="Outline"
+                                Content="MIT License"
+                                Variant="Success" />
+                            <via:XBadge
+                                Appearance="Outline"
+                                Content="Third-party notices"
+                                Variant="Default" />
+                        </via:XStackPanel>
+                    </via:XStackPanel>
+                </via:XBorder>
+            </via:XGrid>
+            <!--#endregion-->
+
+        </via:XStackPanel>
+    </ScrollViewer>
+</UserControl>

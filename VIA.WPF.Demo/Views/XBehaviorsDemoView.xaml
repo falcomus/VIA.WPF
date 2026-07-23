@@ -1,0 +1,171 @@
+<!--=====================================================================================================================
+  <copyright file="XBehaviorsDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XBehaviorsDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="clr-namespace:VIA.WPF.Behaviors;assembly=VIA.WPF.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XBehaviorsDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="Behaviors" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="Attached behaviors add common interaction patterns without custom code-behind: select-all, commit-on-enter, key commands, double-click commands and drag/drop helpers."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="12">
+                                <via:XTextBlock Text="TextBox behaviors" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Click into the first field. The text is selected automatically; Enter commits the binding and moves focus."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+
+                                <via:XTextBox
+                                    Width="420"
+                                    HorizontalAlignment="Left"
+                                    Header="Select all + commit on enter"
+                                    behaviors:SelectAllTextBoxBehavior.IsEnabled="True"
+                                    behaviors:TextBoxCommitOnEnterBehavior.IsEnabled="True"
+                                    behaviors:TextBoxCommitOnEnterBehavior.MoveFocusAfterCommit="True"
+                                    Text="{Binding SampleText, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+
+                                <via:XTextBox
+                                    Width="420"
+                                    HorizontalAlignment="Left"
+                                    Header="Next focus target"
+                                    Text="This field receives focus after Enter." />
+
+                                <via:XBorder
+                                    Padding="12"
+                                    Appearance="Subtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="behaviors:SelectAllTextBoxBehavior.IsEnabled=&quot;True&quot;"
+                                        TextRole="Code"
+                                        TextWrapping="Wrap" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="12">
+                                <via:XTextBlock Text="Keyboard and mouse commands" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Focus the command field and press Enter or Escape. Double-click an action below to execute the configured command."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+
+                                <via:XTextBox
+                                    Width="420"
+                                    HorizontalAlignment="Left"
+                                    Header="Enter / Escape command"
+                                    behaviors:KeyCommandBehavior.EnterCommand="{Binding ConfirmCommand}"
+                                    behaviors:KeyCommandBehavior.EscapeCommand="{Binding CancelCommand}"
+                                    Text="Focus here, then press Enter or Escape" />
+
+                                <via:XListBox
+                                    Width="420"
+                                    Height="120"
+                                    HorizontalAlignment="Left"
+                                    behaviors:MouseDoubleClickCommandBehavior.Command="{Binding OpenActionCommand}"
+                                    ItemsSource="{Binding Actions}"
+                                    SelectedItem="{Binding SelectedAction, Mode=TwoWay}" />
+
+                                <via:XBorder
+                                    Padding="12"
+                                    Appearance="Subtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    Variant="Primary">
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="{Binding CommandLog}"
+                                        TextWrapping="Wrap" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XBorder
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XGrid ColumnSpacing="18" Columns="*,*,*">
+                            <via:XStackPanel Spacing="6">
+                                <via:XTextBlock Text="DragDropFiles" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Executes a command when files are dropped onto a target element."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+                            </via:XStackPanel>
+
+                            <via:XStackPanel Grid.Column="1" Spacing="6">
+                                <via:XTextBlock Text="ScrollIntoView" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Keeps the selected ListBox, DataGrid or TreeView item visible."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+                            </via:XStackPanel>
+
+                            <via:XStackPanel Grid.Column="2" Spacing="6">
+                                <via:XTextBlock Text="Focus helpers" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="FocusOnLoaded and FocusOnVisible help forms and dialogs start at the right input."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+                            </via:XStackPanel>
+                        </via:XGrid>
+                    </via:XBorder>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

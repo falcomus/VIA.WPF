@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\VIA.WPF\VIA.WPF.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Resources\png\falcon.png" />
+	  <Resource Include="Resources\images\via-userflow-monitor.png" />
+	</ItemGroup>
+	
+	<!--<ItemGroup>
+		<ProjectReference Include="..\VIA.WPF.MVVM\VIA.WPF.MVVM.csproj" />
+		<ProjectReference Include="..\VIA.WPF\VIA.WPF.csproj" />
+		<ProjectReference Include="..\VIA.WPF.Controls\VIA.WPF.Controls.csproj" />
+		<ProjectReference Include="..\VIA.WPF.Icons\VIA.WPF.Icons.csproj" />
+		<ProjectReference Include="..\VIA.WPF.Themes\VIA.WPF.Themes.csproj" />
+		<ProjectReference Include="..\VIA.WPF.Windowing\VIA.WPF.Windowing.csproj" />
+	</ItemGroup>-->
+
+</Project>

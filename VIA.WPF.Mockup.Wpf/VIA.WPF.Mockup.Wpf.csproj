@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>VIA.WPF.Mockup.Wpf</PackageId>
+    <Title>VIA.WPF Mockup WPF</Title>
+    <Version>1.0.0</Version>
+    <Authors>Claus Falkenstein</Authors>
+    <Description>Reusable WPF shell, project page, tool panels and Skia host controls for VIA.WPF mockup applications.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="SkiaSharp.Views.WPF" Version="3.119.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VIA.WPF.Controls\VIA.WPF.Controls.csproj" />
+    <ProjectReference Include="..\VIA.WPF.Icons\VIA.WPF.Icons.csproj" />
+    <ProjectReference Include="..\VIA.WPF.MVVM\VIA.WPF.MVVM.csproj" />
+    <ProjectReference Include="..\VIA.WPF.Themes\VIA.WPF.Themes.csproj" />
+    <ProjectReference Include="..\VIA.WPF.Windowing\VIA.WPF.Windowing.csproj" />
+    <ProjectReference Include="..\VIA.WPF.Mockup.Core\VIA.WPF.Mockup.Core.csproj" />
+    <ProjectReference Include="..\VIA.WPF.Mockup.Desktop\VIA.WPF.Mockup.Desktop.csproj" />
+    <ProjectReference Include="..\VIA.WPF.Mockup.Mobile\VIA.WPF.Mockup.Mobile.csproj" />
+    <ProjectReference Include="..\VIA.WPF.Mockup.Skia\VIA.WPF.Mockup.Skia.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+</Project>

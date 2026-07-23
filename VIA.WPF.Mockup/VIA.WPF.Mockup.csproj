@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>VIA.WPF.Mockup</PackageId>
+    <Title>VIA.WPF Mockup</Title>
+    <Version>1.0.0</Version>
+    <Authors>Claus Falkenstein</Authors>
+    <Description>Complete reusable VIA.WPF mockup designer package including the standard VIA.WPF UI foundation.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VIA.WPF\VIA.WPF.csproj" />
+    <ProjectReference Include="..\VIA.WPF.Mockup.Core\VIA.WPF.Mockup.Core.csproj" />
+    <ProjectReference Include="..\VIA.WPF.Mockup.Desktop\VIA.WPF.Mockup.Desktop.csproj" />
+    <ProjectReference Include="..\VIA.WPF.Mockup.Mobile\VIA.WPF.Mockup.Mobile.csproj" />
+    <ProjectReference Include="..\VIA.WPF.Mockup.Skia\VIA.WPF.Mockup.Skia.csproj" />
+    <ProjectReference Include="..\VIA.WPF.Mockup.Storage\VIA.WPF.Mockup.Storage.csproj" />
+    <ProjectReference Include="..\VIA.WPF.Mockup.Wpf\VIA.WPF.Mockup.Wpf.csproj" />
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+</Project>

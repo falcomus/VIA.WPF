@@ -1,0 +1,117 @@
+<!--=====================================================================================================================
+  <copyright file="XLookupTreeComboBoxDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XLookupTreeComboBoxDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XLookupTreeComboBoxDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XLookupTreeComboBox" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="920"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="Hierarchical lookup selection for categories, warehouses, folders and other tree-based master data."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XBorder
+                        Padding="20"
+                        Appearance="Solid"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XGrid Columns="*,*" ColumnSpacing="22" RowSpacing="18">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Hierarchical lookup" TextRole="SectionTitle" />
+                                <via:XLookupTreeComboBox
+                                    Width="380"
+                                    HorizontalAlignment="Left"
+                                    ChildrenMemberPath="Children"
+                                    Description="SelectedItem and SelectedValue can be bound separately."
+                                    DisplayMemberPath="Name"
+                                    EmptyOptionText="No category"
+                                    ExpandedMemberPath="IsExpanded"
+                                    Header="Storage location"
+                                    Icon="{via:BootstrapIcon Kind=Diagram3Fill}"
+                                    IncludeEmptyOption="True"
+                                    ItemsSource="{Binding Categories}"
+                                    Placeholder="Select category"
+                                    SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
+                                    SelectedValue="{Binding SelectedCategoryId, Mode=TwoWay}"
+                                    SelectedValuePath="Id"
+                                    ShowResetButton="True"
+                                    Variant="Outline" />
+
+                                <via:XBorder
+                                    Padding="12"
+                                    Appearance="Subtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    Variant="Info">
+                                    <via:XStackPanel Spacing="4">
+                                        <via:XTextBlock Text="Bound state" TextRole="SectionTitle" />
+                                        <via:XTextBlock Text="Selected value:" TextRole="Description" />
+                                        <via:XTextBlock Text="{Binding SelectedCategoryId}" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                            </via:XStackPanel>
+
+                            <via:XStackPanel Grid.Column="1" Spacing="14">
+                                <via:XTextBlock Text="Variants and density" TextRole="SectionTitle" />
+                                <via:XLookupTreeComboBox
+                                    Width="340"
+                                    HorizontalAlignment="Left"
+                                    ChildrenMemberPath="Children"
+                                    DisplayMemberPath="Name"
+                                    ExpandedMemberPath="IsExpanded"
+                                    Header="Compact"
+                                    Icon="{via:BootstrapIcon Kind=FolderFill}"
+                                    ItemsSource="{Binding Categories}"
+                                    Placeholder="Small tree lookup"
+                                    SelectedValuePath="Id"
+                                    Size="Small"
+                                    Variant="Outline" />
+
+                                <via:XLookupTreeComboBox
+                                    Width="400"
+                                    HorizontalAlignment="Left"
+                                    ChildrenMemberPath="Children"
+                                    Description="Large lookup with reset affordance for dense forms."
+                                    DisplayMemberPath="Name"
+                                    EmptyOptionText="Unassigned"
+                                    ExpandedMemberPath="IsExpanded"
+                                    Header="Large assignment"
+                                    Icon="{via:BootstrapIcon Kind=Grid3x3GapFill}"
+                                    IncludeEmptyOption="True"
+                                    ItemsSource="{Binding Categories}"
+                                    Placeholder="Select assignment"
+                                    SelectedValuePath="Id"
+                                    ShowResetButton="True"
+                                    Size="Large"
+                                    Variant="Outline" />
+                            </via:XStackPanel>
+                        </via:XGrid>
+                    </via:XBorder>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

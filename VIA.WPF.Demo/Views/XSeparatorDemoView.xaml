@@ -1,0 +1,205 @@
+<!--=====================================================================================================================
+  <copyright file="XSeparatorDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XSeparatorDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XSeparatorDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="8,0,12,22"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XSeparator" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A themed separator for section boundaries, split content, command bars and compact grouping. Use it when structure is needed without adding another panel."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Grid.Column="0"
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Horizontal sections" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Separate related settings while keeping the page visually light."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+                                </via:XStackPanel>
+
+                                <via:XStackPanel Spacing="10">
+                                    <via:XTextBlock Text="General" FontWeight="SemiBold" TextRole="Body" />
+                                    <via:XTextBlock Text="Common options and defaults." TextRole="Description" />
+                                    <via:XSeparator Orientation="Horizontal" />
+                                    <via:XTextBlock Text="Advanced" FontWeight="SemiBold" TextRole="Body" />
+                                    <via:XTextBlock Text="Less frequently used options continue below the separator." TextRole="Description" TextWrapping="Wrap" />
+                                    <via:XSeparator Orientation="Horizontal" Variant="Primary" />
+                                    <via:XTextBlock Text="Danger zone" FontWeight="SemiBold" TextRole="Body" />
+                                    <via:XTextBlock Text="Destructive settings can be grouped more clearly with a semantic separator." TextRole="Description" TextWrapping="Wrap" />
+                                </via:XStackPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low"
+                            Variant="Info">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Vertical split" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Vertical separators are useful between list and detail panes or compact card columns."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+                                </via:XStackPanel>
+
+                                <via:XGrid MinHeight="130" ColumnSpacing="16" Columns="*,Auto,*">
+                                    <via:XStackPanel Grid.Column="0" Spacing="8">
+                                        <via:XTextBlock Text="Left pane" FontWeight="SemiBold" TextRole="Body" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="Search results, navigation or grouped list content."
+                                            TextRole="Description"
+                                            TextWrapping="Wrap" />
+                                    </via:XStackPanel>
+
+                                    <via:XSeparator
+                                        Grid.Column="1"
+                                        LineThickness="1"
+                                        Orientation="Vertical" />
+
+                                    <via:XStackPanel Grid.Column="2" Spacing="8">
+                                        <via:XTextBlock Text="Right pane" FontWeight="SemiBold" TextRole="Body" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="Preview, detail view or editor content."
+                                            TextRole="Description"
+                                            TextWrapping="Wrap" />
+                                    </via:XStackPanel>
+                                </via:XGrid>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XBorder
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="14">
+                            <via:XStackPanel Spacing="4">
+                                <via:XTextBlock Text="Line thickness and variants" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Keep separators thin by default. Increase thickness only when the line is a deliberate visual boundary."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+                            </via:XStackPanel>
+
+                            <via:XGrid ColumnSpacing="24" Columns="*,*">
+                                <via:XStackPanel Grid.Column="0" Spacing="12">
+                                    <via:XTextBlock Text="Thickness" FontWeight="SemiBold" TextRole="Body" />
+                                    <via:XSeparator LineThickness="1" Orientation="Horizontal" />
+                                    <via:XSeparator LineThickness="2" Orientation="Horizontal" />
+                                    <via:XSeparator LineThickness="4" Orientation="Horizontal" />
+                                </via:XStackPanel>
+
+                                <via:XStackPanel Grid.Column="1" Spacing="12">
+                                    <via:XTextBlock Text="Variants" FontWeight="SemiBold" TextRole="Body" />
+                                    <via:XSeparator Orientation="Horizontal" Variant="Default" />
+                                    <via:XSeparator Orientation="Horizontal" Variant="Primary" />
+                                    <via:XSeparator Orientation="Horizontal" Variant="Accent" />
+                                    <via:XSeparator Orientation="Horizontal" Variant="Danger" />
+                                </via:XStackPanel>
+                            </via:XGrid>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low"
+                        Variant="Primary">
+                        <via:XStackPanel Spacing="14">
+                            <via:XStackPanel Spacing="4">
+                                <via:XTextBlock Text="Toolbar grouping" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Separators are effective between command groups, especially when buttons use subtle or ghost appearances."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+                            </via:XStackPanel>
+
+                            <via:XStackPanel HorizontalAlignment="Left" Orientation="Horizontal" Spacing="8">
+                                <via:XButton
+                                    Content="New"
+                                    Icon="{via:BootstrapIcon Kind=PlusCircleFill}"
+                                    Size="Small"
+                                    Variant="Primary" />
+                                <via:XButton
+                                    Appearance="Subtle"
+                                    Content="Edit"
+                                    Icon="{via:BootstrapIcon Kind=PencilFill}"
+                                    Size="Small" />
+                                <via:XSeparator Orientation="Vertical" />
+                                <via:XButton
+                                    Appearance="Subtle"
+                                    Content="Refresh"
+                                    Icon="{via:BootstrapIcon Kind=ArrowClockwise}"
+                                    Size="Small" />
+                                <via:XButton
+                                    Appearance="Subtle"
+                                    Content="Export"
+                                    Icon="{via:BootstrapIcon Kind=Download}"
+                                    Size="Small" />
+                                <via:XSeparator Orientation="Vertical" />
+                                <via:XButton
+                                    Appearance="Ghost"
+                                    Content="Settings"
+                                    Icon="{via:BootstrapIcon Kind=GearFill}"
+                                    Size="Small" />
+                            </via:XStackPanel>
+                        </via:XStackPanel>
+                    </via:XBorder>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

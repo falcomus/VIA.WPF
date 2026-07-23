@@ -1,0 +1,21 @@
+﻿<Project>
+  <PropertyGroup>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)..\Packages\</PackageOutputPath>
+
+    <Authors>Claus Falkenstein</Authors>
+    <Company>Claus Falkenstein</Company>
+    <Product>VIA.WPF</Product>
+    <Copyright>Copyright (c) 2026 Claus Falkenstein. All rights reserved.</Copyright>
+
+    <RepositoryUrl>https://github.com/falcomus/VIA.WPF</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/falcomus/VIA.WPF</PackageProjectUrl>
+
+    <PackageTags>wpf;dotnet;net9;desktop;controls;mvvm;validation;themes;icons;windowing</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  </PropertyGroup>
+</Project>

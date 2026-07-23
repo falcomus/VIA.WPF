@@ -1,0 +1,192 @@
+<!--=====================================================================================================================
+  <copyright file="XToolbarPresenter.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:icons="clr-namespace:VIA.WPF.Icons;assembly=VIA.WPF.Icons"
+    xmlns:navigation="clr-namespace:VIA.WPF.Controls.Navigation"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes"
+    xmlns:via="http://schemas.via.dev/wpf">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XButton.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:XToolbarPresenter}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="8,0,0,0" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:XToolbarPresenter}">
+                    <Border Background="{TemplateBinding Background}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <controls:XStackPanel
+                            x:Name="PART_Root"
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                            Orientation="Horizontal"
+                            Spacing="{TemplateBinding Spacing}">
+
+                            <controls:XStackPanel.Resources>
+                                <Style BasedOn="{StaticResource {x:Type controls:XButton}}" TargetType="{x:Type controls:XButton}">
+                                    <Setter Property="Padding" Value="10,0" />
+                                    <Setter Property="CornerRadius" Value="7" />
+                                </Style>
+                            </controls:XStackPanel.Resources>
+
+                            <controls:XSearchBox
+                                x:Name="PART_SearchBox"
+                                Width="{TemplateBinding SearchBoxWidth}"
+                                Height="30"
+                                MinHeight="30"
+                                Padding="{TemplateBinding SearchBoxPadding}"
+                                VerticalAlignment="Center"
+                                Placeholder="{TemplateBinding SearchPlaceholder}"
+                                ResetIconSize="{TemplateBinding SearchTrailingIconSize}"
+                                ResetSearchCommand="{Binding EffectiveSearchContext.ResetSearchCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                SearchIconSize="{TemplateBinding SearchLeadingIconSize}"
+                                Size="Small"
+                                Text="{Binding EffectiveSearchContext.SearchTerm, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                Visibility="Collapsed" />
+
+                            <controls:XSeparator x:Name="PART_SearchSeparator" Visibility="Collapsed" />
+
+                            <controls:XButton
+                                x:Name="PART_NewButton"
+                                Height="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                MinWidth="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                MinHeight="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                VerticalAlignment="Center"
+                                Command="{Binding Toolbar.NewCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                Content="{TemplateBinding NewButtonContent}"
+                                Icon="{via:MaterialIcon Kind=Plus}"
+                                IconSize="{Binding EffectiveNewButtonIconSize, RelativeSource={RelativeSource TemplatedParent}}"
+                                Variant="Primary"
+                                Visibility="Collapsed" />
+                            <controls:XButton
+                                x:Name="PART_ViewButton"
+                                Height="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                MinWidth="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                MinHeight="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                VerticalAlignment="Center"
+                                Command="{Binding Toolbar.ViewCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                Content="{TemplateBinding ViewButtonContent}"
+                                Icon="{via:MaterialIcon Kind=Eye}"
+                                IconSize="{Binding EffectiveViewButtonIconSize, RelativeSource={RelativeSource TemplatedParent}}"
+                                Variant="Primary"
+                                Visibility="Visible" />
+                            <controls:XButton
+                                x:Name="PART_EditButton"
+                                Height="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                MinWidth="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                MinHeight="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                VerticalAlignment="Center"
+                                Command="{Binding Toolbar.EditCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                Content="{TemplateBinding EditButtonContent}"
+                                Icon="{via:FluentIcon Kind=Open}"
+                                IconSize="{Binding EffectiveEditButtonIconSize, RelativeSource={RelativeSource TemplatedParent}}"
+                                Variant="Primary"
+                                Visibility="Collapsed" />
+                            <controls:XButton
+                                x:Name="PART_DeleteButton"
+                                Height="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                MinWidth="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                MinHeight="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                VerticalAlignment="Center"
+                                Command="{Binding Toolbar.DeleteCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                Content="{TemplateBinding DeleteButtonContent}"
+                                Foreground="{themes:AppThemeBinding Light='White',
+                                                                    Dark='Black'}"
+                                Icon="{via:FluentIcon Kind=Delete}"
+                                IconSize="{Binding EffectiveDeleteButtonIconSize, RelativeSource={RelativeSource TemplatedParent}}"
+                                Variant="Danger"
+                                Visibility="Collapsed" />
+
+                            <controls:XSeparator x:Name="PART_CommandSeparator" Visibility="Collapsed" />
+
+                            <controls:XButtonGroup
+                                x:Name="PART_ViewModeSelector"
+                                Height="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                MinHeight="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                VerticalAlignment="Center"
+                                IconSize="18"
+                                ItemHeight="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                SelectedValue="{Binding Toolbar.ViewMode, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                Visibility="Collapsed">
+                                <controls:XButtonGroupItem
+                                    Icon="{via:PhosphorIcon Kind=ListDashes}"
+                                    ToolTip="Listenansicht"
+                                    Value="{x:Static navigation:XContentViewMode.Grid}" />
+                                <controls:XButtonGroupItem
+                                    Icon="{via:PhosphorIcon Kind=TreeView}"
+                                    ToolTip="Baumansicht"
+                                    Value="{x:Static navigation:XContentViewMode.Tree}" />
+                            </controls:XButtonGroup>
+
+                            <!--<controls:XSeparator x:Name="PART_RememberViewToggleSeparator" Visibility="Collapsed" />-->
+
+                            <controls:XToggleButton
+                                x:Name="PART_RememberViewToggle"
+                                Width="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                Height="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                MinWidth="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                MinHeight="{Binding ToolbarItemHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                Margin="2,0,0,0"
+                                VerticalAlignment="Center"
+                                CheckedIcon="{via:FluentIcon Kind=Pin}"
+                                CheckedVariant="Primary"
+                                CornerRadius="5"
+                                IconSize="17"
+                                IsChecked="{Binding Toolbar.IsRememberViewStateEnabled, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                ToolTip="Ansicht merken"
+                                UncheckedIcon="{via:FluentIcon Kind=PinOff}"
+                                Visibility="Collapsed" />
+
+                        </controls:XStackPanel>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSearchBoxVisible" Value="True">
+                            <Setter TargetName="PART_SearchBox" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsSearchSeparatorVisible" Value="True">
+                            <Setter TargetName="PART_SearchSeparator" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsNewButtonVisible" Value="True">
+                            <Setter TargetName="PART_NewButton" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsViewButtonVisible" Value="True">
+                            <Setter TargetName="PART_ViewButton" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsEditButtonVisible" Value="True">
+                            <Setter TargetName="PART_EditButton" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsDeleteButtonVisible" Value="True">
+                            <Setter TargetName="PART_DeleteButton" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsCommandSeparatorVisible" Value="True">
+                            <Setter TargetName="PART_CommandSeparator" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsRememberViewToggleVisible" Value="True">
+                            <Setter TargetName="PART_RememberViewToggle" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsViewModeSelectorVisible" Value="True">
+                            <Setter TargetName="PART_ViewModeSelector" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <!--<Trigger Property="IsRememberViewToggleVisible" Value="True">
+                            <Setter TargetName="PART_RememberViewToggleSeparator" Property="Visibility" Value="Visible" />
+                        </Trigger>-->
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

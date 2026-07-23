@@ -1,0 +1,248 @@
+<!--=====================================================================================================================
+  <copyright file="XViewContainerDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XViewContainerDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navigation="clr-namespace:VIA.WPF.Controls.Navigation;assembly=VIA.WPF.Controls"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XViewContainerDemoViewModel}"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:XViewContainerDemoEditor}">
+            <via:XStackPanel Spacing="14" Orientation="Vertical">
+                <via:XTextBox Header="Name" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <via:XTextBox Header="Summary" Text="{Binding Summary, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <via:XGrid Columns="*,12,*">
+                    <via:XTextBox Header="Owner" Text="{Binding Owner, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <via:XTextBox
+                        Grid.Column="2"
+                        Header="Status"
+                        Text="{Binding Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </via:XGrid>
+                <via:XTextBlock
+                    IsMultiline="True"
+                    Text="The editor is provided through XCrudContext.Editor. The XViewContainer resolves the CRUD context and save command automatically from IXCrudPageContext."
+                    TextRole="Description"
+                    TextWrapping="Wrap" />
+            </via:XStackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <via:XGrid
+                Margin="0,0,12,0"
+                RowSpacing="18"
+                Rows="Auto,Auto,*">
+
+                <via:XStackPanel Spacing="8">
+                    <via:XTextBlock Text="XViewContainer — CRUD workspace with modal detail dialog" TextRole="Title" />
+                    <via:XTextBlock
+                        MaxWidth="920"
+                        HorizontalAlignment="Left"
+                        IsMultiline="True"
+                        Text="Hosts list and tree workspaces, shows the detail editor as a centered modal dialog and locks navigation while the dialog is open. The view model only exposes IXCrudPageContext; the container wires detail host, header, open state, cancel and save automatically."
+                        TextRole="Description"
+                        TextWrapping="Wrap" />
+                </via:XStackPanel>
+
+                <via:XSeparator Grid.Row="1" Orientation="Horizontal" />
+
+                <via:XGrid
+                    Grid.Row="2"
+                    ColumnSpacing="20"
+                    Columns="*,320"
+                    Rows="*">
+
+                    <via:XViewContainer
+                        CancelDetailText="Cancel"
+                        CloseOnOverlayClick="False"
+                        DetailWidth="540"
+                        OverlayCornerRadius="4"
+                        PrimaryDetailText="Save"
+                        ShowDefaultDetailFooter="True"
+                        ShowDetailCloseButton="True"
+                        ViewMode="{Binding ViewMode, Mode=TwoWay}">
+
+                        <via:XViewContainer.ListHost>
+                            <via:XBorder
+                                Padding="18"
+                                Appearance="Subtle"
+                                Variant="Default">
+                                <via:XStackPanel Spacing="14">
+                                    <via:XGrid Columns="*,Auto">
+                                        <via:XStackPanel Spacing="4">
+                                            <TextBlock
+                                                FontSize="16"
+                                                FontWeight="SemiBold"
+                                                Text="Project list" />
+                                            <TextBlock
+                                                Foreground="{DynamicResource {x:Static via:XBrushKeys.BorderText}}"
+                                                Text="Select a project and open the modal detail dialog."
+                                                TextWrapping="Wrap" />
+                                        </via:XStackPanel>
+
+                                        <via:XButton
+                                            Grid.Column="1"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Top"
+                                            Command="{Binding OpenDetailCommand}"
+                                            Content="Open detail"
+                                            Icon="{via:MaterialIcon Kind=OpenInNew}"
+                                            Variant="Primary" />
+                                    </via:XGrid>
+
+                                    <via:XListBox
+                                        ItemsSource="{Binding Items}"
+                                        Mode="CompactNavigation"
+                                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                        ShowSeparators="True">
+                                        <via:XListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <via:XGrid Columns="Auto,Auto,*" Rows="Auto,*">
+                                                    <TextBlock
+                                                        Grid.Row="0"
+                                                        FontWeight="SemiBold"
+                                                        Text="{Binding Title}" />
+                                                    <TextBlock
+                                                        Grid.Row="1"
+                                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.BorderText}}"
+                                                        Text="{Binding Summary}"
+                                                        TextWrapping="Wrap" />
+                                                    <via:XBadge
+                                                        Grid.Row="1"
+                                                        Grid.Column="1"
+                                                        Margin="30,0,0,0"
+                                                        Padding="6,0,6,2"
+                                                        HorizontalAlignment="Left"
+                                                        VerticalAlignment="Center"
+                                                        Background="{DynamicResource {x:Static via:XBrushKeys.InfoLight}}"
+                                                        CornerRadius="10"
+                                                        FontSize="11"
+                                                        FontWeight="Medium"
+                                                        Variant="Accent">
+                                                        <TextBlock Foreground="{DynamicResource {x:Static via:XBrushKeys.InfoDark}}" Text="{Binding Status}" />
+                                                    </via:XBadge>
+                                                </via:XGrid>
+                                            </DataTemplate>
+                                        </via:XListBox.ItemTemplate>
+                                    </via:XListBox>
+                                </via:XStackPanel>
+                            </via:XBorder>
+                        </via:XViewContainer.ListHost>
+
+                        <via:XViewContainer.TreeHost>
+                            <via:XBorder
+                                Padding="18"
+                                Appearance="Subtle"
+                                Variant="Default">
+                                <via:XStackPanel Spacing="14">
+                                    <via:XGrid Columns="*,Auto">
+                                        <via:XStackPanel Spacing="4">
+                                            <TextBlock
+                                                FontSize="16"
+                                                FontWeight="SemiBold"
+                                                Text="Project tree" />
+                                            <TextBlock
+                                                Foreground="{DynamicResource {x:Static via:XBrushKeys.BorderText}}"
+                                                Text="The same container can switch to a tree workspace."
+                                                TextWrapping="Wrap" />
+                                        </via:XStackPanel>
+
+                                        <via:XButton
+                                            Grid.Column="1"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Top"
+                                            Command="{Binding OpenDetailCommand}"
+                                            Content="Open detail"
+                                            Icon="{via:MaterialIcon Kind=OpenInNew}"
+                                            Variant="Primary" />
+                                    </via:XGrid>
+
+                                    <via:XTreeView
+                                        ChildrenMemberPath="Children"
+                                        ExpandedMemberPath="IsExpanded"
+                                        ItemsSource="{Binding TreeItems}"
+                                        SelectedDataItem="{Binding SelectedTreeItem, Mode=TwoWay}"
+                                        ShowCollapseAllButton="True"
+                                        ShowExpandAllButton="True"
+                                        ShowNewButton="False">
+                                        <via:XTreeView.ItemTemplate>
+                                            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                                <TextBlock Text="{Binding Title}" />
+                                            </HierarchicalDataTemplate>
+                                        </via:XTreeView.ItemTemplate>
+                                    </via:XTreeView>
+                                </via:XStackPanel>
+                            </via:XBorder>
+                        </via:XViewContainer.TreeHost>
+                    </via:XViewContainer>
+
+                    <via:XStackPanel Grid.Column="1" Spacing="16">
+                        <via:XBorder
+                            Padding="16"
+                            Appearance="Subtle"
+                            Variant="Default">
+                            <via:XStackPanel Spacing="12">
+                                <TextBlock
+                                    FontSize="16"
+                                    FontWeight="SemiBold"
+                                    Text="View mode" />
+
+                                <via:XButtonGroup SelectedValue="{Binding ViewMode, Mode=TwoWay}">
+                                    <via:XButtonGroupItem
+                                        Content="Grid"
+                                        Icon="{via:MaterialIcon Kind=ViewGridOutline}"
+                                        Value="{x:Static navigation:XContentViewMode.Grid}" />
+                                    <via:XButtonGroupItem
+                                        Content="Tree"
+                                        Icon="{via:MaterialIcon Kind=ViewListOutline}"
+                                        Value="{x:Static navigation:XContentViewMode.Tree}" />
+                                </via:XButtonGroup>
+
+                                <via:XButton
+                                    HorizontalAlignment="Left"
+                                    Appearance="Outline"
+                                    Command="{Binding OpenDetailCommand}"
+                                    Content="Open modal dialog"
+                                    Icon="{via:MaterialIcon Kind=OpenInNew}" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Padding="16"
+                            Appearance="Subtle"
+                            Variant="Default">
+                            <via:XStackPanel Spacing="10">
+                                <TextBlock
+                                    FontSize="16"
+                                    FontWeight="SemiBold"
+                                    Text="Automatic CRUD integration" />
+                                <TextBlock
+                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.BorderText}}"
+                                    Text="The container resolves CrudContext and SaveDetailCommand from IXCrudPageContext. No DetailHost, DetailHeader, IsDetailOpen, CloseDetailCommand or PrimaryDetailCommand binding is needed here."
+                                    TextWrapping="Wrap" />
+                                <via:XSeparator Orientation="Horizontal" />
+                                <TextBlock FontWeight="SemiBold" Text="Last action" />
+                                <TextBlock
+                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.BorderText}}"
+                                    Text="{Binding LastAction}"
+                                    TextWrapping="Wrap" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XStackPanel>
+                </via:XGrid>
+            </via:XGrid>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

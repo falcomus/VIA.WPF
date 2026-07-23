@@ -1,0 +1,183 @@
+<!--=====================================================================================================================
+  <copyright file="XTimePickerDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XTimePickerDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XTimePickerDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XTimePicker" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A themed time input for scheduling, reminders and time-window filters. It supports selected-time binding, minute steps, min/max ranges, formatting, reset behavior, icons and readonly states."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid
+                        ColumnSpacing="18"
+                        Columns="*,*"
+                        RowSpacing="18"
+                        Rows="Auto,Auto">
+
+                        <via:XBorder
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Bound reminder" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Bind directly to nullable TimeSpan values for forms and dialog editors."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XTimePicker
+                                    Width="300"
+                                    Header="Reminder"
+                                    LeadingIcon="{via:MaterialIcon Kind=ClockOutline}"
+                                    Placeholder="Select time"
+                                    SelectedTime="{Binding ReminderTime, Mode=TwoWay}"
+                                    ShowResetButton="True" />
+
+                                <via:XBorder
+                                    Padding="12"
+                                    Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
+                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XTextBlock
+                                        Text="The sample value is bound to ReminderTime in the page view model."
+                                        TextRole="Caption" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Business hours" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="MinimumTime, MaximumTime and StepMinutes keep selected times valid."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XTimePicker
+                                    Width="320"
+                                    Description="Only quarter-hour values between 08:00 and 18:00."
+                                    Header="Support hours"
+                                    LeadingIcon="{via:MaterialIcon Kind=ClockCheckOutline}"
+                                    MaximumTime="18:00:00"
+                                    MinimumTime="08:00:00"
+                                    SelectedTime="{Binding SupportTime, Mode=TwoWay}"
+                                    ShowResetButton="True"
+                                    StepMinutes="15" />
+
+                                <via:XButton
+                                    Width="150"
+                                    Appearance="Subtle"
+                                    Content="Preview time"
+                                    HorizontalAlignment="Left"
+                                    Icon="{via:BootstrapIcon Kind=EyeFill}" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Row="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Format and drop-down" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Format strings and icon slots keep time fields compact and recognizable."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XGrid ColumnSpacing="14" Columns="*,*">
+                                    <via:XTimePicker
+                                        Header="24-hour format"
+                                        SelectedTime="18:45:00"
+                                        TimeFormatString="hh\:mm" />
+                                    <via:XTimePicker
+                                        Grid.Column="1"
+                                        Header="With drop icon"
+                                        LeadingIcon="{via:MaterialIcon Kind=ClockOutline}"
+                                        SelectedTime="11:00:00"
+                                        TrailingIcon="{via:MaterialIcon Kind=ChevronDown}" />
+                                </via:XGrid>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Sizes and states" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="The same template covers dense tool panels and prominent dialog fields."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XWrapPanel HorizontalSpacing="14" VerticalSpacing="14">
+                                    <via:XTimePicker Width="170" Header="Small" SelectedTime="09:30:00" Size="Small" />
+                                    <via:XTimePicker Width="210" Header="Medium" SelectedTime="09:30:00" Size="Medium" />
+                                    <via:XTimePicker Width="230" Header="Large" SelectedTime="09:30:00" Size="Large" />
+                                    <via:XTimePicker Width="230" Header="Read only" IsReadOnly="True" SelectedTime="08:45:00" />
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

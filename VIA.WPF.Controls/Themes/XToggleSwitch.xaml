@@ -1,0 +1,260 @@
+<!--=====================================================================================================================
+  <copyright file="XToggleSwitch.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
+    <Style TargetType="{x:Type controls:XToggleSwitch}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceSunken}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.MediumHeight}" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:XToggleSwitch}">
+                    <Grid Background="Transparent" SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid
+                            x:Name="SwitchHost"
+                            Width="34"
+                            Height="20"
+                            Margin="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                            <Border
+                                x:Name="KeyboardFocusRing"
+                                Margin="-3"
+                                Background="Transparent"
+                                BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.FocusRing}}"
+                                BorderThickness="2"
+                                CornerRadius="13"
+                                IsHitTestVisible="False"
+                                Visibility="Collapsed" />
+                            <Border
+                                x:Name="TrackBorder"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10" />
+
+                            <Border
+                                x:Name="Thumb"
+                                Width="17"
+                                Height="17"
+                                Margin="1,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Background="{DynamicResource {x:Static themes:XBrushKeys.Surface}}"
+                                BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}"
+                                BorderThickness="1"
+                                CornerRadius="8.5">
+                                <Border.RenderTransform>
+                                    <TranslateTransform x:Name="ThumbTranslateTransform" X="0" />
+                                </Border.RenderTransform>
+                            </Border>
+                        </Grid>
+
+                        <ContentPresenter
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            RecognizesAccessKey="True" />
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="TrackBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
+                            <Setter TargetName="TrackBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="TrackBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatePressed}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter TargetName="KeyboardFocusRing" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="TrackBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
+                            <Setter TargetName="TrackBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
+                            <Setter TargetName="Thumb" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryDark}}" />
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsChecked" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="TrackBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryDark}}" />
+                            <Setter TargetName="TrackBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryDark}}" />
+                        </MultiTrigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="TrackBorder" Property="Opacity" Value="0.50" />
+                            <Setter TargetName="Thumb" Property="Opacity" Value="0.60" />
+                            <Setter Property="Opacity" Value="0.65" />
+                        </Trigger>
+
+                        <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">
+                            <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallHeight}" />
+                            <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
+                            <Setter TargetName="SwitchHost" Property="Width" Value="30" />
+                            <Setter TargetName="SwitchHost" Property="Height" Value="18" />
+                            <Setter TargetName="TrackBorder" Property="CornerRadius" Value="9" />
+                            <Setter TargetName="Thumb" Property="Width" Value="14" />
+                            <Setter TargetName="Thumb" Property="Height" Value="14" />
+                            <Setter TargetName="Thumb" Property="CornerRadius" Value="7" />
+                            <Setter TargetName="Thumb" Property="Margin" Value="2,0,0,0" />
+                        </Trigger>
+
+                        <Trigger Property="Size" Value="{x:Static controls:XControlSize.Large}">
+                            <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeHeight}" />
+                            <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodyLarge}}" />
+                            <Setter TargetName="SwitchHost" Property="Width" Value="40" />
+                            <Setter TargetName="SwitchHost" Property="Height" Value="22" />
+                            <Setter TargetName="TrackBorder" Property="CornerRadius" Value="11" />
+                            <Setter TargetName="Thumb" Property="Width" Value="18" />
+                            <Setter TargetName="Thumb" Property="Height" Value="18" />
+                            <Setter TargetName="Thumb" Property="CornerRadius" Value="9" />
+                            <Setter TargetName="Thumb" Property="Margin" Value="1.5,0,0,0" />
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Size" Value="{x:Static controls:XControlSize.Small}" />
+                                <Condition Property="IsChecked" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ThumbTranslateTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="14"
+                                            Duration="0:0:0.14">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ThumbTranslateTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="0"
+                                            Duration="0:0:0.14">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Size" Value="{x:Static controls:XControlSize.Medium}" />
+                                <Condition Property="IsChecked" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ThumbTranslateTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="16"
+                                            Duration="0:0:0.14">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ThumbTranslateTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="0"
+                                            Duration="0:0:0.14">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Size" Value="{x:Static controls:XControlSize.Large}" />
+                                <Condition Property="IsChecked" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ThumbTranslateTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="20"
+                                            Duration="0:0:0.14">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ThumbTranslateTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="0"
+                                            Duration="0:0:0.14">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,246 @@
+<!--=====================================================================================================================
+  <copyright file="DemoViewTemplates.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views">
+
+        <DataTemplate DataType="{x:Type viewmodels:XWelcomeDashboardViewModel}">
+            <views:XWelcomeDashboardView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XGettingStartedViewModel}">
+            <views:XGettingStartedView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XOverviewViewModel}">
+            <views:XOverviewView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XTypographyDemoViewModel}">
+            <views:XTypographyDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XColorSchemeDemoViewModel}">
+            <views:XColorSchemeDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XExperimentalDesignDemoViewModel}">
+            <views:XExperimentalDesignDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XWindowDemoViewModel}">
+            <views:XWindowDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XLocalizationDemoViewModel}">
+            <views:XLocalizationDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XGridDemoViewModel}">
+            <views:XGridDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XUniformGridDemoViewModel}">
+            <views:XUniformGridDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XSplitViewDemoViewModel}">
+            <views:XSplitViewDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XMasterDetailSplitViewDemoViewModel}">
+            <views:XMasterDetailSplitViewDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XStackPanelDemoViewModel}">
+            <views:XStackPanelDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XWrapPanelDemoViewModel}">
+            <views:XWrapPanelDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XGroupDemoViewModel}">
+            <views:XGroupDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XBorderDemoViewModel}">
+            <views:XBorderDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XExpanderDemoViewModel}">
+            <views:XExpanderDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XComboBoxDemoViewModel}">
+            <views:XComboBoxDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XListBoxDemoViewModel}">
+            <views:XListBoxDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XButtonDemoViewModel}">
+            <views:XButtonDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XIconButtonDemoViewModel}">
+            <views:XIconButtonDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XTextBoxDemoViewModel}">
+            <views:XTextBoxDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XTextBlockDemoViewModel}">
+            <views:XTextBlockDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XCheckBoxDemoViewModel}">
+            <views:XCheckBoxDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XRadioButtonDemoViewModel}">
+            <views:XRadioButtonDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XToggleSwitchDemoViewModel}">
+            <views:XToggleSwitchDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XToggleButtonDemoViewModel}">
+            <views:XToggleButtonDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XToggleDropDownDemoViewModel}">
+            <views:XToggleDropDownDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XPasswordBoxDemoViewModel}">
+            <views:XPasswordBoxDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XNumberBoxDemoViewModel}">
+            <views:XNumberBoxDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XDatePickerDemoViewModel}">
+            <views:XDatePickerDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XCalendarDemoViewModel}">
+            <views:XCalendarDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XTimePickerDemoViewModel}">
+            <views:XTimePickerDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XSliderDemoViewModel}">
+            <views:XSliderDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XBadgeDemoViewModel}">
+            <views:XBadgeDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XProgressBarDemoViewModel}">
+            <views:XProgressBarDemoView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:XButtonGroupDemoViewModel}">
+            <views:XButtonGroupDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XCheckGroupDemoViewModel}">
+            <views:XCheckGroupDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XCheckerBoardDemoViewModel}">
+            <views:XCheckerBoardDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XDataGridDemoViewModel}">
+            <views:XDataGridDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XHighlightTextBlockDemoViewModel}">
+            <views:XHighlightTextBlockDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XLookupComboBoxDemoViewModel}">
+            <views:XLookupComboBoxDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XLookupTreeComboBoxDemoViewModel}">
+            <views:XLookupTreeComboBoxDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XNavigationListDemoViewModel}">
+            <views:XNavigationListDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XNavigationTabControlDemoViewModel}">
+            <views:XNavigationTabControlDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XRadioGroupDemoViewModel}">
+            <views:XRadioGroupDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XSearchBoxDemoViewModel}">
+            <views:XSearchBoxDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XSecurePasswordBoxDemoViewModel}">
+            <views:XSecurePasswordBoxDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XSeparatorDemoViewModel}">
+            <views:XSeparatorDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XTabControlDemoViewModel}">
+            <views:XTabControlDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XHeaderBarDemoViewModel}">
+            <views:XHeaderBarDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XTreeViewDemoViewModel}">
+            <views:XTreeViewDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XRecentItemTreeDemoViewModel}">
+            <views:XRecentItemTreeDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XViewContainerDemoViewModel}">
+            <views:XViewContainerDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XConvertersDemoViewModel}">
+            <views:XConvertersDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XBehaviorsDemoViewModel}">
+            <views:XBehaviorsDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XValidationDemoViewModel}">
+            <views:XValidationDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XExtensionsDemoViewModel}">
+            <views:XExtensionsDemoView />
+        </DataTemplate>
+
+
+
+</ResourceDictionary>

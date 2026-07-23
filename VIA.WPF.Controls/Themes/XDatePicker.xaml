@@ -1,0 +1,434 @@
+<!--=====================================================================================================================
+  <copyright file="XDatePicker.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:icons="clr-namespace:VIA.WPF.Icons;assembly=VIA.WPF.Icons"
+    xmlns:pack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes"
+    xmlns:via="http://schemas.via.dev/wpf">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="XDatePickerIconButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="18" />
+        <Setter Property="Height" Value="18" />
+        <Setter Property="Margin" Value="6,0,0,0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        x:Name="RootBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="3">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatePressed}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="RootBorder" Property="Opacity" Value="0.50" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type controls:XDatePicker}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.InputBackground}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="4,0,4,1" />
+        <Setter Property="MinWidth" Value="120" />
+        <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.MediumHeight}" />
+        <Setter Property="FontFamily" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontFamilyBody}}" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+        <Setter Property="LeadingIconSize" Value="{x:Static controls:XControlSizeMetrics.MediumIconSize}" />
+        <Setter Property="TrailingIconSize" Value="{x:Static controls:XControlSizeMetrics.MediumIconSize}" />
+        <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.MediumCornerRadius}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:XDatePicker}">
+                    <Grid SnapsToDevicePixels="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            x:Name="HeaderPresenter"
+                            Grid.Row="0"
+                            Margin="0,0,0,6"
+                            FontSize="{TemplateBinding HeaderFontSize}"
+                            FontWeight="{TemplateBinding HeaderFontWeight}"
+                            Foreground="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}"
+                            Opacity="0.90"
+                            Text="{TemplateBinding Header}" />
+
+                        <Border
+                            x:Name="RootBorder"
+                            Grid.Row="1"
+                            MinHeight="{TemplateBinding MinHeight}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+
+                            <Grid Margin="{TemplateBinding Padding}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition x:Name="LeadingIconColumn" Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition x:Name="TrailingIconColumn" Width="Auto" />
+                                    <ColumnDefinition x:Name="ClearButtonColumn" Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <ContentPresenter
+                                    x:Name="LeadingIconPresenter"
+                                    Grid.Column="0"
+                                    Margin="4,0,8,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="{TemplateBinding LeadingIcon}"
+                                    ContentTemplate="{TemplateBinding LeadingIconTemplate}"
+                                    Opacity="0.82">
+                                    <ContentPresenter.Resources>
+                                        <Style TargetType="{x:Type icons:XIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding LeadingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XFluentIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding LeadingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XMaterialDesignIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding LeadingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XMaterialIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding LeadingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XBootstrapIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding LeadingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XFontAwesomeIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding LeadingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XModernIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding LeadingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XPhosphorIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding LeadingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XFileIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding LeadingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type pack:PackIconMaterialDesign}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Width" Value="{Binding LeadingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Height" Value="{Binding LeadingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+                                    </ContentPresenter.Resources>
+                                </ContentPresenter>
+
+                                <Grid Grid.Column="1">
+                                    <TextBox
+                                        x:Name="PART_TextBox"
+                                        Padding="0"
+                                        VerticalContentAlignment="Center"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        CaretBrush="{TemplateBinding CaretBrush}"
+                                        FontFamily="{TemplateBinding FontFamily}"
+                                        FontSize="{TemplateBinding FontSize}"
+                                        FontStretch="{TemplateBinding FontStretch}"
+                                        FontStyle="{TemplateBinding FontStyle}"
+                                        FontWeight="{TemplateBinding FontWeight}"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        IsReadOnly="{TemplateBinding IsReadOnly}"
+                                        Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                                    <TextBlock
+                                        x:Name="PlaceholderPresenter"
+                                        Margin="3,0,0,0"
+                                        VerticalAlignment="Center"
+                                        Foreground="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}"
+                                        IsHitTestVisible="False"
+                                        Opacity="0.56"
+                                        Text="{TemplateBinding Placeholder}"
+                                        TextTrimming="CharacterEllipsis"
+                                        Visibility="Collapsed" />
+                                </Grid>
+
+                                <ContentPresenter
+                                    x:Name="TrailingIconPresenter"
+                                    Grid.Column="2"
+                                    Margin="8,0,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="{TemplateBinding TrailingIcon}"
+                                    ContentTemplate="{TemplateBinding TrailingIconTemplate}"
+                                    Opacity="0.82">
+                                    <ContentPresenter.Resources>
+                                        <Style TargetType="{x:Type icons:XIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding TrailingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XFluentIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding TrailingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XMaterialDesignIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding TrailingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XMaterialIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding TrailingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XBootstrapIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding TrailingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XFontAwesomeIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding TrailingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XModernIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding TrailingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XPhosphorIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding TrailingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type icons:XFileIcon}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Size" Value="{Binding TrailingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+
+                                        <Style TargetType="{x:Type pack:PackIconMaterialDesign}">
+                                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Width" Value="{Binding TrailingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                            <Setter Property="Height" Value="{Binding TrailingIconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XDatePicker}}}" />
+                                        </Style>
+                                    </ContentPresenter.Resources>
+                                </ContentPresenter>
+
+                                <Button
+                                    x:Name="PART_ClearButton"
+                                    Grid.Column="3"
+                                    Margin="0,0.5,-4,0"
+                                    Foreground="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                                    Style="{StaticResource XDatePickerIconButtonStyle}"
+                                    ToolTip="Clear"
+                                    Visibility="Collapsed">
+                                    <via:XMaterialIcon
+                                        Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                                        Kind="Close"
+                                        Opacity="0.90"
+                                        Size="9" />
+                                </Button>
+
+                                <Button
+                                    x:Name="PART_DropDownButton"
+                                    Grid.Column="4"
+                                    Margin="4,0,0,1"
+                                    Foreground="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}"
+                                    Style="{StaticResource XDatePickerIconButtonStyle}"
+                                    ToolTip="Open calendar">
+                                    <via:XFontAwesomeIcon
+                                        Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                                        Kind="CalendarRegular"
+                                        Opacity="0.6"
+                                        Size="14" />
+                                </Button>
+
+
+                            </Grid>
+                        </Border>
+
+                        <Popup
+                            x:Name="PART_Popup"
+                            AllowsTransparency="True"
+                            Focusable="False"
+                            HorizontalOffset="0"
+                            IsOpen="{TemplateBinding IsDropDownOpen}"
+                            Placement="Bottom"
+                            PlacementTarget="{Binding ElementName=RootBorder}"
+                            PopupAnimation="Fade"
+                            StaysOpen="False">
+                            <Border
+                                Margin="0,4,0,0"
+                                Padding="8"
+                                HorizontalAlignment="Left"
+                                Background="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}"
+                                BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}"
+                                BorderThickness="1"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+                                <Border.Effect>
+                                    <DropShadowEffect
+                                        BlurRadius="14"
+                                        Direction="270"
+                                        Opacity="0.16"
+                                        ShadowDepth="3" />
+                                </Border.Effect>
+
+                                <controls:XCalendar
+                                    x:Name="PART_Calendar"
+                                    FirstDayOfWeek="Monday" />
+                            </Border>
+                        </Popup>
+
+                        <TextBlock
+                            x:Name="DescriptionPresenter"
+                            Grid.Row="2"
+                            Margin="0,6,0,0"
+                            FontSize="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}"
+                            Foreground="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}"
+                            Opacity="0.68"
+                            Text="{TemplateBinding Description}"
+                            TextWrapping="Wrap" />
+
+                        <TextBlock
+                            x:Name="ValidationErrorPresenter"
+                            Grid.Row="3"
+                            MinHeight="16"
+                            Margin="0,4,0,0"
+                            FontSize="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}"
+                            Foreground="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                            Text="{Binding (Validation.Errors), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource FirstValidationErrorConverter}}"
+                            TextTrimming="CharacterEllipsis"
+                            TextWrapping="NoWrap"
+                            ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"
+                            Visibility="Collapsed" />
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Header" Value="">
+                            <Setter TargetName="HeaderPresenter" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <Trigger Property="Description" Value="">
+                            <Setter TargetName="DescriptionPresenter" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <Trigger Property="LeadingIcon" Value="{x:Null}">
+                            <Setter TargetName="LeadingIconPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="LeadingIconColumn" Property="Width" Value="0" />
+                        </Trigger>
+
+                        <Trigger Property="TrailingIcon" Value="{x:Null}">
+                            <Setter TargetName="TrailingIconPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="TrailingIconColumn" Property="Width" Value="0" />
+                        </Trigger>
+
+                        <Trigger Property="Text" Value="">
+                            <Setter TargetName="PlaceholderPresenter" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}" />
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.FocusRing}}" />
+                            <Setter TargetName="RootBorder" Property="BorderThickness" Value="2" />
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.InputBackground}}" />
+                            <Setter TargetName="PlaceholderPresenter" Property="Opacity" Value="0.46" />
+                        </Trigger>
+
+                        <Trigger Property="IsReadOnly" Value="True">
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.InputReadOnlyBackground}}" />
+                        </Trigger>
+
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                            <Setter TargetName="RootBorder" Property="BorderThickness" Value="2" />
+                            <Setter TargetName="ValidationErrorPresenter" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="MultiLineValidationHints" Value="True">
+                            <Setter TargetName="ValidationErrorPresenter" Property="MaxHeight" Value="34" />
+                            <Setter TargetName="ValidationErrorPresenter" Property="TextWrapping" Value="Wrap" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="RootBorder" Property="Opacity" Value="0.55" />
+                        </Trigger>
+
+                        <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">
+                            <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallHeight}" />
+                            <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
+                            <Setter Property="LeadingIconSize" Value="{x:Static controls:XControlSizeMetrics.SmallIconSize}" />
+                            <Setter Property="TrailingIconSize" Value="{x:Static controls:XControlSizeMetrics.SmallIconSize}" />
+                            <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.SmallCornerRadius}" />
+                        </Trigger>
+
+                        <Trigger Property="Size" Value="{x:Static controls:XControlSize.Large}">
+                            <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeHeight}" />
+                            <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodyLarge}}" />
+                            <Setter Property="LeadingIconSize" Value="{x:Static controls:XControlSizeMetrics.LargeIconSize}" />
+                            <Setter Property="TrailingIconSize" Value="{x:Static controls:XControlSizeMetrics.LargeIconSize}" />
+                            <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.LargeCornerRadius}" />
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

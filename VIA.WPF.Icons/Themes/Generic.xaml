@@ -1,0 +1,20 @@
+<!--=====================================================================================================================
+  <copyright file="Generic.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/VIA.WPF.Icons;component/Themes/XIcon.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Icons;component/Themes/XMaterialDesignIcon.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Icons;component/Themes/XMaterialIcon.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Icons;component/Themes/XFluentIcon.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Icons;component/Themes/XBootstrapIcon.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Icons;component/Themes/XFontAwesomeIcon.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Icons;component/Themes/XModernIcon.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Icons;component/Themes/XPhosphorIcon.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Icons;component/Themes/XFileIcon.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

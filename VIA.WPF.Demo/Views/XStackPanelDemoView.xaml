@@ -1,0 +1,221 @@
+<!--=====================================================================================================================
+  <copyright file="XStackPanelDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XStackPanelDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XStackPanelDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XStackPanel" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A lightweight stack layout with built-in spacing. It removes margin noise from XAML and keeps gaps consistent when children appear or collapse."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Vertical composition" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Use a single Spacing value instead of setting margins on each child."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XStackPanel Spacing="10">
+                                    <via:XBorder
+                                        Padding="14"
+                                        Appearance="VerySubtle"
+                                        CornerRadius="6"
+                                        Variant="Primary">
+                                        <via:XGrid Columns="Auto,*" ColumnSpacing="10">
+                                            <via:XIconButton
+                                                Width="32"
+                                                Height="32"
+                                                HorizontalAlignment="Left"
+                                                Icon="{via:BootstrapIcon Kind=CheckCircleFill}"
+                                                IsHitTestVisible="False"
+                                                Variant="Success" />
+                                            <via:XStackPanel Grid.Column="1" Spacing="3">
+                                                <via:XTextBlock Text="Step one" TextRole="Subtitle" />
+                                                <via:XTextBlock Text="Load project data" TextRole="Caption" />
+                                            </via:XStackPanel>
+                                        </via:XGrid>
+                                    </via:XBorder>
+
+                                    <via:XBorder
+                                        Padding="14"
+                                        Appearance="VerySubtle"
+                                        CornerRadius="6"
+                                        Variant="Info">
+                                        <via:XGrid Columns="Auto,*" ColumnSpacing="10">
+                                            <via:XIconButton
+                                                Width="32"
+                                                Height="32"
+                                                HorizontalAlignment="Left"
+                                                Icon="{via:BootstrapIcon Kind=ArrowClockwise}"
+                                                IsHitTestVisible="False"
+                                                Variant="Info" />
+                                            <via:XStackPanel Grid.Column="1" Spacing="3">
+                                                <via:XTextBlock Text="Step two" TextRole="Subtitle" />
+                                                <via:XTextBlock Text="Synchronize lookup lists" TextRole="Caption" />
+                                            </via:XStackPanel>
+                                        </via:XGrid>
+                                    </via:XBorder>
+
+                                    <via:XBorder
+                                        Padding="14"
+                                        Appearance="VerySubtle"
+                                        CornerRadius="6"
+                                        Variant="Warning">
+                                        <via:XGrid Columns="Auto,*" ColumnSpacing="10">
+                                            <via:XIconButton
+                                                Width="32"
+                                                Height="32"
+                                                HorizontalAlignment="Left"
+                                                Icon="{via:BootstrapIcon Kind=ExclamationTriangleFill}"
+                                                IsHitTestVisible="False"
+                                                Variant="Warning" />
+                                            <via:XStackPanel Grid.Column="1" Spacing="3">
+                                                <via:XTextBlock Text="Step three" TextRole="Subtitle" />
+                                                <via:XTextBlock Text="Review pending changes" TextRole="Caption" />
+                                            </via:XStackPanel>
+                                        </via:XGrid>
+                                    </via:XBorder>
+                                </via:XStackPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Horizontal commands" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Horizontal orientation keeps command rows readable without individual Margin values."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XStackPanel Orientation="Horizontal" Spacing="10">
+                                    <via:XButton
+                                        HorizontalAlignment="Left"
+                                        Content="Create"
+                                        Icon="{via:BootstrapIcon Kind=PlusCircleFill}"
+                                        Variant="Primary" />
+                                    <via:XButton
+                                        HorizontalAlignment="Left"
+                                        Appearance="Outline"
+                                        Content="Edit"
+                                        Icon="{via:BootstrapIcon Kind=PencilFill}" />
+                                    <via:XButton
+                                        HorizontalAlignment="Left"
+                                        Appearance="Subtle"
+                                        Content="Refresh"
+                                        Icon="{via:BootstrapIcon Kind=ArrowClockwise}"
+                                        Variant="Info" />
+                                </via:XStackPanel>
+
+                                <via:XBorder
+                                    Padding="14"
+                                    Appearance="VerySubtle"
+                                    CornerRadius="6"
+                                    Variant="Default">
+                                    <via:XStackPanel Spacing="8">
+                                        <via:XTextBlock Text="Collapsed children" TextRole="Subtitle" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="The hidden row below is collapsed. XStackPanel does not leave an extra spacing gap for it."
+                                            TextRole="Description" />
+                                        <via:XTextBlock Text="Visible row 1" TextRole="Caption" />
+                                        <via:XTextBlock Text="Collapsed row" TextRole="Caption" Visibility="Collapsed" />
+                                        <via:XTextBlock Text="Visible row 2 follows directly after the configured spacing" TextRole="Caption" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XStackPanel Spacing="12">
+                        <via:XTextBlock Text="Practical card layout" TextRole="SectionTitle" />
+                        <via:XTextBlock
+                            IsMultiline="True"
+                            Text="XStackPanel is the default choice for readable card content: title, description, body and command row."
+                            TextRole="Description" />
+
+                        <via:XBorder
+                            Width="560"
+                            HorizontalAlignment="Left"
+                            Padding="20"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="16">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Import inventory file" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="The content is stacked with one Spacing value. Command buttons are grouped in a nested horizontal XStackPanel."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XBorder
+                                    Padding="14"
+                                    Appearance="VerySubtle"
+                                    CornerRadius="6"
+                                    Variant="Info">
+                                    <via:XTextBlock Text="CSV · XLSX · JSON files up to 25 MB" TextRole="Caption" />
+                                </via:XBorder>
+
+                                <via:XStackPanel Orientation="Horizontal" Spacing="10">
+                                    <via:XButton
+                                        HorizontalAlignment="Left"
+                                        Content="Choose file"
+                                        Icon="{via:BootstrapIcon Kind=Files}"
+                                        Variant="Primary" />
+                                    <via:XButton
+                                        HorizontalAlignment="Left"
+                                        Appearance="Ghost"
+                                        Content="Cancel" />
+                                </via:XStackPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XStackPanel>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

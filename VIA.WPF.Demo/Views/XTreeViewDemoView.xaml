@@ -1,0 +1,183 @@
+<!--=====================================================================================================================
+  <copyright file="XTreeViewDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XTreeViewDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XTreeViewDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XTreeView" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="920"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A themed hierarchical navigation control with selected item binding, node commands, expand/collapse tools and native node drag/drop."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*" RowSpacing="18">
+                        <via:XBorder
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Navigation tree with actions" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Node actions can be enabled globally. The selected data item is two-way bindable and independent from the visual container."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+                                </via:XStackPanel>
+
+                                <via:XTreeView
+                                    Width="420"
+                                    Height="360"
+                                    HorizontalAlignment="Left"
+                                    ChildrenMemberPath="Children"
+                                    DeleteItemCommand="{Binding DeleteNodeCommand}"
+                                    EditItemCommand="{Binding EditNodeCommand}"
+                                    ExpandedMemberPath="IsExpanded"
+                                    ItemSpacing="3"
+                                    ItemsSource="{Binding NavigationNodes}"
+                                    NewItemCommand="{Binding NewNodeCommand}"
+                                    NodeCornerRadius="6"
+                                    NodePadding="10,7"
+                                    SelectedDataItem="{Binding SelectedNavigationNode, Mode=TwoWay}"
+                                    ShowCollapseAllButton="True"
+                                    ShowDeleteButton="True"
+                                    ShowEditButton="True"
+                                    ShowExpandAllButton="True"
+                                    ShowNewButton="True"
+                                    ShowRootNewButton="True">
+                                    <via:XTreeView.ItemTemplate>
+                                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                            <via:XGrid Columns="Auto,*" ColumnSpacing="8">
+                                                <via:XMaterialIcon
+                                                    Width="15"
+                                                    Height="15"
+                                                    VerticalAlignment="Center"
+                                                    Kind="FolderOutline" />
+                                                <via:XTextBlock
+                                                    Grid.Column="1"
+                                                    VerticalAlignment="Center"
+                                                    Text="{Binding Title}"
+                                                    TextTrimming="CharacterEllipsis" />
+                                            </via:XGrid>
+                                        </HierarchicalDataTemplate>
+                                    </via:XTreeView.ItemTemplate>
+                                </via:XTreeView>
+
+                                <via:XBorder
+                                    Padding="12"
+                                    Appearance="VerySubtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="{Binding SelectedNavigationNode.Title, StringFormat=Selected node: {0}, TargetNullValue=Selected node: -}"
+                                        TextWrapping="Wrap" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Drag/drop tree" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="The collection drop handler reorders hierarchical data. Drop hints support before, into and after placements."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+                                </via:XStackPanel>
+
+                                <via:XTreeView
+                                    Width="420"
+                                    Height="360"
+                                    HorizontalAlignment="Left"
+                                    AllowNodeDragDrop="True"
+                                    ChildrenMemberPath="Children"
+                                    DropHintAfterText="After"
+                                    DropHintBeforeText="Before"
+                                    DropHintIntoText="Into"
+                                    ExpandedMemberPath="IsExpanded"
+                                    ItemsSource="{Binding DragDropNodes}"
+                                    NodeDropHandler="{Binding DragDropNodeDropHandler}"
+                                    NodeDropMode="BeforeAfterInto"
+                                    SelectedDataItem="{Binding SelectedDragDropNode, Mode=TwoWay}"
+                                    ShowCollapseAllButton="True"
+                                    ShowExpandAllButton="True">
+                                    <via:XTreeView.ItemTemplate>
+                                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                            <via:XGrid Columns="Auto,*" ColumnSpacing="8">
+                                                <via:XMaterialIcon
+                                                    Width="15"
+                                                    Height="15"
+                                                    VerticalAlignment="Center"
+                                                    Kind="PackageVariantClosed" />
+                                                <via:XTextBlock
+                                                    Grid.Column="1"
+                                                    VerticalAlignment="Center"
+                                                    Text="{Binding Title}"
+                                                    TextTrimming="CharacterEllipsis" />
+                                            </via:XGrid>
+                                        </HierarchicalDataTemplate>
+                                    </via:XTreeView.ItemTemplate>
+                                </via:XTreeView>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XBorder
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8">
+                        <via:XGrid Columns="Auto,*,Auto,*,Auto,*" ColumnSpacing="10">
+                            <via:XBorder Padding="10,6" Appearance="Subtle" CornerRadius="6" Variant="Primary">
+                                <via:XTextBlock Text="Binding" />
+                            </via:XBorder>
+                            <via:XTextBlock Grid.Column="1" VerticalAlignment="Center" Text="SelectedDataItem" TextRole="Description" />
+
+                            <via:XBorder Grid.Column="2" Padding="10,6" Appearance="Subtle" CornerRadius="6" Variant="Accent">
+                                <via:XTextBlock Text="Commands" />
+                            </via:XBorder>
+                            <via:XTextBlock Grid.Column="3" VerticalAlignment="Center" Text="New / Edit / Delete" TextRole="Description" />
+
+                            <via:XBorder Grid.Column="4" Padding="10,6" Appearance="Subtle" CornerRadius="6" Variant="Info">
+                                <via:XTextBlock Text="Drag/drop" />
+                            </via:XBorder>
+                            <via:XTextBlock Grid.Column="5" VerticalAlignment="Center" Text="Before / Into / After" TextRole="Description" />
+                        </via:XGrid>
+                    </via:XBorder>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

@@ -1,0 +1,193 @@
+<!--=====================================================================================================================
+  <copyright file="XInputShared.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:icons="clr-namespace:VIA.WPF.Icons;assembly=VIA.WPF.Icons"
+    xmlns:pack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
+    <Style x:Key="XInputResetButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Width" Value="18" />
+        <Setter Property="Height" Value="18" />
+        <Setter Property="MinWidth" Value="18" />
+        <Setter Property="MinHeight" Value="18" />
+        <Setter Property="controls:XInputAssist.IconSize" Value="{x:Static controls:XControlSizeMetrics.SmallIconSize}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        x:Name="RootBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="3"
+                        SnapsToDevicePixels="True">
+                        <Grid
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            SnapsToDevicePixels="True">
+
+                            <icons:XMaterialIcon
+                                x:Name="DefaultResetGlyph"
+                                Width="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=14, TargetNullValue=14}"
+                                Height="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=14, TargetNullValue=14}"
+                                Foreground="{TemplateBinding Foreground}"
+                                Kind="CloseCircle"
+                                Opacity="0.88"
+                                Size="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=14, TargetNullValue=14}"
+                                Stretch="Uniform" />
+                            <ContentPresenter
+                                x:Name="ResetIconPresenter"
+                                Width="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=14, TargetNullValue=14}"
+                                Height="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=14, TargetNullValue=14}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Opacity="0.88"
+                                Visibility="Collapsed">
+                                <ContentPresenter.Resources>
+                                    <Style TargetType="{x:Type icons:XIcon}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="controls:XIconAssist.Size" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type icons:XFluentIcon}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="controls:XIconAssist.Size" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type icons:XMaterialDesignIcon}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="controls:XIconAssist.Size" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type icons:XMaterialIcon}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="controls:XIconAssist.Size" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type icons:XBootstrapIcon}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="controls:XIconAssist.Size" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type icons:XFontAwesomeIcon}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="controls:XIconAssist.Size" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type icons:XModernIcon}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="controls:XIconAssist.Size" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type icons:XPhosphorIcon}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="controls:XIconAssist.Size" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type icons:XFileIcon}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="controls:XIconAssist.Size" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type pack:PackIconMaterialDesign}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="Width" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                        <Setter Property="Height" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type pack:PackIconMaterial}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="Width" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                        <Setter Property="Height" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type pack:PackIconBootstrapIcons}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="Width" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                        <Setter Property="Height" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type pack:PackIconFontAwesome6}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="Width" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                        <Setter Property="Height" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type pack:PackIconModern}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="Width" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                        <Setter Property="Height" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type pack:PackIconPhosphorIcons}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="Width" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                        <Setter Property="Height" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type pack:PackIconFileIcons}">
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="Width" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                        <Setter Property="Height" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="controls:XIconAssist.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" />
+                                        <Setter Property="FontSize" Value="{Binding Path=(controls:XInputAssist.IconSize), RelativeSource={RelativeSource AncestorType={x:Type Button}}, FallbackValue=14, TargetNullValue=14}" />
+                                    </Style>
+                                </ContentPresenter.Resources>
+                            </ContentPresenter>
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasContent" Value="True">
+                            <Setter TargetName="DefaultResetGlyph" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="ResetIconPresenter" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="Content" Value="">
+                            <Setter TargetName="DefaultResetGlyph" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="ResetIconPresenter" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatePressed}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBackground}}" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBorder}}" />
+                            <Setter TargetName="RootBorder" Property="Opacity" Value="0.75" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

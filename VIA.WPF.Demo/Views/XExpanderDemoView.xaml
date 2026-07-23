@@ -1,0 +1,235 @@
+<!--=====================================================================================================================
+  <copyright file="XExpanderDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XExpanderDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XExpanderDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="Expandable content" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="900"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="XExpander reveals secondary content without leaving the current view. It supports settings sections, compact navigation groups, different sizes and all four expansion directions."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XBorder
+                        Padding="20"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="12">
+                            <via:XTextBlock Text="Settings sections" TextRole="SectionTitle" />
+                            <via:XTextBlock
+                                IsMultiline="True"
+                                Text="The default Down direction works best for forms and preference pages. Headers can use text, templates and icons."
+                                TextRole="Description"
+                                TextWrapping="Wrap" />
+
+                            <via:XGrid ColumnSpacing="16" Columns="*,*">
+                                <via:XExpander
+                                    BorderThickness="1"
+                                    ContentPadding="16"
+                                    HeaderPadding="14,10"
+                                    IsExpanded="True"
+                                    ShowIndicator="True">
+                                    <via:XExpander.Header>
+                                        <via:XGrid ColumnSpacing="10" Columns="Auto,*">
+                                            <ContentControl VerticalAlignment="Center" Content="{via:BootstrapIcon Kind=BellFill}" />
+                                            <via:XTextBlock Grid.Column="1" Text="Notifications" />
+                                        </via:XGrid>
+                                    </via:XExpander.Header>
+                                    <via:XStackPanel Spacing="8">
+                                        <via:XCheckBox Content="Show desktop notifications" IsChecked="True" />
+                                        <via:XCheckBox Content="Send email summary" IsChecked="True" />
+                                        <via:XCheckBox Content="Only notify for critical alerts" />
+                                    </via:XStackPanel>
+                                </via:XExpander>
+
+                                <via:XExpander
+                                    Grid.Column="1"
+                                    BorderThickness="1"
+                                    ContentPadding="16"
+                                    HeaderPadding="14,10"
+                                    ShowIndicator="True">
+                                    <via:XExpander.Header>
+                                        <via:XGrid ColumnSpacing="10" Columns="Auto,*">
+                                            <ContentControl VerticalAlignment="Center" Content="{via:BootstrapIcon Kind=ShieldLockFill}" />
+                                            <via:XTextBlock Grid.Column="1" Text="Security" />
+                                        </via:XGrid>
+                                    </via:XExpander.Header>
+                                    <via:XStackPanel Spacing="8">
+                                        <via:XCheckBox Content="Require confirmation before delete" IsChecked="True" />
+                                        <via:XCheckBox Content="Lock session when idle" />
+                                    </via:XStackPanel>
+                                </via:XExpander>
+                            </via:XGrid>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder
+                        Padding="20"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="14">
+                            <via:XTextBlock Text="Expand directions" TextRole="SectionTitle" />
+                            <via:XTextBlock
+                                IsMultiline="True"
+                                Text="Down and Up are useful in forms and popups. Left and Right are available for inspectors, filter strips or compact side tools."
+                                TextRole="Description"
+                                TextWrapping="Wrap" />
+
+                            <via:XGrid
+                                ColumnSpacing="16"
+                                Columns="*,*"
+                                RowSpacing="16"
+                                Rows="Auto,Auto">
+                                <via:XExpander
+                                    Header="Expand down"
+                                    HeaderIcon="{via:BootstrapIcon Kind=ChevronDown}"
+                                    HeaderIconSize="13"
+                                    IsExpanded="True">
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Default direction. Content appears below the header and keeps the page flow natural."
+                                        TextWrapping="Wrap" />
+                                </via:XExpander>
+
+                                <via:XExpander
+                                    Grid.Column="1"
+                                    ExpandDirection="Up"
+                                    Header="Expand up"
+                                    HeaderIcon="{via:BootstrapIcon Kind=ChevronUp}"
+                                    HeaderIconSize="13"
+                                    IsExpanded="True">
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Useful near the bottom of a window, in popups or in compact command areas."
+                                        TextWrapping="Wrap" />
+                                </via:XExpander>
+
+                                <via:XExpander
+                                    Grid.Row="1"
+                                    ExpandDirection="Left"
+                                    Header="Expand left"
+                                    HeaderIcon="{via:BootstrapIcon Kind=ChevronLeft}"
+                                    HeaderIconSize="13"
+                                    IsExpanded="False"
+                                    VerticalAlignment="Center"
+                                    ShowIndicator="False">
+                                    <via:XTextBlock
+                                        IsMultiline="False"
+                                        Padding="0"
+                                        Text="The content opens to the left of the header area. This is useful for right-side inspectors."
+                                        TextWrapping="Wrap" />
+                                </via:XExpander>
+
+                                <via:XExpander
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    MinWidth="320"
+                                    ExpandDirection="Right"
+                                    Header="Expand right"
+                                    HeaderIcon="{via:BootstrapIcon Kind=ChevronRight}"
+                                    HeaderIconSize="13"
+                                    IsExpanded="True"
+                                    ShowIndicator="False">
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="The content opens to the right of the header area. This fits left-side navigation tools."
+                                        TextWrapping="Wrap" />
+                                </via:XExpander>
+                            </via:XGrid>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder
+                        Padding="20"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XGrid ColumnSpacing="16" Columns="*,*">
+                            <via:XStackPanel Spacing="10">
+                                <via:XTextBlock Text="Sizes and quiet headers" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Use Small for dense panels, Medium for common forms and Large for touch-friendly sections."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+                            </via:XStackPanel>
+
+                            <via:XStackPanel Grid.Column="1" Spacing="8">
+                                <via:XExpander
+                                    BorderThickness="1"
+                                    Header="Small tools"
+                                    HeaderIcon="{via:BootstrapIcon Kind=Sliders}"
+                                    IsExpanded="True"
+                                    Size="Small">
+                                    <via:XStackPanel Spacing="8">
+                                        <via:XCheckBox Content="Enable notifications" Size="Small" />
+                                        <via:XCheckBox Content="Start automatically" Size="Small" />
+                                    </via:XStackPanel>
+                                </via:XExpander>
+
+                                <via:XExpander
+                                    BorderThickness="0"
+                                    ContentPadding="8"
+                                    HeaderPadding="8,6"
+                                    IsExpanded="True"
+                                    ShowIndicator="False">
+                                    <via:XExpander.Header>
+                                        <via:XTextBlock Text="Quiet navigation group" TextRole="SectionTitle" />
+                                    </via:XExpander.Header>
+                                    <via:XStackPanel Spacing="6">
+                                        <via:XButton
+                                            HorizontalAlignment="Left"
+                                            Appearance="Subtle"
+                                            Content="Customers"
+                                            Size="Small" />
+                                        <via:XButton
+                                            HorizontalAlignment="Left"
+                                            Appearance="Subtle"
+                                            Content="Products"
+                                            Size="Small" />
+                                        <via:XButton
+                                            HorizontalAlignment="Left"
+                                            Appearance="Subtle"
+                                            Content="Warehouses"
+                                            Size="Small" />
+                                    </via:XStackPanel>
+                                </via:XExpander>
+                            </via:XStackPanel>
+                        </via:XGrid>
+                    </via:XBorder>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

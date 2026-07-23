@@ -1,0 +1,60 @@
+<!--
+    ===========================================================================================================
+    file="XDataGrid.xaml" company="VIA.WPF">
+    Hosts the main XDataGrid style and merges the specialized XDataGrid theme dictionaries.
+    ===========================================================================================================
+-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:via="http://schemas.via.dev/wpf">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XDataGrid/XDataGrid.Styles.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XDataGrid/XDataGrid.ColumnHeader.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style BasedOn="{StaticResource {x:Type DataGrid}}" TargetType="{x:Type controls:XDataGrid}">
+        <Style.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XDataGrid/XDataGrid.ActionColumn.xaml" />
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Style.Resources>
+        <Setter Property="AutoGenerateColumns" Value="False" />
+        <Setter Property="CanUserAddRows" Value="False" />
+        <Setter Property="CanUserDeleteRows" Value="False" />
+        <Setter Property="CanUserResizeRows" Value="False" />
+        <Setter Property="CanUserSortColumns" Value="True" />
+        <Setter Property="HeadersVisibility" Value="Column" />
+        <Setter Property="AlternationCount" Value="2" />
+        <Setter Property="MinColumnWidth" Value="60" />
+        <Setter Property="FontFamily" Value="{DynamicResource {x:Static via:XTypographyKeys.FontFamilyBody}}" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static via:XTypographyKeys.FontSizeBody}}" />
+        <Setter Property="RowHeight" Value="{DynamicResource {x:Static via:XLayoutKeys.DataGridRowHeight}}" />
+        <Setter Property="ColumnHeaderHeight" Value="{DynamicResource {x:Static via:XLayoutKeys.DataGridHeaderHeight}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static via:XBrushKeys.Surface}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.TextPrimary}}" />
+        <Setter Property="RowBackground" Value="{DynamicResource {x:Static via:XBrushKeys.Surface}}" />
+        <Setter Property="AlternatingRowBackground" Value="{DynamicResource {x:Static via:XBrushKeys.SurfaceSunken}}" />
+        <Setter Property="GridLinesVisibility" Value="None" />
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource {x:Static via:XBrushKeys.GridLine}}" />
+        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource {x:Static via:XBrushKeys.GridLine}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static via:XBrushKeys.GridLine}}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="EnableRowVirtualization" Value="True" />
+        <Setter Property="EnableColumnVirtualization" Value="True" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
+        <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling" />
+        <Setter Property="RowStyle" Value="{StaticResource XDataGridRowStyle}" />
+        <Setter Property="CellStyle" Value="{StaticResource XDataGridCellStyle}" />
+        <Setter Property="ColumnHeaderStyle" Value="{StaticResource XDataGridColumnHeaderStyle}" />
+    </Style>
+
+</ResourceDictionary>

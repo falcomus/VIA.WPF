@@ -1,0 +1,12 @@
+<!--=====================================================================================================================
+  <copyright file="Generic.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/VIA.WPF.Icons.MaterialDesign;component/Themes/XMaterialDesignIcon.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

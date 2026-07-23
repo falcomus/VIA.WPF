@@ -1,0 +1,172 @@
+<!--=====================================================================================================================
+  <copyright file="XTextBlock.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
+    <Style TargetType="{x:Type controls:XTextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
+        <Setter Property="FontFamily" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontFamilyBody}}" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
+        <Setter Property="FontWeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontWeightRegular}}" />
+        <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightBody}}" />
+        <Setter Property="LineStackingStrategy" Value="MaxHeight" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+
+        <Style.Triggers>
+            <Trigger Property="IsMultiline" Value="True">
+                <Setter Property="TextTrimming" Value="None" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+            </Trigger>
+
+            <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightBodySmall}}" />
+            </Trigger>
+
+            <Trigger Property="Size" Value="{x:Static controls:XControlSize.Large}">
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodyLarge}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightBodyLarge}}" />
+            </Trigger>
+
+            <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Label}">
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
+                <Setter Property="FontWeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontWeightMedium}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightBodySmall}}" />
+            </Trigger>
+
+            <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Display}">
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeDisplay}}" />
+                <Setter Property="FontWeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontWeightSemiBold}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightDisplay}}" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="TextTrimming" Value="None" />
+            </Trigger>
+
+            <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Overline}">
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeOverline}}" />
+                <Setter Property="FontWeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontWeightSemiBold}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightOverline}}" />
+                <Setter Property="Opacity" Value="0.72" />
+            </Trigger>
+
+            <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Title}">
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeTitle}}" />
+                <Setter Property="FontWeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontWeightSemiBold}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightTitle}}" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="TextTrimming" Value="None" />
+            </Trigger>
+
+            <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.LargeHeading}">
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeLargeHeading}}" />
+                <Setter Property="FontWeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontWeightSemiBold}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightLargeHeading}}" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="TextTrimming" Value="None" />
+            </Trigger>
+
+            <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Heading}">
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeHeading}}" />
+                <Setter Property="FontWeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontWeightSemiBold}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightHeading}}" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="TextTrimming" Value="None" />
+            </Trigger>
+
+            <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Subtitle}">
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeSubtitle}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderText}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightSubtitle}}" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="TextTrimming" Value="None" />
+            </Trigger>
+
+            <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.SectionTitle}">
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeSectionTitle}}" />
+                <Setter Property="FontWeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontWeightSemiBold}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightSectionTitle}}" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="TextTrimming" Value="None" />
+            </Trigger>
+
+            <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Description}">
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderText}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightBody}}" />
+                <Setter Property="Opacity" Value="0.82" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="TextTrimming" Value="None" />
+            </Trigger>
+
+            <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Caption}">
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeCaption}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderText}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightCaption}}" />
+                <Setter Property="Opacity" Value="0.78" />
+            </Trigger>
+
+            <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Error}">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightBody}}" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="TextTrimming" Value="None" />
+            </Trigger>
+
+            <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Success}">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightBody}}" />
+            </Trigger>
+
+            <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Warning}">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightBody}}" />
+            </Trigger>
+
+            <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Info}">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightBody}}" />
+            </Trigger>
+
+            <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Code}">
+                <Setter Property="FontFamily" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontFamilyCode}}" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeCode}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderText}}" />
+                <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightCode}}" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="TextTrimming" Value="None" />
+            </Trigger>
+
+            <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Primary}">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
+            </Trigger>
+
+            <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Accent}">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Accent}}" />
+            </Trigger>
+
+            <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Success}">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+            </Trigger>
+
+            <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Warning}">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+            </Trigger>
+
+            <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Danger}">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+            </Trigger>
+
+            <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Info}">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

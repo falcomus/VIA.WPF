@@ -1,0 +1,184 @@
+<!--=====================================================================================================================
+  <copyright file="XDatePickerDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XDatePickerDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XDatePickerDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XDatePicker" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A themed date input for forms, filters and planning dialogs. It supports selected-date binding, reset behavior, formatting, date ranges, icons, sizes and readonly states."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid
+                        ColumnSpacing="18"
+                        Columns="*,*"
+                        RowSpacing="18"
+                        Rows="Auto,Auto">
+
+                        <via:XBorder
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Bound form field" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="The selected date can be bound directly to nullable DateTime properties."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XDatePicker
+                                    Width="300"
+                                    Header="Invoice date"
+                                    LeadingIcon="{via:MaterialIcon Kind=CalendarMonthOutline}"
+                                    Placeholder="Select date"
+                                    SelectedDate="{Binding InvoiceDate, Mode=TwoWay}"
+                                    ShowResetButton="True" />
+
+                                <via:XBorder
+                                    Padding="12"
+                                    Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
+                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Use this pattern in invoice, contract, booking and maintenance forms."
+                                        TextRole="Caption" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Range restricted" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="MinimumDate and MaximumDate limit the calendar to valid business windows."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XDatePicker
+                                    Width="320"
+                                    Description="Only dates in 2026 are selectable."
+                                    Header="Release window"
+                                    LeadingIcon="{via:MaterialIcon Kind=CalendarRange}"
+                                    MaximumDate="2026-12-31"
+                                    MinimumDate="2026-01-01"
+                                    SelectedDate="{Binding ReleaseDate, Mode=TwoWay}"
+                                    ShowResetButton="True" />
+
+                                <via:XButton
+                                    Width="150"
+                                    Appearance="Subtle"
+                                    Content="Preview date"
+                                    HorizontalAlignment="Left"
+                                    Icon="{via:BootstrapIcon Kind=EyeFill}" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Row="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Formats and icons" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Formatting and icon slots make date fields readable and recognizable in dense forms."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XGrid ColumnSpacing="14" Columns="*,*">
+                                    <via:XDatePicker
+                                        DateFormatString="dd.MM.yyyy"
+                                        Header="German format"
+                                        SelectedDate="2026-05-04"
+                                        ShowResetButton="True" />
+                                    <via:XDatePicker
+                                        Grid.Column="1"
+                                        Header="With drop icon"
+                                        LeadingIcon="{via:MaterialIcon Kind=CalendarClock}"
+                                        SelectedDate="2026-05-04"
+                                        TrailingIcon="{via:MaterialIcon Kind=ChevronDown}" />
+                                </via:XGrid>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Sizes and states" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Compact, default and large date fields share the same semantic chrome."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XWrapPanel HorizontalSpacing="14" VerticalSpacing="14">
+                                    <via:XDatePicker Width="170" Header="Small" SelectedDate="2026-05-04" Size="Small" />
+                                    <via:XDatePicker Width="210" Header="Medium" SelectedDate="2026-05-04" Size="Medium" />
+                                    <via:XDatePicker Width="230" Header="Large" SelectedDate="2026-05-04" Size="Large" />
+                                    <via:XDatePicker Width="230" Header="Read only" IsReadOnly="True" SelectedDate="2026-05-04" />
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

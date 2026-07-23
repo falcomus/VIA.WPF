@@ -1,0 +1,145 @@
+<UserControl
+    x:Class="VIA.WPF.Mockup.Wpf.Controls.XMockupDesignerShell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:project="clr-namespace:VIA.WPF.Mockup.Wpf.Views.Project"
+    xmlns:via="http://schemas.via.dev/wpf"
+    xmlns:viewModels="clr-namespace:VIA.WPF.Mockup.Wpf.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewModels:MockupDesignerShellViewModel}"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/VIA.WPF.Mockup.Wpf;component/Resources/MockupApplicationResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Background="{DynamicResource {x:Static via:XBrushKeys.Background}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="28" />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.Row="0"
+            Background="{DynamicResource {x:Static via:XBrushKeys.TabHeaderBackground}}"
+            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.TabHeaderBorder}}"
+            BorderThickness="0,0,0,1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="176" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="64" />
+                </Grid.ColumnDefinitions>
+
+                <Border
+                    Grid.Column="0"
+                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.TabHeaderBorder}}"
+                    BorderThickness="0,0,1,0">
+                    <StackPanel
+                        Margin="20,0,0,0"
+                        VerticalAlignment="Center">
+                        <TextBlock
+                            FontSize="25"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource {x:Static via:XBrushKeys.TabHeaderForeground}}"
+                            Text="VIA" />
+                        <TextBlock
+                            Margin="1,-3,0,0"
+                            FontSize="8"
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource {x:Static via:XBrushKeys.TabHeaderForeground}}"
+                            Opacity="0.72"
+                            Text="SOFTWARE" />
+                    </StackPanel>
+                </Border>
+
+                <via:XNavigationTabControl
+                    Grid.Column="1"
+                    Margin="12,0"
+                    VerticalAlignment="Center"
+                    FontSize="15"
+                    FontWeight="Medium"
+                    HeaderAppearance="Underlined"
+                    HeaderContentMargin="0,0,0,-2"
+                    HeaderHostPadding="0"
+                    HeaderUnderlineMargin="0,3,0,0"
+                    HeaderPadding="10,10"
+                    HeaderSpacing="4"
+                    SelectedIndex="0">
+                    <via:XNavigationTabItem Header="PROJECT" />
+                    <via:XNavigationTabItem Header="SCREEN" />
+                    <via:XNavigationTabItem Header="TEMPLATE" />
+                    <via:XNavigationTabItem Header="POPUP" />
+                    <via:XNavigationTabItem Header="PREVIEW" />
+                    <via:XNavigationTabItem Header="ACTION FLOW" IsEnabled="False" />
+                    <via:XNavigationTabItem Header="OPTIONS" Margin="20,0,0,0" />
+                    <via:XNavigationTabItem Header="HELP" />
+                    <via:XNavigationTabItem Header="ABOUT" />
+                </via:XNavigationTabControl>
+
+                <via:XIconButton
+                    Grid.Column="2"
+                    Width="44"
+                    Height="44"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Appearance="Ghost"
+                    Foreground="{DynamicResource {x:Static via:XBrushKeys.TabHeaderForeground}}"
+                    Icon="{via:MaterialIcon Kind=Menu}"
+                    IconSize="24"
+                    Size="Large"
+                    ToolTip="Application menu" />
+            </Grid>
+        </Border>
+
+        <project:MockupProjectView
+            Grid.Row="1"
+            DataContext="{Binding Project}" />
+
+        <Border
+            Grid.Row="2"
+            Background="{DynamicResource {x:Static via:XBrushKeys.NavigationPanelHeaderBackground}}"
+            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.NavigationPanelHeaderBorder}}"
+            BorderThickness="0,1,0,0">
+            <Grid Margin="14,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontSize="11"
+                    Foreground="{DynamicResource {x:Static via:XBrushKeys.NavigationPanelHeaderForeground}}"
+                    Opacity="0.78"
+                    Text="{Binding Project.ProjectPath, StringFormat='Project: {0}'}" />
+                <StackPanel
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Margin="0,0,18,0"
+                        FontSize="11"
+                        Foreground="{DynamicResource {x:Static via:XBrushKeys.NavigationPanelHeaderForeground}}"
+                        Opacity="0.78"
+                        Text="{Binding Project.LastSavedText}" />
+                    <Ellipse
+                        Width="7"
+                        Height="7"
+                        Margin="0,0,6,0"
+                        Fill="{DynamicResource {x:Static via:XBrushKeys.Success}}" />
+                    <TextBlock
+                        FontSize="11"
+                        Foreground="{DynamicResource {x:Static via:XBrushKeys.NavigationPanelHeaderForeground}}"
+                        Opacity="0.78"
+                        Text="{Binding Project.StatusText}" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

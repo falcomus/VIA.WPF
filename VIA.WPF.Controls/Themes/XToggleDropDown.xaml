@@ -1,0 +1,509 @@
+<!--=====================================================================================================================
+  <copyright file="XToggleDropDown.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:icons="clr-namespace:VIA.WPF.Icons;assembly=VIA.WPF.Icons"
+    xmlns:pack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
+    <Style x:Key="XToggleDropDownBaseStyle" TargetType="{x:Type controls:XToggleDropDown}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Surface}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="10,4,10,4" />
+        <Setter Property="MinWidth" Value="48" />
+        <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.MediumHeight}" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.MediumCornerRadius}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="IconSize" Value="{x:Static controls:XControlSizeMetrics.MediumIconSize}" />
+        <Setter Property="UncheckedIconTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <ContentControl Content="{Binding}" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="CheckedIconTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <ContentControl Content="{Binding}" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:XToggleDropDown}">
+                    <Grid SnapsToDevicePixels="True">
+                        <Border
+                            x:Name="RootBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+
+                            <Grid>
+                                <Grid Margin="{TemplateBinding Padding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition x:Name="LeftIconColumn" Width="Auto" />
+                                        <ColumnDefinition x:Name="ContentColumn" Width="*" />
+                                        <ColumnDefinition x:Name="RightIconColumn" Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid
+                                        x:Name="LeftIconHost"
+                                        Grid.Column="0"
+                                        Margin="0,0,8,0"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                        <ContentPresenter
+                                            x:Name="UncheckedLeftIconPresenter"
+                                            Content="{TemplateBinding UncheckedIcon}"
+                                            ContentTemplate="{TemplateBinding UncheckedIconTemplate}"
+                                            Visibility="Collapsed">
+                                            <ContentPresenter.Resources>
+                                                <Style TargetType="{x:Type icons:XIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XFluentIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XMaterialDesignIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XMaterialIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XBootstrapIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XFontAwesomeIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XModernIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XPhosphorIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XFileIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type pack:PackIconMaterialDesign}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                            </ContentPresenter.Resources>
+                                        </ContentPresenter>
+
+                                        <ContentPresenter
+                                            x:Name="CheckedLeftIconPresenter"
+                                            Content="{TemplateBinding CheckedIcon}"
+                                            ContentTemplate="{TemplateBinding CheckedIconTemplate}"
+                                            Visibility="Collapsed">
+                                            <ContentPresenter.Resources>
+                                                <Style TargetType="{x:Type icons:XIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XFluentIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XMaterialDesignIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XMaterialIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XBootstrapIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XFontAwesomeIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XModernIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XPhosphorIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XFileIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type pack:PackIconMaterialDesign}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                            </ContentPresenter.Resources>
+                                        </ContentPresenter>
+                                    </Grid>
+
+                                    <ContentPresenter
+                                        x:Name="MainContentPresenter"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        RecognizesAccessKey="True" />
+
+                                    <Grid
+                                        x:Name="RightIconHost"
+                                        Grid.Column="2"
+                                        Margin="8,0,0,0"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                        <ContentPresenter
+                                            x:Name="UncheckedRightIconPresenter"
+                                            Content="{TemplateBinding UncheckedIcon}"
+                                            ContentTemplate="{TemplateBinding UncheckedIconTemplate}"
+                                            Visibility="Collapsed">
+                                            <ContentPresenter.Resources>
+                                                <Style TargetType="{x:Type icons:XIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XFluentIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XMaterialDesignIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XMaterialIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XBootstrapIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XFontAwesomeIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XModernIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XPhosphorIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XFileIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type pack:PackIconMaterialDesign}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                            </ContentPresenter.Resources>
+                                        </ContentPresenter>
+
+                                        <ContentPresenter
+                                            x:Name="CheckedRightIconPresenter"
+                                            Content="{TemplateBinding CheckedIcon}"
+                                            ContentTemplate="{TemplateBinding CheckedIconTemplate}"
+                                            Visibility="Collapsed">
+                                            <ContentPresenter.Resources>
+                                                <Style TargetType="{x:Type icons:XIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XFluentIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XMaterialDesignIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XMaterialIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XBootstrapIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XFontAwesomeIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XModernIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XPhosphorIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type icons:XFileIcon}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Size" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                                <Style TargetType="{x:Type pack:PackIconMaterialDesign}">
+                                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                    <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource AncestorType={x:Type controls:XToggleDropDown}}}" />
+                                                </Style>
+                                            </ContentPresenter.Resources>
+                                        </ContentPresenter>
+                                    </Grid>
+
+                                    <Path
+                                        x:Name="DropDownGlyph"
+                                        Grid.Column="3"
+                                        Width="10"
+                                        Height="10"
+                                        Margin="10,0,0,0"
+                                        VerticalAlignment="Center"
+                                        Data="M 0 2 L 5 7 L 10 2"
+                                        Fill="Transparent"
+                                        Stroke="{TemplateBinding Foreground}"
+                                        StrokeEndLineCap="Round"
+                                        StrokeLineJoin="Round"
+                                        StrokeStartLineCap="Round"
+                                        StrokeThickness="1.75" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                        <Popup
+                            x:Name="PART_Popup"
+                            AllowsTransparency="True"
+                            Focusable="False"
+                            IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                            Placement="{TemplateBinding DropDownPlacement}"
+                            PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                            PopupAnimation="Fade"
+                            StaysOpen="{TemplateBinding StaysOpen}">
+                            <Border
+                                x:Name="PopupBorder"
+                                MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                Margin="0,4,0,0"
+                                Background="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}"
+                                BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}"
+                                BorderThickness="1"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+                                <Border.Effect>
+                                    <DropShadowEffect
+                                        BlurRadius="14"
+                                        Direction="270"
+                                        Opacity="0.16"
+                                        ShadowDepth="3" />
+                                </Border.Effect>
+
+                                <ScrollViewer Margin="0" VerticalScrollBarVisibility="Auto">
+                                    <ContentPresenter Content="{TemplateBinding DropDownContent}" ContentTemplate="{TemplateBinding DropDownContentTemplate}" />
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IconPlacement" Value="{x:Static controls:XIconPlacement.Left}">
+                            <Setter TargetName="LeftIconColumn" Property="Width" Value="Auto" />
+                            <Setter TargetName="RightIconColumn" Property="Width" Value="0" />
+                        </Trigger>
+
+                        <Trigger Property="IconPlacement" Value="{x:Static controls:XIconPlacement.Right}">
+                            <Setter TargetName="LeftIconColumn" Property="Width" Value="0" />
+                            <Setter TargetName="RightIconColumn" Property="Width" Value="Auto" />
+                        </Trigger>
+
+
+                        <Trigger Property="Content" Value="{x:Null}">
+                            <Setter TargetName="MainContentPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="ContentColumn" Property="Width" Value="0" />
+                            <Setter TargetName="LeftIconHost" Property="Margin" Value="0" />
+                            <Setter TargetName="RightIconHost" Property="Margin" Value="0" />
+                        </Trigger>
+
+                        <Trigger Property="Content" Value="">
+                            <Setter TargetName="MainContentPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="ContentColumn" Property="Width" Value="0" />
+                            <Setter TargetName="LeftIconHost" Property="Margin" Value="0" />
+                            <Setter TargetName="RightIconHost" Property="Margin" Value="0" />
+                        </Trigger>
+
+                        <Trigger Property="StretchContent" Value="False">
+                            <Setter TargetName="MainContentPresenter" Property="HorizontalAlignment" Value="Center" />
+                        </Trigger>
+
+                        <Trigger Property="StretchContent" Value="True">
+                            <Setter TargetName="MainContentPresenter" Property="HorizontalAlignment" Value="Stretch" />
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}" />
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}" />
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatePressed}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.FocusRing}}" />
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.InputBackground}}" />
+                            <Setter TargetName="RootBorder" Property="BorderThickness" Value="2" />
+                        </Trigger>
+
+                        <Trigger Property="IsDropDownOpen" Value="True">
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.FocusRing}}" />
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.InputBackground}}" />
+                            <Setter TargetName="RootBorder" Property="BorderThickness" Value="2" />
+                            <Setter TargetName="DropDownGlyph" Property="RenderTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="180" CenterX="5" CenterY="5" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="RootBorder" Property="Opacity" Value="0.50" />
+                        </Trigger>
+
+                        <Trigger Property="UncheckedIcon" Value="{x:Null}">
+                            <Setter TargetName="UncheckedLeftIconPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="UncheckedRightIconPresenter" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <Trigger Property="CheckedIcon" Value="{x:Null}">
+                            <Setter TargetName="CheckedLeftIconPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="CheckedRightIconPresenter" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False" />
+                                <Condition Property="IconPlacement" Value="{x:Static controls:XIconPlacement.Left}" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="UncheckedLeftIconPresenter" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="CheckedLeftIconPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="UncheckedRightIconPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="CheckedRightIconPresenter" Property="Visibility" Value="Collapsed" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False" />
+                                <Condition Property="IconPlacement" Value="{x:Static controls:XIconPlacement.Right}" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="UncheckedLeftIconPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="CheckedLeftIconPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="UncheckedRightIconPresenter" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="CheckedRightIconPresenter" Property="Visibility" Value="Collapsed" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True" />
+                                <Condition Property="IconPlacement" Value="{x:Static controls:XIconPlacement.Left}" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="UncheckedLeftIconPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="CheckedLeftIconPresenter" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="UncheckedRightIconPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="CheckedRightIconPresenter" Property="Visibility" Value="Collapsed" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True" />
+                                <Condition Property="IconPlacement" Value="{x:Static controls:XIconPlacement.Right}" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="UncheckedLeftIconPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="CheckedLeftIconPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="UncheckedRightIconPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="CheckedRightIconPresenter" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource XToggleDropDownBaseStyle}" TargetType="{x:Type controls:XToggleDropDown}">
+        <Style.Triggers>
+            <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">
+                <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallHeight}" />
+                <Setter Property="Padding" Value="8,2,8,2" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
+                <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.SmallCornerRadius}" />
+                <Setter Property="IconSize" Value="{x:Static controls:XControlSizeMetrics.SmallIconSize}" />
+            </Trigger>
+
+            <Trigger Property="Size" Value="{x:Static controls:XControlSize.Large}">
+                <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeHeight}" />
+                <Setter Property="Padding" Value="12,6,12,6" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodyLarge}}" />
+                <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.LargeCornerRadius}" />
+                <Setter Property="IconSize" Value="{x:Static controls:XControlSizeMetrics.LargeIconSize}" />
+            </Trigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Default}" />
+                    <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Solid}" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Surface}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Default}" />
+                    <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Outline}" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Default}" />
+                    <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Subtle}" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

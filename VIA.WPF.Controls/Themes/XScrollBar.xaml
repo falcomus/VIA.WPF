@@ -1,0 +1,201 @@
+<!--=====================================================================================================================
+  <copyright file="XScrollBar.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
+    <Style x:Key="XScrollBarLineButtonStyle" TargetType="{x:Type RepeatButton}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Height" Value="0" />
+        <Setter Property="Width" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border Background="Transparent" SnapsToDevicePixels="True" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="XScrollBarPageButtonStyle" TargetType="{x:Type RepeatButton}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border Background="Transparent" SnapsToDevicePixels="True" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="XScrollBarThumbStyle" TargetType="{x:Type Thumb}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}" />
+        <Setter Property="Opacity" Value="0.55" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border
+                        x:Name="ThumbBorder"
+                        Margin="1"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="3"
+                        Opacity="{TemplateBinding Opacity}"
+                        SnapsToDevicePixels="True" />
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ThumbBorder" Property="Opacity" Value="0.72" />
+                        </Trigger>
+
+                        <Trigger Property="IsDragging" Value="True">
+                            <Setter TargetName="ThumbBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Accent}}" />
+                            <Setter TargetName="ThumbBorder" Property="Opacity" Value="0.90" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="ThumbBorder" Property="Opacity" Value="0.16" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="XVerticalScrollBarTemplate" TargetType="{x:Type ScrollBar}">
+        <Grid
+            Width="{TemplateBinding Width}"
+            Margin="0,2,3,2"
+            Background="Transparent"
+            SnapsToDevicePixels="True">
+            <Border
+                x:Name="TrackBackground"
+                Margin="2,1,2,1"
+                Background="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}"
+                CornerRadius="3"
+                Opacity="0.00" />
+
+            <Track x:Name="PART_Track" IsDirectionReversed="True">
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton Command="ScrollBar.PageUpCommand" Style="{StaticResource XScrollBarPageButtonStyle}" />
+                </Track.DecreaseRepeatButton>
+
+                <Track.Thumb>
+                    <Thumb Style="{StaticResource XScrollBarThumbStyle}" />
+                </Track.Thumb>
+
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton Command="ScrollBar.PageDownCommand" Style="{StaticResource XScrollBarPageButtonStyle}" />
+                </Track.IncreaseRepeatButton>
+            </Track>
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="TrackBackground" Property="Opacity" Value="0.50" />
+            </Trigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.45" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="XHorizontalScrollBarTemplate" TargetType="{x:Type ScrollBar}">
+        <Grid
+            Height="{TemplateBinding Height}"
+            Background="Transparent"
+            SnapsToDevicePixels="True">
+            <Border
+                x:Name="TrackBackground"
+                Margin="1,2,1,2"
+                Background="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}"
+                CornerRadius="3"
+                Opacity="0.00" />
+
+            <Track x:Name="PART_Track" Orientation="Horizontal">
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton Command="ScrollBar.PageLeftCommand" Style="{StaticResource XScrollBarPageButtonStyle}" />
+                </Track.DecreaseRepeatButton>
+
+                <Track.Thumb>
+                    <Thumb Style="{StaticResource XScrollBarThumbStyle}" />
+                </Track.Thumb>
+
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton Command="ScrollBar.PageRightCommand" Style="{StaticResource XScrollBarPageButtonStyle}" />
+                </Track.IncreaseRepeatButton>
+            </Track>
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="TrackBackground" Property="Opacity" Value="0.50" />
+            </Trigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.45" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style TargetType="{x:Type ScrollBar}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Width" Value="6" />
+        <Setter Property="Height" Value="6" />
+        <Setter Property="MinWidth" Value="6" />
+        <Setter Property="MinHeight" Value="6" />
+        <Setter Property="Template" Value="{StaticResource XVerticalScrollBarTemplate}" />
+
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="Width" Value="Auto" />
+                <Setter Property="Height" Value="6" />
+                <Setter Property="MinHeight" Value="6" />
+                <Setter Property="Template" Value="{StaticResource XHorizontalScrollBarTemplate}" />
+            </Trigger>
+
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="Width" Value="6" />
+                <Setter Property="Height" Value="Auto" />
+                <Setter Property="MinWidth" Value="6" />
+                <Setter Property="Template" Value="{StaticResource XVerticalScrollBarTemplate}" />
+            </Trigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Orientation" Value="Vertical" />
+                    <Condition Property="IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Width" Value="10" />
+                <Setter Property="MinWidth" Value="10" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Orientation" Value="Horizontal" />
+                    <Condition Property="IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Height" Value="10" />
+                <Setter Property="MinHeight" Value="10" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

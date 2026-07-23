@@ -1,0 +1,164 @@
+<!--=====================================================================================================================
+  <copyright file="XColorSchemeDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XColorSchemeDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XColorSchemeDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="Color Scheme" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="Theme brushes expose semantic color tokens for surfaces, borders, state colors and brand accents. Switch light/dark mode in the title bar to verify the palette."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XBorder
+                        Padding="20"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="16">
+                            <via:XTextBlock Text="Semantic palette" TextRole="SectionTitle" />
+
+                            <via:XUniformGrid Columns="4" ColumnSpacing="12" RowSpacing="12">
+                                <via:XBorder Padding="14" Appearance="Subtle" BorderThickness="1" CornerRadius="6" Variant="Primary">
+                                    <via:XStackPanel Spacing="8">
+                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Primary}}" CornerRadius="6" />
+                                        <via:XTextBlock Text="Primary" TextRole="Label" Variant="Primary" />
+                                        <via:XTextBlock Text="Main brand actions" TextRole="Caption" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+
+                                <via:XBorder Padding="14" Appearance="Subtle" BorderThickness="1" CornerRadius="6" Variant="Accent">
+                                    <via:XStackPanel Spacing="8">
+                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Accent}}" CornerRadius="6" />
+                                        <via:XTextBlock Text="Accent" TextRole="Label" Variant="Accent" />
+                                        <via:XTextBlock Text="Secondary emphasis" TextRole="Caption" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+
+                                <via:XBorder Padding="14" Appearance="Subtle" BorderThickness="1" CornerRadius="6" Variant="Success">
+                                    <via:XStackPanel Spacing="8">
+                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Success}}" CornerRadius="6" />
+                                        <via:XTextBlock Text="Success" TextRole="Success" />
+                                        <via:XTextBlock Text="Completed states" TextRole="Caption" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+
+                                <via:XBorder Padding="14" Appearance="Subtle" BorderThickness="1" CornerRadius="6" Variant="Warning">
+                                    <via:XStackPanel Spacing="8">
+                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Warning}}" CornerRadius="6" />
+                                        <via:XTextBlock Text="Warning" TextRole="Warning" />
+                                        <via:XTextBlock Text="Attention states" TextRole="Caption" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+
+                                <via:XBorder Padding="14" Appearance="Subtle" BorderThickness="1" CornerRadius="6" Variant="Danger">
+                                    <via:XStackPanel Spacing="8">
+                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Danger}}" CornerRadius="6" />
+                                        <via:XTextBlock Text="Danger" TextRole="Error" />
+                                        <via:XTextBlock Text="Destructive states" TextRole="Caption" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+
+                                <via:XBorder Padding="14" Appearance="Subtle" BorderThickness="1" CornerRadius="6" Variant="Info">
+                                    <via:XStackPanel Spacing="8">
+                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Info}}" CornerRadius="6" />
+                                        <via:XTextBlock Text="Info" TextRole="Info" />
+                                        <via:XTextBlock Text="Neutral hints" TextRole="Caption" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+
+                                <via:XBorder Padding="14" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                    <via:XStackPanel Spacing="8">
+                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}" BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}" BorderThickness="1" CornerRadius="6" />
+                                        <via:XTextBlock Text="Surface" TextRole="Label" />
+                                        <via:XTextBlock Text="Cards and panels" TextRole="Caption" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+
+                                <via:XBorder Padding="14" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                    <via:XStackPanel Spacing="8">
+                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Background}}" BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}" BorderThickness="1" CornerRadius="6" />
+                                        <via:XTextBlock Text="Background" TextRole="Label" />
+                                        <via:XTextBlock Text="App page base" TextRole="Caption" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                            </via:XUniformGrid>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="10">
+                                <via:XTextBlock Text="Surface hierarchy" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Use Background for pages, Surface for cards, SurfaceLight/VerySubtle appearances for nested content and Border for separators."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+                                <via:XBorder Padding="14" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                    <via:XTextBlock Text="Nested subtle surface" TextRole="Label" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="10">
+                                <via:XTextBlock Text="Do not hard-code colors" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Library controls should bind to semantic resources instead of concrete RGB values. That keeps light, dark and custom themes aligned."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Background=&quot;{DynamicResource {x:Static via:XBrushKeys.Surface}}&quot;"
+                                    TextRole="Code"
+                                    TextWrapping="Wrap" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

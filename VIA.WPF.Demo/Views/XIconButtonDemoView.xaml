@@ -1,0 +1,227 @@
+<!--=====================================================================================================================
+  <copyright file="XIconButtonDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XIconButtonDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XIconButtonDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="8,0,12,22"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XIconButton" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="Compact icon-only actions for toolbars, list rows, command strips and dense editors. Use clear ToolTips because the control intentionally has no visible text label."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Grid.Column="0"
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low"
+                            Variant="Primary">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Common row actions" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Typical CRUD actions use semantic variants so the intent is visible even without text."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+                                </via:XStackPanel>
+
+                                <via:XWrapPanel HorizontalAlignment="Left" HorizontalSpacing="10" VerticalSpacing="10">
+                                    <via:XIconButton
+                                        Icon="{via:BootstrapIcon Kind=EyeFill}"
+                                        ToolTip="View"
+                                        Variant="Info" />
+                                    <via:XIconButton
+                                        Icon="{via:BootstrapIcon Kind=PencilFill}"
+                                        ToolTip="Edit"
+                                        Variant="Primary" />
+                                    <via:XIconButton
+                                        Icon="{via:BootstrapIcon Kind=Files}"
+                                        ToolTip="Duplicate"
+                                        Variant="Accent" />
+                                    <via:XIconButton
+                                        Icon="{via:BootstrapIcon Kind=TrashFill}"
+                                        ToolTip="Delete"
+                                        Variant="Danger" />
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low"
+                            Variant="Accent">
+                            <via:XStackPanel Spacing="14">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Toolbar cluster" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Icon buttons keep dense command areas readable. Separators group related commands without heavy chrome."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+                                </via:XStackPanel>
+
+                                <via:XStackPanel HorizontalAlignment="Left" Orientation="Horizontal" Spacing="8">
+                                    <via:XIconButton
+                                        Icon="{via:BootstrapIcon Kind=PlusCircleFill}"
+                                        ToolTip="New item"
+                                        Variant="Primary" />
+                                    <via:XIconButton
+                                        Appearance="Subtle"
+                                        Icon="{via:BootstrapIcon Kind=ArrowClockwise}"
+                                        ToolTip="Refresh" />
+                                    <via:XSeparator Orientation="Vertical" />
+                                    <via:XIconButton
+                                        Appearance="Subtle"
+                                        Icon="{via:BootstrapIcon Kind=FunnelFill}"
+                                        ToolTip="Filter" />
+                                    <via:XIconButton
+                                        Appearance="Subtle"
+                                        Icon="{via:BootstrapIcon Kind=Download}"
+                                        ToolTip="Export" />
+                                    <via:XSeparator Orientation="Vertical" />
+                                    <via:XIconButton
+                                        Appearance="Ghost"
+                                        Icon="{via:BootstrapIcon Kind=GearFill}"
+                                        ToolTip="Settings" />
+                                </via:XStackPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XBorder
+                        Padding="18"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="14">
+                            <via:XStackPanel Spacing="4">
+                                <via:XTextBlock Text="Appearances" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Solid buttons carry primary actions. Outline and subtle buttons are quieter; ghost is best for contextual chrome or very low emphasis."
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+                            </via:XStackPanel>
+
+                            <via:XWrapPanel HorizontalAlignment="Left" HorizontalSpacing="10" VerticalSpacing="10">
+                                <via:XIconButton
+                                    Appearance="Solid"
+                                    Icon="{via:BootstrapIcon Kind=Plus}"
+                                    ToolTip="Solid"
+                                    Variant="Primary" />
+                                <via:XIconButton
+                                    Appearance="Outline"
+                                    Icon="{via:BootstrapIcon Kind=Plus}"
+                                    ToolTip="Outline"
+                                    Variant="Primary" />
+                                <via:XIconButton
+                                    Appearance="Subtle"
+                                    Icon="{via:BootstrapIcon Kind=Plus}"
+                                    ToolTip="Subtle"
+                                    Variant="Primary" />
+                                <via:XIconButton
+                                    Appearance="Ghost"
+                                    Icon="{via:BootstrapIcon Kind=Plus}"
+                                    ToolTip="Ghost"
+                                    Variant="Primary" />
+                                <via:XIconButton
+                                    Icon="{via:BootstrapIcon Kind=ArrowClockwise}"
+                                    IsLoading="True"
+                                    ToolTip="Loading" />
+                                <via:XIconButton
+                                    Icon="{via:BootstrapIcon Kind=ArrowClockwise}"
+                                    IsEnabled="False"
+                                    ToolTip="Disabled" />
+                            </via:XWrapPanel>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Grid.Column="0"
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low"
+                            Variant="Info">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Sizes" TextRole="SectionTitle" />
+                                <via:XWrapPanel HorizontalAlignment="Left" HorizontalSpacing="10" VerticalSpacing="10">
+                                    <via:XIconButton
+                                        Icon="{via:BootstrapIcon Kind=Search}"
+                                        Size="Small"
+                                        ToolTip="Small search" />
+                                    <via:XIconButton
+                                        Icon="{via:BootstrapIcon Kind=Search}"
+                                        Size="Medium"
+                                        ToolTip="Medium search" />
+                                    <via:XIconButton
+                                        Icon="{via:BootstrapIcon Kind=Search}"
+                                        Size="Large"
+                                        ToolTip="Large search" />
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low"
+                            Variant="Warning">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Semantic variants" TextRole="SectionTitle" />
+                                <via:XWrapPanel HorizontalAlignment="Left" HorizontalSpacing="10" VerticalSpacing="10">
+                                    <via:XIconButton Icon="{via:BootstrapIcon Kind=InfoCircleFill}" ToolTip="Info" Variant="Info" />
+                                    <via:XIconButton Icon="{via:BootstrapIcon Kind=CheckCircleFill}" ToolTip="Success" Variant="Success" />
+                                    <via:XIconButton Icon="{via:BootstrapIcon Kind=ExclamationTriangleFill}" ToolTip="Warning" Variant="Warning" />
+                                    <via:XIconButton Icon="{via:BootstrapIcon Kind=XCircleFill}" ToolTip="Danger" Variant="Danger" />
+                                </via:XWrapPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

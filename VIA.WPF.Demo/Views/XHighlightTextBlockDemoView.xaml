@@ -1,0 +1,192 @@
+<!--=====================================================================================================================
+  <copyright file="XHighlightTextBlockDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XHighlightTextBlockDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XHighlightTextBlockDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XHighlightTextBlock" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="880"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="XHighlightTextBlock highlights search fragments in titles, list rows, search results and preview snippets without custom inline building code."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XGrid ColumnSpacing="18" Columns="320,*">
+                        <via:XBorder
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Live search term" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Type a term and switch case sensitivity to see the highlighting update immediately."
+                                    TextRole="Description" />
+
+                                <via:XSearchBox
+                                    Width="280"
+                                    HorizontalAlignment="Left"
+                                    Header="Highlight text"
+                                    Placeholder="Search text"
+                                    SearchIcon="{via:BootstrapIcon Kind=Search}"
+                                    Text="{Binding HighlightTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                                <via:XCheckBox
+                                    HorizontalAlignment="Left"
+                                    Content="Case-sensitive matching"
+                                    IsChecked="{Binding IsCaseSensitive, Mode=TwoWay}" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="16">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Inline highlighting" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Simple mode keeps the paragraph rhythm and only changes matching runs."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XBorder
+                                    Padding="14"
+                                    Appearance="VerySubtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XStackPanel Spacing="12">
+                                        <via:XHighlightTextBlock
+                                            DisplayText="{Binding SampleSentence}"
+                                            FontSize="16"
+                                            HighlightText="{Binding HighlightTerm}"
+                                            IsCaseSensitive="{Binding IsCaseSensitive}"
+                                            TextWrapping="Wrap" />
+
+                                        <via:XHighlightTextBlock
+                                            DisplayText="{Binding SearchResultSentence}"
+                                            FontSize="16"
+                                            HighlightText="{Binding HighlightTerm}"
+                                            IsCaseSensitive="{Binding IsCaseSensitive}"
+                                            TextWrapping="Wrap" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XGrid ColumnSpacing="18" Columns="*,*">
+                        <via:XBorder
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Badge render mode" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="Badge mode is stronger and works well in dense result lists or command palettes."
+                                    TextRole="Description" />
+                                <via:XBorder
+                                    Padding="14"
+                                    Appearance="VerySubtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XStackPanel Spacing="12">
+                                        <via:XHighlightTextBlock
+                                            DisplayText="Search result highlighting can use rounded badges for dense result lists."
+                                            FontSize="16"
+                                            HighlightCornerRadius="5"
+                                            HighlightPadding="4,1"
+                                            HighlightRenderMode="Badge"
+                                            HighlightText="Search"
+                                            TextWrapping="Wrap" />
+                                        <via:XHighlightTextBlock
+                                            DisplayText="The badge can use theme resources for both background and foreground."
+                                            FontSize="16"
+                                            HighlightBrush="{DynamicResource {x:Static via:XBrushKeys.PrimaryVeryLight}}"
+                                            HighlightCornerRadius="5"
+                                            HighlightForeground="{DynamicResource {x:Static via:XBrushKeys.PrimaryDark}}"
+                                            HighlightPadding="4,1"
+                                            HighlightRenderMode="Badge"
+                                            HighlightText="theme"
+                                            TextWrapping="Wrap" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Appearance="Solid"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XTextBlock Text="Noise protection" TextRole="SectionTitle" />
+                                <via:XTextBlock
+                                    IsMultiline="True"
+                                    Text="MinimumHighlightTextLength avoids one-character matches that would make long lists visually noisy."
+                                    TextRole="Description" />
+                                <via:XBorder
+                                    Padding="14"
+                                    Appearance="VerySubtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XStackPanel Spacing="12">
+                                        <via:XHighlightTextBlock
+                                            DisplayText="MinimumHighlightTextLength prevents accidental one-character noise in long lists."
+                                            FontSize="16"
+                                            HighlightCornerRadius="5"
+                                            HighlightPadding="4,1"
+                                            HighlightRenderMode="Badge"
+                                            HighlightText="in"
+                                            MinimumHighlightTextLength="3"
+                                            TextWrapping="Wrap" />
+                                        <via:XHighlightTextBlock
+                                            DisplayText="Use None to temporarily disable highlight rendering while keeping the text binding."
+                                            FontSize="16"
+                                            HighlightRenderMode="None"
+                                            HighlightText="disable"
+                                            TextWrapping="Wrap" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

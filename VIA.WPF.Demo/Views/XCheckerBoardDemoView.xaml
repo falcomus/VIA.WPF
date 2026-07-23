@@ -1,0 +1,188 @@
+<!--=====================================================================================================================
+  <copyright file="XCheckerBoardDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XCheckerBoardDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XCheckerBoardDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="18">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="Transparency surfaces" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="900"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="XCheckerBoard extends XBorder and gives transparent content a readable, theme-aware preview surface. The default checker colors now use VIA theme brushes so the control stays usable in light and dark mode."
+                            TextRole="Description"
+                            TextWrapping="Wrap" />
+                    </via:XStackPanel>
+
+                    <via:XBorder
+                        Padding="20"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="16">
+                            <via:XGrid Columns="*,Auto" ColumnSpacing="16">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Theme-aware checkerboard" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="The first sample uses the default checker brushes. Toggle light/dark mode in the window title bar to verify that the pattern remains readable."
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+                                </via:XStackPanel>
+
+                                <via:XButton
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Appearance="Subtle"
+                                    Content="Theme ready"
+                                    Icon="{via:BootstrapIcon Kind=MoonStarsFill}"
+                                    Size="Small"
+                                    Variant="Info" />
+                            </via:XGrid>
+
+                            <via:XWrapPanel HorizontalSpacing="16" VerticalSpacing="16">
+                                <via:XCheckerBoard
+                                    Width="260"
+                                    Height="140"
+                                    Padding="18"
+                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                    BorderThickness="1"
+                                    CheckerSize="10"
+                                    CornerRadius="8"
+                                    Elevation="Low">
+                                    <via:XBorder
+                                        Width="118"
+                                        Height="64"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="#802D6CDF"
+                                        BorderBrush="#AA2D6CDF"
+                                        BorderThickness="1"
+                                        CornerRadius="6" />
+                                </via:XCheckerBoard>
+
+                                <via:XCheckerBoard
+                                    Width="260"
+                                    Height="140"
+                                    Padding="18"
+                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                    BorderThickness="1"
+                                    CheckerSize="6"
+                                    CornerRadius="8">
+                                    <via:XStackPanel
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Spacing="6">
+                                        <via:XTextBlock
+                                            HorizontalAlignment="Center"
+                                            Text="Small checkers"
+                                            TextRole="SectionTitle" />
+                                        <via:XTextBlock
+                                            HorizontalAlignment="Center"
+                                            Text="Default theme brushes"
+                                            TextRole="Description" />
+                                    </via:XStackPanel>
+                                </via:XCheckerBoard>
+
+                                <via:XCheckerBoard
+                                    Width="260"
+                                    Height="140"
+                                    Padding="18"
+                                    Appearance="Subtle"
+                                    BorderThickness="1"
+                                    CheckerDarkBrush="{DynamicResource {x:Static via:XBrushKeys.PrimaryLight}}"
+                                    CheckerLightBrush="{DynamicResource {x:Static via:XBrushKeys.SurfaceVeryLight}}"
+                                    CheckerSize="16"
+                                    CornerRadius="8"
+                                    Variant="Primary">
+                                    <via:XBorder
+                                        Width="124"
+                                        Height="64"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="#66A855F7"
+                                        BorderBrush="#A855F7"
+                                        BorderThickness="1"
+                                        CornerRadius="6" />
+                                </via:XCheckerBoard>
+                            </via:XWrapPanel>
+                        </via:XStackPanel>
+                    </via:XBorder>
+
+                    <via:XBorder
+                        Padding="20"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Elevation="Low">
+                        <via:XStackPanel Spacing="14">
+                            <via:XTextBlock Text="Inherited XBorder features" TextRole="SectionTitle" />
+                            <via:XTextBlock
+                                IsMultiline="True"
+                                Text="Because XCheckerBoard inherits from XBorder, the same appearance, variant, border, corner radius and elevation options are available."
+                                TextRole="Description"
+                                TextWrapping="Wrap" />
+
+                            <via:XGrid ColumnSpacing="14" Columns="*,*,*">
+                                <via:XCheckerBoard
+                                    Grid.Column="0"
+                                    Padding="16"
+                                    Appearance="Solid"
+                                    BorderThickness="1"
+                                    CheckerSize="8"
+                                    CornerRadius="8"
+                                    Variant="Default">
+                                    <via:XTextBlock Text="Solid default" />
+                                </via:XCheckerBoard>
+
+                                <via:XCheckerBoard
+                                    Grid.Column="1"
+                                    Padding="16"
+                                    Appearance="Subtle"
+                                    BorderThickness="1"
+                                    CheckerSize="8"
+                                    CornerRadius="8"
+                                    Variant="Primary">
+                                    <via:XTextBlock Text="Subtle primary" />
+                                </via:XCheckerBoard>
+
+                                <via:XCheckerBoard
+                                    Grid.Column="2"
+                                    Padding="16"
+                                    BorderThickness="1"
+                                    CheckerSize="8"
+                                    CornerRadius="8"
+                                    Elevation="Medium">
+                                    <via:XTextBlock Text="Medium elevation" />
+                                </via:XCheckerBoard>
+                            </via:XGrid>
+                        </via:XStackPanel>
+                    </via:XBorder>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

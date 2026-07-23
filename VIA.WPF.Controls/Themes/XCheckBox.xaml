@@ -1,0 +1,213 @@
+<!--=====================================================================================================================
+  <copyright file="XCheckBox.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
+    <Style TargetType="{x:Type controls:XCheckBox}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Surface}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.MediumHeight}" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
+        <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.MediumCornerRadius}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:XCheckBox}">
+                    <Grid Background="Transparent" SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid
+                            x:Name="IndicatorHost"
+                            Width="20"
+                            Height="20"
+                            VerticalAlignment="Center"
+                            SnapsToDevicePixels="True"
+                            UseLayoutRounding="True">
+
+                            <Border
+                                x:Name="KeyboardFocusRing"
+                                Background="Transparent"
+                                BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.FocusRing}}"
+                                BorderThickness="2"
+                                CornerRadius="5"
+                                IsHitTestVisible="False"
+                                Visibility="Collapsed" />
+
+                            <Border
+                                x:Name="IndicatorBorder"
+                                Width="16"
+                                Height="16"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+
+                                <Grid>
+                                    <Path
+                                        x:Name="CheckPath"
+                                        Width="8.5"
+                                        Height="7"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Data="M 1 4.4 L 3.7 6.8 L 8.4 1.3"
+                                        Stretch="Uniform"
+                                        Stroke="{DynamicResource {x:Static themes:XBrushKeys.PrimaryText}}"
+                                        StrokeEndLineCap="Round"
+                                        StrokeLineJoin="Round"
+                                        StrokeStartLineCap="Round"
+                                        StrokeThickness="1.6"
+                                        Visibility="Collapsed" />
+                                    <Border
+                                        x:Name="IndeterminateMark"
+                                        Width="8"
+                                        Height="2"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="{DynamicResource {x:Static themes:XBrushKeys.PrimaryText}}"
+                                        CornerRadius="1"
+                                        Visibility="Collapsed" />
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <ContentPresenter
+                            Grid.Column="1"
+                            Margin="8,0,0,0"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            RecognizesAccessKey="True" />
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
+                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceVeryLight}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatePressed}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter TargetName="KeyboardFocusRing" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
+                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
+                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryText}}" />
+                            <Setter TargetName="CheckPath" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
+                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
+                            <Setter TargetName="IndeterminateMark" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True" />
+                                <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Accent}" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Accent}}" />
+                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Accent}}" />
+                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentText}}" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True" />
+                                <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Success}" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.SuccessText}}" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True" />
+                                <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Warning}" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.WarningText}}" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True" />
+                                <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Danger}" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.DangerText}}" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True" />
+                                <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Info}" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.InfoText}}" />
+                        </MultiTrigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="IndicatorBorder" Property="Opacity" Value="0.50" />
+                            <Setter Property="Opacity" Value="0.65" />
+                        </Trigger>
+
+                        <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">
+                            <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallHeight}" />
+                            <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
+                            <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.SmallCornerRadius}" />
+                            <Setter TargetName="IndicatorHost" Property="Width" Value="18" />
+                            <Setter TargetName="IndicatorHost" Property="Height" Value="18" />
+                            <Setter TargetName="IndicatorBorder" Property="Width" Value="14" />
+                            <Setter TargetName="IndicatorBorder" Property="Height" Value="14" />
+                            <Setter TargetName="CheckPath" Property="Width" Value="8" />
+                            <Setter TargetName="CheckPath" Property="Height" Value="6.5" />
+                            <Setter TargetName="CheckPath" Property="StrokeThickness" Value="1.55" />
+                        </Trigger>
+
+                        <Trigger Property="Size" Value="{x:Static controls:XControlSize.Large}">
+                            <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeHeight}" />
+                            <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodyLarge}}" />
+                            <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.LargeCornerRadius}" />
+                            <Setter TargetName="IndicatorHost" Property="Width" Value="22" />
+                            <Setter TargetName="IndicatorHost" Property="Height" Value="22" />
+                            <Setter TargetName="IndicatorBorder" Property="Width" Value="18" />
+                            <Setter TargetName="IndicatorBorder" Property="Height" Value="18" />
+                            <Setter TargetName="CheckPath" Property="Width" Value="9.5" />
+                            <Setter TargetName="CheckPath" Property="Height" Value="7.5" />
+                            <Setter TargetName="CheckPath" Property="StrokeThickness" Value="1.7" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,528 @@
+<!--=====================================================================================================================
+  <copyright file="XDataGridDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XDataGridDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XDataGridDemoViewModel}"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style x:Key="DemoOuterCardStyle" TargetType="{x:Type via:XBorder}">
+            <Setter Property="Padding" Value="16" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Elevation" Value="Low" />
+            <Setter Property="Appearance" Value="Solid" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style x:Key="PerformanceRatingTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.BorderText}}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Green">
+                    <Setter Property="Foreground" Value="#15A34A" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Yellow">
+                    <Setter Property="Foreground" Value="#B45309" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Red">
+                    <Setter Property="Foreground" Value="#B91C1C" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <DataTemplate x:Key="XDataGridDemoEditorTemplate" DataType="{x:Type viewmodels:XDataGridDemoEditor}">
+            <via:XStackPanel Spacing="14" Validation.ErrorTemplate="{x:Null}">
+                <via:XGrid
+                    ColumnSpacing="14"
+                    Columns="*,*"
+                    RowSpacing="12"
+                    Rows="Auto,Auto,Auto,Auto">
+                    <via:XTextBox
+                        Header="Project"
+                        IsReadOnly="{Binding IsReadOnly}"
+                        LeadingIcon="{via:BootstrapIcon Kind=BoxSeamFill}"
+                        Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" />
+
+                    <via:XTextBox
+                        Grid.Column="1"
+                        Header="Owner"
+                        IsReadOnly="{Binding IsReadOnly}"
+                        LeadingIcon="{via:BootstrapIcon Kind=PersonCircle}"
+                        Text="{Binding Owner, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" />
+
+                    <via:XTextBox
+                        Grid.Row="1"
+                        Header="Status"
+                        IsReadOnly="{Binding IsReadOnly}"
+                        LeadingIcon="{via:BootstrapIcon Kind=CheckCircleFill}"
+                        Text="{Binding Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" />
+
+                    <via:XTextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Header="Area"
+                        IsReadOnly="{Binding IsReadOnly}"
+                        LeadingIcon="{via:BootstrapIcon Kind=Grid3X3GapFill}"
+                        Text="{Binding Area, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" />
+
+                    <via:XTextBox
+                        Grid.Row="2"
+                        Header="Priority"
+                        IsReadOnly="{Binding IsReadOnly}"
+                        LeadingIcon="{via:BootstrapIcon Kind=FlagFill}"
+                        Text="{Binding Priority, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" />
+
+                    <via:XDatePicker
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Header="Due date"
+                        IsReadOnly="{Binding IsReadOnly}"
+                        SelectedDate="{Binding DueDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" />
+
+                    <via:XNumberBox
+                        Grid.Row="3"
+                        FormatString="N0"
+                        Header="Progress"
+                        IsReadOnly="{Binding IsReadOnly}"
+                        Maximum="100"
+                        Minimum="0"
+                        Step="5"
+                        Value="{Binding Progress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" />
+
+                    <via:XCheckBox
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Content="Featured project"
+                        IsChecked="{Binding IsFeatured, Mode=TwoWay}"
+                        IsEnabled="{Binding IsEditable}" />
+                </via:XGrid>
+
+                <via:XTextBox
+                    Header="Description"
+                    IsReadOnly="{Binding IsReadOnly}"
+                    Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
+                    TextWrapping="Wrap" />
+            </via:XStackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <via:XGrid
+                MinHeight="0"
+                Margin="0,0,12,0"
+                RowSpacing="12"
+                Rows="Auto,Auto,Auto,*">
+                <via:XBorder Style="{StaticResource DemoOuterCardStyle}">
+                    <via:XGrid ColumnSpacing="18" Columns="*,Auto">
+                        <via:XStackPanel Spacing="7">
+                            <via:XTextBlock Text="XDataGrid" TextRole="Title" />
+                            <via:XTextBlock
+                                MaxWidth="900"
+                                HorizontalAlignment="Left"
+                                IsMultiline="True"
+                                Text="Production grid composition with toolbar search, lazy column filters, action column, keyboard shortcuts and modal row editing. The demo starts with 100 rows after the first render; benchmarks are opt-in."
+                                TextRole="Description"
+                                TextWrapping="Wrap" />
+                        </via:XStackPanel>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="10,8"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="6"
+                            Elevation="None"
+                            Variant="Info">
+                            <via:XStackPanel Orientation="Horizontal" Spacing="8">
+                                <via:XTextBlock Text="100 initial rows" TextRole="Caption" />
+                                <via:XTextBlock Text="Editable dialog" TextRole="Caption" />
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XBorder>
+
+                <via:XHeaderBar Grid.Row="1" TitleWidth="0">
+                    <via:XHeaderBar.Actions>
+                        <via:XStackPanel Orientation="Horizontal" Spacing="4">
+                            <via:XButton
+                                Appearance="Ghost"
+                                Command="{Binding Toolbar.NewCommand}"
+                                Content="New"
+                                Icon="{via:MaterialIcon Kind=Plus}"
+                                Size="Small" />
+                            <via:XButton
+                                Appearance="Ghost"
+                                Command="{Binding Toolbar.EditCommand}"
+                                Content="Edit"
+                                Icon="{via:MaterialIcon Kind=PencilOutline}"
+                                Size="Small" />
+                            <via:XButton
+                                Appearance="Ghost"
+                                Command="{Binding Toolbar.DeleteCommand}"
+                                Content="Delete"
+                                Icon="{via:MaterialIcon Kind=DeleteOutline}"
+                                Size="Small" />
+                            <via:XMoreButton />
+                        </via:XStackPanel>
+                    </via:XHeaderBar.Actions>
+                    <via:XHeaderGroup Header="Search" IsSeparatorVisible="False">
+                        <via:XSearchBox
+                            Width="300"
+                            Placeholder="Search projects"
+                            Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </via:XHeaderGroup>
+                </via:XHeaderBar>
+
+                <via:XExpander Grid.Row="2" Header="Benchmark tests">
+                    <via:XBorder
+                        Padding="14"
+                        Appearance="VerySubtle"
+                        BorderThickness="1"
+                        CornerRadius="6">
+                        <via:XStackPanel Spacing="12">
+                            <via:XGrid ColumnSpacing="14" Columns="*,Auto">
+                                <via:XGrid
+                                    ColumnSpacing="12"
+                                    Columns="Auto,Auto,Auto,Auto,Auto,Auto"
+                                    RowSpacing="6"
+                                    Rows="Auto,Auto">
+                                    <via:XTextBlock Text="Rows" TextRole="Caption" />
+                                    <via:XTextBlock
+                                        Grid.Column="1"
+                                        Text="{Binding BenchmarkRowCount, StringFormat={}{0:N0}}"
+                                        TextRole="Description" />
+                                    <via:XTextBlock
+                                        Grid.Column="2"
+                                        Text="UI load"
+                                        TextRole="Caption" />
+                                    <via:XTextBlock
+                                        Grid.Column="3"
+                                        Text="{Binding LastLoadDuration}"
+                                        TextRole="Description" />
+                                    <via:XTextBlock
+                                        Grid.Column="4"
+                                        Text="Search"
+                                        TextRole="Caption" />
+                                    <via:XTextBlock
+                                        Grid.Column="5"
+                                        Text="{Binding LastSearchDuration}"
+                                        TextRole="Description" />
+                                    <via:XTextBlock
+                                        Grid.Row="1"
+                                        Grid.ColumnSpan="6"
+                                        IsMultiline="True"
+                                        Text="{Binding LastGridAction}"
+                                        TextRole="Description"
+                                        TextWrapping="Wrap" />
+                                </via:XGrid>
+
+                                <via:XWrapPanel
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    HorizontalSpacing="8"
+                                    VerticalSpacing="8">
+                                    <via:XButton
+                                        HorizontalAlignment="Left"
+                                        Command="{Binding Load1KRowsCommand}"
+                                        Content="Load 1,000"
+                                        IsLoading="{Binding IsBenchmarkRunning}"
+                                        LoadingContent="Loading..." />
+                                    <via:XButton
+                                        HorizontalAlignment="Left"
+                                        Command="{Binding Load10KRowsCommand}"
+                                        Content="Load 10,000"
+                                        IsLoading="{Binding IsBenchmarkRunning}"
+                                        LoadingContent="Loading..."
+                                        Variant="Primary" />
+                                    <via:XButton
+                                        HorizontalAlignment="Left"
+                                        Command="{Binding Load50KRowsCommand}"
+                                        Content="Load 50,000"
+                                        IsLoading="{Binding IsBenchmarkRunning}"
+                                        LoadingContent="Loading..." />
+                                    <via:XButton
+                                        HorizontalAlignment="Left"
+                                        Command="{Binding RunSearchBenchmarkCommand}"
+                                        Content="Search test"
+                                        IsLoading="{Binding IsBenchmarkRunning}"
+                                        LoadingContent="Running..." />
+                                    <via:XButton
+                                        HorizontalAlignment="Left"
+                                        Command="{Binding RunScaleBenchmarkCommand}"
+                                        Content="Scale benchmark"
+                                        IsLoading="{Binding IsBenchmarkRunning}"
+                                        LoadingContent="Running..."
+                                        Variant="Primary" />
+                                    <via:XButton
+                                        HorizontalAlignment="Left"
+                                        Command="{Binding ClearPerformanceSearchCommand}"
+                                        Content="Clear search" />
+                                </via:XWrapPanel>
+                            </via:XGrid>
+
+                            <via:XProgressBar
+                                Height="4"
+                                IsIndeterminate="{Binding IsBenchmarkRunning}"
+                                Visibility="{Binding IsBenchmarkRunning, Converter={via:BooleanToVisibility}}" />
+
+                            <via:XGrid
+                                ColumnSpacing="12"
+                                Columns="Auto,*,Auto,*"
+                                RowSpacing="6"
+                                Rows="Auto,Auto">
+                                <via:XTextBlock Text="Scenario" TextRole="Caption" />
+                                <via:XTextBlock
+                                    Grid.Column="1"
+                                    Text="{Binding LastScenarioDuration}"
+                                    TextRole="Description" />
+                                <via:XTextBlock
+                                    Grid.Column="2"
+                                    Text="Rating"
+                                    TextRole="Caption" />
+                                <TextBlock
+                                    Grid.Column="3"
+                                    Style="{StaticResource PerformanceRatingTextBlockStyle}"
+                                    Tag="{Binding OverallPerformanceRatingState}"
+                                    Text="{Binding OverallPerformanceRating}" />
+                                <via:XTextBlock
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="4"
+                                    IsMultiline="True"
+                                    Text="{Binding PerformanceRatingHelpText}"
+                                    TextRole="Description"
+                                    TextWrapping="Wrap" />
+                            </via:XGrid>
+
+                            <ItemsControl ItemsSource="{Binding PerformanceResults}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <via:XBorder
+                                            Width="360"
+                                            Margin="0,0,10,10"
+                                            Padding="12"
+                                            Appearance="Solid"
+                                            BorderThickness="1"
+                                            CornerRadius="6">
+                                            <via:XStackPanel Spacing="8">
+                                                <via:XGrid Columns="*,Auto">
+                                                    <via:XTextBlock Text="{Binding RowCountDisplay, StringFormat={}{0} rows}" TextRole="SectionTitle" />
+                                                    <TextBlock
+                                                        Grid.Column="1"
+                                                        Style="{StaticResource PerformanceRatingTextBlockStyle}"
+                                                        Tag="{Binding RatingState}"
+                                                        Text="{Binding RatingDisplay}" />
+                                                </via:XGrid>
+
+                                                <via:XSeparator />
+
+                                                <via:XGrid
+                                                    ColumnSpacing="10"
+                                                    Columns="Auto,*"
+                                                    RowSpacing="6"
+                                                    Rows="Auto,Auto,Auto,Auto,Auto">
+                                                    <via:XTextBlock Text="Generate" TextRole="Caption" />
+                                                    <via:XTextBlock
+                                                        Grid.Column="1"
+                                                        HorizontalAlignment="Right"
+                                                        Text="{Binding GenerateDurationDisplay}"
+                                                        TextRole="Description" />
+                                                    <via:XTextBlock
+                                                        Grid.Row="1"
+                                                        Text="UI load median"
+                                                        TextRole="Caption" />
+                                                    <via:XTextBlock
+                                                        Grid.Row="1"
+                                                        Grid.Column="1"
+                                                        HorizontalAlignment="Right"
+                                                        Text="{Binding LoadDurationDisplay}"
+                                                        TextRole="Description" />
+                                                    <via:XTextBlock
+                                                        Grid.Row="2"
+                                                        Text="UI samples"
+                                                        TextRole="Caption" />
+                                                    <via:XTextBlock
+                                                        Grid.Row="2"
+                                                        Grid.Column="1"
+                                                        HorizontalAlignment="Right"
+                                                        Text="{Binding LoadSamplesDisplay}"
+                                                        TextRole="Description" />
+                                                    <via:XTextBlock
+                                                        Grid.Row="3"
+                                                        Text="Search"
+                                                        TextRole="Caption" />
+                                                    <via:XTextBlock
+                                                        Grid.Row="3"
+                                                        Grid.Column="1"
+                                                        HorizontalAlignment="Right"
+                                                        Text="{Binding SearchDurationDisplay}"
+                                                        TextRole="Description" />
+                                                    <via:XTextBlock
+                                                        Grid.Row="4"
+                                                        Text="Scenario"
+                                                        TextRole="Caption" />
+                                                    <via:XTextBlock
+                                                        Grid.Row="4"
+                                                        Grid.Column="1"
+                                                        HorizontalAlignment="Right"
+                                                        Text="{Binding ScenarioDurationDisplay}"
+                                                        TextRole="Description" />
+                                                </via:XGrid>
+                                            </via:XStackPanel>
+                                        </via:XBorder>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </via:XStackPanel>
+                    </via:XBorder>
+                </via:XExpander>
+
+                <via:XBorder
+                    Grid.Row="3"
+                    Padding="0"
+                    CornerRadius="8"
+                    Elevation="Low">
+                    <via:XViewContainer
+                        MinHeight="0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        CancelDetailText="Cancel"
+                        CloseDetailCommand="{Binding CloseDetailCommand}"
+                        CloseOnOverlayClick="False"
+                        DetailHeader="{Binding DetailHeader}"
+                        DetailHost="{Binding Editor}"
+                        DetailHostTemplate="{StaticResource XDataGridDemoEditorTemplate}"
+                        DetailMaxHeight="520"
+                        DetailMaxWidth="760"
+                        DetailPlacement="Center"
+                        DetailPresentation="Dialog"
+                        IsDetailOpen="{Binding IsDetailOpen, Mode=TwoWay}"
+                        OverlayCornerRadius="8"
+                        PrimaryDetailCommand="{Binding SaveDetailCommand}"
+                        PrimaryDetailText="Save"
+                        RequireCrudContext="False"
+                        ShowDefaultDetailFooter="True"
+                        ShowValidationHint="True"
+                        ValidationSource="{Binding Editor}">
+
+                        <via:XViewContainer.ListHost>
+                            <via:XDataGrid
+                                MinHeight="0"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                ActionButtonIconSize="14"
+                                ActionButtonSize="26"
+                                ActionButtonSpacing="3"
+                                ActionColumnHeader="Actions"
+                                ActionColumnMinWidth="96"
+                                ActionColumnWidth="110"
+                                AutoGenerateColumns="False"
+                                AutoGenerateFilterDefinitions="False"
+                                AutoGenerateSearchableColumns="False"
+                                CanUserAddRows="False"
+                                CanUserDeleteRows="False"
+                                CanUserResizeColumns="True"
+                                CanUserResizeRows="False"
+                                CanUserSortColumns="True"
+                                DeleteItemCommand="{Binding DeleteRowCommand}"
+                                DeleteOnDeleteKey="True"
+                                EditItemCommand="{Binding EditRowCommand}"
+                                EditOnEnterKey="True"
+                                EditOnRowDoubleClick="True"
+                                EnableColumnVirtualization="True"
+                                EnableRowVirtualization="True"
+                                FilterDefinitions="{Binding FilterDefinitions}"
+                                HeadersVisibility="Column"
+                                IsReadOnly="True"
+                                ItemsSource="{Binding Rows}"
+                                NewItemCommand="{Binding Toolbar.NewCommand}"
+                                NewOnInsertKey="True"
+                                PersistViewState="False"
+                                ScrollViewer.CanContentScroll="True"
+                                ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                SearchMatchHighlightRenderMode="Simple"
+                                SearchTerm="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                SearchableColumns="{Binding SearchableColumns}"
+                                SelectedItem="{Binding SelectedRow, Mode=TwoWay}"
+                                ShowActionColumn="True"
+                                ShowDeleteButton="True"
+                                ShowEditButton="True"
+                                ShowViewButton="True"
+                                ShowFilterButtons="True"
+                                ViewItemCommand="{Binding ViewRowCommand}"
+                                ViewStateKey="VIA.WPF.Demo.XDataGrid.Projects"
+                                VirtualizingPanel.IsVirtualizing="True"
+                                VirtualizingPanel.VirtualizationMode="Recycling">
+
+                                <via:XDataGrid.Columns>
+                                    <via:XDataGridTextColumn
+                                        Width="74"
+                                        Binding="{Binding Id, Mode=OneWay}"
+                                        Header="ID"
+                                        SortMemberPath="Id" />
+                                    <via:XDataGridTextColumn
+                                        Width="2*"
+                                        Binding="{Binding Name, Mode=OneWay}"
+                                        Header="Project"
+                                        SortDirection="Ascending"
+                                        SortMemberPath="Name" />
+                                    <via:XDataGridTextColumn
+                                        Width="120"
+                                        Binding="{Binding Status, Mode=OneWay}"
+                                        Header="Status"
+                                        SortMemberPath="Status" />
+                                    <via:XDataGridTextColumn
+                                        Width="120"
+                                        Binding="{Binding Owner, Mode=OneWay}"
+                                        Header="Owner"
+                                        SortMemberPath="Owner" />
+                                    <via:XDataGridTextColumn
+                                        Width="120"
+                                        Binding="{Binding Area, Mode=OneWay}"
+                                        Header="Area"
+                                        SortMemberPath="Area" />
+                                    <via:XDataGridTextColumn
+                                        Width="92"
+                                        Binding="{Binding Priority, Mode=OneWay}"
+                                        Header="Priority"
+                                        SortMemberPath="Priority" />
+                                    <via:XDataGridTextColumn
+                                        Width="110"
+                                        Binding="{Binding DueDate, Mode=OneWay, StringFormat={}{0:dd.MM.yyyy}}"
+                                        Header="Due"
+                                        SortMemberPath="DueDate" />
+                                    <via:XDataGridTextColumn
+                                        Width="92"
+                                        Binding="{Binding ProgressDisplay, Mode=OneWay}"
+                                        Header="Progress"
+                                        SortMemberPath="Progress" />
+                                </via:XDataGrid.Columns>
+                            </via:XDataGrid>
+                        </via:XViewContainer.ListHost>
+                    </via:XViewContainer>
+                </via:XBorder>
+            </via:XGrid>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>
