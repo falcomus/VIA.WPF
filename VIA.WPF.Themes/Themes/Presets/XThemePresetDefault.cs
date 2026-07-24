@@ -27,10 +27,14 @@ internal static class XThemePresetDefault
                 Name = "Default",
                 PrimaryLight = Color.FromRgb(15, 108, 189),
                 PrimaryDark = Color.FromRgb(76, 166, 255),
-                AccentLight = Color.FromRgb(15, 108, 189),
-                AccentDark = Color.FromRgb(76, 166, 255),
-                BackgroundLight = Color.FromRgb(239, 241, 243),
-                BackgroundDark = Color.FromRgb(23, 24, 25),
+                AccentLight = Color.FromRgb(87, 182, 211),
+                AccentDark = Color.FromRgb(67, 162, 191),
+                //BackgroundLight = Color.FromRgb(239, 241, 243),
+                //BackgroundDark = Color.FromRgb(23, 24, 25),
+
+                BackgroundLight = Color.FromRgb(249, 251, 253),
+                BackgroundDark = Color.FromRgb(30, 31, 34),
+
                 SurfaceLight = Color.FromRgb(255, 255, 255),
                 SurfaceDark = Color.FromRgb(39, 40, 41),
                 NavigationLight = Color.FromRgb(247, 248, 249),
