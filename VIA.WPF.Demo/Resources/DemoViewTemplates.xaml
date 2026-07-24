@@ -38,6 +38,10 @@
             <views:XWindowDemoView />
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type viewmodels:XDialogDemoViewModel}">
+            <views:XDialogDemoView />
+        </DataTemplate>
+
         <DataTemplate DataType="{x:Type viewmodels:XLocalizationDemoViewModel}">
             <views:XLocalizationDemoView />
         </DataTemplate>
@@ -84,6 +88,10 @@
 
         <DataTemplate DataType="{x:Type viewmodels:XListBoxDemoViewModel}">
             <views:XListBoxDemoView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:XContextMenuDemoViewModel}">
+            <views:XContextMenuDemoView />
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type viewmodels:XButtonDemoViewModel}">

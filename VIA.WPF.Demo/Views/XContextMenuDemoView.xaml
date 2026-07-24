@@ -1,0 +1,250 @@
+<!--=====================================================================================================================
+  <copyright file="XContextMenuDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XContextMenuDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XContextMenuDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XContextMenu" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="920"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="Use XContextMenu for consistent application commands. It carries the placement target's DataContext, selected item and Tag across WPF's popup boundary."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid ColumnSpacing="18" Columns="1.2*,*">
+                        <via:XBorder
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="14">
+                                <via:XGrid Columns="*,Auto">
+                                    <via:XStackPanel Spacing="4">
+                                        <via:XTextBlock Text="Document list" TextRole="SectionTitle" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="Select a document, then right-click the list. TargetItem resolves the current XListBox selection."
+                                            TextRole="Description" />
+                                    </via:XStackPanel>
+
+                                    <via:XButton
+                                        Grid.Column="1"
+                                        Command="{Binding CreateDocumentCommand}"
+                                        Content="New"
+                                        Icon="{via:MaterialIcon Kind=Plus}"
+                                        Size="Small"
+                                        Variant="Primary" />
+                                </via:XGrid>
+
+                                <via:XListBox
+                                    MinHeight="248"
+                                    ItemsSource="{Binding Documents}"
+                                    Mode="Navigation"
+                                    SelectedItem="{Binding SelectedDocument, Mode=TwoWay}"
+                                    ShowSeparators="True"
+                                    Tag="Document list">
+                                    <via:XListBox.ContextMenu>
+                                        <via:XContextMenu>
+                                            <via:XMenuItem
+                                                Command="{Binding TargetDataContext.OpenDocumentCommand, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                CommandParameter="{Binding TargetItem, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                Header="Open"
+                                                Icon="{via:MaterialIcon Kind=FolderOutline}"
+                                                InputGestureText="Enter"
+                                                Variant="Primary" />
+
+                                            <via:XMenuItem
+                                                Command="{Binding TargetDataContext.RenameDocumentCommand, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                CommandParameter="{Binding TargetItem, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                Header="Rename"
+                                                Icon="{via:MaterialIcon Kind=PencilOutline}" />
+
+                                            <via:XMenuItem
+                                                Command="{Binding TargetDataContext.DuplicateDocumentCommand, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                CommandParameter="{Binding TargetItem, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                Header="Duplicate"
+                                                Icon="{via:MaterialIcon Kind=ContentCopy}" />
+
+                                            <via:XMenuItem
+                                                Header="Export"
+                                                Icon="{via:MaterialIcon Kind=ExportVariant}">
+                                                <via:XMenuItem
+                                                    Command="{Binding TargetDataContext.ExportDocumentCommand, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                    CommandParameter="PDF"
+                                                    Header="PDF document"
+                                                    Icon="{via:MaterialIcon Kind=FilePdfBox}" />
+                                                <via:XMenuItem
+                                                    Command="{Binding TargetDataContext.ExportDocumentCommand, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                    CommandParameter="PNG"
+                                                    Header="PNG image"
+                                                    Icon="{via:MaterialIcon Kind=Download}" />
+                                            </via:XMenuItem>
+
+                                                
+
+                                            <via:XMenuItem
+                                                Header="Show preview"
+                                                IsCheckable="True"
+                                                IsChecked="{Binding TargetDataContext.ShowPreview, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                StaysOpenOnClick="True" />
+
+                                            <via:XMenuItem
+                                                Command="{Binding TargetDataContext.ReportTargetCommand, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                CommandParameter="{Binding TargetTag, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                Header="Inspect placement target"
+                                                Icon="{via:MaterialIcon Kind=InformationOutline}" />
+
+                                            <via:XMenuItem Header="Available after sync" IsEnabled="False" />
+
+                                            <Separator Background="{DynamicResource {x:Static themes:XBrushKeys.Border}}"/>
+
+                                            <via:XMenuItem
+                                                Command="{Binding TargetDataContext.DeleteDocumentCommand, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                CommandParameter="{Binding TargetItem, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                Header="Delete"
+                                                Icon="{via:MaterialIcon Kind=DeleteOutline}"
+                                                InputGestureText="Del"
+                                                Variant="Danger" />
+                                        </via:XContextMenu>
+                                    </via:XListBox.ContextMenu>
+                                </via:XListBox>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="18"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="16">
+                                <via:XStackPanel Spacing="4">
+                                    <via:XTextBlock Text="Overflow menu" TextRole="SectionTitle" />
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="XMoreButton opens the same XContextMenu. Its Tag carries the currently selected document through TargetTag."
+                                        TextRole="Description" />
+                                </via:XStackPanel>
+
+                                <via:XBorder
+                                    Padding="14"
+                                    Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderSubtle}}"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XGrid Columns="*,Auto">
+                                        <via:XStackPanel Spacing="3">
+                                            <via:XTextBlock Text="{Binding SelectedDocument.Title, TargetNullValue='No selection', FallbackValue='No selection'}" TextRole="Heading" />
+                                            <via:XTextBlock Text="{Binding SelectedDocument.SubTitle}" TextRole="Caption" />
+                                        </via:XStackPanel>
+
+                                        <via:XMoreButton
+                                            Grid.Column="1"
+                                            VerticalAlignment="Center"
+                                            Tag="{Binding SelectedDocument}">
+                                            <via:XMoreButton.Menu>
+                                                <via:XContextMenu>
+                                                    <via:XMenuItem
+                                                        Command="{Binding TargetDataContext.OpenDocumentCommand, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                        CommandParameter="{Binding TargetTag, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                        Header="Open selected document"
+                                                        Icon="{via:MaterialIcon Kind=FolderOutline}"
+                                                        Variant="Primary" />
+                                                    <via:XMenuItem
+                                                        Command="{Binding TargetDataContext.DuplicateDocumentCommand, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                        CommandParameter="{Binding TargetTag, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                        Header="Duplicate"
+                                                        Icon="{via:MaterialIcon Kind=ContentCopy}" />
+                                                    <via:XSeparator Orientation="Horizontal" Height="10" Background="Lime"/>
+                                                    <via:XMenuItem
+                                                        Command="{Binding TargetDataContext.DeleteDocumentCommand, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                        CommandParameter="{Binding TargetTag, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"
+                                                        Header="Delete"
+                                                        Icon="{via:MaterialIcon Kind=DeleteOutline}"
+                                                        Variant="Danger" />
+                                                </via:XContextMenu>
+                                            </via:XMoreButton.Menu>
+                                        </via:XMoreButton>
+                                    </via:XGrid>
+                                </via:XBorder>
+
+                                <via:XStackPanel Spacing="10">
+                                    <via:XTextBlock Text="Placement-target contract" TextRole="Heading" />
+
+                                    <via:XBorder Padding="12" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                        <via:XStackPanel Spacing="3">
+                                            <via:XTextBlock Text="TargetDataContext" TextRole="Label" Variant="Primary" />
+                                            <via:XTextBlock Text="The view model inherited by the placement target." TextRole="Caption" />
+                                        </via:XStackPanel>
+                                    </via:XBorder>
+
+                                    <via:XBorder Padding="12" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                        <via:XStackPanel Spacing="3">
+                                            <via:XTextBlock Text="TargetItem" TextRole="Label" Variant="Info" />
+                                            <via:XTextBlock Text="SelectedItem for selectors; otherwise the target DataContext." TextRole="Caption" />
+                                        </via:XStackPanel>
+                                    </via:XBorder>
+
+                                    <via:XBorder Padding="12" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                        <via:XStackPanel Spacing="3">
+                                            <via:XTextBlock Text="TargetTag" TextRole="Label" Variant="Accent" />
+                                            <via:XTextBlock Text="An explicit command payload supplied by the placement target." TextRole="Caption" />
+                                        </via:XStackPanel>
+                                    </via:XBorder>
+                                </via:XStackPanel>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+
+                    <via:XBorder
+                        Padding="14"
+                        Appearance="Subtle"
+                        BorderThickness="1"
+                        CornerRadius="6"
+                        Variant="Info">
+                        <via:XGrid Columns="Auto,*" ColumnSpacing="10">
+                            <via:XMaterialIcon
+                                VerticalAlignment="Center"
+                                Kind="InformationOutline"
+                                Size="18" />
+                            <via:XTextBlock
+                                Grid.Column="1"
+                                VerticalAlignment="Center"
+                                Text="{Binding LastAction}"
+                                TextRole="Description" />
+                        </via:XGrid>
+                    </via:XBorder>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

@@ -1,0 +1,197 @@
+<!--=====================================================================================================================
+  <copyright file="XDialogDemoView.xaml" company="VIA.WPF">
+    Copyright (c) VIA.WPF. All rights reserved.
+  </copyright>
+=====================================================================================================================-->
+
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XDialogDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:VIA.WPF.Demo.ViewModels"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views"
+    xmlns:via="http://schemas.via.dev/wpf"
+    d:DataContext="{d:DesignInstance Type=viewmodels:XDialogDemoViewModel}"
+    mc:Ignorable="d">
+
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer
+                Padding="4,0,4,20"
+                CanContentScroll="False"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Margin="0,0,12,0" Spacing="22">
+
+                    <via:XStackPanel Spacing="8">
+                        <via:XTextBlock Text="XDialog" TextRole="Title" />
+                        <via:XTextBlock
+                            MaxWidth="920"
+                            HorizontalAlignment="Left"
+                            IsMultiline="True"
+                            Text="A modal dialog is an XWindow presented through IXDialogService. The service resolves the owner, dims supported shells, centers the dialog, normalizes the result and restores focus."
+                            TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XSeparator Orientation="Horizontal" />
+
+                    <via:XGrid ColumnSpacing="18" Columns="1.15*,*">
+                        <via:XBorder
+                            Padding="20"
+                            Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderSubtle}}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Medium">
+                            <via:XStackPanel Spacing="16">
+                                <via:XGrid Columns="Auto,*" ColumnSpacing="14">
+                                    <via:XBorder
+                                        Width="44"
+                                        Height="44"
+                                        Appearance="Subtle"
+                                        BorderThickness="1"
+                                        CornerRadius="8"
+                                        Variant="Primary">
+                                        <via:XMaterialIcon
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Kind="OpenInNew"
+                                            Size="22" />
+                                    </via:XBorder>
+
+                                    <via:XStackPanel Grid.Column="1" Spacing="3">
+                                        <via:XTextBlock Text="Profile editor dialog" TextRole="SectionTitle" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="A realistic edit flow with XTextBox fields, Save/Cancel actions and a normalized XDialogResult."
+                                            TextRole="Description" />
+                                    </via:XStackPanel>
+                                </via:XGrid>
+
+                                <via:XBorder
+                                    Padding="14"
+                                    Appearance="VerySubtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                    <via:XStackPanel Spacing="8">
+                                        <via:XTextBlock Text="Recommended host behavior" TextRole="Heading" />
+                                        <via:XWrapPanel HorizontalSpacing="8" VerticalSpacing="8">
+                                            <via:XBadge Appearance="Subtle" Content="CenterOwner" Variant="Primary" />
+                                            <via:XBadge Appearance="Subtle" Content="Dim owner" Variant="Info" />
+                                            <via:XBadge Appearance="Subtle" Content="Restore focus" Variant="Success" />
+                                            <via:XBadge Appearance="Subtle" Content="Normalized result" Variant="Accent" />
+                                        </via:XWrapPanel>
+                                    </via:XStackPanel>
+                                </via:XBorder>
+
+                                <via:XWrapPanel HorizontalSpacing="10" VerticalSpacing="10">
+                                    <via:XButton
+                                        Command="{Binding OpenProfileDialogCommand}"
+                                        CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                                        Content="Open profile dialog"
+                                        Icon="{via:MaterialIcon Kind=OpenInNew}"
+                                        Variant="Primary" />
+
+                                    <via:XButton
+                                        Appearance="Outline"
+                                        Command="{Binding OpenUndimmedDialogCommand}"
+                                        CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                                        Content="Open without dimming"
+                                        Icon="{via:MaterialIcon Kind=EyeOutline}"
+                                        Variant="Info" />
+                                </via:XWrapPanel>
+
+                                <via:XBorder
+                                    Padding="14"
+                                    Appearance="Subtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    Variant="Info">
+                                    <via:XStackPanel Spacing="5">
+                                        <via:XTextBlock Text="Last result" TextRole="Label" Variant="Info" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="{Binding LastOutcome}"
+                                            TextRole="Description" />
+                                        <via:XTextBlock
+                                            IsMultiline="True"
+                                            Text="{Binding SavedProfile}"
+                                            TextRole="Caption" />
+                                    </via:XStackPanel>
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+
+                        <via:XBorder
+                            Grid.Column="1"
+                            Padding="20"
+                            Appearance="VerySubtle"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Elevation="Low">
+                            <via:XStackPanel Spacing="16">
+                                <via:XTextBlock Text="Service responsibilities" TextRole="SectionTitle" />
+
+                                <via:XStackPanel Spacing="10">
+                                    <via:XBorder Padding="12" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                        <via:XGrid Columns="Auto,*" ColumnSpacing="10">
+                                            <via:XMaterialIcon Kind="ApplicationOutline" Size="18" />
+                                            <via:XStackPanel Grid.Column="1" Spacing="2">
+                                                <via:XTextBlock Text="Owner resolution" TextRole="Label" />
+                                                <via:XTextBlock Text="Uses the command source, active window or application main window." TextRole="Caption" />
+                                            </via:XStackPanel>
+                                        </via:XGrid>
+                                    </via:XBorder>
+
+                                    <via:XBorder Padding="12" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                        <via:XGrid Columns="Auto,*" ColumnSpacing="10">
+                                            <via:XMaterialIcon Kind="EyeOutline" Size="18" />
+                                            <via:XStackPanel Grid.Column="1" Spacing="2">
+                                                <via:XTextBlock Text="Modal overlay lease" TextRole="Label" />
+                                                <via:XTextBlock Text="Dims an XWindow owner exactly while the child dialog is active." TextRole="Caption" />
+                                            </via:XStackPanel>
+                                        </via:XGrid>
+                                    </via:XBorder>
+
+                                    <via:XBorder Padding="12" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                        <via:XGrid Columns="Auto,*" ColumnSpacing="10">
+                                            <via:XMaterialIcon Kind="CheckCircleOutline" Size="18" />
+                                            <via:XStackPanel Grid.Column="1" Spacing="2">
+                                                <via:XTextBlock Text="Result normalization" TextRole="Label" />
+                                                <via:XTextBlock Text="Maps WPF's nullable DialogResult to Accepted, NotAccepted or NoResult." TextRole="Caption" />
+                                            </via:XStackPanel>
+                                        </via:XGrid>
+                                    </via:XBorder>
+
+                                    <via:XBorder Padding="12" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
+                                        <via:XGrid Columns="Auto,*" ColumnSpacing="10">
+                                            <via:XMaterialIcon Kind="Refresh" Size="18" />
+                                            <via:XStackPanel Grid.Column="1" Spacing="2">
+                                                <via:XTextBlock Text="Focus restoration" TextRole="Label" />
+                                                <via:XTextBlock Text="Returns keyboard focus to the previously focused owner element." TextRole="Caption" />
+                                            </via:XStackPanel>
+                                        </via:XGrid>
+                                    </via:XBorder>
+                                </via:XStackPanel>
+
+                                <via:XBorder
+                                    Padding="14"
+                                    Appearance="Subtle"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    Variant="Warning">
+                                    <via:XTextBlock
+                                        IsMultiline="True"
+                                        Text="Do not set a dialog as its own owner and do not call ShowDialog directly when the service contract is available."
+                                        TextRole="Description" />
+                                </via:XBorder>
+                            </via:XStackPanel>
+                        </via:XBorder>
+                    </via:XGrid>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>
