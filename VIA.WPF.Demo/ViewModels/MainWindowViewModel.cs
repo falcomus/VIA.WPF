@@ -119,6 +119,13 @@ public partial class MainWindowViewModel : ObservableObject
             ViewModel = new XWindowDemoViewModel()
         };
 
+        DemoItem xDialogItem = new()
+        {
+            Title = "XDialog",
+            Summary = "Service-managed modal dialogs with owner resolution, dimming, normalized results and focus restoration.",
+            ViewModel = new XDialogDemoViewModel()
+        };
+
         DemoItem xLocalizationItem = new()
         {
             Title = "Localization",
@@ -371,6 +378,13 @@ public partial class MainWindowViewModel : ObservableObject
             ViewModel = new XListBoxDemoViewModel()
         };
 
+        DemoItem xContextMenuItem = new()
+        {
+            Title = "XContextMenu",
+            Summary = "Themed context menus with placement-target data, semantic actions, check items and submenus.",
+            ViewModel = new XContextMenuDemoViewModel()
+        };
+
         DemoItem xNavigationListItem = new()
         {
             Title = "XNavigationList",
@@ -481,6 +495,7 @@ public partial class MainWindowViewModel : ObservableObject
         startGroup.Items.Add(overviewItem);
 
         windowingGroup.Items.Add(xWindowItem);
+        windowingGroup.Items.Add(xDialogItem);
 
         designSystemGroup.Items.Add(xTypographyItem);
         designSystemGroup.Items.Add(xColorSchemeItem);
@@ -523,6 +538,7 @@ public partial class MainWindowViewModel : ObservableObject
 
         dataAndNavigationGroup.Items.Add(xDataGridItem);
         dataAndNavigationGroup.Items.Add(xListBoxItem);
+        dataAndNavigationGroup.Items.Add(xContextMenuItem);
         dataAndNavigationGroup.Items.Add(xNavigationListItem);
         dataAndNavigationGroup.Items.Add(xNavigationTabControlItem);
         dataAndNavigationGroup.Items.Add(xTabControlItem);
