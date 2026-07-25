@@ -91,6 +91,7 @@
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StateSelected}" Color="#FFDEE9F7" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StateSelectedStrong}" Color="#FF355C91" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.Scrim}" Color="#70000000" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.ScrimSubtle}" Color="#14000000" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.CommandBarBackground}" Color="#00FFFFFF" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.CommandBarForeground}" Color="#FF1C232C" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.CommandBarHoverBackground}" Color="#FFE8ECF1" />

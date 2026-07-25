@@ -274,6 +274,9 @@ public sealed class XThemeManager : INotifyPropertyChanged
         this.ApplyBrush(XBrushKeys.Scrim, mode == XThemeMode.Dark
             ? Color.FromArgb(176, 0, 0, 0)
             : Color.FromArgb(112, 0, 0, 0));
+        this.ApplyBrush(XBrushKeys.ScrimSubtle, mode == XThemeMode.Dark
+            ? Color.FromArgb(28, 255, 255, 255)
+            : Color.FromArgb(20, 0, 0, 0));
 
         this.ApplyBrush(XBrushKeys.CommandBarBackground, theme.ToolbarBackground.GetColor(mode));
         this.ApplyBrush(XBrushKeys.CommandBarForeground, theme.ToolbarForeground.GetColor(mode));

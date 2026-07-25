@@ -22,6 +22,7 @@ The contract follows the Fluent 2 separation of neutral, brand, shared, and sema
 | `SurfaceOverlay` | Menus, flyouts, dialogs, and temporary overlays |
 | `SurfaceSunken` | Wells, tracks, recessed regions, and read-only groups |
 | `Scrim` | Modal overlay behind temporary content |
+| `ScrimSubtle` | Subtle designer placement and selection overlay |
 
 ### Text and borders
 

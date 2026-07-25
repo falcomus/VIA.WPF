@@ -426,6 +426,11 @@ public static class XBrushKeys
     public static ComponentResourceKey Scrim { get; } = new(typeof(XBrushKeys), nameof(Scrim));
 
     /// <summary>
+    /// Gets the resource key for subtle selection and placement overlays.
+    /// </summary>
+    public static ComponentResourceKey ScrimSubtle { get; } = new(typeof(XBrushKeys), nameof(ScrimSubtle));
+
+    /// <summary>
     /// Gets the resource key for the integrated command-bar background.
     /// </summary>
     public static ComponentResourceKey CommandBarBackground { get; } = new(typeof(XBrushKeys), nameof(CommandBarBackground));
