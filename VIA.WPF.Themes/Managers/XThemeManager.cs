@@ -194,6 +194,8 @@ public sealed class XThemeManager : INotifyPropertyChanged
         this.ApplyColorSet(this.CurrentTheme.Danger, XBrushKeys.Danger, XBrushKeys.DangerText, XBrushKeys.DangerVeryLight, XBrushKeys.DangerLight, XBrushKeys.DangerDark);
         this.ApplyColorSet(this.CurrentTheme.Info, XBrushKeys.Info, XBrushKeys.InfoText, XBrushKeys.InfoVeryLight, XBrushKeys.InfoLight, XBrushKeys.InfoDark);
 
+        this.ApplyCanonicalSemanticBrushes();
+
         this.ApplyModeColor(this.CurrentTheme.TabHeaderBackground, XBrushKeys.TabHeaderBackground);
         this.ApplyModeColor(this.CurrentTheme.TabHeaderForeground, XBrushKeys.TabHeaderForeground);
         this.ApplyModeColor(this.CurrentTheme.TabHeaderBorder, XBrushKeys.TabHeaderBorder);
@@ -277,7 +279,46 @@ public sealed class XThemeManager : INotifyPropertyChanged
         this.ApplyBrush(XBrushKeys.CommandBarForeground, theme.ToolbarForeground.GetColor(mode));
         this.ApplyBrush(XBrushKeys.CommandBarHoverBackground, theme.HoverBackground.GetColor(mode));
         this.ApplyBrush(XBrushKeys.CommandBarPressedBackground, theme.PressedBackground.GetColor(mode));
+        this.ApplyBrush(XBrushKeys.CommandBarGroupHeaderBackground, theme.NavigationPanelHeaderBackground.GetColor(mode));
         this.ApplyBrush(XBrushKeys.NavigationSelectionIndicator, theme.Primary.GetBaseColor(mode));
+    }
+
+    private void ApplyCanonicalSemanticBrushes()
+    {
+        if (this.CurrentTheme is null)
+        {
+            return;
+        }
+
+        XTheme theme = this.CurrentTheme;
+        XThemeMode mode = this.CurrentMode;
+
+        this.ApplyBrush(XBrushKeys.PrimaryForeground, theme.Primary.GetTextColor(mode));
+        this.ApplyBrush(XBrushKeys.PrimarySubtle, theme.Primary.GetVeryLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.PrimarySubtleHover, theme.Primary.GetLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.PrimaryStrong, theme.Primary.GetDarkVariantColor(mode));
+
+        this.ApplyBrush(XBrushKeys.AccentForeground, theme.Accent.GetTextColor(mode));
+        this.ApplyBrush(XBrushKeys.AccentSubtle, theme.Accent.GetVeryLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.AccentSubtleHover, theme.Accent.GetLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.AccentStrong, theme.Accent.GetDarkVariantColor(mode));
+
+        this.ApplyBrush(XBrushKeys.StatusSuccess, theme.Success.GetBaseColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusSuccessForeground, theme.Success.GetTextColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusSuccessSubtle, theme.Success.GetVeryLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusWarning, theme.Warning.GetBaseColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusWarningForeground, theme.Warning.GetTextColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusWarningSubtle, theme.Warning.GetVeryLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusDanger, theme.Danger.GetBaseColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusDangerForeground, theme.Danger.GetTextColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusDangerSubtle, theme.Danger.GetVeryLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusInfo, theme.Info.GetBaseColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusInfoForeground, theme.Info.GetTextColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusInfoSubtle, theme.Info.GetVeryLightVariantColor(mode));
+
+        this.ApplyBrush(XBrushKeys.SurfaceOverlay, theme.Surface.GetVeryLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.TextDisabled, theme.DisabledForeground.GetColor(mode));
+        this.ApplyBrush(XBrushKeys.Divider, theme.PanelBorder.GetColor(mode));
     }
 
     private void ApplyColorSet(

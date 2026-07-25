@@ -25,14 +25,14 @@ internal static class XThemePresetAzure
             new XThemePalette
             {
                 Name = "Azure",
-                PrimaryLight = Color.FromRgb(2, 132, 199),
+                PrimaryLight = Color.FromRgb(3, 105, 161),
                 PrimaryDark = Color.FromRgb(125, 211, 252),
-                AccentLight = Color.FromRgb(20, 184, 166),
-                AccentDark = Color.FromRgb(94, 234, 212),
-                BackgroundLight = Color.FromRgb(240, 249, 255),
-                BackgroundDark = Color.FromRgb(8, 22, 32),
+                AccentLight = Color.FromRgb(109, 40, 217),
+                AccentDark = Color.FromRgb(196, 181, 253),
+                BackgroundLight = Color.FromRgb(241, 245, 248),
+                BackgroundDark = Color.FromRgb(19, 26, 32),
                 SurfaceLight = Color.FromRgb(255, 255, 255),
-                SurfaceDark = Color.FromRgb(19, 33, 43),
+                SurfaceDark = Color.FromRgb(35, 43, 50),
                 NavigationLight = Color.FromRgb(12, 50, 76),
                 NavigationDark = Color.FromRgb(10, 28, 40),
             });

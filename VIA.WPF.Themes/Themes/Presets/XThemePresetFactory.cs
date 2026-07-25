@@ -24,32 +24,32 @@ internal static class XThemePresetFactory
     {
         ArgumentNullException.ThrowIfNull(palette);
 
-        Color backgroundTextLight = Color.FromRgb(27, 29, 31);
-        Color backgroundTextDark = Color.FromRgb(241, 243, 245);
-        Color surfaceTextLight = Color.FromRgb(32, 33, 36);
-        Color surfaceTextDark = Color.FromRgb(244, 245, 246);
-        Color secondaryTextLight = Color.FromRgb(95, 103, 112);
-        Color secondaryTextDark = Color.FromRgb(174, 179, 184);
+        Color backgroundTextLight = Color.FromRgb(24, 30, 38);
+        Color backgroundTextDark = Color.FromRgb(238, 241, 245);
+        Color surfaceTextLight = Color.FromRgb(28, 35, 44);
+        Color surfaceTextDark = Color.FromRgb(242, 244, 247);
+        Color secondaryTextLight = Color.FromRgb(82, 96, 109);
+        Color secondaryTextDark = Color.FromRgb(180, 187, 196);
 
         Color surfaceLight = Mix(palette.BackgroundLight, palette.SurfaceLight, 0.76d);
         Color surfaceDark = Mix(palette.BackgroundDark, palette.SurfaceDark, 0.76d);
         Color inputBackgroundLight = palette.SurfaceLight;
         Color inputBackgroundDark = Mix(surfaceDark, surfaceTextDark, 0.035d);
 
-        Color controlBorderLight = Mix(inputBackgroundLight, secondaryTextLight, 0.34d);
-        Color controlBorderDark = Mix(inputBackgroundDark, secondaryTextDark, 0.25d);
-        Color controlBorderStrongLight = Mix(inputBackgroundLight, secondaryTextLight, 0.60d);
-        Color controlBorderStrongDark = Mix(inputBackgroundDark, secondaryTextDark, 0.42d);
+        Color controlBorderLight = Mix(inputBackgroundLight, secondaryTextLight, 0.42d);
+        Color controlBorderDark = Mix(inputBackgroundDark, secondaryTextDark, 0.34d);
+        Color controlBorderStrongLight = Mix(inputBackgroundLight, secondaryTextLight, 0.64d);
+        Color controlBorderStrongDark = Mix(inputBackgroundDark, secondaryTextDark, 0.50d);
 
-        Color panelBorderLight = Mix(surfaceLight, secondaryTextLight, 0.22d);
-        Color panelBorderDark = Mix(surfaceDark, secondaryTextDark, 0.15d);
-        Color panelBorderStrongLight = Mix(surfaceLight, secondaryTextLight, 0.46d);
-        Color panelBorderStrongDark = Mix(surfaceDark, secondaryTextDark, 0.40d);
+        Color panelBorderLight = Mix(surfaceLight, secondaryTextLight, 0.30d);
+        Color panelBorderDark = Mix(surfaceDark, secondaryTextDark, 0.24d);
+        Color panelBorderStrongLight = Mix(surfaceLight, secondaryTextLight, 0.52d);
+        Color panelBorderStrongDark = Mix(surfaceDark, secondaryTextDark, 0.44d);
 
-        Color hoverBackgroundLight = Mix(inputBackgroundLight, palette.PrimaryLight, 0.055d);
-        Color hoverBackgroundDark = Mix(inputBackgroundDark, palette.PrimaryDark, 0.08d);
-        Color pressedBackgroundLight = Mix(inputBackgroundLight, palette.PrimaryLight, 0.13d);
-        Color pressedBackgroundDark = Mix(inputBackgroundDark, palette.PrimaryDark, 0.16d);
+        Color hoverBackgroundLight = Mix(surfaceLight, palette.PrimaryLight, 0.065d);
+        Color hoverBackgroundDark = Mix(surfaceDark, palette.PrimaryDark, 0.10d);
+        Color pressedBackgroundLight = Mix(surfaceLight, palette.PrimaryLight, 0.14d);
+        Color pressedBackgroundDark = Mix(surfaceDark, palette.PrimaryDark, 0.18d);
 
         Color navigationHeaderLight = Mix(palette.NavigationLight, palette.PrimaryLight, 0.18d);
         Color navigationHeaderDark = Mix(palette.NavigationDark, palette.PrimaryDark, 0.08d);

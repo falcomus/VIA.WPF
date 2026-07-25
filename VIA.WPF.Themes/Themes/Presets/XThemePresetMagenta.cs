@@ -25,14 +25,14 @@ internal static class XThemePresetMagenta
             new XThemePalette
             {
                 Name = "Magenta",
-                PrimaryLight = Color.FromRgb(192, 38, 211),
+                PrimaryLight = Color.FromRgb(162, 28, 175),
                 PrimaryDark = Color.FromRgb(240, 171, 252),
-                AccentLight = Color.FromRgb(236, 72, 153),
-                AccentDark = Color.FromRgb(249, 168, 212),
-                BackgroundLight = Color.FromRgb(253, 244, 255),
-                BackgroundDark = Color.FromRgb(27, 17, 30),
+                AccentLight = Color.FromRgb(3, 105, 161),
+                AccentDark = Color.FromRgb(125, 211, 252),
+                BackgroundLight = Color.FromRgb(247, 242, 247),
+                BackgroundDark = Color.FromRgb(27, 23, 29),
                 SurfaceLight = Color.FromRgb(255, 255, 255),
-                SurfaceDark = Color.FromRgb(42, 30, 47),
+                SurfaceDark = Color.FromRgb(41, 35, 43),
                 NavigationLight = Color.FromRgb(74, 4, 78),
                 NavigationDark = Color.FromRgb(34, 23, 38),
             });

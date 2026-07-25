@@ -231,6 +231,106 @@ public static class XBrushKeys
     public static ComponentResourceKey InfoDark { get; } = new(typeof(XBrushKeys), nameof(InfoDark));
 
     /// <summary>
+    /// Gets the canonical foreground resource key for content placed on the primary color.
+    /// </summary>
+    public static ComponentResourceKey PrimaryForeground { get; } = new(typeof(XBrushKeys), nameof(PrimaryForeground));
+
+    /// <summary>
+    /// Gets the canonical resource key for a subtle primary-colored container.
+    /// </summary>
+    public static ComponentResourceKey PrimarySubtle { get; } = new(typeof(XBrushKeys), nameof(PrimarySubtle));
+
+    /// <summary>
+    /// Gets the canonical resource key for an emphasized subtle primary-colored container.
+    /// </summary>
+    public static ComponentResourceKey PrimarySubtleHover { get; } = new(typeof(XBrushKeys), nameof(PrimarySubtleHover));
+
+    /// <summary>
+    /// Gets the canonical resource key for a strong primary color.
+    /// </summary>
+    public static ComponentResourceKey PrimaryStrong { get; } = new(typeof(XBrushKeys), nameof(PrimaryStrong));
+
+    /// <summary>
+    /// Gets the canonical foreground resource key for content placed on the accent color.
+    /// </summary>
+    public static ComponentResourceKey AccentForeground { get; } = new(typeof(XBrushKeys), nameof(AccentForeground));
+
+    /// <summary>
+    /// Gets the canonical resource key for a subtle accent-colored container.
+    /// </summary>
+    public static ComponentResourceKey AccentSubtle { get; } = new(typeof(XBrushKeys), nameof(AccentSubtle));
+
+    /// <summary>
+    /// Gets the canonical resource key for an emphasized subtle accent-colored container.
+    /// </summary>
+    public static ComponentResourceKey AccentSubtleHover { get; } = new(typeof(XBrushKeys), nameof(AccentSubtleHover));
+
+    /// <summary>
+    /// Gets the canonical resource key for a strong accent color.
+    /// </summary>
+    public static ComponentResourceKey AccentStrong { get; } = new(typeof(XBrushKeys), nameof(AccentStrong));
+
+    /// <summary>
+    /// Gets the canonical resource key for a successful status.
+    /// </summary>
+    public static ComponentResourceKey StatusSuccess { get; } = new(typeof(XBrushKeys), nameof(StatusSuccess));
+
+    /// <summary>
+    /// Gets the canonical foreground resource key for content placed on a successful status.
+    /// </summary>
+    public static ComponentResourceKey StatusSuccessForeground { get; } = new(typeof(XBrushKeys), nameof(StatusSuccessForeground));
+
+    /// <summary>
+    /// Gets the canonical resource key for a subtle successful status container.
+    /// </summary>
+    public static ComponentResourceKey StatusSuccessSubtle { get; } = new(typeof(XBrushKeys), nameof(StatusSuccessSubtle));
+
+    /// <summary>
+    /// Gets the canonical resource key for a warning status.
+    /// </summary>
+    public static ComponentResourceKey StatusWarning { get; } = new(typeof(XBrushKeys), nameof(StatusWarning));
+
+    /// <summary>
+    /// Gets the canonical foreground resource key for content placed on a warning status.
+    /// </summary>
+    public static ComponentResourceKey StatusWarningForeground { get; } = new(typeof(XBrushKeys), nameof(StatusWarningForeground));
+
+    /// <summary>
+    /// Gets the canonical resource key for a subtle warning status container.
+    /// </summary>
+    public static ComponentResourceKey StatusWarningSubtle { get; } = new(typeof(XBrushKeys), nameof(StatusWarningSubtle));
+
+    /// <summary>
+    /// Gets the canonical resource key for a dangerous or error status.
+    /// </summary>
+    public static ComponentResourceKey StatusDanger { get; } = new(typeof(XBrushKeys), nameof(StatusDanger));
+
+    /// <summary>
+    /// Gets the canonical foreground resource key for content placed on a dangerous or error status.
+    /// </summary>
+    public static ComponentResourceKey StatusDangerForeground { get; } = new(typeof(XBrushKeys), nameof(StatusDangerForeground));
+
+    /// <summary>
+    /// Gets the canonical resource key for a subtle dangerous or error status container.
+    /// </summary>
+    public static ComponentResourceKey StatusDangerSubtle { get; } = new(typeof(XBrushKeys), nameof(StatusDangerSubtle));
+
+    /// <summary>
+    /// Gets the canonical resource key for an informational status.
+    /// </summary>
+    public static ComponentResourceKey StatusInfo { get; } = new(typeof(XBrushKeys), nameof(StatusInfo));
+
+    /// <summary>
+    /// Gets the canonical foreground resource key for content placed on an informational status.
+    /// </summary>
+    public static ComponentResourceKey StatusInfoForeground { get; } = new(typeof(XBrushKeys), nameof(StatusInfoForeground));
+
+    /// <summary>
+    /// Gets the canonical resource key for a subtle informational status container.
+    /// </summary>
+    public static ComponentResourceKey StatusInfoSubtle { get; } = new(typeof(XBrushKeys), nameof(StatusInfoSubtle));
+
+    /// <summary>
     /// Gets the resource key for the application canvas brush.
     /// </summary>
     public static ComponentResourceKey Canvas { get; } = new(typeof(XBrushKeys), nameof(Canvas));
@@ -239,6 +339,11 @@ public static class XBrushKeys
     /// Gets the resource key for a raised surface brush.
     /// </summary>
     public static ComponentResourceKey SurfaceRaised { get; } = new(typeof(XBrushKeys), nameof(SurfaceRaised));
+
+    /// <summary>
+    /// Gets the resource key for temporary overlay surfaces such as menus, flyouts, and dialogs.
+    /// </summary>
+    public static ComponentResourceKey SurfaceOverlay { get; } = new(typeof(XBrushKeys), nameof(SurfaceOverlay));
 
     /// <summary>
     /// Gets the resource key for a sunken surface brush.
@@ -261,9 +366,19 @@ public static class XBrushKeys
     public static ComponentResourceKey TextTertiary { get; } = new(typeof(XBrushKeys), nameof(TextTertiary));
 
     /// <summary>
+    /// Gets the resource key for disabled text and icons.
+    /// </summary>
+    public static ComponentResourceKey TextDisabled { get; } = new(typeof(XBrushKeys), nameof(TextDisabled));
+
+    /// <summary>
     /// Gets the resource key for subtle separators and container borders.
     /// </summary>
     public static ComponentResourceKey BorderSubtle { get; } = new(typeof(XBrushKeys), nameof(BorderSubtle));
+
+    /// <summary>
+    /// Gets the resource key for subtle dividers between adjacent content regions.
+    /// </summary>
+    public static ComponentResourceKey Divider { get; } = new(typeof(XBrushKeys), nameof(Divider));
 
     /// <summary>
     /// Gets the resource key for standard control and container borders.

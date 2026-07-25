@@ -25,14 +25,14 @@ internal static class XThemePresetRose
             new XThemePalette
             {
                 Name = "Rose",
-                PrimaryLight = Color.FromRgb(225, 29, 72),
+                PrimaryLight = Color.FromRgb(190, 18, 60),
                 PrimaryDark = Color.FromRgb(253, 164, 175),
-                AccentLight = Color.FromRgb(217, 70, 239),
-                AccentDark = Color.FromRgb(240, 171, 252),
-                BackgroundLight = Color.FromRgb(255, 247, 248),
-                BackgroundDark = Color.FromRgb(28, 18, 23),
+                AccentLight = Color.FromRgb(79, 70, 229),
+                AccentDark = Color.FromRgb(165, 180, 252),
+                BackgroundLight = Color.FromRgb(247, 243, 244),
+                BackgroundDark = Color.FromRgb(28, 24, 26),
                 SurfaceLight = Color.FromRgb(255, 255, 255),
-                SurfaceDark = Color.FromRgb(43, 31, 37),
+                SurfaceDark = Color.FromRgb(42, 36, 39),
                 NavigationLight = Color.FromRgb(76, 29, 49),
                 NavigationDark = Color.FromRgb(35, 24, 30),
             });

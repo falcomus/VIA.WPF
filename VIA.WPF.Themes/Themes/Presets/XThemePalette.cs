@@ -43,52 +43,52 @@ internal sealed class XThemePalette
     /// <summary>
     /// Gets or sets the success light mode color.
     /// </summary>
-    public Color SuccessLight { get; init; } = Color.FromRgb(21, 128, 61);
+    public Color SuccessLight { get; init; } = Color.FromRgb(16, 124, 65);
 
     /// <summary>
     /// Gets or sets the success dark mode color.
     /// </summary>
-    public Color SuccessDark { get; init; } = Color.FromRgb(134, 239, 172);
+    public Color SuccessDark { get; init; } = Color.FromRgb(84, 176, 84);
 
     /// <summary>
     /// Gets or sets the warning light mode color.
     /// </summary>
-    public Color WarningLight { get; init; } = Color.FromRgb(245, 158, 11);
+    public Color WarningLight { get; init; } = Color.FromRgb(138, 90, 0);
 
     /// <summary>
     /// Gets or sets the warning dark mode color.
     /// </summary>
-    public Color WarningDark { get; init; } = Color.FromRgb(252, 211, 77);
+    public Color WarningDark { get; init; } = Color.FromRgb(244, 191, 79);
 
     /// <summary>
     /// Gets or sets the danger light mode color.
     /// </summary>
-    public Color DangerLight { get; init; } = Color.FromRgb(180, 35, 24);
+    public Color DangerLight { get; init; } = Color.FromRgb(196, 43, 28);
 
     /// <summary>
     /// Gets or sets the danger dark mode color.
     /// </summary>
-    public Color DangerDark { get; init; } = Color.FromRgb(252, 165, 165);
+    public Color DangerDark { get; init; } = Color.FromRgb(255, 153, 164);
 
     /// <summary>
     /// Gets or sets the info light mode color.
     /// </summary>
-    public Color InfoLight { get; init; } = Color.FromRgb(3, 105, 161);
+    public Color InfoLight { get; init; } = Color.FromRgb(0, 124, 131);
 
     /// <summary>
     /// Gets or sets the info dark mode color.
     /// </summary>
-    public Color InfoDark { get; init; } = Color.FromRgb(125, 211, 252);
+    public Color InfoDark { get; init; } = Color.FromRgb(93, 217, 223);
 
     /// <summary>
     /// Gets or sets the background light mode color.
     /// </summary>
-    public Color BackgroundLight { get; init; } = Color.FromRgb(238, 241, 245);
+    public Color BackgroundLight { get; init; } = Color.FromRgb(241, 244, 247);
 
     /// <summary>
     /// Gets or sets the background dark mode color.
     /// </summary>
-    public Color BackgroundDark { get; init; } = Color.FromRgb(15, 23, 42);
+    public Color BackgroundDark { get; init; } = Color.FromRgb(24, 26, 29);
 
     /// <summary>
     /// Gets or sets the surface light mode color.
@@ -98,17 +98,17 @@ internal sealed class XThemePalette
     /// <summary>
     /// Gets or sets the surface dark mode color.
     /// </summary>
-    public Color SurfaceDark { get; init; } = Color.FromRgb(30, 41, 59);
+    public Color SurfaceDark { get; init; } = Color.FromRgb(37, 40, 44);
 
     /// <summary>
     /// Gets or sets the navigation panel light mode color.
     /// </summary>
-    public Color NavigationLight { get; init; } = Color.FromRgb(15, 23, 42);
+    public Color NavigationLight { get; init; } = Color.FromRgb(32, 37, 43);
 
     /// <summary>
     /// Gets or sets the navigation panel dark mode color.
     /// </summary>
-    public Color NavigationDark { get; init; } = Color.FromRgb(15, 23, 42);
+    public Color NavigationDark { get; init; } = Color.FromRgb(21, 24, 28);
 
     /// <summary>
     /// Gets or sets the theme mode foreground light mode override.

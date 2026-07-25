@@ -121,9 +121,109 @@ public sealed class XThemePresetsTests
             Assert.True(inputDark > surfaceDark, $"{theme.Name} dark inputs must be lighter than its surface.");
         }
     }
+
+    /// <summary>
+    /// Verifies that text placed on semantic colors meets WCAG AA contrast in both modes.
+    /// </summary>
+    [Fact]
+    public void BuiltInThemes_ShouldProvideReadableSemanticForegrounds()
+    {
+        foreach (XTheme theme in XThemePresets.BuiltInThemes)
+        {
+            XThemeColorSet[] semanticSets =
+            [
+                theme.Primary,
+                theme.Accent,
+                theme.Success,
+                theme.Warning,
+                theme.Danger,
+                theme.Info
+            ];
+
+            foreach (XThemeColorSet colorSet in semanticSets)
+            {
+                Assert.True(
+                    GetContrastRatio(colorSet.Light, colorSet.TextLight) >= 4.5d,
+                    $"{theme.Name} light semantic foreground must meet WCAG AA contrast.");
+                Assert.True(
+                    GetContrastRatio(colorSet.Dark, colorSet.TextDark) >= 4.5d,
+                    $"{theme.Name} dark semantic foreground must meet WCAG AA contrast.");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Verifies that primary, accent, and informational colors remain visually distinct.
+    /// </summary>
+    [Fact]
+    public void BuiltInThemes_ShouldSeparatePrimaryAccentAndInfoColors()
+    {
+        foreach (XTheme theme in XThemePresets.BuiltInThemes)
+        {
+            AssertColorDistance(theme, XThemeMode.Light, theme.Primary.Light, theme.Accent.Light, "primary", "accent");
+            AssertColorDistance(theme, XThemeMode.Light, theme.Primary.Light, theme.Info.Light, "primary", "info");
+            AssertColorDistance(theme, XThemeMode.Light, theme.Accent.Light, theme.Info.Light, "accent", "info");
+
+            AssertColorDistance(theme, XThemeMode.Dark, theme.Primary.Dark, theme.Accent.Dark, "primary", "accent");
+            AssertColorDistance(theme, XThemeMode.Dark, theme.Primary.Dark, theme.Info.Dark, "primary", "info");
+            AssertColorDistance(theme, XThemeMode.Dark, theme.Accent.Dark, theme.Info.Dark, "accent", "info");
+        }
+    }
+
+    /// <summary>
+    /// Verifies that workbench surfaces and their borders are visibly separated.
+    /// </summary>
+    [Fact]
+    public void BuiltInThemes_ShouldProvideVisibleSurfaceAndBorderSeparation()
+    {
+        foreach (XTheme theme in XThemePresets.BuiltInThemes)
+        {
+            Assert.True(
+                GetContrastRatio(theme.Background.Light, theme.Surface.Light) >= 1.05d,
+                $"{theme.Name} light surface must be visibly separated from its canvas.");
+            Assert.True(
+                GetContrastRatio(theme.Surface.Light, theme.PanelBorder.Light) >= 1.30d,
+                $"{theme.Name} light panel border must be visible on its surface.");
+
+            Assert.True(
+                GetContrastRatio(theme.Background.Dark, theme.Surface.Dark) >= 1.10d,
+                $"{theme.Name} dark surface must be visibly separated from its canvas.");
+            Assert.True(
+                GetContrastRatio(theme.Surface.Dark, theme.PanelBorder.Dark) >= 1.30d,
+                $"{theme.Name} dark panel border must be visible on its surface.");
+        }
+    }
     #endregion
 
     #region ### Private Methods ###
+    private static void AssertColorDistance(
+        XTheme theme,
+        XThemeMode mode,
+        Color first,
+        Color second,
+        string firstRole,
+        string secondRole)
+    {
+        double red = first.R - second.R;
+        double green = first.G - second.G;
+        double blue = first.B - second.B;
+        double distance = Math.Sqrt((red * red) + (green * green) + (blue * blue));
+
+        Assert.True(
+            distance >= 28d,
+            $"{theme.Name} {mode.ToString().ToLowerInvariant()} {firstRole} and {secondRole} colors must remain distinct.");
+    }
+
+    private static double GetContrastRatio(Color first, Color second)
+    {
+        double firstLuminance = GetRelativeLuminance(first);
+        double secondLuminance = GetRelativeLuminance(second);
+        double lighter = Math.Max(firstLuminance, secondLuminance);
+        double darker = Math.Min(firstLuminance, secondLuminance);
+
+        return (lighter + 0.05d) / (darker + 0.05d);
+    }
+
     private static double GetRelativeLuminance(Color color)
     {
         double red = ConvertToLinearRgb(color.R / 255d);

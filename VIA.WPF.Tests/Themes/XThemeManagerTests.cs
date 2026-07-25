@@ -141,6 +141,24 @@ public sealed class XThemeManagerTests
     }
 
     /// <summary>
+    /// Verifies that canonical semantic names use dedicated resource keys.
+    /// </summary>
+    [Fact]
+    public void CanonicalBrushKeys_ShouldUseDedicatedResourceKeys()
+    {
+        Assert.NotSame(XBrushKeys.PrimaryText, XBrushKeys.PrimaryForeground);
+        Assert.NotSame(XBrushKeys.PrimaryVeryLight, XBrushKeys.PrimarySubtle);
+        Assert.NotSame(XBrushKeys.AccentText, XBrushKeys.AccentForeground);
+        Assert.NotSame(XBrushKeys.Success, XBrushKeys.StatusSuccess);
+        Assert.NotSame(XBrushKeys.Warning, XBrushKeys.StatusWarning);
+        Assert.NotSame(XBrushKeys.Danger, XBrushKeys.StatusDanger);
+        Assert.NotSame(XBrushKeys.Info, XBrushKeys.StatusInfo);
+        Assert.NotSame(XBrushKeys.SurfaceRaised, XBrushKeys.SurfaceOverlay);
+        Assert.NotSame(XBrushKeys.DisabledForeground, XBrushKeys.TextDisabled);
+        Assert.NotSame(XBrushKeys.BorderSubtle, XBrushKeys.Divider);
+    }
+
+    /// <summary>
     /// Verifies that public properties raise property change notifications when changed.
     /// </summary>
     [Fact]
