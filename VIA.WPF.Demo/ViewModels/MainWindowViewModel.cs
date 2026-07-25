@@ -329,6 +329,13 @@ public partial class MainWindowViewModel : ObservableObject
             ViewModel = new XSliderDemoViewModel()
         };
 
+        DemoItem xZoomSliderItem = new()
+        {
+            Title = "XZoomSlider",
+            Summary = "Compact zoom control for workbench canvases.",
+            ViewModel = new XZoomSliderDemoViewModel()
+        };
+
         DemoItem xTextBoxItem = new()
         {
             Title = "XTextBox",
@@ -530,6 +537,7 @@ public partial class MainWindowViewModel : ObservableObject
         inputGroup.Items.Add(xSearchBoxItem);
         inputGroup.Items.Add(xSecurePasswordBoxItem);
         inputGroup.Items.Add(xSliderItem);
+        inputGroup.Items.Add(xZoomSliderItem);
         inputGroup.Items.Add(xTextBoxItem);
         inputGroup.Items.Add(xTimePickerItem);
         inputGroup.Items.Add(xToggleButtonItem);
