@@ -156,6 +156,9 @@
         <DataTemplate DataType="{x:Type viewmodels:XZoomSliderDemoViewModel}">
             <views:XZoomSliderDemoView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:XColorSchemeViewDemoViewModel}">
+            <views:XColorSchemeViewDemoView />
+        </DataTemplate>
 
         <DataTemplate DataType="{x:Type viewmodels:XBadgeDemoViewModel}">
             <views:XBadgeDemoView />

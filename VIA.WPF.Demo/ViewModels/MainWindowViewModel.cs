@@ -336,6 +336,13 @@ public partial class MainWindowViewModel : ObservableObject
             ViewModel = new XZoomSliderDemoViewModel()
         };
 
+        DemoItem xColorSchemeViewItem = new()
+        {
+            Title = "XColorSchemeView",
+            Summary = "Semantic application palette preview.",
+            ViewModel = new XColorSchemeViewDemoViewModel()
+        };
+
         DemoItem xTextBoxItem = new()
         {
             Title = "XTextBox",
@@ -538,6 +545,7 @@ public partial class MainWindowViewModel : ObservableObject
         inputGroup.Items.Add(xSecurePasswordBoxItem);
         inputGroup.Items.Add(xSliderItem);
         inputGroup.Items.Add(xZoomSliderItem);
+        inputGroup.Items.Add(xColorSchemeViewItem);
         inputGroup.Items.Add(xTextBoxItem);
         inputGroup.Items.Add(xTimePickerItem);
         inputGroup.Items.Add(xToggleButtonItem);

@@ -31,6 +31,7 @@
     <conv:MultiplyConverter x:Key="MultiplyConverter" />
     <conv:TreeLevelToThicknessConverter x:Key="TreeLevelToThicknessConverter" />
     <conv:ColorToBrushConverter x:Key="ColorToBrushConverter" />
+    <conv:BrushToContrastingBrushConverter x:Key="BrushToContrastingBrushConverter" />
     <conv:BrushOpacityConverter x:Key="BrushOpacityConverter" />
     <conv:ObjectMemberPathValueConverter x:Key="ObjectMemberPathValueConverter" />
     <!--  Safely extracts the first validation error message without throwing when Validation.Errors is empty.  -->

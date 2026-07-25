@@ -49,6 +49,7 @@
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XTimePicker.xaml" />
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XSlider.xaml" />
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XZoomSlider.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XColorSchemeView.xaml" />
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XProgressBar.xaml" />
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XNavigationList.xaml" />
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XNavigationListItem.xaml" />
