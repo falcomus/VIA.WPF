@@ -79,6 +79,16 @@ public static class XThemeService
         XThemeManager.Current.ApplyTheme(theme);
     }
 
+    /// <summary>Registers or updates a theme and applies the new definition immediately.</summary>
+    public static void ApplyOrUpdateTheme(XTheme theme)
+    {
+        ArgumentNullException.ThrowIfNull(theme);
+
+        EnsureBuiltInThemesRegistered();
+        Registry.RegisterOrReplace(theme);
+        XThemeManager.Current.ApplyTheme(theme);
+    }
+
     /// <summary>
     /// Applies the theme with the specified name.
     /// </summary>

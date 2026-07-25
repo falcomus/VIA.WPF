@@ -1,1 +1,40 @@
-<UserControl x:Class="VIA.WPF.Demo.Views.XColorSchemeViewDemoView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:via="http://schemas.via.dev/wpf" xmlns:views="clr-namespace:VIA.WPF.Demo.Views"><views:DemoPageViewBase><views:DemoPageViewBase.PreviewContent><via:XColorSchemeView PrimaryBrush="{Binding Primary}" AccentBrush="{Binding Accent}" InfoBrush="{Binding Info}" SuccessBrush="{Binding Success}" WarningBrush="{Binding Warning}" DangerBrush="{Binding Danger}" NeutralBrush="{Binding Neutral}" TextBrush="{Binding Text}" ControlBackgroundBrush="{Binding ControlBackground}" ControlBorderBrush="{Binding ControlBorder}" BorderBrush="{Binding Border}" /></views:DemoPageViewBase.PreviewContent></views:DemoPageViewBase></UserControl>
+<UserControl
+    x:Class="VIA.WPF.Demo.Views.XColorSchemeViewDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:via="http://schemas.via.dev/wpf"
+    xmlns:views="clr-namespace:VIA.WPF.Demo.Views">
+    <views:DemoPageViewBase>
+        <views:DemoPageViewBase.PreviewContent>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <via:XStackPanel Spacing="18">
+                    <via:XStackPanel Spacing="6">
+                        <via:XTextBlock Text="Theme einfach ändern" TextRole="Title" />
+                        <via:XTextBlock Text="1. Theme auswählen oder „Neues Theme“ klicken.  2. Eine Farbe links anklicken.  3. Hell und Dunkel einstellen.  4. „Übernehmen“ klicken." TextRole="Description" />
+                    </via:XStackPanel>
+
+                    <via:XThemeEditor />
+
+                    <via:XBorder Padding="16" BorderThickness="1">
+                        <via:XStackPanel Spacing="12">
+                            <via:XTextBlock Text="So sieht das Theme aus" TextRole="Subtitle" />
+                            <WrapPanel>
+                                <via:XButton Margin="0,0,8,8" Content="Hauptaktion" Variant="Primary" />
+                                <via:XButton Margin="0,0,8,8" Content="Zusatzaktion" Variant="Accent" />
+                                <via:XButton Margin="0,0,8,8" Content="Erfolgreich" Variant="Success" />
+                                <via:XButton Margin="0,0,8,8" Content="Warnung" Variant="Warning" />
+                                <via:XButton Margin="0,0,8,8" Content="Löschen" Variant="Danger" />
+                            </WrapPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                                <via:XTextBox Margin="0,0,10,0" Header="Eingabefeld" Placeholder="Text eingeben…" />
+                                <via:XSlider Grid.Column="1" Header="Regler" Maximum="100" Minimum="0" ShowValue="True" Value="62" Variant="Primary" />
+                            </Grid>
+                            <via:XToggleSwitch Content="Aktive Einstellung" IsChecked="True" />
+                        </via:XStackPanel>
+                    </via:XBorder>
+                </via:XStackPanel>
+            </ScrollViewer>
+        </views:DemoPageViewBase.PreviewContent>
+    </views:DemoPageViewBase>
+</UserControl>

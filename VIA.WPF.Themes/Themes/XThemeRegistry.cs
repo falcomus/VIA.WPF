@@ -57,6 +57,24 @@ public sealed class XThemeRegistry
         this._themes.Add(theme);
     }
 
+    /// <summary>Registers a theme, replacing an already registered theme with the same name.</summary>
+    public void RegisterOrReplace(XTheme theme)
+    {
+        ArgumentNullException.ThrowIfNull(theme);
+
+        int index = this._themes
+            .Select((item, position) => new { item, position })
+            .FirstOrDefault(entry => string.Equals(entry.item.Name, theme.Name, StringComparison.OrdinalIgnoreCase))?.position ?? -1;
+
+        if (index < 0)
+        {
+            this._themes.Add(theme);
+            return;
+        }
+
+        this._themes[index] = theme;
+    }
+
     /// <summary>
     /// Registers the specified themes if they are not already present.
     /// </summary>
