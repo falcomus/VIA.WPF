@@ -11,6 +11,8 @@ public class XZoomSlider : Control
     public static readonly DependencyProperty MinZoomPercentProperty = DependencyProperty.Register(nameof(MinZoomPercent), typeof(int), typeof(XZoomSlider), new FrameworkPropertyMetadata(20));
     public static readonly DependencyProperty MaxZoomPercentProperty = DependencyProperty.Register(nameof(MaxZoomPercent), typeof(int), typeof(XZoomSlider), new FrameworkPropertyMetadata(200));
     public static readonly DependencyProperty TickFrequencyProperty = DependencyProperty.Register(nameof(TickFrequency), typeof(double), typeof(XZoomSlider), new FrameworkPropertyMetadata(5d));
+    public static readonly DependencyProperty IsSnapToTickEnabledProperty = DependencyProperty.Register(nameof(IsSnapToTickEnabled), typeof(bool), typeof(XZoomSlider), new FrameworkPropertyMetadata(false));
+    public static readonly DependencyProperty ShowValueHintProperty = DependencyProperty.Register(nameof(ShowValueHint), typeof(bool), typeof(XZoomSlider), new FrameworkPropertyMetadata(false));
     public static readonly DependencyProperty ResetValueProperty = DependencyProperty.Register(nameof(ResetValue), typeof(int), typeof(XZoomSlider), new FrameworkPropertyMetadata(100));
     public static readonly DependencyProperty ShowResetButtonProperty = DependencyProperty.Register(nameof(ShowResetButton), typeof(bool), typeof(XZoomSlider), new FrameworkPropertyMetadata(true));
 
@@ -26,6 +28,8 @@ public class XZoomSlider : Control
     public int MinZoomPercent { get => (int)GetValue(MinZoomPercentProperty); set => SetValue(MinZoomPercentProperty, value); }
     public int MaxZoomPercent { get => (int)GetValue(MaxZoomPercentProperty); set => SetValue(MaxZoomPercentProperty, value); }
     public double TickFrequency { get => (double)GetValue(TickFrequencyProperty); set => SetValue(TickFrequencyProperty, value); }
+    public bool IsSnapToTickEnabled { get => (bool)GetValue(IsSnapToTickEnabledProperty); set => SetValue(IsSnapToTickEnabledProperty, value); }
+    public bool ShowValueHint { get => (bool)GetValue(ShowValueHintProperty); set => SetValue(ShowValueHintProperty, value); }
     public int ResetValue { get => (int)GetValue(ResetValueProperty); set => SetValue(ResetValueProperty, value); }
     public bool ShowResetButton { get => (bool)GetValue(ShowResetButtonProperty); set => SetValue(ShowResetButtonProperty, value); }
 

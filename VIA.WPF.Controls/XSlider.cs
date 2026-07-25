@@ -477,11 +477,25 @@ public class XSlider : Slider
     private void OnValueHintThumbDragDelta(object sender, DragDeltaEventArgs e)
     {
         this.UpdateValueHintPopupContent();
+        this.RepositionValueHintPopup();
     }
 
     private void OnValueHintThumbDragCompleted(object sender, DragCompletedEventArgs e)
     {
         this.HideValueHintPopup();
+    }
+
+    private void RepositionValueHintPopup()
+    {
+        if (this.valueHintPopup is not { IsOpen: true } popup || this.valueHintThumb is null)
+        {
+            return;
+        }
+
+        // A Thumb is translated inside the Track while dragging. Reassigning the placement
+        // target makes WPF recalculate the custom placement for the new thumb position.
+        popup.PlacementTarget = null;
+        popup.PlacementTarget = this.valueHintThumb;
     }
 
     private static CustomPopupPlacement[] PlaceValueHintPopup(Size popupSize, Size targetSize, Point offset)

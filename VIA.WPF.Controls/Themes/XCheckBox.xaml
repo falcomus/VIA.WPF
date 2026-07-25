@@ -108,10 +108,6 @@
                             <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatePressed}}" />
                         </Trigger>
 
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="KeyboardFocusRing" Property="Visibility" Value="Visible" />
-                        </Trigger>
-
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
                             <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />

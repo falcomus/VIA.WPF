@@ -27,7 +27,7 @@
         <Setter Property="ItemMargin" Value="0,1" />
         <Setter Property="ItemCornerRadius" Value="4" />
         <Setter Property="SelectedItemBackground" Value="{DynamicResource {x:Static themes:XBrushKeys.NavigationPanelSelectedItemBackground}}" />
-        <Setter Property="SelectedItemForeground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+        <Setter Property="SelectedItemForeground" Value="{DynamicResource {x:Static themes:XBrushKeys.NavigationPanelSelectedItemForeground}}" />
         <Setter Property="ItemHoverBackground" Value="{DynamicResource {x:Static themes:XBrushKeys.NavigationPanelItemHoverBackground}}" />
         <Setter Property="ShowSelectionIndicator" Value="True" />
         <Setter Property="SelectionIndicatorBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Accent}}" />

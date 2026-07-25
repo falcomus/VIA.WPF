@@ -224,10 +224,6 @@
                             <Setter TargetName="BottomTickBar" Property="Visibility" Value="Visible" />
                         </Trigger>
 
-                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
-                            <Setter TargetName="SliderHostBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.FocusRing}}" />
-                        </Trigger>
-
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="SliderHostBorder" Property="Opacity" Value="0.55" />
                             <Setter TargetName="HeaderPresenter" Property="Opacity" Value="0.55" />

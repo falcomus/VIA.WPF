@@ -93,10 +93,6 @@
                             <Setter TargetName="TrackBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatePressed}}" />
                         </Trigger>
 
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="KeyboardFocusRing" Property="Visibility" Value="Visible" />
-                        </Trigger>
-
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="TrackBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
                             <Setter TargetName="TrackBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />

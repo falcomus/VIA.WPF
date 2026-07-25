@@ -283,11 +283,6 @@
                             <Setter TargetName="InteractionOverlay" Property="Opacity" Value="0.14" />
                         </Trigger>
 
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="KeyboardFocusRing" Property="Visibility" Value="Visible" />
-                        </Trigger>
-
-
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="RootBorder" Property="Opacity" Value="0.55" />
                         </Trigger>
