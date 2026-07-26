@@ -33,5 +33,17 @@ public sealed class FontAwesomeIconExtension : KindIconExtensionBase<XFontAwesom
     {
     }
     #endregion
+
+    #region ### Public Properties ###
+    /// <summary>
+    /// Gets or sets the Font Awesome icon kind.
+    /// </summary>
+    [ConstructorArgument("kind")]
+    public new PackIconFontAwesome6Kind? Kind
+    {
+        get => base.Kind;
+        set => base.Kind = value;
+    }
+    #endregion
 }
 #endregion

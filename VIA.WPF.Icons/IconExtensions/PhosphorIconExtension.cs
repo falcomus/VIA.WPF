@@ -33,5 +33,17 @@ public sealed class PhosphorIconExtension : KindIconExtensionBase<XPhosphorIcon,
     {
     }
     #endregion
+
+    #region ### Public Properties ###
+    /// <summary>
+    /// Gets or sets the phosphor icon kind.
+    /// </summary>
+    [ConstructorArgument("kind")]
+    public new PackIconPhosphorIconsKind? Kind
+    {
+        get => base.Kind;
+        set => base.Kind = value;
+    }
+    #endregion
 }
 #endregion

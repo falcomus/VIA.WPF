@@ -33,5 +33,17 @@ public sealed class BootstrapIconExtension : KindIconExtensionBase<XBootstrapIco
     {
     }
     #endregion
+
+    #region ### Public Properties ###
+    /// <summary>
+    /// Gets or sets the bootstrap icon kind.
+    /// </summary>
+    [ConstructorArgument("kind")]
+    public new PackIconBootstrapIconsKind? Kind
+    {
+        get => base.Kind;
+        set => base.Kind = value;
+    }
+    #endregion
 }
 #endregion

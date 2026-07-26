@@ -33,5 +33,17 @@ public sealed class FileIconExtension : KindIconExtensionBase<XFileIcon, PackIco
     {
     }
     #endregion
+
+    #region ### Public Properties ###
+    /// <summary>
+    /// Gets or sets the file icon kind.
+    /// </summary>
+    [ConstructorArgument("kind")]
+    public new PackIconFileIconsKind? Kind
+    {
+        get => base.Kind;
+        set => base.Kind = value;
+    }
+    #endregion
 }
 #endregion

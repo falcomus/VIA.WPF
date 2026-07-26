@@ -33,5 +33,17 @@ public sealed class ModernIconExtension : KindIconExtensionBase<XModernIcon, Pac
     {
     }
     #endregion
+
+    #region ### Public Properties ###
+    /// <summary>
+    /// Gets or sets the modern icon kind.
+    /// </summary>
+    [ConstructorArgument("kind")]
+    public new PackIconModernKind? Kind
+    {
+        get => base.Kind;
+        set => base.Kind = value;
+    }
+    #endregion
 }
 #endregion

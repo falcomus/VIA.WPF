@@ -33,5 +33,17 @@ public sealed class MaterialDesignIconExtension : KindIconExtensionBase<XMateria
     {
     }
     #endregion
+
+    #region ### Public Properties ###
+    /// <summary>
+    /// Gets or sets the material design icon kind.
+    /// </summary>
+    [ConstructorArgument("kind")]
+    public new PackIconMaterialDesignKind? Kind
+    {
+        get => base.Kind;
+        set => base.Kind = value;
+    }
+    #endregion
 }
 #endregion
