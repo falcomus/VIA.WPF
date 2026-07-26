@@ -112,7 +112,7 @@
                                 Text="{TemplateBinding FormattedValue}" />
                         </Grid>
 
-                        <Border
+                        <controls:XBorder
                             x:Name="SliderHostBorder"
                             Grid.Row="1"
                             Padding="0,4"
@@ -151,7 +151,7 @@
                                     </RepeatButton>
                                 </Track.IncreaseRepeatButton>
                             </Track>
-                        </Border>
+                        </controls:XBorder>
 
                         <TickBar
                             x:Name="TopTickBar"
