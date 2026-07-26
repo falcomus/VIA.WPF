@@ -49,6 +49,7 @@
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XTimePicker.xaml" />
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XSlider.xaml" />
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XZoomSlider.xaml" />
+        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XUndoRedoBar.xaml" />
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XColorSchemeView.xaml" />
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XThemeEditor.xaml" />
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XColorPicker.xaml" />

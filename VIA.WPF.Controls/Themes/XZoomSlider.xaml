@@ -4,7 +4,7 @@
     xmlns:controls="clr-namespace:VIA.WPF.Controls"
     xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
     <Style TargetType="{x:Type controls:XZoomSlider}">
-        <Setter Property="Height" Value="28" />
+        <Setter Property="Height" Value="{x:Static controls:XControlSizeMetrics.MediumHeight}" />
         <Setter Property="MinWidth" Value="160" />
         <Setter Property="Template">
             <Setter.Value>
@@ -34,7 +34,7 @@
                             Padding="8,2"
                             Command="{x:Static controls:XZoomSlider.ResetZoomCommand}"
                             Content="{Binding ZoomPercent, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0}%}"
-                            Size="Small"
+                            Size="Medium"
                             ToolTip="Reset zoom"
                             Variant="Default" />
                     </Grid>
