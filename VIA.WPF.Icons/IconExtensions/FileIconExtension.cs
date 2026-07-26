@@ -13,7 +13,7 @@ namespace VIA.WPF.Icons;
 /// <summary>
 /// Provides a strongly typed markup extension for creating <see cref="XFileIcon"/> instances.
 /// </summary>
-[MarkupExtensionReturnType(typeof(XFileIcon))]
+[MarkupExtensionReturnType(typeof(object))]
 public sealed class FileIconExtension : KindIconExtensionBase<XFileIcon, PackIconFileIconsKind>
 {
     #region ### Constructors ###

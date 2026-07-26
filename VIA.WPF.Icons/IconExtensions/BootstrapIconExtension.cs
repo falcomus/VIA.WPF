@@ -13,7 +13,7 @@ namespace VIA.WPF.Icons;
 /// <summary>
 /// Provides a strongly typed markup extension for creating <see cref="XBootstrapIcon"/> instances.
 /// </summary>
-[MarkupExtensionReturnType(typeof(XBootstrapIcon))]
+[MarkupExtensionReturnType(typeof(object))]
 public sealed class BootstrapIconExtension : KindIconExtensionBase<XBootstrapIcon, PackIconBootstrapIconsKind>
 {
     #region ### Constructors ###

@@ -13,7 +13,7 @@ namespace VIA.WPF.Icons;
 /// <summary>
 /// Provides a strongly typed markup extension for creating <see cref="XModernIcon"/> instances.
 /// </summary>
-[MarkupExtensionReturnType(typeof(XModernIcon))]
+[MarkupExtensionReturnType(typeof(object))]
 public sealed class ModernIconExtension : KindIconExtensionBase<XModernIcon, PackIconModernKind>
 {
     #region ### Constructors ###

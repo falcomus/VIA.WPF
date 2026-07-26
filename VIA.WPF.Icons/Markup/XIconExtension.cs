@@ -14,7 +14,7 @@ namespace VIA.WPF.Icons;
 /// <summary>
 /// Creates an <see cref="XIcon"/> instance from inline XAML syntax.
 /// </summary>
-[MarkupExtensionReturnType(typeof(XIcon))]
+[MarkupExtensionReturnType(typeof(object))]
 public class XIconExtension : MarkupExtension
 {
     #region ### Constructors ###

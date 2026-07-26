@@ -13,7 +13,7 @@ namespace VIA.WPF.Icons;
 /// <summary>
 /// Provides a strongly typed markup extension for creating <see cref="XPhosphorIcon"/> instances.
 /// </summary>
-[MarkupExtensionReturnType(typeof(XPhosphorIcon))]
+[MarkupExtensionReturnType(typeof(object))]
 public sealed class PhosphorIconExtension : KindIconExtensionBase<XPhosphorIcon, PackIconPhosphorIconsKind>
 {
     #region ### Constructors ###

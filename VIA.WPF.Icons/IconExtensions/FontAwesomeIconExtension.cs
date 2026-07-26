@@ -13,7 +13,7 @@ namespace VIA.WPF.Icons;
 /// <summary>
 /// Provides a strongly typed markup extension for creating <see cref="XFontAwesomeIcon"/> instances.
 /// </summary>
-[MarkupExtensionReturnType(typeof(XFontAwesomeIcon))]
+[MarkupExtensionReturnType(typeof(object))]
 public sealed class FontAwesomeIconExtension : KindIconExtensionBase<XFontAwesomeIcon, PackIconFontAwesome6Kind>
 {
     #region ### Constructors ###

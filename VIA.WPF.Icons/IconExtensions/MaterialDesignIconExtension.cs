@@ -13,7 +13,7 @@ namespace VIA.WPF.Icons;
 /// <summary>
 /// Provides a strongly typed markup extension for creating <see cref="XMaterialDesignIcon"/> instances.
 /// </summary>
-[MarkupExtensionReturnType(typeof(XMaterialDesignIcon))]
+[MarkupExtensionReturnType(typeof(object))]
 public sealed class MaterialDesignIconExtension : KindIconExtensionBase<XMaterialDesignIcon, PackIconMaterialDesignKind>
 {
     #region ### Constructors ###

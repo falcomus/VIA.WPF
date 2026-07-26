@@ -16,7 +16,7 @@ namespace VIA.WPF.Icons;
 /// <summary>
 /// Provides a strongly typed markup extension for creating <see cref="XFluentIcon"/> instances.
 /// </summary>
-[MarkupExtensionReturnType(typeof(XFluentIcon))]
+[MarkupExtensionReturnType(typeof(object))]
 public sealed class FluentIconExtension : MarkupExtension
 {
     #region ### Constructors ###
