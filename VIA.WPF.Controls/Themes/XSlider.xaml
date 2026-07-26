@@ -16,7 +16,7 @@
         <Setter Property="Background" Value="{Binding ThumbBrush, RelativeSource={RelativeSource AncestorType={x:Type controls:XSlider}}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">

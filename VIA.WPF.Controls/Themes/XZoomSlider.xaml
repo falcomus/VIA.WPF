@@ -33,9 +33,10 @@
                             MinWidth="52"
                             Padding="8,2"
                             Command="{x:Static controls:XZoomSlider.ResetZoomCommand}"
+                            Cursor="Hand"
                             Content="{Binding ZoomPercent, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0}%}"
                             Size="Medium"
-                            ToolTip="Reset zoom"
+                            ToolTip="{Binding ResetButtonToolTip, RelativeSource={RelativeSource TemplatedParent}}"
                             Variant="Default" />
                     </Grid>
                     <ControlTemplate.Triggers>

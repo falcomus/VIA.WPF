@@ -15,6 +15,7 @@ public class XZoomSlider : Control
     public static readonly DependencyProperty ShowValueHintProperty = DependencyProperty.Register(nameof(ShowValueHint), typeof(bool), typeof(XZoomSlider), new FrameworkPropertyMetadata(false));
     public static readonly DependencyProperty ResetValueProperty = DependencyProperty.Register(nameof(ResetValue), typeof(int), typeof(XZoomSlider), new FrameworkPropertyMetadata(100));
     public static readonly DependencyProperty ShowResetButtonProperty = DependencyProperty.Register(nameof(ShowResetButton), typeof(bool), typeof(XZoomSlider), new FrameworkPropertyMetadata(true));
+    public static readonly DependencyProperty ResetButtonToolTipProperty = DependencyProperty.Register(nameof(ResetButtonToolTip), typeof(object), typeof(XZoomSlider), new FrameworkPropertyMetadata("Reset zoom"));
 
     public static readonly RoutedUICommand ResetZoomCommand = new("Reset zoom", nameof(ResetZoomCommand), typeof(XZoomSlider));
 
@@ -32,6 +33,7 @@ public class XZoomSlider : Control
     public bool ShowValueHint { get => (bool)GetValue(ShowValueHintProperty); set => SetValue(ShowValueHintProperty, value); }
     public int ResetValue { get => (int)GetValue(ResetValueProperty); set => SetValue(ResetValueProperty, value); }
     public bool ShowResetButton { get => (bool)GetValue(ShowResetButtonProperty); set => SetValue(ShowResetButtonProperty, value); }
+    public object ResetButtonToolTip { get => GetValue(ResetButtonToolTipProperty); set => SetValue(ResetButtonToolTipProperty, value); }
 
     private void ResetZoom() => ZoomPercent = Math.Clamp(ResetValue, MinZoomPercent, MaxZoomPercent);
 }
