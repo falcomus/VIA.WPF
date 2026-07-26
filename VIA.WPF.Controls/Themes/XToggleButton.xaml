@@ -18,7 +18,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="8,2,8,2" />
-        <Setter Property="MinWidth" Value="30" />
+        <Setter Property="MinWidth" Value="34" />
         <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.MediumHeight}" />
         <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
         <Setter Property="FontWeight" Value="SemiBold" />
