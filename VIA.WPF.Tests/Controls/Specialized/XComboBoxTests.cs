@@ -4,6 +4,8 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Windows;
+using System.Windows.Controls;
 using VIA.WPF.Controls;
 using VIA.WPF.Tests.Helpers;
 
@@ -73,6 +75,82 @@ public sealed class XComboBoxTests
                 comboBox.ShowResetButton = false;
 
                 Assert.False(comboBox.CanClearSelection);
+            });
+    }
+
+    /// <summary>
+    /// Verifies that semantic sizes apply distinct workbench metrics to a rendered combo box.
+    /// </summary>
+    [Fact]
+    public void Size_ShouldApplyDistinctRenderedMetrics()
+    {
+        WpfTestHelper.Run(
+            () =>
+            {
+                XComboBox small = new()
+                {
+                    Size = XControlSize.Small,
+                    SelectedIndex = 0
+                };
+                small.Items.Add("Small");
+
+                XComboBox medium = new()
+                {
+                    Size = XControlSize.Medium,
+                    SelectedIndex = 0
+                };
+                medium.Items.Add("Medium");
+
+                XComboBox large = new()
+                {
+                    Size = XControlSize.Large,
+                    SelectedIndex = 0
+                };
+                large.Items.Add("Large");
+
+                StackPanel panel = new()
+                {
+                    Margin = new Thickness(16d)
+                };
+                panel.Children.Add(small);
+                panel.Children.Add(medium);
+                panel.Children.Add(large);
+
+                Window host = new()
+                {
+                    Width = 320d,
+                    Height = 220d,
+                    ShowInTaskbar = false,
+                    Content = panel
+                };
+
+                try
+                {
+                    host.Show();
+                    host.UpdateLayout();
+
+                    Assert.Equal(XControlSizeMetrics.SmallHeight, small.MinHeight);
+                    Assert.Equal(new Thickness(8d, 2d, 8d, 2d), small.Padding);
+                    Assert.Equal(XControlSizeMetrics.SmallIconSize, small.ResetIconSize);
+                    Assert.Equal(XControlSizeMetrics.SmallCornerRadius, small.CornerRadius);
+
+                    Assert.Equal(XControlSizeMetrics.MediumHeight, medium.MinHeight);
+                    Assert.Equal(new Thickness(10d, 4d, 10d, 4d), medium.Padding);
+                    Assert.Equal(XControlSizeMetrics.MediumIconSize, medium.ResetIconSize);
+                    Assert.Equal(XControlSizeMetrics.MediumCornerRadius, medium.CornerRadius);
+
+                    Assert.Equal(XControlSizeMetrics.LargeHeight, large.MinHeight);
+                    Assert.Equal(new Thickness(12d, 6d, 12d, 6d), large.Padding);
+                    Assert.Equal(XControlSizeMetrics.LargeIconSize, large.ResetIconSize);
+                    Assert.Equal(XControlSizeMetrics.LargeCornerRadius, large.CornerRadius);
+
+                    Assert.True(small.ActualHeight < medium.ActualHeight);
+                    Assert.True(medium.ActualHeight < large.ActualHeight);
+                }
+                finally
+                {
+                    host.Close();
+                }
             });
     }
     #endregion

@@ -5,6 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Windows;
+using System.Windows.Controls;
 using VIA.WPF.Controls;
 using VIA.WPF.Tests.Helpers;
 
@@ -17,6 +18,52 @@ namespace VIA.WPF.Tests.Controls.Specialized;
 public sealed class XWorkbenchControlDefaultsTests
 {
     #region ### Tests ###
+    /// <summary>
+    /// Verifies that primitive layout controls do not add implicit content spacing.
+    /// </summary>
+    [Fact]
+    public void PrimitiveLayoutControls_ShouldUseNeutralPaddingDefaults()
+    {
+        WpfTestHelper.Run(
+            () =>
+            {
+                ResourceDictionary borderDictionary = new()
+                {
+                    Source = new Uri(
+                        "/VIA.WPF.Controls;component/Themes/XBorder.xaml",
+                        UriKind.Relative)
+                };
+
+                ResourceDictionary tabControlDictionary = new()
+                {
+                    Source = new Uri(
+                        "/VIA.WPF.Controls;component/Themes/XTabControl.xaml",
+                        UriKind.Relative)
+                };
+
+                Style borderStyle = Assert.IsType<Style>(borderDictionary[typeof(XBorder)]);
+                Style tabControlStyle = Assert.IsType<Style>(tabControlDictionary[typeof(XTabControl)]);
+
+                Setter borderPaddingSetter = Assert.Single(
+                    borderStyle.Setters
+                        .OfType<Setter>()
+                        .Where(setter => setter.Property == Control.PaddingProperty));
+
+                Setter tabControlPaddingSetter = Assert.Single(
+                    tabControlStyle.Setters
+                        .OfType<Setter>()
+                        .Where(setter => setter.Property == Control.PaddingProperty));
+
+                Assert.Equal(
+                    new Thickness(0d),
+                    Assert.IsType<Thickness>(borderPaddingSetter.Value));
+
+                Assert.Equal(
+                    new Thickness(0d),
+                    Assert.IsType<Thickness>(tabControlPaddingSetter.Value));
+            });
+    }
+
     /// <summary>
     /// Verifies that cell focus decoration remains opt-in on data grids.
     /// </summary>

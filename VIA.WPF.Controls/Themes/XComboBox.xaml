@@ -37,7 +37,7 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.InputBackground}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="6,0,6,1" />
+        <Setter Property="Padding" Value="10,4,10,4" />
         <Setter Property="MinWidth" Value="120" />
         <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.MediumHeight}" />
         <Setter Property="FontFamily" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontFamilyBody}}" />
@@ -54,7 +54,7 @@
         <!-- CanClearSelection is the preferred CLR alias; styles address the registered DP name. -->
         <Setter Property="ShowResetButton" Value="False" />
         <Setter Property="MaxVisibleItems" Value="10" />
-        <Setter Property="ResetIconSize" Value="{x:Static controls:XControlSizeMetrics.SmallIconSize}" />
+        <Setter Property="ResetIconSize" Value="{x:Static controls:XControlSizeMetrics.MediumIconSize}" />
         <Setter Property="ResetButtonForeground" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderText}}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -314,13 +314,17 @@
 
                         <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">
                             <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallHeight}" />
+                            <Setter Property="Padding" Value="8,2,8,2" />
                             <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
+                            <Setter Property="ResetIconSize" Value="{x:Static controls:XControlSizeMetrics.SmallIconSize}" />
                             <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.SmallCornerRadius}" />
                         </Trigger>
 
                         <Trigger Property="Size" Value="{x:Static controls:XControlSize.Large}">
                             <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeHeight}" />
+                            <Setter Property="Padding" Value="12,6,12,6" />
                             <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodyLarge}}" />
+                            <Setter Property="ResetIconSize" Value="{x:Static controls:XControlSizeMetrics.LargeIconSize}" />
                             <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.LargeCornerRadius}" />
                         </Trigger>
                     </ControlTemplate.Triggers>

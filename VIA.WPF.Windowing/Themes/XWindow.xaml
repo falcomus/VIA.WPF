@@ -30,8 +30,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
-        <Setter Property="FontSize" Value="11" />
+
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
@@ -79,8 +78,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
-        <Setter Property="FontSize" Value="11" />
+
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
@@ -355,16 +353,49 @@
                                                 Grid.Column="4"
                                                 Command="{x:Static windowing:XWindowCommands.Minimize}"
                                                 CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                                Content="&#xE921;"
-                                                Style="{StaticResource XWindowCaptionButtonStyle}" />
+                                                Style="{StaticResource XWindowCaptionButtonStyle}">
+                                                <Path
+                                                    Width="12"
+                                                    Height="12"
+                                                    Data="M 1 7.5 L 11 7.5"
+                                                    SnapsToDevicePixels="True"
+                                                    Stretch="None"
+                                                    Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                                                    StrokeEndLineCap="Round"
+                                                    StrokeStartLineCap="Round"
+                                                    StrokeThickness="1.25" />
+                                            </Button>
 
                                             <Button
                                                 x:Name="PART_MaximizeRestoreButton"
                                                 Grid.Column="5"
                                                 Command="{x:Static windowing:XWindowCommands.MaximizeRestore}"
                                                 CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                                Content="&#xE922;"
-                                                Style="{StaticResource XWindowCaptionButtonStyle}" />
+                                                Style="{StaticResource XWindowCaptionButtonStyle}">
+                                                <Grid>
+                                                    <Path
+                                                        x:Name="PART_MaximizeIcon"
+                                                        Width="12"
+                                                        Height="12"
+                                                        Data="M 1.5 1.5 H 10.5 V 10.5 H 1.5 Z"
+                                                        SnapsToDevicePixels="True"
+                                                        Stretch="None"
+                                                        Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                                                        StrokeLineJoin="Round"
+                                                        StrokeThickness="1.25" />
+                                                    <Path
+                                                        x:Name="PART_RestoreIcon"
+                                                        Width="12"
+                                                        Height="12"
+                                                        Data="M 3.5 1.5 H 10.5 V 8.5 H 3.5 Z M 1.5 3.5 H 8.5 V 10.5 H 1.5 Z"
+                                                        SnapsToDevicePixels="True"
+                                                        Stretch="None"
+                                                        Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                                                        StrokeLineJoin="Round"
+                                                        StrokeThickness="1.25"
+                                                        Visibility="Collapsed" />
+                                                </Grid>
+                                            </Button>
 
                                             <Button
                                                 x:Name="PART_CloseButton"
@@ -372,8 +403,19 @@
                                                 Margin="0"
                                                 Command="{x:Static windowing:XWindowCommands.Close}"
                                                 CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                                Content="&#xE8BB;"
-                                                Style="{StaticResource XWindowCloseButtonStyle}" />
+                                                Style="{StaticResource XWindowCloseButtonStyle}">
+                                                <Path
+                                                    Width="12"
+                                                    Height="12"
+                                                    Data="M 2 2 L 10 10 M 10 2 L 2 10"
+                                                    SnapsToDevicePixels="True"
+                                                    Stretch="None"
+                                                    Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                                                    StrokeEndLineCap="Round"
+                                                    StrokeLineJoin="Round"
+                                                    StrokeStartLineCap="Round"
+                                                    StrokeThickness="1.25" />
+                                            </Button>
                                         </Grid>
                                     </controls:XBorder>
 
@@ -967,7 +1009,8 @@
                         </Trigger>
 
                         <Trigger Property="WindowState" Value="Maximized">
-                            <Setter TargetName="PART_MaximizeRestoreButton" Property="Content" Value="&#xE923;" />
+                            <Setter TargetName="PART_MaximizeIcon" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="PART_RestoreIcon" Property="Visibility" Value="Visible" />
                             <Setter TargetName="PART_TitleBar" Property="CornerRadius" Value="0" />
                             <Setter TargetName="PART_WindowFrame" Property="CornerRadius" Value="0" />
                             <Setter TargetName="PART_ResizeGrip" Property="Visibility" Value="Collapsed" />
