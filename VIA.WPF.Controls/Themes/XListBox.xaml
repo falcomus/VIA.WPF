@@ -138,7 +138,7 @@
                                         IconSize="13"
                                         IsTabStop="True"
                                         Size="Small"
-                                        ToolTip="Edit"
+                                        ToolTip="{TemplateBinding EditToolTip}"
                                         Visibility="Collapsed">
                                         <controls:XIconButton.Icon>
                                             <pack:PackIconMaterialDesign Kind="Launch" />
@@ -161,7 +161,7 @@
                                         IconSize="10"
                                         IsTabStop="True"
                                         Size="Small"
-                                        ToolTip="Delete"
+                                        ToolTip="{TemplateBinding DeleteToolTip}"
                                         Variant="Danger"
                                         Visibility="Collapsed">
                                         <controls:XIconButton.Icon>

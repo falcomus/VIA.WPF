@@ -102,6 +102,15 @@ public class XListBoxItem : ListBoxItem
         new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
     /// <summary>
+    /// Identifies the <see cref="EditToolTip"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty EditToolTipProperty = DependencyProperty.Register(
+        nameof(EditToolTip),
+        typeof(object),
+        typeof(XListBoxItem),
+        new PropertyMetadata("Edit"));
+
+    /// <summary>
     /// Identifies the <see cref="EditCommand"/> dependency property.
     /// </summary>
     public static readonly DependencyProperty EditCommandProperty = DependencyProperty.Register(
@@ -127,6 +136,15 @@ public class XListBoxItem : ListBoxItem
         typeof(bool),
         typeof(XListBoxItem),
         new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+    /// <summary>
+    /// Identifies the <see cref="DeleteToolTip"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty DeleteToolTipProperty = DependencyProperty.Register(
+        nameof(DeleteToolTip),
+        typeof(object),
+        typeof(XListBoxItem),
+        new PropertyMetadata("Delete"));
 
     /// <summary>
     /// Identifies the <see cref="DeleteCommand"/> dependency property.
@@ -225,6 +243,15 @@ public class XListBoxItem : ListBoxItem
     }
 
     /// <summary>
+    /// Gets or sets the edit action tooltip.
+    /// </summary>
+    public object? EditToolTip
+    {
+        get => this.GetValue(EditToolTipProperty);
+        set => this.SetValue(EditToolTipProperty, value);
+    }
+
+    /// <summary>
     /// Gets or sets the edit command.
     /// </summary>
     public ICommand? EditCommand
@@ -249,6 +276,15 @@ public class XListBoxItem : ListBoxItem
     {
         get => (bool)this.GetValue(ShowDeleteProperty);
         set => this.SetValue(ShowDeleteProperty, value);
+    }
+
+    /// <summary>
+    /// Gets or sets the delete action tooltip.
+    /// </summary>
+    public object? DeleteToolTip
+    {
+        get => this.GetValue(DeleteToolTipProperty);
+        set => this.SetValue(DeleteToolTipProperty, value);
     }
 
     /// <summary>
