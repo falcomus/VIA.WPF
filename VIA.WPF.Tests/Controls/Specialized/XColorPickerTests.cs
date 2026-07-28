@@ -96,6 +96,8 @@ public sealed class XColorPickerTests
                         redNumberBox.Template.FindName("PART_SpinUpButton", redNumberBox));
 
                     Assert.Equal(TextAlignment.Right, redEditor.TextAlignment);
+                    Assert.Equal(0d, redNumberBox.MinWidth);
+                    Assert.Equal(92d, redNumberBox.Width);
 
                     redNumberBox.Text = "73";
                     host.Dispatcher.Invoke(static () => { }, DispatcherPriority.DataBind);
@@ -135,11 +137,10 @@ public sealed class XColorPickerTests
     #endregion
 
     #region ### Private Methods ###
-    private static T GetPart<T>(Control control, string partName)
+    private static T GetPart<T>(FrameworkElement control, string partName)
         where T : DependencyObject
     {
-        control.ApplyTemplate();
-        return Assert.IsType<T>(control.Template.FindName(partName, control));
+        return Assert.IsType<T>(control.FindName(partName));
     }
 
     private sealed class ColorBindingSource : DependencyObject
