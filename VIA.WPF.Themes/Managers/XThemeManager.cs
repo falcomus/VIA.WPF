@@ -353,6 +353,14 @@ public sealed class XThemeManager : INotifyPropertyChanged
 
         if (existingDictionary is not null)
         {
+            // Application resources can be merged after theme initialization. Keep the
+            // runtime dictionary last so the active theme remains the final authority.
+            if (!ReferenceEquals(resources.MergedDictionaries[^1], existingDictionary))
+            {
+                resources.MergedDictionaries.Remove(existingDictionary);
+                resources.MergedDictionaries.Add(existingDictionary);
+            }
+
             return existingDictionary;
         }
 

@@ -80,3 +80,7 @@ The seed pairs use established stepped color ramps: a darker step for Light Mode
 Application-specific aliases may temporarily exist during migration but must directly reference an `XBrushKeys` resource. They may not contain independent colors.
 
 Domain colors are outside this contract when they are user-selected or persisted as document content. Examples include mockup control fills, chart series, and asset tints. Rendering colors that describe application chrome or designer state remain theme colors and must resolve through VIA.WPF.
+
+## Resource precedence
+
+Theme-aware consumers use `DynamicResource`. Static infrastructure and fallback dictionaries load first; the active runtime theme dictionary is kept last in the application merge order and is therefore the final authority. Reapplying a theme restores this ordering if an application merged additional resources after initialization.

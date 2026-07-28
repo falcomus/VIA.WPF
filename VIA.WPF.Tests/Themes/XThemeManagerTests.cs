@@ -141,6 +141,35 @@ public sealed class XThemeManagerTests
     }
 
     /// <summary>
+    /// Verifies that reapplying a theme restores the runtime dictionary as the final resource authority.
+    /// </summary>
+    [Fact]
+    public void ApplyTheme_ShouldKeepRuntimeResourceDictionaryLast()
+    {
+        WpfTestHelper.Run(
+            () =>
+            {
+                ResourceDictionary resources = [];
+                XThemeManager manager = new();
+
+                manager.ApplyTheme(XThemePresets.Default, resources);
+                resources.MergedDictionaries.Add(
+                    new ResourceDictionary
+                    {
+                        [XBrushKeys.Canvas] = new SolidColorBrush(Colors.Magenta)
+                    });
+
+                manager.ApplyTheme(XThemePresets.Graphite, resources);
+
+                ResourceDictionary runtimeDictionary = resources.MergedDictionaries[^1];
+                Assert.True(runtimeDictionary.Contains(XBrushKeys.Canvas));
+                Assert.Equal(
+                    XThemePresets.Graphite.Background.Light,
+                    Assert.IsType<SolidColorBrush>(runtimeDictionary[XBrushKeys.Canvas]).Color);
+            });
+    }
+
+    /// <summary>
     /// Verifies that canonical semantic names use dedicated resource keys.
     /// </summary>
     [Fact]
