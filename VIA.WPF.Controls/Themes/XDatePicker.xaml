@@ -328,7 +328,7 @@
 
                                 <controls:XCalendar
                                     x:Name="PART_Calendar"
-                                    FirstDayOfWeek="Monday" />
+                                    FirstDayOfWeek="{TemplateBinding FirstDayOfWeek}" />
                             </Border>
                         </Popup>
 
@@ -353,6 +353,19 @@
                             TextTrimming="CharacterEllipsis"
                             TextWrapping="NoWrap"
                             ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"
+                            Visibility="Collapsed" />
+
+                        <TextBlock
+                            x:Name="InputValidationErrorPresenter"
+                            Grid.Row="3"
+                            MinHeight="16"
+                            Margin="0,4,0,0"
+                            FontSize="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}"
+                            Foreground="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                            Text="{TemplateBinding InvalidDateMessage}"
+                            TextTrimming="CharacterEllipsis"
+                            TextWrapping="NoWrap"
+                            ToolTip="{TemplateBinding InvalidDateMessage}"
                             Visibility="Collapsed" />
                     </Grid>
 
@@ -399,6 +412,12 @@
                             <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
                             <Setter TargetName="RootBorder" Property="BorderThickness" Value="2" />
                             <Setter TargetName="ValidationErrorPresenter" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="IsInputValid" Value="False">
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                            <Setter TargetName="RootBorder" Property="BorderThickness" Value="2" />
+                            <Setter TargetName="InputValidationErrorPresenter" Property="Visibility" Value="Visible" />
                         </Trigger>
 
                         <Trigger Property="MultiLineValidationHints" Value="True">

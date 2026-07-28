@@ -276,6 +276,29 @@ public class XDatePicker : Control
         typeof(bool),
         typeof(XDatePicker),
         new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+    /// <summary>
+    /// Stores the key for the read-only <see cref="IsInputValid"/> dependency property.
+    /// </summary>
+    private static readonly DependencyPropertyKey IsInputValidPropertyKey = DependencyProperty.RegisterReadOnly(
+        nameof(IsInputValid),
+        typeof(bool),
+        typeof(XDatePicker),
+        new FrameworkPropertyMetadata(true));
+
+    /// <summary>
+    /// Identifies the read-only <see cref="IsInputValid"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty IsInputValidProperty = IsInputValidPropertyKey.DependencyProperty;
+
+    /// <summary>
+    /// Identifies the <see cref="InvalidDateMessage"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty InvalidDateMessageProperty = DependencyProperty.Register(
+        nameof(InvalidDateMessage),
+        typeof(string),
+        typeof(XDatePicker),
+        new FrameworkPropertyMetadata("Enter a valid date."));
     #endregion
 
     #region ### Private Fields ###
@@ -558,6 +581,21 @@ public class XDatePicker : Control
         set => this.SetValue(MultiLineValidationHintsProperty, value);
     }
 
+    /// <summary>
+    /// Gets a value indicating whether the text currently entered by the user represents a selectable date.
+    /// </summary>
+    public bool IsInputValid => (bool)this.GetValue(IsInputValidProperty);
+
+    /// <summary>
+    /// Gets or sets the message shown when text cannot be interpreted as a selectable date.
+    /// Applications can bind this to their localization resources.
+    /// </summary>
+    public string InvalidDateMessage
+    {
+        get => (string)this.GetValue(InvalidDateMessageProperty);
+        set => this.SetValue(InvalidDateMessageProperty, value);
+    }
+
     #endregion
 
     #region ### Public Methods ###
@@ -781,6 +819,8 @@ public class XDatePicker : Control
             {
                 this.textBox.Text = text;
             }
+
+            this.SetValue(IsInputValidPropertyKey, true);
         }
         finally
         {
@@ -813,6 +853,8 @@ public class XDatePicker : Control
             this.calendar.SelectedDate = null;
             this.calendar.DisplayDate = this.DisplayDate;
         }
+
+        this.calendar.DisplayMode = CalendarMode.Month;
     }
 
     /// <summary>
@@ -828,9 +870,9 @@ public class XDatePicker : Control
             return;
         }
 
-        if (!DateTime.TryParse(this.Text, System.Globalization.CultureInfo.CurrentCulture, System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
+        if (!this.TryParseInputDate(this.Text, out DateTime parsedDate))
         {
-            this.SynchronizeTextFromSelectedDate();
+            this.SetValue(IsInputValidPropertyKey, false);
             this.UpdateClearButtonVisibility();
             return;
         }
@@ -839,12 +881,16 @@ public class XDatePicker : Control
 
         if (this.MinimumDate.HasValue && parsedDate < this.MinimumDate.Value.Date)
         {
-            parsedDate = this.MinimumDate.Value.Date;
+            this.SetValue(IsInputValidPropertyKey, false);
+            this.UpdateClearButtonVisibility();
+            return;
         }
 
         if (this.MaximumDate.HasValue && parsedDate > this.MaximumDate.Value.Date)
         {
-            parsedDate = this.MaximumDate.Value.Date;
+            this.SetValue(IsInputValidPropertyKey, false);
+            this.UpdateClearButtonVisibility();
+            return;
         }
 
         this.SetCurrentValue(SelectedDateProperty, parsedDate);
@@ -929,6 +975,11 @@ public class XDatePicker : Control
             return;
         }
 
+        if (!this.IsDropDownOpen)
+        {
+            this.SynchronizeCalendarFromSelectedDate();
+        }
+
         this.SetCurrentValue(IsDropDownOpenProperty, !this.IsDropDownOpen);
     }
 
@@ -959,6 +1010,39 @@ public class XDatePicker : Control
         this.SynchronizeTextFromSelectedDate();
         this.UpdateClearButtonVisibility();
         this.SetCurrentValue(IsDropDownOpenProperty, false);
+    }
+
+    /// <summary>
+    /// Parses date text using the active culture and the documented compact day/month form.
+    /// </summary>
+    /// <param name="text">The text to parse.</param>
+    /// <param name="parsedDate">The resulting date when parsing succeeds.</param>
+    /// <returns><c>true</c> when the text represents a date; otherwise, <c>false</c>.</returns>
+    private bool TryParseInputDate(string text, out DateTime parsedDate)
+    {
+        string trimmedText = text.Trim();
+        if (trimmedText.Length == 4 && trimmedText.All(char.IsAsciiDigit))
+        {
+            int day = int.Parse(trimmedText[..2], System.Globalization.CultureInfo.InvariantCulture);
+            int month = int.Parse(trimmedText[2..], System.Globalization.CultureInfo.InvariantCulture);
+
+            try
+            {
+                parsedDate = new DateTime(DateTime.Today.Year, month, day);
+                return true;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                parsedDate = default;
+                return false;
+            }
+        }
+
+        return DateTime.TryParse(
+            trimmedText,
+            System.Globalization.CultureInfo.CurrentCulture,
+            System.Globalization.DateTimeStyles.None,
+            out parsedDate);
     }
 
     /// <summary>
@@ -1040,6 +1124,7 @@ public class XDatePicker : Control
             return;
         }
 
+        datePicker.SetValue(IsInputValidPropertyKey, true);
         datePicker.UpdateClearButtonVisibility();
     }
 

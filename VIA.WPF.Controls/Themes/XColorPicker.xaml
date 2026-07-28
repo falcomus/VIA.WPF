@@ -5,12 +5,12 @@
     xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
 
     <Style TargetType="{x:Type controls:XColorPicker}">
-        <Setter Property="MinWidth" Value="340" />
+        <Setter Property="MinWidth" Value="400" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:XColorPicker}">
-                    <Grid SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                    <Grid Margin="0,0,8,0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Grid.Resources>
                             <Style x:Key="ColorChannelLabelStyle" TargetType="{x:Type TextBlock}">
                                 <Setter Property="Width" Value="22" />
@@ -33,7 +33,8 @@
                             </Style>
 
                             <Style x:Key="ColorChannelNumberBoxStyle" TargetType="{x:Type controls:XNumberBox}">
-                                <Setter Property="Width" Value="88" />
+                                <Setter Property="Width" Value="92" />
+                                <Setter Property="HorizontalAlignment" Value="Right" />
                                 <Setter Property="Minimum" Value="0" />
                                 <Setter Property="Maximum" Value="255" />
                                 <Setter Property="Step" Value="1" />
@@ -51,12 +52,10 @@
 
                         <controls:XCheckerBoard
                             Grid.Column="0"
-                            MinHeight="210"
-                            BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}"
-                            BorderThickness="1"
+                            Height="210"
                             CheckerSize="8"
                             CornerRadius="8">
-                            <Rectangle Margin="1" RadiusX="7" RadiusY="7">
+                            <Rectangle RadiusX="8" RadiusY="8">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="{Binding SelectedColor, RelativeSource={RelativeSource TemplatedParent}}" />
                                 </Rectangle.Fill>
@@ -80,7 +79,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="22" />
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="88" />
+                                    <ColumnDefinition Width="92" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="R" />
                                 <controls:XSlider
@@ -99,7 +98,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="22" />
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="88" />
+                                    <ColumnDefinition Width="92" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="G" />
                                 <controls:XSlider
@@ -118,7 +117,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="22" />
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="88" />
+                                    <ColumnDefinition Width="92" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="B" />
                                 <controls:XSlider
@@ -137,7 +136,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="22" />
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="88" />
+                                    <ColumnDefinition Width="92" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="A" />
                                 <controls:XSlider

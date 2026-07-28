@@ -39,6 +39,42 @@ public sealed class XGridTests
     }
 
     /// <summary>
+    /// Ensures that native definitions supplied by XAML or a markup extension survive loading.
+    /// </summary>
+    [Fact]
+    public void XGrid_ShouldPreserveNativeDefinitionsWhenCompactSyntaxIsUnused()
+    {
+        WpfTestHelper.Run(
+            () =>
+            {
+                VIA.WPF.Controls.XGrid grid = new();
+                grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1d, GridUnitType.Star) });
+                grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(30d) });
+
+                Window host = new()
+                {
+                    Width = 400d,
+                    Height = 200d,
+                    Content = grid
+                };
+
+                try
+                {
+                    host.Show();
+                    host.UpdateLayout();
+
+                    Assert.Equal(2, grid.RowDefinitions.Count);
+                    Assert.Equal(GridUnitType.Star, grid.RowDefinitions[0].Height.GridUnitType);
+                    Assert.Equal(30d, grid.RowDefinitions[1].Height.Value);
+                }
+                finally
+                {
+                    host.Close();
+                }
+            });
+    }
+
+    /// <summary>
     /// Ensures that compact row and column definitions are parsed into WPF definitions.
     /// </summary>
     [Fact]
@@ -316,4 +352,3 @@ public sealed class XGridTests
     #endregion
 }
 #endregion
-

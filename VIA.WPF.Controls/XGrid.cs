@@ -626,6 +626,16 @@ public class XGrid : Grid
 
     private void RebuildDefinitions()
     {
+        if (string.IsNullOrWhiteSpace(this.Rows) &&
+            string.IsNullOrWhiteSpace(this.Columns) &&
+            string.IsNullOrWhiteSpace(this.Areas))
+        {
+            // Keep native Grid definitions supplied directly in XAML or by a markup extension.
+            // XGrid only owns definitions when its compact Rows, Columns or Areas syntax is used.
+            this._areaDefinitions = new Dictionary<string, AreaDefinition>(StringComparer.OrdinalIgnoreCase);
+            return;
+        }
+
         List<GridLength> rowLengths = ParseDefinitions(this.Rows);
         List<GridLength> columnLengths = ParseDefinitions(this.Columns);
 
