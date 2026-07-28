@@ -16,7 +16,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="7,2" />
-        <Setter Property="MinHeight" Value="22" />
+        <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallBadgeHeight}" />
         <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.SmallCornerRadius}" />
@@ -97,21 +97,21 @@
 
         <Style.Triggers>
             <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">
-                <Setter Property="MinHeight" Value="22" />
+                <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallBadgeHeight}" />
                 <Setter Property="Padding" Value="7,2" />
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
                 <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.SmallCornerRadius}" />
             </Trigger>
 
             <Trigger Property="Size" Value="{x:Static controls:XControlSize.Medium}">
-                <Setter Property="MinHeight" Value="26" />
+                <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.MediumBadgeHeight}" />
                 <Setter Property="Padding" Value="8,3" />
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
                 <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.MediumCornerRadius}" />
             </Trigger>
 
             <Trigger Property="Size" Value="{x:Static controls:XControlSize.Large}">
-                <Setter Property="MinHeight" Value="30" />
+                <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeBadgeHeight}" />
                 <Setter Property="Padding" Value="10,4" />
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodyLarge}}" />
                 <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.LargeCornerRadius}" />

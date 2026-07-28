@@ -19,6 +19,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="10,3" />
         <Setter Property="MinWidth" Value="40" />
+        <Setter Property="Height" Value="{x:Static controls:XControlSizeMetrics.MediumHeight}" />
         <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.MediumHeight}" />
         <Setter Property="FontFamily" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontFamilyBody}}" />
         <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
@@ -393,6 +394,7 @@
     <Style BasedOn="{StaticResource XButtonBaseStyle}" TargetType="{x:Type controls:XButton}">
         <Style.Triggers>
             <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">
+                <Setter Property="Height" Value="{x:Static controls:XControlSizeMetrics.SmallHeight}" />
                 <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallHeight}" />
                 <Setter Property="Padding" Value="8,3,8,3" />
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
@@ -401,6 +403,7 @@
             </Trigger>
 
             <Trigger Property="Size" Value="{x:Static controls:XControlSize.Large}">
+                <Setter Property="Height" Value="{x:Static controls:XControlSizeMetrics.LargeHeight}" />
                 <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeHeight}" />
                 <Setter Property="Padding" Value="12,6,12,6" />
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodyLarge}}" />
@@ -848,6 +851,10 @@
                 <Setter Property="MinWidth" Value="0" />
                 <Setter Property="MinHeight" Value="0" />
             </MultiTrigger>
+
+            <Trigger Property="Appearance" Value="{x:Static controls:XControlAppearance.Link}">
+                <Setter Property="Height" Value="Auto" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

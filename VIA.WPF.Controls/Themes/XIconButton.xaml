@@ -18,13 +18,13 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style BasedOn="{StaticResource {x:Type controls:XButton}}" TargetType="{x:Type controls:XIconButton}">
-        <Setter Property="Width" Value="34" />
-        <Setter Property="Height" Value="34" />
-        <Setter Property="MinWidth" Value="34" />
-        <Setter Property="MinHeight" Value="34" />
+        <Setter Property="Width" Value="{x:Static controls:XControlSizeMetrics.MediumIconButtonSize}" />
+        <Setter Property="Height" Value="{x:Static controls:XControlSizeMetrics.MediumIconButtonSize}" />
+        <Setter Property="MinWidth" Value="{x:Static controls:XControlSizeMetrics.MediumIconButtonSize}" />
+        <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.MediumIconButtonSize}" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="IconSize" Value="{x:Static controls:XControlSizeMetrics.MediumIconSize}" />
-        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.MediumIconButtonCornerRadius}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="StretchContent" Value="False" />
@@ -228,20 +228,20 @@
                         </Trigger>
 
                         <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">
-                            <Setter Property="Width" Value="26" />
-                            <Setter Property="Height" Value="26" />
-                            <Setter Property="MinWidth" Value="26" />
-                            <Setter Property="MinHeight" Value="26" />
-                            <Setter Property="CornerRadius" Value="3" />
+                            <Setter Property="Width" Value="{x:Static controls:XControlSizeMetrics.SmallIconButtonSize}" />
+                            <Setter Property="Height" Value="{x:Static controls:XControlSizeMetrics.SmallIconButtonSize}" />
+                            <Setter Property="MinWidth" Value="{x:Static controls:XControlSizeMetrics.SmallIconButtonSize}" />
+                            <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallIconButtonSize}" />
+                            <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.SmallIconButtonCornerRadius}" />
                             <Setter Property="IconSize" Value="{x:Static controls:XControlSizeMetrics.SmallIconSize}" />
                         </Trigger>
 
                         <Trigger Property="Size" Value="{x:Static controls:XControlSize.Large}">
-                            <Setter Property="Width" Value="38" />
-                            <Setter Property="Height" Value="38" />
-                            <Setter Property="MinWidth" Value="38" />
-                            <Setter Property="MinHeight" Value="38" />
-                            <Setter Property="CornerRadius" Value="6" />
+                            <Setter Property="Width" Value="{x:Static controls:XControlSizeMetrics.LargeIconButtonSize}" />
+                            <Setter Property="Height" Value="{x:Static controls:XControlSizeMetrics.LargeIconButtonSize}" />
+                            <Setter Property="MinWidth" Value="{x:Static controls:XControlSizeMetrics.LargeIconButtonSize}" />
+                            <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeIconButtonSize}" />
+                            <Setter Property="CornerRadius" Value="{x:Static controls:XControlSizeMetrics.LargeIconButtonCornerRadius}" />
                             <Setter Property="IconSize" Value="{x:Static controls:XControlSizeMetrics.LargeIconSize}" />
                         </Trigger>
                     </ControlTemplate.Triggers>

@@ -1,4 +1,4 @@
-﻿<!--=====================================================================================================================
+<!--=====================================================================================================================
   <copyright file="XExpander.xaml" company="VIA.WPF">
     Copyright (c) VIA.WPF. All rights reserved.
   </copyright>
@@ -20,7 +20,7 @@
         <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
         <Setter Property="HeaderPadding" Value="10,0,10,0" />
         <Setter Property="ContentPadding" Value="12,10,12,12" />
-        <Setter Property="HeaderIconSize" Value="16" />
+        <Setter Property="HeaderIconSize" Value="{x:Static controls:XControlSizeMetrics.MediumIconSize}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:XExpander}">
@@ -86,7 +86,7 @@
                                 CornerRadius="4">
                                 <Button
                                     x:Name="PART_HeaderButton"
-                                    MinHeight="32"
+                                    MinHeight="{x:Static controls:XControlSizeMetrics.MediumListItemHeight}"
                                     Padding="{TemplateBinding HeaderPadding}"
                                     HorizontalContentAlignment="Stretch"
                                     VerticalContentAlignment="Center"
@@ -419,18 +419,18 @@
 
                         <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">
                             <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
-                            <Setter Property="HeaderIconSize" Value="14" />
+                            <Setter Property="HeaderIconSize" Value="{x:Static controls:XControlSizeMetrics.SmallIconSize}" />
                             <Setter Property="HeaderPadding" Value="6,0,8,0" />
                             <Setter Property="ContentPadding" Value="10,5,10,6" />
-                            <Setter TargetName="PART_HeaderButton" Property="MinHeight" Value="26" />
+                            <Setter TargetName="PART_HeaderButton" Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallListItemHeight}" />
                         </Trigger>
 
                         <Trigger Property="Size" Value="{x:Static controls:XControlSize.Large}">
                             <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodyLarge}}" />
-                            <Setter Property="HeaderIconSize" Value="18" />
+                            <Setter Property="HeaderIconSize" Value="{x:Static controls:XControlSizeMetrics.LargeIconSize}" />
                             <Setter Property="HeaderPadding" Value="10,0,12,0" />
                             <Setter Property="ContentPadding" Value="14,12,14,14" />
-                            <Setter TargetName="PART_HeaderButton" Property="MinHeight" Value="38" />
+                            <Setter TargetName="PART_HeaderButton" Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeListItemHeight}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

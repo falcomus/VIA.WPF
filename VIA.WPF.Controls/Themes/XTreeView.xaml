@@ -165,7 +165,7 @@
 
                             <Border
                                 x:Name="HeaderSelectionBorder"
-                                MinHeight="28"
+                                MinHeight="{x:Static controls:XControlSizeMetrics.MediumTreeItemHeight}"
                                 HorizontalAlignment="Left"
                                 Background="Transparent"
                                 BorderBrush="Transparent"
@@ -215,10 +215,10 @@
 
                                         <controls:XIconButton
                                             x:Name="NewButton"
-                                            Width="20"
-                                            Height="20"
-                                            MinWidth="20"
-                                            MinHeight="20"
+                                            Width="{x:Static controls:XControlSizeMetrics.MediumInlineActionSize}"
+                                            Height="{x:Static controls:XControlSizeMetrics.MediumInlineActionSize}"
+                                            MinWidth="{x:Static controls:XControlSizeMetrics.MediumInlineActionSize}"
+                                            MinHeight="{x:Static controls:XControlSizeMetrics.MediumInlineActionSize}"
                                             Padding="0"
                                             Appearance="VerySubtle"
                                             Background="Transparent"
@@ -234,10 +234,10 @@
 
                                         <controls:XIconButton
                                             x:Name="EditButton"
-                                            Width="20"
-                                            Height="20"
-                                            MinWidth="20"
-                                            MinHeight="20"
+                                            Width="{x:Static controls:XControlSizeMetrics.MediumInlineActionSize}"
+                                            Height="{x:Static controls:XControlSizeMetrics.MediumInlineActionSize}"
+                                            MinWidth="{x:Static controls:XControlSizeMetrics.MediumInlineActionSize}"
+                                            MinHeight="{x:Static controls:XControlSizeMetrics.MediumInlineActionSize}"
                                             Margin="0,0,0,0"
                                             Padding="0"
                                             Appearance="VerySubtle"
@@ -254,10 +254,10 @@
 
                                         <controls:XIconButton
                                             x:Name="DeleteButton"
-                                            Width="20"
-                                            Height="20"
-                                            MinWidth="20"
-                                            MinHeight="20"
+                                            Width="{x:Static controls:XControlSizeMetrics.MediumInlineActionSize}"
+                                            Height="{x:Static controls:XControlSizeMetrics.MediumInlineActionSize}"
+                                            MinWidth="{x:Static controls:XControlSizeMetrics.MediumInlineActionSize}"
+                                            MinHeight="{x:Static controls:XControlSizeMetrics.MediumInlineActionSize}"
                                             Margin="0,0,0,0"
                                             Padding="0"
                                             Appearance="VerySubtle"
@@ -345,41 +345,41 @@
                         </Trigger>
 
                         <DataTrigger Binding="{Binding Size, RelativeSource={RelativeSource AncestorType={x:Type controls:XTreeView}}}" Value="{x:Static controls:XControlSize.Small}">
-                            <Setter TargetName="HeaderSelectionBorder" Property="MinHeight" Value="24" />
+                            <Setter TargetName="HeaderSelectionBorder" Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallTreeItemHeight}" />
                             <Setter TargetName="HeaderContentBorder" Property="Padding" Value="6,1,8,1" />
-                            <Setter TargetName="ExpanderToggleButton" Property="Width" Value="14" />
-                            <Setter TargetName="ExpanderToggleButton" Property="Height" Value="14" />
-                            <Setter TargetName="NewButton" Property="Width" Value="18" />
-                            <Setter TargetName="NewButton" Property="Height" Value="18" />
-                            <Setter TargetName="NewButton" Property="MinWidth" Value="18" />
-                            <Setter TargetName="NewButton" Property="MinHeight" Value="18" />
-                            <Setter TargetName="EditButton" Property="Width" Value="18" />
-                            <Setter TargetName="EditButton" Property="Height" Value="18" />
-                            <Setter TargetName="EditButton" Property="MinWidth" Value="18" />
-                            <Setter TargetName="EditButton" Property="MinHeight" Value="18" />
-                            <Setter TargetName="DeleteButton" Property="Width" Value="18" />
-                            <Setter TargetName="DeleteButton" Property="Height" Value="18" />
-                            <Setter TargetName="DeleteButton" Property="MinWidth" Value="18" />
-                            <Setter TargetName="DeleteButton" Property="MinHeight" Value="18" />
+                            <Setter TargetName="ExpanderToggleButton" Property="Width" Value="{x:Static controls:XControlSizeMetrics.SmallIconSize}" />
+                            <Setter TargetName="ExpanderToggleButton" Property="Height" Value="{x:Static controls:XControlSizeMetrics.SmallIconSize}" />
+                            <Setter TargetName="NewButton" Property="Width" Value="{x:Static controls:XControlSizeMetrics.SmallInlineActionSize}" />
+                            <Setter TargetName="NewButton" Property="Height" Value="{x:Static controls:XControlSizeMetrics.SmallInlineActionSize}" />
+                            <Setter TargetName="NewButton" Property="MinWidth" Value="{x:Static controls:XControlSizeMetrics.SmallInlineActionSize}" />
+                            <Setter TargetName="NewButton" Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallInlineActionSize}" />
+                            <Setter TargetName="EditButton" Property="Width" Value="{x:Static controls:XControlSizeMetrics.SmallInlineActionSize}" />
+                            <Setter TargetName="EditButton" Property="Height" Value="{x:Static controls:XControlSizeMetrics.SmallInlineActionSize}" />
+                            <Setter TargetName="EditButton" Property="MinWidth" Value="{x:Static controls:XControlSizeMetrics.SmallInlineActionSize}" />
+                            <Setter TargetName="EditButton" Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallInlineActionSize}" />
+                            <Setter TargetName="DeleteButton" Property="Width" Value="{x:Static controls:XControlSizeMetrics.SmallInlineActionSize}" />
+                            <Setter TargetName="DeleteButton" Property="Height" Value="{x:Static controls:XControlSizeMetrics.SmallInlineActionSize}" />
+                            <Setter TargetName="DeleteButton" Property="MinWidth" Value="{x:Static controls:XControlSizeMetrics.SmallInlineActionSize}" />
+                            <Setter TargetName="DeleteButton" Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallInlineActionSize}" />
                         </DataTrigger>
 
                         <DataTrigger Binding="{Binding Size, RelativeSource={RelativeSource AncestorType={x:Type controls:XTreeView}}}" Value="{x:Static controls:XControlSize.Large}">
-                            <Setter TargetName="HeaderSelectionBorder" Property="MinHeight" Value="34" />
+                            <Setter TargetName="HeaderSelectionBorder" Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeTreeItemHeight}" />
                             <Setter TargetName="HeaderContentBorder" Property="Padding" Value="12,5,14,5" />
-                            <Setter TargetName="ExpanderToggleButton" Property="Width" Value="18" />
-                            <Setter TargetName="ExpanderToggleButton" Property="Height" Value="18" />
-                            <Setter TargetName="NewButton" Property="Width" Value="22" />
-                            <Setter TargetName="NewButton" Property="Height" Value="22" />
-                            <Setter TargetName="NewButton" Property="MinWidth" Value="22" />
-                            <Setter TargetName="NewButton" Property="MinHeight" Value="22" />
-                            <Setter TargetName="EditButton" Property="Width" Value="22" />
-                            <Setter TargetName="EditButton" Property="Height" Value="22" />
-                            <Setter TargetName="EditButton" Property="MinWidth" Value="22" />
-                            <Setter TargetName="EditButton" Property="MinHeight" Value="22" />
-                            <Setter TargetName="DeleteButton" Property="Width" Value="22" />
-                            <Setter TargetName="DeleteButton" Property="Height" Value="22" />
-                            <Setter TargetName="DeleteButton" Property="MinWidth" Value="22" />
-                            <Setter TargetName="DeleteButton" Property="MinHeight" Value="22" />
+                            <Setter TargetName="ExpanderToggleButton" Property="Width" Value="{x:Static controls:XControlSizeMetrics.LargeIconSize}" />
+                            <Setter TargetName="ExpanderToggleButton" Property="Height" Value="{x:Static controls:XControlSizeMetrics.LargeIconSize}" />
+                            <Setter TargetName="NewButton" Property="Width" Value="{x:Static controls:XControlSizeMetrics.LargeInlineActionSize}" />
+                            <Setter TargetName="NewButton" Property="Height" Value="{x:Static controls:XControlSizeMetrics.LargeInlineActionSize}" />
+                            <Setter TargetName="NewButton" Property="MinWidth" Value="{x:Static controls:XControlSizeMetrics.LargeInlineActionSize}" />
+                            <Setter TargetName="NewButton" Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeInlineActionSize}" />
+                            <Setter TargetName="EditButton" Property="Width" Value="{x:Static controls:XControlSizeMetrics.LargeInlineActionSize}" />
+                            <Setter TargetName="EditButton" Property="Height" Value="{x:Static controls:XControlSizeMetrics.LargeInlineActionSize}" />
+                            <Setter TargetName="EditButton" Property="MinWidth" Value="{x:Static controls:XControlSizeMetrics.LargeInlineActionSize}" />
+                            <Setter TargetName="EditButton" Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeInlineActionSize}" />
+                            <Setter TargetName="DeleteButton" Property="Width" Value="{x:Static controls:XControlSizeMetrics.LargeInlineActionSize}" />
+                            <Setter TargetName="DeleteButton" Property="Height" Value="{x:Static controls:XControlSizeMetrics.LargeInlineActionSize}" />
+                            <Setter TargetName="DeleteButton" Property="MinWidth" Value="{x:Static controls:XControlSizeMetrics.LargeInlineActionSize}" />
+                            <Setter TargetName="DeleteButton" Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeInlineActionSize}" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

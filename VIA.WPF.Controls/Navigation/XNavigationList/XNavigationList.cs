@@ -20,6 +20,16 @@ public class XNavigationList : ListBox
 {
     #region ### Dependency Properties ###
     /// <summary>
+    /// Identifies the <see cref="Variant"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty VariantProperty =
+        DependencyProperty.Register(
+            nameof(Variant),
+            typeof(XNavigationListVariant),
+            typeof(XNavigationList),
+            new FrameworkPropertyMetadata(XNavigationListVariant.Default));
+
+    /// <summary>
     /// Identifies the <see cref="Header"/> dependency property.
     /// </summary>
     public static readonly DependencyProperty HeaderProperty =
@@ -203,6 +213,15 @@ public class XNavigationList : ListBox
     #endregion
 
     #region ### Public Properties ###
+    /// <summary>
+    /// Gets or sets the visual surface variant.
+    /// </summary>
+    public XNavigationListVariant Variant
+    {
+        get => (XNavigationListVariant)this.GetValue(VariantProperty);
+        set => this.SetValue(VariantProperty, value);
+    }
+
     /// <summary>
     /// Gets or sets the optional header content.
     /// </summary>

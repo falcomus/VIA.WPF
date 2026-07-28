@@ -72,7 +72,7 @@
                                 Grid.Row="1"
                                 Height="1"
                                 Margin="8,0,8,6"
-                                Background="{DynamicResource {x:Static themes:XBrushKeys.NavigationPanelBorder}}"
+                                Background="{TemplateBinding BorderBrush}"
                                 IsHitTestVisible="False"
                                 Opacity="0.65"
                                 Visibility="{Binding Header, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource NullToVisibilityConverter}}" />
@@ -90,7 +90,7 @@
                                 Grid.Row="3"
                                 Height="1"
                                 Margin="8,6,8,0"
-                                Background="{DynamicResource {x:Static themes:XBrushKeys.NavigationPanelBorder}}"
+                                Background="{TemplateBinding BorderBrush}"
                                 IsHitTestVisible="False"
                                 Opacity="0.65"
                                 Visibility="{Binding Footer, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource NullToVisibilityConverter}}" />
@@ -107,6 +107,26 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="Variant" Value="{x:Static controls:XNavigationListVariant.Surface}">
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PanelBorder}}" />
+                <Setter Property="SelectedItemBackground" Value="{DynamicResource {x:Static themes:XBrushKeys.SelectionBackground}}" />
+                <Setter Property="SelectedItemForeground" Value="{DynamicResource {x:Static themes:XBrushKeys.SelectionForeground}}" />
+                <Setter Property="ItemHoverBackground" Value="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}" />
+            </Trigger>
+
+            <Trigger Property="Variant" Value="{x:Static controls:XNavigationListVariant.Dark}">
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.NavigationPanelBackground}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.NavigationPanelForeground}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.NavigationPanelBorder}}" />
+                <Setter Property="SelectedItemBackground" Value="{DynamicResource {x:Static themes:XBrushKeys.NavigationPanelSelectedItemBackground}}" />
+                <Setter Property="SelectedItemForeground" Value="{DynamicResource {x:Static themes:XBrushKeys.NavigationPanelSelectedItemForeground}}" />
+                <Setter Property="ItemHoverBackground" Value="{DynamicResource {x:Static themes:XBrushKeys.NavigationPanelItemHoverBackground}}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>

@@ -43,6 +43,7 @@
                                 <via:XTextBlock Text="Application navigation" TextRole="SectionTitle" />
                                 <via:XNavigationList
                                     Width="330"
+                                    Variant="Dark"
                                     HorizontalAlignment="Left"
                                     Footer="Signed in as demo.user"
                                     FooterSpacing="0,10,0,0"
@@ -72,12 +73,13 @@
                                     <via:XTextBlock Text="Compact secondary navigation" TextRole="SectionTitle" />
                                     <via:XTextBlock
                                         IsMultiline="True"
-                                        Text="Use smaller item padding and softer spacing for contextual navigation areas such as filters, folders or subsection menus."
+                                        Text="The Surface variant follows the active theme and is suited to friendly dialog and settings navigation."
                                         TextRole="Description"
                                         TextWrapping="Wrap" />
 
                                     <via:XNavigationList
                                         Width="300"
+                                        Variant="Surface"
                                         HorizontalAlignment="Left"
                                         Footer="Context menu"
                                         Header="Master data"

@@ -1,4 +1,4 @@
-﻿<!--=====================================================================================================================
+<!--=====================================================================================================================
   <copyright file="XListBox.xaml" company="VIA.WPF">
     Copyright (c) VIA.WPF. All rights reserved.
   </copyright>
@@ -17,7 +17,7 @@
         TargetType="{x:Type controls:XListBoxItem}">
         <Setter Property="Margin" Value="2,1" />
         <Setter Property="Padding" Value="10,5" />
-        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.MediumListItemHeight}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Background" Value="Transparent" />
@@ -304,13 +304,13 @@
                         </MultiDataTrigger>
 
                         <DataTrigger Binding="{Binding Size, RelativeSource={RelativeSource AncestorType={x:Type controls:XListBox}}}" Value="{x:Static controls:XControlSize.Small}">
-                            <Setter Property="MinHeight" Value="26" />
+                            <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallListItemHeight}" />
                             <Setter Property="Padding" Value="8,3" />
                             <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}" />
                         </DataTrigger>
 
                         <DataTrigger Binding="{Binding Size, RelativeSource={RelativeSource AncestorType={x:Type controls:XListBox}}}" Value="{x:Static controls:XControlSize.Large}">
-                            <Setter Property="MinHeight" Value="38" />
+                            <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeListItemHeight}" />
                             <Setter Property="Padding" Value="12,7" />
                             <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodyLarge}}" />
                         </DataTrigger>

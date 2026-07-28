@@ -65,10 +65,10 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}" />
         <Setter Property="MinWidth" Value="120" />
-        <Setter Property="MinHeight" Value="34" />
+        <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.MediumSliderHeight}" />
         <Setter Property="TickPlacement" Value="None" />
-        <Setter Property="TrackThickness" Value="4" />
-        <Setter Property="ThumbSize" Value="18" />
+        <Setter Property="TrackThickness" Value="{x:Static controls:XControlSizeMetrics.MediumSliderTrackThickness}" />
+        <Setter Property="ThumbSize" Value="{x:Static controls:XControlSizeMetrics.MediumSliderThumbSize}" />
         <Setter Property="ActiveTrackBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
         <Setter Property="InactiveTrackBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}" />
         <Setter Property="ThumbBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
@@ -232,15 +232,15 @@
                         </Trigger>
 
                         <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">
-                            <Setter Property="MinHeight" Value="30" />
-                            <Setter Property="TrackThickness" Value="3" />
-                            <Setter Property="ThumbSize" Value="14" />
+                            <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.SmallSliderHeight}" />
+                            <Setter Property="TrackThickness" Value="{x:Static controls:XControlSizeMetrics.SmallSliderTrackThickness}" />
+                            <Setter Property="ThumbSize" Value="{x:Static controls:XControlSizeMetrics.SmallSliderThumbSize}" />
                         </Trigger>
 
                         <Trigger Property="Size" Value="{x:Static controls:XControlSize.Large}">
-                            <Setter Property="MinHeight" Value="40" />
-                            <Setter Property="TrackThickness" Value="6" />
-                            <Setter Property="ThumbSize" Value="20" />
+                            <Setter Property="MinHeight" Value="{x:Static controls:XControlSizeMetrics.LargeSliderHeight}" />
+                            <Setter Property="TrackThickness" Value="{x:Static controls:XControlSizeMetrics.LargeSliderTrackThickness}" />
+                            <Setter Property="ThumbSize" Value="{x:Static controls:XControlSizeMetrics.LargeSliderThumbSize}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
