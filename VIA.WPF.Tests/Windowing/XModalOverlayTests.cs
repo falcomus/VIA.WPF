@@ -34,10 +34,26 @@ public sealed class XModalOverlayTests
                 Assert.False(window.IsModalOverlayOpen);
                 Assert.Equal(0, window.ModalOverlayDepth);
                 Assert.NotNull(window.ModalOverlayBrush);
+                Assert.False(window.UseWindowShadow);
 
                 window.ModalOverlayBrush = Brushes.CadetBlue;
 
                 Assert.Same(Brushes.CadetBlue, window.ModalOverlayBrush);
+            });
+    }
+
+    /// <summary>
+    /// Verifies that dialog windows opt in to elevation without affecting application windows.
+    /// </summary>
+    [Fact]
+    public void DialogWindow_ShouldEnableElevationShadowByDefault()
+    {
+        WpfTestHelper.Run(
+            () =>
+            {
+                XDialogWindow dialog = new();
+
+                Assert.True(dialog.UseWindowShadow);
             });
     }
 
