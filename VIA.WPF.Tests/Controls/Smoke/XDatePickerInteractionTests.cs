@@ -7,6 +7,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 using System.Windows.Threading;
 using VIA.WPF.Controls;
 using VIA.WPF.Tests.Helpers;
@@ -99,6 +100,35 @@ public sealed class XDatePickerInteractionTests
                 host.Close();
             });
     }
+
+    [Fact]
+    public void XDatePicker_ShouldNavigateMonthsWhenItsCalendarAlreadyHasASelectedDate()
+    {
+        WpfTestHelper.Run(
+            () =>
+            {
+                XDatePicker datePicker = new() { SelectedDate = new DateTime(2026, 5, 4) };
+                Window host = CreateHost(datePicker, new Button { Content = "Next" });
+
+                host.Show();
+                host.Dispatcher.Invoke(static () => { }, DispatcherPriority.Render);
+
+                Button openButton = Assert.IsType<Button>(datePicker.Template.FindName("PART_DropDownButton", datePicker));
+                openButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+                host.Dispatcher.Invoke(static () => { }, DispatcherPriority.Input);
+
+                Calendar calendar = Assert.IsType<XCalendar>(datePicker.Template.FindName("PART_Calendar", datePicker));
+                Button previousButton = FindVisualChildren<Button>(calendar)
+                    .Single(button => button.Name == "PART_PreviousButton");
+                previousButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+                host.Dispatcher.Invoke(static () => { }, DispatcherPriority.Input);
+
+                Assert.Equal(2026, calendar.DisplayDate.Year);
+                Assert.Equal(4, calendar.DisplayDate.Month);
+                Assert.Equal(new DateTime(2026, 5, 4), datePicker.SelectedDate);
+                host.Close();
+            });
+    }
     #endregion
 
     #region ### Private Methods ###
@@ -120,6 +150,30 @@ public sealed class XDatePickerInteractionTests
             Height = 180d,
             Content = content
         };
+    }
+
+    /// <summary>
+    /// Enumerates visual descendants of a requested type.
+    /// </summary>
+    /// <typeparam name="T">The visual type to enumerate.</typeparam>
+    /// <param name="parent">The visual root.</param>
+    /// <returns>The matching descendants.</returns>
+    private static IEnumerable<T> FindVisualChildren<T>(DependencyObject parent)
+        where T : DependencyObject
+    {
+        for (int index = 0; index < VisualTreeHelper.GetChildrenCount(parent); index++)
+        {
+            DependencyObject child = VisualTreeHelper.GetChild(parent, index);
+            if (child is T match)
+            {
+                yield return match;
+            }
+
+            foreach (T descendant in FindVisualChildren<T>(child))
+            {
+                yield return descendant;
+            }
+        }
     }
     #endregion
 }
