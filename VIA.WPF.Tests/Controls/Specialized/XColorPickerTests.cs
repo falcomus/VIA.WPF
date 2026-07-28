@@ -96,6 +96,8 @@ public sealed class XColorPickerTests
                         redNumberBox.Template.FindName("PART_SpinUpButton", redNumberBox));
 
                     Assert.Equal(TextAlignment.Right, redEditor.TextAlignment);
+                    Assert.Equal(0d, redNumberBox.MinWidth);
+                    Assert.Equal(92d, redNumberBox.Width);
 
                     redNumberBox.Text = "73";
                     host.Dispatcher.Invoke(static () => { }, DispatcherPriority.DataBind);

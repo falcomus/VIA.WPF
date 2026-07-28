@@ -32,6 +32,7 @@
 
             <Style x:Key="ColorChannelNumberBoxStyle" TargetType="{x:Type controls:XNumberBox}">
                 <Setter Property="Width" Value="92" />
+                <Setter Property="MinWidth" Value="0" />
                 <Setter Property="HorizontalAlignment" Value="Right" />
                 <Setter Property="Minimum" Value="0" />
                 <Setter Property="Maximum" Value="255" />
@@ -88,6 +89,7 @@
                 <controls:XNumberBox
                     x:Name="PART_RedNumberBox"
                     Grid.Column="2"
+                    MinWidth="0"
                     Style="{StaticResource ColorChannelNumberBoxStyle}"
                     Text="{Binding Red, ElementName=Root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
