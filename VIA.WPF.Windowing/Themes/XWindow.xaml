@@ -239,13 +239,6 @@
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 RenderTransformOrigin="0.5,0.5"
                                 SnapsToDevicePixels="True">
-                                <Border.Effect>
-                                    <DropShadowEffect
-                                        BlurRadius="20"
-                                        Direction="270"
-                                        Opacity="0.22"
-                                        ShadowDepth="4" />
-                                </Border.Effect>
                                 <Border.RenderTransform>
                                     <ScaleTransform x:Name="PART_WindowFrameScaleTransform" ScaleX="1" ScaleY="1" />
                                 </Border.RenderTransform>
