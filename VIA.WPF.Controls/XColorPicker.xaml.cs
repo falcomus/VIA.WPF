@@ -5,7 +5,7 @@ using System.Windows.Media;
 namespace VIA.WPF.Controls;
 
 /// <summary>Compact RGBA color picker with a two-way <see cref="SelectedColor"/> property.</summary>
-public class XColorPicker : Control
+public partial class XColorPicker : UserControl
 {
     private bool synchronizing;
 
@@ -32,9 +32,11 @@ public class XColorPicker : Control
             FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
             OnHexChanged));
 
-    static XColorPicker() => DefaultStyleKeyProperty.OverrideMetadata(
-        typeof(XColorPicker),
-        new FrameworkPropertyMetadata(typeof(XColorPicker)));
+    public XColorPicker()
+    {
+        InitializeComponent();
+        SynchronizeFromColor(SelectedColor);
+    }
 
     public Color SelectedColor
     {
@@ -108,16 +110,16 @@ public class XColorPicker : Control
     {
         try
         {
-            this.synchronizing = true;
-            this.SetCurrentValue(RedProperty, color.R);
-            this.SetCurrentValue(GreenProperty, color.G);
-            this.SetCurrentValue(BlueProperty, color.B);
-            this.SetCurrentValue(AlphaProperty, color.A);
-            this.SetCurrentValue(HexProperty, color.ToString());
+            synchronizing = true;
+            SetCurrentValue(RedProperty, color.R);
+            SetCurrentValue(GreenProperty, color.G);
+            SetCurrentValue(BlueProperty, color.B);
+            SetCurrentValue(AlphaProperty, color.A);
+            SetCurrentValue(HexProperty, color.ToString());
         }
         finally
         {
-            this.synchronizing = false;
+            synchronizing = false;
         }
     }
 

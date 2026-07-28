@@ -52,7 +52,6 @@
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XUndoRedoBar.xaml" />
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XColorSchemeView.xaml" />
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XThemeEditor.xaml" />
-        <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XColorPicker.xaml" />
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XColorSchemeEditor.xaml" />
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XProgressBar.xaml" />
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XNavigationList.xaml" />

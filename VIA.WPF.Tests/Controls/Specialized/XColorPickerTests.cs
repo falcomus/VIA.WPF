@@ -135,11 +135,10 @@ public sealed class XColorPickerTests
     #endregion
 
     #region ### Private Methods ###
-    private static T GetPart<T>(Control control, string partName)
+    private static T GetPart<T>(FrameworkElement control, string partName)
         where T : DependencyObject
     {
-        control.ApplyTemplate();
-        return Assert.IsType<T>(control.Template.FindName(partName, control));
+        return Assert.IsType<T>(control.FindName(partName));
     }
 
     private sealed class ColorBindingSource : DependencyObject
