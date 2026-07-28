@@ -176,6 +176,7 @@
                                         x:Name="PART_TextBox"
                                         Margin="0"
                                         Padding="0"
+                                        TextAlignment="Right"
                                         VerticalContentAlignment="Center"
                                         Background="Transparent"
                                         BorderThickness="0"

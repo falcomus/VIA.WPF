@@ -1,22 +1,174 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="clr-namespace:VIA.WPF.Controls" xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VIA.WPF.Controls"
+    xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
+
     <Style TargetType="{x:Type controls:XColorPicker}">
+        <Setter Property="MinWidth" Value="340" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:XColorPicker}">
-                    <Grid>
-                        <Grid.ColumnDefinitions><ColumnDefinition Width="150" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
-                        <Border Margin="0,0,14,0" BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}" BorderThickness="1" CornerRadius="3">
-                            <Border.Background><SolidColorBrush Color="{Binding SelectedColor, RelativeSource={RelativeSource TemplatedParent}}" /></Border.Background>
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" Text="{Binding Hex, RelativeSource={RelativeSource TemplatedParent}}" />
-                        </Border>
-                        <Grid Grid.Column="1">
-                            <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
-                            <Grid.Resources><Style TargetType="TextBlock"><Setter Property="VerticalAlignment" Value="Center" /><Setter Property="Width" Value="20" /></Style></Grid.Resources>
-                            <Grid Grid.Row="0"><Grid.ColumnDefinitions><ColumnDefinition Width="20" /><ColumnDefinition Width="*" /><ColumnDefinition Width="64" /></Grid.ColumnDefinitions><TextBlock Text="R" /><controls:XSlider Grid.Column="1" Margin="0,0,10,0" Maximum="255" Minimum="0" ShowValue="False" Value="{Binding Red, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" /><TextBox Grid.Column="2" Text="{Binding Red, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" /></Grid>
-                            <Grid Grid.Row="1" Margin="0,6,0,0"><Grid.ColumnDefinitions><ColumnDefinition Width="20" /><ColumnDefinition Width="*" /><ColumnDefinition Width="64" /></Grid.ColumnDefinitions><TextBlock Text="G" /><controls:XSlider Grid.Column="1" Margin="0,0,10,0" Maximum="255" Minimum="0" ShowValue="False" Value="{Binding Green, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" /><TextBox Grid.Column="2" Text="{Binding Green, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" /></Grid>
-                            <Grid Grid.Row="2" Margin="0,6,0,0"><Grid.ColumnDefinitions><ColumnDefinition Width="20" /><ColumnDefinition Width="*" /><ColumnDefinition Width="64" /></Grid.ColumnDefinitions><TextBlock Text="B" /><controls:XSlider Grid.Column="1" Margin="0,0,10,0" Maximum="255" Minimum="0" ShowValue="False" Value="{Binding Blue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" /><TextBox Grid.Column="2" Text="{Binding Blue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" /></Grid>
-                            <Grid Grid.Row="3" Margin="0,6,0,0"><Grid.ColumnDefinitions><ColumnDefinition Width="20" /><ColumnDefinition Width="*" /><ColumnDefinition Width="64" /></Grid.ColumnDefinitions><TextBlock Text="A" /><controls:XSlider Grid.Column="1" Margin="0,0,10,0" Maximum="255" Minimum="0" ShowValue="False" Value="{Binding Alpha, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" /><TextBox Grid.Column="2" Text="{Binding Alpha, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" /></Grid>
-                            <TextBox Grid.Row="4" Margin="20,10,0,0" Text="{Binding Hex, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <Grid SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Grid.Resources>
+                            <Style x:Key="ColorChannelLabelStyle" TargetType="{x:Type TextBlock}">
+                                <Setter Property="Width" Value="22" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="FontWeight" Value="SemiBold" />
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}" />
+                                <Setter Property="TextAlignment" Value="Center" />
+                            </Style>
+
+                            <Style x:Key="ColorChannelSliderStyle" TargetType="{x:Type controls:XSlider}">
+                                <Setter Property="Margin" Value="0,0,10,0" />
+                                <Setter Property="Minimum" Value="0" />
+                                <Setter Property="Maximum" Value="255" />
+                                <Setter Property="SmallChange" Value="1" />
+                                <Setter Property="LargeChange" Value="16" />
+                                <Setter Property="ShowValue" Value="False" />
+                                <Setter Property="TickFrequency" Value="1" />
+                                <Setter Property="IsSnapToTickEnabled" Value="True" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+
+                            <Style x:Key="ColorChannelNumberBoxStyle" TargetType="{x:Type controls:XNumberBox}">
+                                <Setter Property="Width" Value="88" />
+                                <Setter Property="Minimum" Value="0" />
+                                <Setter Property="Maximum" Value="255" />
+                                <Setter Property="Step" Value="1" />
+                                <Setter Property="FormatString" Value="0" />
+                                <Setter Property="ShowSpinnerButtons" Value="True" />
+                                <Setter Property="Size" Value="Medium" />
+                            </Style>
+                        </Grid.Resources>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140" />
+                            <ColumnDefinition Width="18" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <controls:XCheckerBoard
+                            Grid.Column="0"
+                            MinHeight="210"
+                            BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}"
+                            BorderThickness="1"
+                            CheckerSize="8"
+                            CornerRadius="8">
+                            <Rectangle Margin="1" RadiusX="7" RadiusY="7">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush Color="{Binding SelectedColor, RelativeSource={RelativeSource TemplatedParent}}" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </controls:XCheckerBoard>
+
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="8" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="8" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="8" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="14" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="22" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="88" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="R" />
+                                <controls:XSlider
+                                    x:Name="PART_RedSlider"
+                                    Grid.Column="1"
+                                    Style="{StaticResource ColorChannelSliderStyle}"
+                                    Value="{Binding Red, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                                <controls:XNumberBox
+                                    x:Name="PART_RedNumberBox"
+                                    Grid.Column="2"
+                                    Style="{StaticResource ColorChannelNumberBoxStyle}"
+                                    Text="{Binding Red, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </Grid>
+
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="22" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="88" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="G" />
+                                <controls:XSlider
+                                    x:Name="PART_GreenSlider"
+                                    Grid.Column="1"
+                                    Style="{StaticResource ColorChannelSliderStyle}"
+                                    Value="{Binding Green, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                                <controls:XNumberBox
+                                    x:Name="PART_GreenNumberBox"
+                                    Grid.Column="2"
+                                    Style="{StaticResource ColorChannelNumberBoxStyle}"
+                                    Text="{Binding Green, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </Grid>
+
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="22" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="88" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="B" />
+                                <controls:XSlider
+                                    x:Name="PART_BlueSlider"
+                                    Grid.Column="1"
+                                    Style="{StaticResource ColorChannelSliderStyle}"
+                                    Value="{Binding Blue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                                <controls:XNumberBox
+                                    x:Name="PART_BlueNumberBox"
+                                    Grid.Column="2"
+                                    Style="{StaticResource ColorChannelNumberBoxStyle}"
+                                    Text="{Binding Blue, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </Grid>
+
+                            <Grid Grid.Row="6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="22" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="88" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="A" />
+                                <controls:XSlider
+                                    x:Name="PART_AlphaSlider"
+                                    Grid.Column="1"
+                                    Style="{StaticResource ColorChannelSliderStyle}"
+                                    Value="{Binding Alpha, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                                <controls:XNumberBox
+                                    x:Name="PART_AlphaNumberBox"
+                                    Grid.Column="2"
+                                    Style="{StaticResource ColorChannelNumberBoxStyle}"
+                                    Text="{Binding Alpha, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </Grid>
+
+                            <Grid Grid.Row="8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="38" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontWeight="SemiBold"
+                                    Foreground="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}"
+                                    Text="Hex" />
+                                <controls:XTextBox
+                                    x:Name="PART_HexTextBox"
+                                    Grid.Column="1"
+                                    Size="Medium"
+                                    Text="{Binding Hex, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    VerticalContentAlignment="Center" />
+                            </Grid>
                         </Grid>
                     </Grid>
                 </ControlTemplate>
