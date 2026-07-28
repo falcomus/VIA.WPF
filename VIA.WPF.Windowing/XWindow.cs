@@ -404,6 +404,15 @@ public class XWindow : Window, IXModalOverlayHost
         new PropertyMetadata(XBrushFactory.CreateFrozenBrush(120, 15, 23, 42)));
 
     /// <summary>
+    /// Identifies the <see cref="UseWindowShadow"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty UseWindowShadowProperty = DependencyProperty.Register(
+        nameof(UseWindowShadow),
+        typeof(bool),
+        typeof(XWindow),
+        new PropertyMetadata(false));
+
+    /// <summary>
     /// Identifies the read-only <see cref="IsModalOverlayOpen"/> dependency property.
     /// </summary>
     private static readonly DependencyPropertyKey IsModalOverlayOpenPropertyKey = DependencyProperty.RegisterReadOnly(
@@ -1036,6 +1045,16 @@ public class XWindow : Window, IXModalOverlayHost
     {
         get => (Brush)this.GetValue(ModalOverlayBrushProperty);
         set => this.SetValue(ModalOverlayBrushProperty, value);
+    }
+
+    /// <summary>
+    /// Gets or sets whether this window renders an opt-in elevation shadow.
+    /// Main application windows keep this disabled to avoid applying an effect to live rendering surfaces.
+    /// </summary>
+    public bool UseWindowShadow
+    {
+        get => (bool)this.GetValue(UseWindowShadowProperty);
+        set => this.SetValue(UseWindowShadowProperty, value);
     }
 
     /// <summary>

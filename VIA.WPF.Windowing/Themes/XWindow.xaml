@@ -69,9 +69,9 @@
     </Style>
 
     <Style x:Key="XWindowCloseButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Width" Value="44" />
-        <Setter Property="Height" Value="38" />
-        <Setter Property="Margin" Value="0" />
+        <Setter Property="Width" Value="30" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Margin" Value="0,0,6,0" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="Cursor" Value="Arrow" />
         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type windowing:XWindow}}, Path=TitleBarForegroundBrush}" />
@@ -88,7 +88,8 @@
                         x:Name="RootBorder"
                         Background="Transparent"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="4">
                         <ContentPresenter
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -203,9 +204,9 @@
         <Setter Property="TitleBarForegroundBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
         <Setter Property="CaptionButtonHoverBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}" />
         <Setter Property="CaptionButtonPressedBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatePressed}}" />
-        <Setter Property="CloseButtonHoverBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
-        <Setter Property="CloseButtonPressedBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDangerStrong}}" />
-        <Setter Property="CloseButtonForegroundBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDangerForeground}}" />
+        <Setter Property="CloseButtonHoverBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}" />
+        <Setter Property="CloseButtonPressedBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatePressed}}" />
+        <Setter Property="CloseButtonForegroundBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
         <Setter Property="BusyOverlayBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Scrim}}" />
         <Setter Property="ModalOverlayBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Scrim}}" />
         <Setter Property="CloseFlyoutsOnOverlayClick" Value="True" />
@@ -401,7 +402,6 @@
                                             <Button
                                                 x:Name="PART_CloseButton"
                                                 Grid.Column="6"
-                                                Margin="0"
                                                 Command="{x:Static windowing:XWindowCommands.Close}"
                                                 CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                                 Style="{StaticResource XWindowCloseButtonStyle}">
@@ -899,6 +899,18 @@
 
                         <Trigger Property="IsModalOverlayOpen" Value="True">
                             <Setter TargetName="PART_ModalOverlay" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="UseWindowShadow" Value="True">
+                            <Setter TargetName="PART_WindowFrame" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect
+                                        BlurRadius="20"
+                                        Direction="270"
+                                        Opacity="0.24"
+                                        ShadowDepth="4" />
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
 
 
