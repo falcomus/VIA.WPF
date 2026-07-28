@@ -157,7 +157,7 @@
                                         CommandParameter="{Binding DeleteCommandParameter, RelativeSource={RelativeSource TemplatedParent}}"
                                         Cursor="Hand"
                                         Focusable="True"
-                                        Foreground="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                                        Foreground="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}"
                                         IconSize="10"
                                         IsTabStop="True"
                                         Size="Small"

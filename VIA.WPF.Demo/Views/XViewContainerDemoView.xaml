@@ -87,7 +87,7 @@
                                                 FontWeight="SemiBold"
                                                 Text="Project list" />
                                             <TextBlock
-                                                Foreground="{DynamicResource {x:Static via:XBrushKeys.BorderText}}"
+                                                Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
                                                 Text="Select a project and open the modal detail dialog."
                                                 TextWrapping="Wrap" />
                                         </via:XStackPanel>
@@ -116,7 +116,7 @@
                                                         Text="{Binding Title}" />
                                                     <TextBlock
                                                         Grid.Row="1"
-                                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.BorderText}}"
+                                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
                                                         Text="{Binding Summary}"
                                                         TextWrapping="Wrap" />
                                                     <via:XBadge
@@ -126,12 +126,12 @@
                                                         Padding="6,0,6,2"
                                                         HorizontalAlignment="Left"
                                                         VerticalAlignment="Center"
-                                                        Background="{DynamicResource {x:Static via:XBrushKeys.InfoLight}}"
+                                                        Background="{DynamicResource {x:Static via:XBrushKeys.StatusInfoSubtleHover}}"
                                                         CornerRadius="10"
                                                         FontSize="11"
                                                         FontWeight="Medium"
                                                         Variant="Accent">
-                                                        <TextBlock Foreground="{DynamicResource {x:Static via:XBrushKeys.InfoDark}}" Text="{Binding Status}" />
+                                                        <TextBlock Foreground="{DynamicResource {x:Static via:XBrushKeys.StatusInfoStrong}}" Text="{Binding Status}" />
                                                     </via:XBadge>
                                                 </via:XGrid>
                                             </DataTemplate>
@@ -154,7 +154,7 @@
                                                 FontWeight="SemiBold"
                                                 Text="Project tree" />
                                             <TextBlock
-                                                Foreground="{DynamicResource {x:Static via:XBrushKeys.BorderText}}"
+                                                Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
                                                 Text="The same container can switch to a tree workspace."
                                                 TextWrapping="Wrap" />
                                         </via:XStackPanel>
@@ -229,13 +229,13 @@
                                     FontWeight="SemiBold"
                                     Text="Automatic CRUD integration" />
                                 <TextBlock
-                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.BorderText}}"
+                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
                                     Text="The container resolves CrudContext and SaveDetailCommand from IXCrudPageContext. No DetailHost, DetailHeader, IsDetailOpen, CloseDetailCommand or PrimaryDetailCommand binding is needed here."
                                     TextWrapping="Wrap" />
                                 <via:XSeparator Orientation="Horizontal" />
                                 <TextBlock FontWeight="SemiBold" Text="Last action" />
                                 <TextBlock
-                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.BorderText}}"
+                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
                                     Text="{Binding LastAction}"
                                     TextWrapping="Wrap" />
                             </via:XStackPanel>

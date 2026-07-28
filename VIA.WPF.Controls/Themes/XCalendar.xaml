@@ -40,7 +40,7 @@
                             <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatePressed}}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledForeground}}" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextDisabled}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -126,22 +126,22 @@
                             <Setter Property="Opacity" Value="1" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="DayBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SelectionBackground}}" />
+                            <Setter TargetName="DayBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StateSelected}}" />
                             <Setter TargetName="DayBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.SelectionBorder}}" />
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SelectionForeground}}" />
                             <Setter Property="FontWeight" Value="SemiBold" />
                             <Setter Property="Opacity" Value="1" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="DayBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.FocusBorder}}" />
+                            <Setter TargetName="DayBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.FocusRing}}" />
                         </Trigger>
                         <Trigger Property="IsBlackedOut" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledForeground}}" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextDisabled}}" />
                             <Setter Property="Opacity" Value="0.55" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="DayBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBackground}}" />
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledForeground}}" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextDisabled}}" />
                             <Setter Property="Opacity" Value="0.55" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -177,14 +177,14 @@
                             <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}" />
                         </Trigger>
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.FocusBorder}}" />
+                            <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.FocusRing}}" />
                         </Trigger>
                         <Trigger Property="IsInactive" Value="True">
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextTertiary}}" />
                             <Setter Property="Opacity" Value="0.55" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledForeground}}" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextDisabled}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

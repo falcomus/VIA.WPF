@@ -81,7 +81,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="IndicatorBorder" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
-                            <Setter TargetName="IndicatorBorder" Property="Fill" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceVeryLight}}" />
+                            <Setter TargetName="IndicatorBorder" Property="Fill" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}" />
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
@@ -113,8 +113,8 @@
                                 <Condition Property="IsChecked" Value="True" />
                                 <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Success}" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="IndicatorBorder" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
-                            <Setter TargetName="SelectionDot" Property="Fill" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+                            <Setter TargetName="IndicatorBorder" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccess}}" />
+                            <Setter TargetName="SelectionDot" Property="Fill" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccess}}" />
                         </MultiTrigger>
 
                         <MultiTrigger>
@@ -122,8 +122,8 @@
                                 <Condition Property="IsChecked" Value="True" />
                                 <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Warning}" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="IndicatorBorder" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
-                            <Setter TargetName="SelectionDot" Property="Fill" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+                            <Setter TargetName="IndicatorBorder" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarning}}" />
+                            <Setter TargetName="SelectionDot" Property="Fill" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarning}}" />
                         </MultiTrigger>
 
                         <MultiTrigger>
@@ -131,8 +131,8 @@
                                 <Condition Property="IsChecked" Value="True" />
                                 <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Danger}" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="IndicatorBorder" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
-                            <Setter TargetName="SelectionDot" Property="Fill" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                            <Setter TargetName="IndicatorBorder" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
+                            <Setter TargetName="SelectionDot" Property="Fill" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
                         </MultiTrigger>
 
                         <MultiTrigger>
@@ -140,14 +140,15 @@
                                 <Condition Property="IsChecked" Value="True" />
                                 <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Info}" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="IndicatorBorder" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
-                            <Setter TargetName="SelectionDot" Property="Fill" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                            <Setter TargetName="IndicatorBorder" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfo}}" />
+                            <Setter TargetName="SelectionDot" Property="Fill" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfo}}" />
                         </MultiTrigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="IndicatorBorder" Property="Opacity" Value="0.50" />
-                            <Setter TargetName="SelectionDot" Property="Opacity" Value="0.65" />
-                            <Setter Property="Opacity" Value="0.65" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextDisabled}}" />
+                            <Setter TargetName="IndicatorBorder" Property="Fill" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBackground}}" />
+                            <Setter TargetName="IndicatorBorder" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBorder}}" />
+                            <Setter TargetName="SelectionDot" Property="Fill" Value="{DynamicResource {x:Static themes:XBrushKeys.TextDisabled}}" />
                         </Trigger>
 
                         <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">

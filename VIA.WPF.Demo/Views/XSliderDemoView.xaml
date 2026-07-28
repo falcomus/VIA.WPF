@@ -201,7 +201,7 @@
                                     ActiveTrackBrush="{DynamicResource {x:Static via:XBrushKeys.Primary}}"
                                     Description="Custom brushes, track thickness and thumb size."
                                     Header="Primary track"
-                                    InactiveTrackBrush="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
+                                    InactiveTrackBrush="{DynamicResource {x:Static via:XBrushKeys.SurfaceRaised}}"
                                     Maximum="100"
                                     Minimum="0"
                                     ShowValue="True"

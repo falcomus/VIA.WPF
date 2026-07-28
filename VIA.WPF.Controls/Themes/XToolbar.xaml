@@ -14,9 +14,9 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Height" Value="52" />
-        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Background}}" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PanelBorder}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.CommandBarBackground}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderSubtle}}" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
         <Setter Property="Template">
             <Setter.Value>
@@ -104,9 +104,9 @@
     <Style TargetType="{x:Type controls:XToolbarGroup}">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PanelBorder}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderSubtle}}" />
         <Setter Property="BorderThickness" Value="0,0,1,0" />
         <Setter Property="Template">
             <Setter.Value>
@@ -133,7 +133,7 @@
                                 ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}">
                                 <ContentPresenter.Resources>
                                     <Style TargetType="{x:Type TextBlock}">
-                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
                                         <Setter Property="FontFamily" Value="Segoe UI" />
                                         <Setter Property="FontSize" Value="10" />
                                         <Setter Property="FontWeight" Value="Normal" />

@@ -17,24 +17,24 @@
         <Style x:Key="SectionTitleTextBlockStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="18" />
             <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.BackgroundText}}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.TextPrimary}}" />
         </Style>
 
         <Style x:Key="SectionDescriptionTextBlockStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="13" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.BorderText}}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
 
         <Style x:Key="CardTitleTextBlockStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="14" />
             <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.SurfaceText}}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.TextPrimary}}" />
         </Style>
 
         <Style x:Key="CardDescriptionTextBlockStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="12" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.BorderText}}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}" />
             <Setter Property="LineHeight" Value="18" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
@@ -42,7 +42,7 @@
         <Style x:Key="CodeTextBlockStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontFamily" Value="Cascadia Code, Consolas, Courier New" />
             <Setter Property="FontSize" Value="12" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.SurfaceText}}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.TextPrimary}}" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
     </UserControl.Resources>
@@ -80,7 +80,7 @@
                             <TextBlock
                                 FontSize="34"
                                 FontWeight="Bold"
-                                Foreground="{DynamicResource {x:Static via:XBrushKeys.BackgroundText}}"
+                                Foreground="{DynamicResource {x:Static via:XBrushKeys.TextPrimary}}"
                                 Text="Build modern WPF apps with VIA.WPF"
                                 TextWrapping="Wrap" />
 
@@ -88,7 +88,7 @@
                                 MaxWidth="680"
                                 HorizontalAlignment="Left"
                                 FontSize="15"
-                                Foreground="{DynamicResource {x:Static via:XBrushKeys.BorderText}}"
+                                Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
                                 LineHeight="23"
                                 Text="A themed control library for professional desktop applications: consistent controls, semantic variants, Light/Dark themes, icon integration, MVVM helpers and validation support."
                                 TextWrapping="Wrap" />
@@ -167,7 +167,7 @@
                             <via:XBorder
                                 Padding="14,12"
                                 Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="6">
                                 <TextBlock Style="{StaticResource CodeTextBlockStyle}" Text="dotnet add package VIA.WPF" />
@@ -179,7 +179,7 @@
                                 <via:XStackPanel Orientation="Horizontal" Spacing="8">
                                     <via:XMaterialIcon
                                         VerticalAlignment="Center"
-                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.Success}}"
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.StatusSuccess}}"
                                         Kind="CheckCircleOutline"
                                         Size="15" />
                                     <TextBlock VerticalAlignment="Center" Text="Controls, themes and icons" />
@@ -187,7 +187,7 @@
                                 <via:XStackPanel Orientation="Horizontal" Spacing="8">
                                     <via:XMaterialIcon
                                         VerticalAlignment="Center"
-                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.Success}}"
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.StatusSuccess}}"
                                         Kind="CheckCircleOutline"
                                         Size="15" />
                                     <TextBlock VerticalAlignment="Center" Text="MVVM validation helpers" />
@@ -195,7 +195,7 @@
                                 <via:XStackPanel Orientation="Horizontal" Spacing="8">
                                     <via:XMaterialIcon
                                         VerticalAlignment="Center"
-                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.Success}}"
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.StatusSuccess}}"
                                         Kind="CheckCircleOutline"
                                         Size="15" />
                                     <TextBlock VerticalAlignment="Center" Text="Windowing package" />
@@ -243,7 +243,7 @@
                             <via:XBorder
                                 Padding="14,12"
                                 Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="6">
                                 <TextBlock Style="{StaticResource CodeTextBlockStyle}" Text="dotnet add package VIA.WPF" />
@@ -343,7 +343,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         FontWeight="Bold"
-                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.PrimaryText}}"
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.PrimaryForeground}}"
                                         Text="1" />
                                 </via:XBorder>
                                 <TextBlock
@@ -357,7 +357,7 @@
                             <via:XBorder
                                 Padding="12,10"
                                 Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="9">
                                 <TextBlock Style="{StaticResource CodeTextBlockStyle}" Text="xmlns:via=&quot;http://schemas.via.dev/wpf&quot;" />
@@ -387,7 +387,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         FontWeight="Bold"
-                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.InfoText}}"
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.StatusInfoForeground}}"
                                         Text="2" />
                                 </via:XBorder>
                                 <TextBlock
@@ -401,7 +401,7 @@
                             <via:XBorder
                                 Padding="12,10"
                                 Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="9">
                                 <TextBlock Style="{StaticResource CodeTextBlockStyle}" Text="XThemeService.Initialize();" />
@@ -431,7 +431,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         FontWeight="Bold"
-                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.AccentText}}"
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.AccentForeground}}"
                                         Text="3" />
                                 </via:XBorder>
                                 <TextBlock
@@ -445,7 +445,7 @@
                             <via:XBorder
                                 Padding="12,10"
                                 Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="9">
                                 <TextBlock Style="{StaticResource CodeTextBlockStyle}" Text="&lt;via:XButton Content=&quot;Save&quot; Variant=&quot;Primary&quot; /&gt;" />
@@ -736,7 +736,7 @@
                             <via:XStackPanel Orientation="Horizontal" Spacing="8">
                                 <via:XMaterialIcon
                                     VerticalAlignment="Center"
-                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.Success}}"
+                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.StatusSuccess}}"
                                     Kind="CheckCircleOutline"
                                     Size="15" />
                                 <TextBlock Text=".NET 9 or later" />
@@ -744,7 +744,7 @@
                             <via:XStackPanel Orientation="Horizontal" Spacing="8">
                                 <via:XMaterialIcon
                                     VerticalAlignment="Center"
-                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.Success}}"
+                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.StatusSuccess}}"
                                     Kind="CheckCircleOutline"
                                     Size="15" />
                                 <TextBlock Text="WPF desktop project" />
@@ -752,7 +752,7 @@
                             <via:XStackPanel Orientation="Horizontal" Spacing="8">
                                 <via:XMaterialIcon
                                     VerticalAlignment="Center"
-                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.Success}}"
+                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.StatusSuccess}}"
                                     Kind="CheckCircleOutline"
                                     Size="15" />
                                 <TextBlock Text="Windows target framework" />

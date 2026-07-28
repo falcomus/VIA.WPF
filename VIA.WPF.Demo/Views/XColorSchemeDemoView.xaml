@@ -66,7 +66,7 @@
 
                                 <via:XBorder Padding="14" Appearance="Subtle" BorderThickness="1" CornerRadius="6" Variant="Success">
                                     <via:XStackPanel Spacing="8">
-                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Success}}" CornerRadius="6" />
+                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.StatusSuccess}}" CornerRadius="6" />
                                         <via:XTextBlock Text="Success" TextRole="Success" />
                                         <via:XTextBlock Text="Completed states" TextRole="Caption" />
                                     </via:XStackPanel>
@@ -74,7 +74,7 @@
 
                                 <via:XBorder Padding="14" Appearance="Subtle" BorderThickness="1" CornerRadius="6" Variant="Warning">
                                     <via:XStackPanel Spacing="8">
-                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Warning}}" CornerRadius="6" />
+                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.StatusWarning}}" CornerRadius="6" />
                                         <via:XTextBlock Text="Warning" TextRole="Warning" />
                                         <via:XTextBlock Text="Attention states" TextRole="Caption" />
                                     </via:XStackPanel>
@@ -82,7 +82,7 @@
 
                                 <via:XBorder Padding="14" Appearance="Subtle" BorderThickness="1" CornerRadius="6" Variant="Danger">
                                     <via:XStackPanel Spacing="8">
-                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Danger}}" CornerRadius="6" />
+                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.StatusDanger}}" CornerRadius="6" />
                                         <via:XTextBlock Text="Danger" TextRole="Error" />
                                         <via:XTextBlock Text="Destructive states" TextRole="Caption" />
                                     </via:XStackPanel>
@@ -90,7 +90,7 @@
 
                                 <via:XBorder Padding="14" Appearance="Subtle" BorderThickness="1" CornerRadius="6" Variant="Info">
                                     <via:XStackPanel Spacing="8">
-                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Info}}" CornerRadius="6" />
+                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.StatusInfo}}" CornerRadius="6" />
                                         <via:XTextBlock Text="Info" TextRole="Info" />
                                         <via:XTextBlock Text="Neutral hints" TextRole="Caption" />
                                     </via:XStackPanel>
@@ -98,7 +98,7 @@
 
                                 <via:XBorder Padding="14" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
                                     <via:XStackPanel Spacing="8">
-                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}" BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}" BorderThickness="1" CornerRadius="6" />
+                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}" BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}" BorderThickness="1" CornerRadius="6" />
                                         <via:XTextBlock Text="Surface" TextRole="Label" />
                                         <via:XTextBlock Text="Cards and panels" TextRole="Caption" />
                                     </via:XStackPanel>
@@ -106,7 +106,7 @@
 
                                 <via:XBorder Padding="14" Appearance="Subtle" BorderThickness="1" CornerRadius="6">
                                     <via:XStackPanel Spacing="8">
-                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Background}}" BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}" BorderThickness="1" CornerRadius="6" />
+                                        <Border Height="44" Background="{DynamicResource {x:Static via:XBrushKeys.Canvas}}" BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}" BorderThickness="1" CornerRadius="6" />
                                         <via:XTextBlock Text="Background" TextRole="Label" />
                                         <via:XTextBlock Text="App page base" TextRole="Caption" />
                                     </via:XStackPanel>

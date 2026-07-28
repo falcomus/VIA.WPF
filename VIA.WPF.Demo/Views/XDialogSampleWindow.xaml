@@ -30,7 +30,7 @@
     TitleBarPadding="20,0,10,0"
     TitleFontSize="15"
     WindowBackgroundBrush="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-    WindowBorderBrush="{DynamicResource {x:Static via:XBrushKeys.PanelBorder}}"
+    WindowBorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderSubtle}}"
     WindowStartupLocation="Manual"
     mc:Ignorable="d">
 

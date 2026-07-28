@@ -271,7 +271,7 @@
                                     x:Name="PART_ClearButton"
                                     Grid.Column="3"
                                     Margin="0,0.5,-4,0"
-                                    Foreground="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                                    Foreground="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}"
                                     Style="{StaticResource XDatePickerIconButtonStyle}"
                                     ToolTip="Clear"
                                     Visibility="Collapsed">
@@ -314,7 +314,7 @@
                                 Margin="0,4,0,0"
                                 Padding="8"
                                 HorizontalAlignment="Left"
-                                Background="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}"
+                                Background="{DynamicResource {x:Static themes:XBrushKeys.SurfaceOverlay}}"
                                 BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="{TemplateBinding CornerRadius}">
@@ -348,7 +348,7 @@
                             MinHeight="16"
                             Margin="0,4,0,0"
                             FontSize="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}"
-                            Foreground="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                            Foreground="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}"
                             Text="{Binding (Validation.Errors), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource FirstValidationErrorConverter}}"
                             TextTrimming="CharacterEllipsis"
                             TextWrapping="NoWrap"
@@ -396,7 +396,7 @@
                         </Trigger>
 
                         <Trigger Property="Validation.HasError" Value="True">
-                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
                             <Setter TargetName="RootBorder" Property="BorderThickness" Value="2" />
                             <Setter TargetName="ValidationErrorPresenter" Property="Visibility" Value="Visible" />
                         </Trigger>

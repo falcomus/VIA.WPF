@@ -179,7 +179,7 @@
                                     Variant="Info">
                                     <via:XTextBlock
                                         IsMultiline="True"
-                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.InfoText}}"
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.StatusInfoForeground}}"
                                         Text="{Binding NotificationSummary, FallbackValue='Description'}"
                                         TextRole="Description" />
                                 </via:XBorder>

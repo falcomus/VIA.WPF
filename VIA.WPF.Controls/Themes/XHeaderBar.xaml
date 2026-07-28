@@ -172,7 +172,7 @@
         <Setter Property="MinHeight" Value="42" />
         <Setter Property="Padding" Value="8,4" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.CommandBarForeground}}" />
-        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceVeryLight}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderSubtle}}" />
         <Setter Property="BorderThickness" Value="0,0,1,0" />
         <Setter Property="FontFamily" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontFamilyBody}}" />
@@ -205,7 +205,7 @@
                                     ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
                                     TextElement.FontSize="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeCaption}}"
                                     TextElement.FontWeight="SemiBold"
-                                    TextElement.Foreground="{DynamicResource {x:Static themes:XBrushKeys.PrimaryText}}" />
+                                    TextElement.Foreground="{DynamicResource {x:Static themes:XBrushKeys.PrimaryForeground}}" />
                             </Border>
 
                             <Border

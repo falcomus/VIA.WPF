@@ -14,7 +14,7 @@
 
     <Style TargetType="{x:Type controls:XExpander}">
         <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Surface}}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PanelBorder}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderSubtle}}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
         <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />

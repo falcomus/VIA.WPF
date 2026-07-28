@@ -124,7 +124,7 @@
 
                                             <via:XMenuItem Header="Available after sync" IsEnabled="False" />
 
-                                            <Separator Background="{DynamicResource {x:Static themes:XBrushKeys.Border}}"/>
+                                            <Separator Background="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}"/>
 
                                             <via:XMenuItem
                                                 Command="{Binding TargetDataContext.DeleteDocumentCommand, RelativeSource={RelativeSource AncestorType={x:Type via:XContextMenu}}}"

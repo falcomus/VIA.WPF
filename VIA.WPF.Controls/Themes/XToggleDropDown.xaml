@@ -314,7 +314,7 @@
                                 MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
                                 MaxHeight="{TemplateBinding MaxDropDownHeight}"
                                 Margin="0,4,0,0"
-                                Background="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}"
+                                Background="{DynamicResource {x:Static themes:XBrushKeys.SurfaceOverlay}}"
                                 BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="{TemplateBinding CornerRadius}">

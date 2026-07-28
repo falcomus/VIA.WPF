@@ -13,9 +13,9 @@
     xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
 
     <Style TargetType="{x:Type controls:XCheckerBoard}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
-        <Setter Property="CheckerLightBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceVeryLight}}" />
-        <Setter Property="CheckerDarkBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderLight}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+        <Setter Property="CheckerLightBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}" />
+        <Setter Property="CheckerDarkBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderSubtle}}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Padding" Value="0" />

@@ -17,13 +17,13 @@
         <Style x:Key="OverviewTitleStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="30" />
             <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.BackgroundText}}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.TextPrimary}}" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
 
         <Style x:Key="OverviewIntroStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="14" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.BorderText}}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}" />
             <Setter Property="LineHeight" Value="22" />
             <Setter Property="TextAlignment" Value="Left" />
             <Setter Property="TextWrapping" Value="Wrap" />
@@ -32,18 +32,18 @@
         <Style x:Key="OverviewLetterStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="18" />
             <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.BackgroundText}}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.TextPrimary}}" />
         </Style>
 
         <Style x:Key="OverviewCardTitleStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="14" />
             <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.SurfaceText}}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.TextPrimary}}" />
         </Style>
 
         <Style x:Key="OverviewCardTextStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="12" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.BorderText}}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}" />
             <Setter Property="LineHeight" Value="18" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
@@ -52,7 +52,7 @@
             <Setter Property="Width" Value="430" />
             <Setter Property="Padding" Value="16" />
             <Setter Property="Background" Value="{DynamicResource {x:Static via:XBrushKeys.Surface}}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static via:XBrushKeys.Border}}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="CornerRadius" Value="8" />
             <Setter Property="Elevation" Value="Low" />
@@ -70,7 +70,7 @@
             <via:XBorder
                 Padding="26"
                 Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                 BorderThickness="1"
                 CornerRadius="8"
                 Elevation="Low">
@@ -233,7 +233,7 @@
                             <via:XCheckerBoard
                                 Height="58"
                                 Padding="12"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CheckerSize="8"
                                 CornerRadius="6">
@@ -704,8 +704,8 @@
                             </via:XStackPanel>
                             <via:XBorder
                                 Padding="12"
-                                Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceRaised}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="6"
                                 Elevation="None">
@@ -779,7 +779,7 @@
                             <via:XSlider
                                 Width="360"
                                 Header="Volume"
-                                InactiveTrackBrush="{DynamicResource {x:Static via:XBrushKeys.ControlBorder}}"
+                                InactiveTrackBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 Maximum="100"
                                 Minimum="0"
                                 ShowValue="True"
@@ -796,8 +796,8 @@
                             </via:XStackPanel>
                             <via:XBorder
                                 Padding="12"
-                                Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceRaised}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="6"
                                 Elevation="None">
@@ -966,8 +966,8 @@
                             </via:XStackPanel>
                             <via:XBorder
                                 Padding="10"
-                                Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceRaised}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="6"
                                 Elevation="None">
@@ -1129,8 +1129,8 @@
                             </via:XStackPanel>
                             <via:XBorder
                                 Padding="12"
-                                Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceRaised}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="6"
                                 Elevation="None">
@@ -1165,8 +1165,8 @@
                             </via:XStackPanel>
                             <via:XBorder
                                 Padding="12"
-                                Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceRaised}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="6"
                                 Elevation="None">

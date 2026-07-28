@@ -46,7 +46,7 @@
                         <via:XBorder
                             Padding="20"
                             Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                             BorderThickness="1"
                             CornerRadius="8"
                             Elevation="Low">
@@ -69,8 +69,8 @@
 
                                 <via:XBorder
                                     Padding="12"
-                                    Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
-                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                    Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceRaised}}"
+                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                     BorderThickness="1"
                                     CornerRadius="6">
                                     <via:XTextBlock
@@ -85,7 +85,7 @@
                             Grid.Column="1"
                             Padding="20"
                             Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                             BorderThickness="1"
                             CornerRadius="8"
                             Elevation="Low">
@@ -121,7 +121,7 @@
                             Grid.Row="1"
                             Padding="20"
                             Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                             BorderThickness="1"
                             CornerRadius="8"
                             Elevation="Low">
@@ -155,7 +155,7 @@
                             Grid.Column="1"
                             Padding="20"
                             Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                             BorderThickness="1"
                             CornerRadius="8"
                             Elevation="Low">

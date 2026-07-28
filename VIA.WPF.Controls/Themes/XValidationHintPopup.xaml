@@ -33,7 +33,7 @@
                             Margin="0,6.5,0,0"
                             Padding="0"
                             VerticalAlignment="Top"
-                            Background="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                            Background="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}"
                             BorderBrush="Transparent"
                             BorderThickness="0"
                             CornerRadius="4"
@@ -48,11 +48,11 @@
 
                     <DataTemplate.Triggers>
                         <DataTrigger Binding="{Binding Severity}" Value="{x:Static mvvm:XValidationSeverity.Warning}">
-                            <Setter TargetName="SeverityMarker" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+                            <Setter TargetName="SeverityMarker" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarning}}" />
                         </DataTrigger>
 
                         <DataTrigger Binding="{Binding Severity}" Value="{x:Static mvvm:XValidationSeverity.Information}">
-                            <Setter TargetName="SeverityMarker" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                            <Setter TargetName="SeverityMarker" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfo}}" />
                         </DataTrigger>
                     </DataTemplate.Triggers>
                 </DataTemplate>
@@ -127,7 +127,7 @@
                                 Margin="5,0,5,5"
                                 Padding="12"
                                 Appearance="Solid"
-                                Background="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}"
+                                Background="{DynamicResource {x:Static themes:XBrushKeys.SurfaceOverlay}}"
                                 BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="6"

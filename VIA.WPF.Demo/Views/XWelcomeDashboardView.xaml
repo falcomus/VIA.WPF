@@ -39,7 +39,7 @@
             <Setter Property="Background" Value="{DynamicResource {x:Static via:XBrushKeys.SurfaceRaised}}" />
             <Setter Property="BorderBrush" Value="{DynamicResource {x:Static via:XBrushKeys.BorderSubtle}}" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="CornerRadius" Value="7" />
+            <Setter Property="CornerRadius" Value="4" />
         </Style>
 
         <Style x:Key="LandingFeatureIconStyle" TargetType="{x:Type via:XMaterialIcon}">
@@ -186,8 +186,8 @@
                                                 <Border
                                                     Padding="10,5"
                                                     HorizontalAlignment="Left"
-                                                    Background="{DynamicResource {x:Static via:XBrushKeys.AccentVeryLight}}"
-                                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.AccentLight}}"
+                                                    Background="{DynamicResource {x:Static via:XBrushKeys.AccentSubtle}}"
+                                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.AccentSubtleHover}}"
                                                     BorderThickness="1"
                                                     CornerRadius="12">
                                                     <TextBlock
@@ -243,7 +243,7 @@
                                                     <via:XMaterialIcon
                                                         Kind="CheckCircleOutline"
                                                         Size="16"
-                                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.Success}}" />
+                                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.StatusSuccess}}" />
                                                     <TextBlock
                                                         VerticalAlignment="Center"
                                                         FontSize="12"
@@ -257,9 +257,9 @@
                         MinHeight="440"
                         Padding="10"
                         Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceRaised}}"
-                        BorderBrush="{DynamicResource {x:Static via:XBrushKeys.PanelBorder}}"
+                        BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderSubtle}}"
                         BorderThickness="1"
-                        CornerRadius="10"
+                        CornerRadius="6"
                         Elevation="Low">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -321,8 +321,8 @@
                                     Grid.Column="1"
                                     Padding="8,3"
                                     VerticalAlignment="Center"
-                                    Background="{DynamicResource {x:Static via:XBrushKeys.AccentVeryLight}}"
-                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.AccentLight}}"
+                                    Background="{DynamicResource {x:Static via:XBrushKeys.AccentSubtle}}"
+                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.AccentSubtleHover}}"
                                     BorderThickness="1"
                                     CornerRadius="3">
                                     <TextBlock
@@ -342,39 +342,48 @@
                                     <Border ClipToBounds="True">
                                                                             <Border.Resources>
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Primary}" Color="#FF0F6CBD" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimaryText}" Color="#FFFFFFFF" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimaryVeryLight}" Color="#FFEAF3FB" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimaryLight}" Color="#FFD6E9FA" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimaryDark}" Color="#FF0C5A9E" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Background}" Color="#FFEFF1F3" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.BackgroundText}" Color="#FF1B1D1F" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimaryForeground}" Color="#FFFFFFFF" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimarySubtle}" Color="#FFEAF3FB" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimarySubtleHover}" Color="#FFD6E9FA" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimaryStrong}" Color="#FF0C5A9E" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Surface}" Color="#FFFBFCFD" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SurfaceText}" Color="#FF202124" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SurfaceVeryLight}" Color="#FFFFFFFF" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SurfaceLight}" Color="#FFF5F6F7" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SurfaceDark}" Color="#FFE6E8EA" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Border}" Color="#FFC8CDD3" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.BorderText}" Color="#FF5F6770" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.BorderLight}" Color="#FFDDE1E5" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.BorderDark}" Color="#FFAEB5BD" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SurfaceOverlay}" Color="#FFFFFFFF" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Accent}" Color="#FF0F6CBD" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentText}" Color="#FFFFFFFF" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentVeryLight}" Color="#FFEAF3FB" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentLight}" Color="#FFD6E9FA" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentDark}" Color="#FF0C5A9E" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Success}" Color="#FF15803D" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SuccessText}" Color="#FFFFFFFF" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Warning}" Color="#FFD97706" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.WarningText}" Color="#FFFFFFFF" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentForeground}" Color="#FFFFFFFF" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentSubtle}" Color="#FFEAF3FB" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentSubtleHover}" Color="#FFD6E9FA" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentStrong}" Color="#FF0C5A9E" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusSuccess}" Color="#FF15803D" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusSuccessForeground}" Color="#FFFFFFFF" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusSuccessSubtle}" Color="#FFE6F4EA" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusSuccessSubtleHover}" Color="#FFC8E7D2" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusSuccessStrong}" Color="#FF116B34" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusWarning}" Color="#FFD97706" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusWarningForeground}" Color="#FFFFFFFF" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusWarningSubtle}" Color="#FFF9EEDD" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusWarningSubtleHover}" Color="#FFF1D7AE" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusWarningStrong}" Color="#FFB85F05" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusDanger}" Color="#FFC42B1C" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusDangerForeground}" Color="#FFFFFFFF" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusDangerSubtle}" Color="#FFF9EAE8" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusDangerSubtleHover}" Color="#FFF2D0CD" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusDangerStrong}" Color="#FF99261F" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusInfo}" Color="#FF007C83" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusInfoForeground}" Color="#FFFFFFFF" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusInfoSubtle}" Color="#FFE6F2F3" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusInfoSubtleHover}" Color="#FFC7E2E4" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusInfoStrong}" Color="#FF04646E" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Canvas}" Color="#FFEFF1F3" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SurfaceRaised}" Color="#FFFFFFFF" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SurfaceSunken}" Color="#FFE2E5E8" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.TextPrimary}" Color="#FF202124" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.TextSecondary}" Color="#FF5F6770" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.TextTertiary}" Color="#FF69727D" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.TextDisabled}" Color="#FF7A838E" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.BorderSubtle}" Color="#FFD5D9DE" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.BorderDefault}" Color="#FFB8BEC6" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.BorderStrong}" Color="#FF858D97" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Divider}" Color="#FFD5D9DE" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.FocusRing}" Color="#FF0F6CBD" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.FocusRingInner}" Color="#FFFBFCFD" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StateHover}" Color="#FFECF0F4" />
@@ -383,14 +392,13 @@
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StateSelectedStrong}" Color="#FF0F6CBD" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.CommandBarBackground}" Color="#00FFFFFF" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.CommandBarForeground}" Color="#FF202124" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.CommandBarHoverBackground}" Color="#FFECF0F4" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.CommandBarPressedBackground}" Color="#FFDFE5EB" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.CommandBarGroupHeaderBackground}" Color="#FF526578" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.ControlBorder}" Color="#FFB8BEC6" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.ControlBorderStrong}" Color="#FF858D97" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PanelBorder}" Color="#FFD5D9DE" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PanelBorderStrong}" Color="#FFBEC4CB" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SelectionBackground}" Color="#FFDCEBFA" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SelectionBorder}" Color="#FF0F6CBD" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SelectionForeground}" Color="#FF202124" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.DisabledBackground}" Color="#FFEAEDF1" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.DisabledBorder}" Color="#FFCBD1D9" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.GridLine}" Color="#FFD7DBE0" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.GridHeaderBackground}" Color="#FFF2F4F6" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.GridHeaderForeground}" Color="#FF202124" />
@@ -411,7 +419,7 @@
                         Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceRaised}}"
                         BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                         BorderThickness="1"
-                        CornerRadius="10">
+                        CornerRadius="6">
                         <Border.Effect>
                             <DropShadowEffect
                                 BlurRadius="18"
@@ -444,8 +452,8 @@
                                     Grid.Column="1"
                                     Padding="8,3"
                                     VerticalAlignment="Center"
-                                    Background="{DynamicResource {x:Static via:XBrushKeys.AccentVeryLight}}"
-                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.AccentLight}}"
+                                    Background="{DynamicResource {x:Static via:XBrushKeys.AccentSubtle}}"
+                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.AccentSubtleHover}}"
                                     BorderThickness="1"
                                     CornerRadius="3">
                                     <TextBlock
@@ -465,39 +473,48 @@
                                     <Border ClipToBounds="True">
                                                                             <Border.Resources>
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Primary}" Color="#FF4CA6FF" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimaryText}" Color="#FFFFFFFF" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimaryVeryLight}" Color="#FF263D52" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimaryLight}" Color="#FF315F88" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimaryDark}" Color="#FF4CA6FF" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Background}" Color="#FF171819" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.BackgroundText}" Color="#FFF1F3F5" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimaryForeground}" Color="#FFFFFFFF" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimarySubtle}" Color="#FF263D52" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimarySubtleHover}" Color="#FF315F88" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PrimaryStrong}" Color="#FF4CA6FF" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Surface}" Color="#FF272829" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SurfaceText}" Color="#FFF4F5F6" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SurfaceVeryLight}" Color="#FF303235" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SurfaceLight}" Color="#FF2B2D30" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SurfaceDark}" Color="#FF1D1F21" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Border}" Color="#FF484B4F" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.BorderText}" Color="#FFAEB3B8" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.BorderLight}" Color="#FF3C3F43" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.BorderDark}" Color="#FF64686D" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SurfaceOverlay}" Color="#FF303235" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Accent}" Color="#FF4CA6FF" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentText}" Color="#FFFFFFFF" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentVeryLight}" Color="#FF263D52" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentLight}" Color="#FF315F88" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentDark}" Color="#FF4CA6FF" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Success}" Color="#FF49B36D" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SuccessText}" Color="#FFFFFFFF" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Warning}" Color="#FFF0A23A" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.WarningText}" Color="#FF171819" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentForeground}" Color="#FFFFFFFF" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentSubtle}" Color="#FF263D52" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentSubtleHover}" Color="#FF315F88" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.AccentStrong}" Color="#FF4CA6FF" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusSuccess}" Color="#FF49B36D" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusSuccessForeground}" Color="#FFFFFFFF" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusSuccessSubtle}" Color="#FF203D2A" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusSuccessSubtleHover}" Color="#FF2B5A3A" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusSuccessStrong}" Color="#FF329052" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusWarning}" Color="#FFF0A23A" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusWarningForeground}" Color="#FF171819" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusWarningSubtle}" Color="#FF44351E" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusWarningSubtleHover}" Color="#FF654B23" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusWarningStrong}" Color="#FFD38625" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusDanger}" Color="#FFFF99A4" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusDangerForeground}" Color="#FF241316" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusDangerSubtle}" Color="#FF4A252A" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusDangerSubtleHover}" Color="#FF69343B" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusDangerStrong}" Color="#FFE57D89" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusInfo}" Color="#FF5DD9DF" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusInfoForeground}" Color="#FF102527" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusInfoSubtle}" Color="#FF183F42" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusInfoSubtleHover}" Color="#FF225A5E" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StatusInfoStrong}" Color="#FF43B8BE" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Canvas}" Color="#FF171819" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SurfaceRaised}" Color="#FF272829" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SurfaceSunken}" Color="#FF1D1F21" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.TextPrimary}" Color="#FFF4F5F6" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.TextSecondary}" Color="#FFAEB3B8" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.TextTertiary}" Color="#FF92989E" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.TextDisabled}" Color="#FF848B94" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.BorderSubtle}" Color="#FF3C3F43" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.BorderDefault}" Color="#FF525559" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.BorderStrong}" Color="#FF6C7075" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.Divider}" Color="#FF3C3F43" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.FocusRing}" Color="#FF4CA6FF" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.FocusRingInner}" Color="#FF272829" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StateHover}" Color="#FF2F3134" />
@@ -506,14 +523,13 @@
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.StateSelectedStrong}" Color="#FF4CA6FF" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.CommandBarBackground}" Color="#00FFFFFF" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.CommandBarForeground}" Color="#FFF4F5F6" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.CommandBarHoverBackground}" Color="#FF2F3134" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.CommandBarPressedBackground}" Color="#FF393C40" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.CommandBarGroupHeaderBackground}" Color="#FF26394B" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.ControlBorder}" Color="#FF525559" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.ControlBorderStrong}" Color="#FF6C7075" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PanelBorder}" Color="#FF3C3F43" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.PanelBorderStrong}" Color="#FF53575C" />
-                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SelectionBackground}" Color="#FF1D3A56" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SelectionBorder}" Color="#FF4CA6FF" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.SelectionForeground}" Color="#FFF4F5F6" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.DisabledBackground}" Color="#FF2A2E33" />
+                                                                                <SolidColorBrush x:Key="{x:Static via:XBrushKeys.DisabledBorder}" Color="#FF434951" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.GridLine}" Color="#FF393C40" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.GridHeaderBackground}" Color="#FF2A2C2F" />
                                                                                 <SolidColorBrush x:Key="{x:Static via:XBrushKeys.GridHeaderForeground}" Color="#FFF4F5F6" />

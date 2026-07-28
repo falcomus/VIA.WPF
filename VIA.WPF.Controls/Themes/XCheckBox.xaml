@@ -69,7 +69,7 @@
                                         VerticalAlignment="Center"
                                         Data="M 1 4.4 L 3.7 6.8 L 8.4 1.3"
                                         Stretch="Uniform"
-                                        Stroke="{DynamicResource {x:Static themes:XBrushKeys.PrimaryText}}"
+                                        Stroke="{DynamicResource {x:Static themes:XBrushKeys.PrimaryForeground}}"
                                         StrokeEndLineCap="Round"
                                         StrokeLineJoin="Round"
                                         StrokeStartLineCap="Round"
@@ -81,7 +81,7 @@
                                         Height="2"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Background="{DynamicResource {x:Static themes:XBrushKeys.PrimaryText}}"
+                                        Background="{DynamicResource {x:Static themes:XBrushKeys.PrimaryForeground}}"
                                         CornerRadius="1"
                                         Visibility="Collapsed" />
                                 </Grid>
@@ -101,17 +101,21 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
-                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceVeryLight}}" />
+                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}" />
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatePressed}}" />
                         </Trigger>
 
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter TargetName="KeyboardFocusRing" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
                             <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
-                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryText}}" />
+                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryForeground}}" />
                             <Setter TargetName="CheckPath" Property="Visibility" Value="Visible" />
                         </Trigger>
 
@@ -128,7 +132,7 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Accent}}" />
                             <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Accent}}" />
-                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentText}}" />
+                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentForeground}}" />
                         </MultiTrigger>
 
                         <MultiTrigger>
@@ -136,9 +140,9 @@
                                 <Condition Property="IsChecked" Value="True" />
                                 <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Success}" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
-                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
-                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.SuccessText}}" />
+                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccess}}" />
+                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccess}}" />
+                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccessForeground}}" />
                         </MultiTrigger>
 
                         <MultiTrigger>
@@ -146,9 +150,9 @@
                                 <Condition Property="IsChecked" Value="True" />
                                 <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Warning}" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
-                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
-                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.WarningText}}" />
+                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarning}}" />
+                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarning}}" />
+                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarningForeground}}" />
                         </MultiTrigger>
 
                         <MultiTrigger>
@@ -156,9 +160,9 @@
                                 <Condition Property="IsChecked" Value="True" />
                                 <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Danger}" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
-                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
-                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.DangerText}}" />
+                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
+                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
+                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDangerForeground}}" />
                         </MultiTrigger>
 
                         <MultiTrigger>
@@ -166,14 +170,17 @@
                                 <Condition Property="IsChecked" Value="True" />
                                 <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Info}" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
-                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
-                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.InfoText}}" />
+                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfo}}" />
+                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfo}}" />
+                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfoForeground}}" />
                         </MultiTrigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="IndicatorBorder" Property="Opacity" Value="0.50" />
-                            <Setter Property="Opacity" Value="0.65" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextDisabled}}" />
+                            <Setter TargetName="IndicatorBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBackground}}" />
+                            <Setter TargetName="IndicatorBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBorder}}" />
+                            <Setter TargetName="CheckPath" Property="Stroke" Value="{DynamicResource {x:Static themes:XBrushKeys.TextDisabled}}" />
+                            <Setter TargetName="IndeterminateMark" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.TextDisabled}}" />
                         </Trigger>
 
                         <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">

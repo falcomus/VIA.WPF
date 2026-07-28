@@ -218,7 +218,7 @@
                                 Minimum="0"
                                 ProgressBrush="{DynamicResource {x:Static via:XBrushKeys.Accent}}"
                                 ShowValue="True"
-                                TrackBrush="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
+                                TrackBrush="{DynamicResource {x:Static via:XBrushKeys.SurfaceRaised}}"
                                 Value="72" />
                         </via:XStackPanel>
                     </via:XBorder>

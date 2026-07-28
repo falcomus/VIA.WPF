@@ -17,7 +17,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type controls:XMasterDetailSplitView}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Background}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Canvas}}" />
         <Setter Property="MinFirstLength" Value="320" />
         <Setter Property="MinSecondLength" Value="360" />
         <Setter Property="FirstLength" Value="520" />
@@ -71,7 +71,7 @@
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="Stretch"
                                     Background="{DynamicResource {x:Static themes:XBrushKeys.Surface}}"
-                                    BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.PanelBorder}}"
+                                    BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderSubtle}}"
                                     BorderThickness="0"
                                     CornerRadius="0"
                                     SnapsToDevicePixels="True">
@@ -89,7 +89,7 @@
                                             MinHeight="44"
                                             Padding="12,6"
                                             Background="{DynamicResource {x:Static themes:XBrushKeys.Surface}}"
-                                            BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.PanelBorder}}"
+                                            BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderSubtle}}"
                                             BorderThickness="0,0,0,1"
                                             CornerRadius="8,8,0,0"
                                             Visibility="{Binding ShowMasterHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={conv:BooleanToVisibility}}">
@@ -179,7 +179,7 @@
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="Stretch"
                                     Background="{DynamicResource {x:Static themes:XBrushKeys.Surface}}"
-                                    BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.PanelBorder}}"
+                                    BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderSubtle}}"
                                     BorderThickness="0"
                                     CornerRadius="0"
                                     SnapsToDevicePixels="True">
@@ -197,7 +197,7 @@
                                             MinHeight="44"
                                             Padding="12,6"
                                             Background="{DynamicResource {x:Static themes:XBrushKeys.Surface}}"
-                                            BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.PanelBorder}}"
+                                            BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderSubtle}}"
                                             BorderThickness="0,0,0,1"
                                             CornerRadius="8,8,0,0"
                                             Visibility="{Binding ShowDetailHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={conv:BooleanToVisibility}}">

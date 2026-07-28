@@ -29,7 +29,7 @@
                             Height="7"
                             Padding="0"
                             VerticalAlignment="Center"
-                            Background="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                            Background="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}"
                             BorderBrush="Transparent"
                             BorderThickness="0"
                             CornerRadius="4"
@@ -46,11 +46,11 @@
 
                     <DataTemplate.Triggers>
                         <DataTrigger Binding="{Binding Severity}" Value="{x:Static mvvm:XValidationSeverity.Warning}">
-                            <Setter TargetName="SeverityMarker" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+                            <Setter TargetName="SeverityMarker" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarning}}" />
                         </DataTrigger>
 
                         <DataTrigger Binding="{Binding Severity}" Value="{x:Static mvvm:XValidationSeverity.Information}">
-                            <Setter TargetName="SeverityMarker" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                            <Setter TargetName="SeverityMarker" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfo}}" />
                         </DataTrigger>
                     </DataTemplate.Triggers>
                 </DataTemplate>
@@ -62,8 +62,8 @@
                     <controls:XBorder
                         x:Name="RootBorder"
                         Padding="{TemplateBinding Padding}"
-                        Background="{DynamicResource {x:Static themes:XBrushKeys.DangerVeryLight}}"
-                        BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                        Background="{DynamicResource {x:Static themes:XBrushKeys.StatusDangerSubtle}}"
+                        BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}"
                         BorderThickness="1"
                         CornerRadius="5"
                         Elevation="Low"
@@ -80,14 +80,14 @@
                                 Content="{TemplateBinding Header}"
                                 Cursor="Hand"
                                 FontWeight="SemiBold"
-                                Foreground="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                                Foreground="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}"
                                 IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
 
                             <controls:XTextBlock
                                 x:Name="HeaderTextBlock"
                                 Grid.Row="0"
                                 FontWeight="SemiBold"
-                                Foreground="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                                Foreground="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}"
                                 Text="{TemplateBinding Header}"
                                 TextRole="SectionTitle"
                                 Visibility="Collapsed" />

@@ -57,6 +57,8 @@ public sealed class XThemeManagerTests
                 SolidColorBrush raisedSurfaceBrush = GetBrush(resources, XBrushKeys.SurfaceRaised);
                 SolidColorBrush focusRingBrush = GetBrush(resources, XBrushKeys.FocusRing);
                 SolidColorBrush navigationIndicatorBrush = GetBrush(resources, XBrushKeys.NavigationSelectionIndicator);
+                SolidColorBrush successHoverBrush = GetBrush(resources, XBrushKeys.StatusSuccessSubtleHover);
+                SolidColorBrush successStrongBrush = GetBrush(resources, XBrushKeys.StatusSuccessStrong);
 
                 Assert.Equal(theme.Primary.Light, primaryBrush.Color);
                 Assert.Equal(theme.Primary.TextLight, primaryTextBrush.Color);
@@ -65,6 +67,8 @@ public sealed class XThemeManagerTests
                 Assert.Equal(theme.Surface.VeryLightVariantLight, raisedSurfaceBrush.Color);
                 Assert.Equal(theme.FocusBorder.Light, focusRingBrush.Color);
                 Assert.Equal(theme.Primary.Light, navigationIndicatorBrush.Color);
+                Assert.Equal(theme.Success.LightVariantLight, successHoverBrush.Color);
+                Assert.Equal(theme.Success.DarkVariantLight, successStrongBrush.Color);
                 Assert.False(primaryBrush.IsFrozen);
             });
     }

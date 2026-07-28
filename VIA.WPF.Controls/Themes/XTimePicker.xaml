@@ -58,7 +58,7 @@
     </Style>
 
     <Style x:Key="XTimePickerListBoxStyle" TargetType="{x:Type ListBox}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceOverlay}}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
@@ -237,14 +237,14 @@
                                     x:Name="PART_ClearButton"
                                     Grid.Column="3"
                                     Margin="0,0,-6,0"
-                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.Danger}}"
+                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.StatusDanger}}"
                                     Style="{StaticResource XTimePickerIconButtonStyle}"
                                     ToolTip="Clear"
                                     Visibility="Collapsed">
                                     <pack:PackIconMaterialDesign
                                         Width="8"
                                         Height="8"
-                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.Danger}}"
+                                        Foreground="{DynamicResource {x:Static via:XBrushKeys.StatusDanger}}"
                                         Kind="Close" />
                                 </Button>
 
@@ -274,7 +274,7 @@
                                 Margin="0,4,0,0"
                                 Padding="8"
                                 HorizontalAlignment="Left"
-                                Background="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}"
+                                Background="{DynamicResource {x:Static themes:XBrushKeys.SurfaceOverlay}}"
                                 BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="4">
@@ -378,7 +378,7 @@
                             MinHeight="16"
                             Margin="0,4,0,0"
                             FontSize="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}"
-                            Foreground="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                            Foreground="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}"
                             Text="{Binding (Validation.Errors), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource FirstValidationErrorConverter}}"
                             TextTrimming="CharacterEllipsis"
                             TextWrapping="NoWrap"
@@ -426,7 +426,7 @@
                         </Trigger>
 
                         <Trigger Property="Validation.HasError" Value="True">
-                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
                             <Setter TargetName="RootBorder" Property="BorderThickness" Value="2" />
                             <Setter TargetName="ValidationErrorPresenter" Property="Visibility" Value="Visible" />
                         </Trigger>

@@ -11,7 +11,7 @@
     xmlns:themes="clr-namespace:VIA.WPF.Themes;assembly=VIA.WPF.Themes">
 
     <Style TargetType="{x:Type controls:XTextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
         <Setter Property="FontFamily" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontFamilyBody}}" />
         <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
         <Setter Property="FontWeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontWeightRegular}}" />
@@ -83,7 +83,7 @@
 
             <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Subtitle}">
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeSubtitle}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderText}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}" />
                 <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightSubtitle}}" />
                 <Setter Property="TextWrapping" Value="Wrap" />
                 <Setter Property="TextTrimming" Value="None" />
@@ -99,7 +99,7 @@
 
             <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Description}">
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBody}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderText}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}" />
                 <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightBody}}" />
                 <Setter Property="Opacity" Value="0.82" />
                 <Setter Property="TextWrapping" Value="Wrap" />
@@ -108,37 +108,37 @@
 
             <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Caption}">
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeCaption}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderText}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}" />
                 <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightCaption}}" />
                 <Setter Property="Opacity" Value="0.78" />
             </Trigger>
 
             <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Error}">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
                 <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightBody}}" />
                 <Setter Property="TextWrapping" Value="Wrap" />
                 <Setter Property="TextTrimming" Value="None" />
             </Trigger>
 
             <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Success}">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccess}}" />
                 <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightBody}}" />
             </Trigger>
 
             <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Warning}">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarning}}" />
                 <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightBody}}" />
             </Trigger>
 
             <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Info}">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfo}}" />
                 <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightBody}}" />
             </Trigger>
 
             <Trigger Property="TextRole" Value="{x:Static controls:XTextBlockRole.Code}">
                 <Setter Property="FontFamily" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontFamilyCode}}" />
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeCode}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderText}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}" />
                 <Setter Property="LineHeight" Value="{DynamicResource {x:Static themes:XTypographyKeys.LineHeightCode}}" />
                 <Setter Property="TextWrapping" Value="Wrap" />
                 <Setter Property="TextTrimming" Value="None" />
@@ -153,19 +153,19 @@
             </Trigger>
 
             <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Success}">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccess}}" />
             </Trigger>
 
             <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Warning}">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarning}}" />
             </Trigger>
 
             <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Danger}">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
             </Trigger>
 
             <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Info}">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfo}}" />
             </Trigger>
         </Style.Triggers>
     </Style>

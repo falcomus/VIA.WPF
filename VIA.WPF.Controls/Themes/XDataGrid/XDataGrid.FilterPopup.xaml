@@ -64,10 +64,10 @@
             MaxWidth="380"
             Margin="14"
             Padding="12"
-            Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceRaised}}"
+            Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceOverlay}}"
             BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
             BorderThickness="1"
-            CornerRadius="8"
+            CornerRadius="6"
             Elevation="Medium">
             <Grid>
                 <Grid.RowDefinitions>

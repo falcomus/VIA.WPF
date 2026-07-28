@@ -63,15 +63,23 @@
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusSuccess}" Color="#FF107C41" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusSuccessForeground}" Color="#FFFFFFFF" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusSuccessSubtle}" Color="#FFE7F2EC" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusSuccessSubtleHover}" Color="#FFCAE2D5" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusSuccessStrong}" Color="#FF10643B" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusWarning}" Color="#FF8A5A00" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusWarningForeground}" Color="#FFFFFFFF" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusWarningSubtle}" Color="#FFF3EEE6" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusWarningSubtleHover}" Color="#FFE5DBC7" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusWarningStrong}" Color="#FF6C4A0A" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusDanger}" Color="#FFC42B1C" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusDangerForeground}" Color="#FFFFFFFF" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusDangerSubtle}" Color="#FFF9EAE8" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusDangerSubtleHover}" Color="#FFF2D0CD" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusDangerStrong}" Color="#FF99261F" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusInfo}" Color="#FF007C83" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusInfoForeground}" Color="#FFFFFFFF" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusInfoSubtle}" Color="#FFE6F2F3" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusInfoSubtleHover}" Color="#FFC7E2E4" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusInfoStrong}" Color="#FF04646E" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.Canvas}" Color="#FFF1F4F7" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.SurfaceRaised}" Color="#FFFEFEFE" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.SurfaceOverlay}" Color="#FFFEFEFE" />

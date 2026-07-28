@@ -337,7 +337,7 @@
                         </DataTrigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledForeground}}" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextDisabled}}" />
                             <Setter TargetName="HeaderContentBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBackground}}" />
                             <Setter TargetName="HeaderSelectionBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBorder}}" />
                             <Setter TargetName="HeaderSelectionBorder" Property="Opacity" Value="0.55" />

@@ -13,7 +13,7 @@
     <Style TargetType="{x:Type controls:XContextMenu}">
         <Setter Property="MinWidth" Value="190" />
         <Setter Property="Padding" Value="4" />
-        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceOverlay}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderSubtle}}" />
         <Setter Property="BorderThickness" Value="1" />
@@ -153,7 +153,7 @@
                             <Border
                                 MinWidth="180"
                                 Padding="4"
-                                Background="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}"
+                                Background="{DynamicResource {x:Static themes:XBrushKeys.SurfaceOverlay}}"
                                 BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderSubtle}}"
                                 BorderThickness="1"
                                 CornerRadius="6">
@@ -211,25 +211,25 @@
                         <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Success}">
                             <Setter
                                 Property="Foreground"
-                                Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+                                Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccess}}" />
                         </Trigger>
 
                         <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Warning}">
                             <Setter
                                 Property="Foreground"
-                                Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+                                Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarning}}" />
                         </Trigger>
 
                         <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Danger}">
                             <Setter
                                 Property="Foreground"
-                                Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                                Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
                         </Trigger>
 
                         <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Info}">
                             <Setter
                                 Property="Foreground"
-                                Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                                Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfo}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

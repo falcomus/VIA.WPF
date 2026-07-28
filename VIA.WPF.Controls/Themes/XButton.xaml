@@ -284,8 +284,15 @@
                             <Setter TargetName="InteractionOverlay" Property="Opacity" Value="0.14" />
                         </Trigger>
 
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter TargetName="KeyboardFocusRing" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="RootBorder" Property="Opacity" Value="0.55" />
+                            <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBackground}}" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextDisabled}}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBorder}}" />
+                            <Setter TargetName="InteractionOverlay" Property="Opacity" Value="0" />
                         </Trigger>
 
                         <Trigger Property="Elevation" Value="{x:Static controls:XElevation.None}">
@@ -417,8 +424,8 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Solid}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Surface}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.ControlBorder}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -427,8 +434,8 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Outline}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.ControlBorderStrong}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -436,9 +443,9 @@
                     <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Default}" />
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.VerySubtle}" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceVeryLight}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.ControlBorder}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -446,8 +453,8 @@
                     <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Default}" />
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Subtle}" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceLight}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
             </MultiTrigger>
 
@@ -457,7 +464,7 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Ghost}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceText}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
             </MultiTrigger>
 
@@ -480,8 +487,8 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Solid}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryText}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryDark}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryForeground}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryStrong}}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -499,9 +506,9 @@
                     <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Primary}" />
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.VerySubtle}" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryVeryLight}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryDark}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryLight}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimarySubtle}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryStrong}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimarySubtleHover}}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -509,8 +516,8 @@
                     <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Primary}" />
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Subtle}" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryLight}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryDark}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimarySubtleHover}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryStrong}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
             </MultiTrigger>
 
@@ -543,8 +550,8 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Solid}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Accent}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentText}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentDark}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentForeground}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentStrong}}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -562,9 +569,9 @@
                     <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Accent}" />
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.VerySubtle}" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentVeryLight}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentDark}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentLight}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentSubtle}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentStrong}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentSubtleHover}}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -572,8 +579,8 @@
                     <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Accent}" />
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Subtle}" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentLight}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentDark}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentSubtleHover}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.AccentStrong}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
             </MultiTrigger>
 
@@ -616,8 +623,8 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Outline}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccess}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccess}}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -635,8 +642,8 @@
                     <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Success}" />
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Subtle}" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SuccessLight}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SuccessDark}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccessSubtleHover}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccessStrong}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
             </MultiTrigger>
 
@@ -646,7 +653,7 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Ghost}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccess}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
             </MultiTrigger>
 
@@ -656,7 +663,7 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Link}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccess}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
                 <Setter Property="Padding" Value="4,2" />
                 <Setter Property="MinWidth" Value="0" />
@@ -679,8 +686,8 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Outline}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.WarningDark}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarningStrong}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarning}}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -698,8 +705,8 @@
                     <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Warning}" />
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Subtle}" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.WarningLight}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.WarningDark}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarningSubtleHover}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarningStrong}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
             </MultiTrigger>
 
@@ -709,7 +716,7 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Ghost}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.WarningDark}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarningStrong}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
             </MultiTrigger>
 
@@ -719,7 +726,7 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Link}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.WarningDark}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarningStrong}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
                 <Setter Property="Padding" Value="4,2" />
                 <Setter Property="MinWidth" Value="0" />
@@ -742,8 +749,8 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Outline}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -761,8 +768,8 @@
                     <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Danger}" />
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Subtle}" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.DangerLight}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.DangerDark}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDangerSubtleHover}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDangerStrong}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
             </MultiTrigger>
 
@@ -772,7 +779,7 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Ghost}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
             </MultiTrigger>
 
@@ -782,7 +789,7 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Link}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
                 <Setter Property="Padding" Value="4,2" />
                 <Setter Property="MinWidth" Value="0" />
@@ -805,8 +812,8 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Outline}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfo}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfo}}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -824,8 +831,8 @@
                     <Condition Property="Variant" Value="{x:Static controls:XControlVariant.Info}" />
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Subtle}" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.InfoLight}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.InfoDark}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfoSubtleHover}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfoStrong}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
             </MultiTrigger>
 
@@ -835,7 +842,7 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Ghost}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfo}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
             </MultiTrigger>
 
@@ -845,7 +852,7 @@
                     <Condition Property="Appearance" Value="{x:Static controls:XControlAppearance.Link}" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfo}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
                 <Setter Property="Padding" Value="4,2" />
                 <Setter Property="MinWidth" Value="0" />

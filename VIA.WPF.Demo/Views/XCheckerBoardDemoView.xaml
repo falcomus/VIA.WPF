@@ -68,7 +68,7 @@
                                     Width="260"
                                     Height="140"
                                     Padding="18"
-                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                     BorderThickness="1"
                                     CheckerSize="10"
                                     CornerRadius="8"
@@ -88,7 +88,7 @@
                                     Width="260"
                                     Height="140"
                                     Padding="18"
-                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                     BorderThickness="1"
                                     CheckerSize="6"
                                     CornerRadius="8">
@@ -113,8 +113,8 @@
                                     Padding="18"
                                     Appearance="Subtle"
                                     BorderThickness="1"
-                                    CheckerDarkBrush="{DynamicResource {x:Static via:XBrushKeys.PrimaryLight}}"
-                                    CheckerLightBrush="{DynamicResource {x:Static via:XBrushKeys.SurfaceVeryLight}}"
+                                    CheckerDarkBrush="{DynamicResource {x:Static via:XBrushKeys.PrimarySubtleHover}}"
+                                    CheckerLightBrush="{DynamicResource {x:Static via:XBrushKeys.SurfaceRaised}}"
                                     CheckerSize="16"
                                     CornerRadius="8"
                                     Variant="Primary">

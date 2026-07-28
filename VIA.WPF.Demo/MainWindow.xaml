@@ -61,7 +61,7 @@
                     Width="7"
                     Height="7"
                     VerticalAlignment="Center"
-                    Fill="{DynamicResource {x:Static via:XBrushKeys.Success}}" />
+                    Fill="{DynamicResource {x:Static via:XBrushKeys.StatusSuccess}}" />
                 <TextBlock
                     VerticalAlignment="Center"
                     Foreground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"

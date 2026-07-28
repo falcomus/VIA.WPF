@@ -136,7 +136,7 @@
                                 <TextBlock
                                     HorizontalAlignment="Center"
                                     FontWeight="SemiBold"
-                                    Foreground="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                                    Foreground="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}"
                                     Text="Content could not be loaded" />
                                 <ContentPresenter
                                     Margin="0,5,0,0"
@@ -343,13 +343,13 @@
                             <Setter TargetName="MetricValuePresenter" Property="TextElement.Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
                         </Trigger>
                         <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Success}">
-                            <Setter TargetName="MetricValuePresenter" Property="TextElement.Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.SuccessDark}}" />
+                            <Setter TargetName="MetricValuePresenter" Property="TextElement.Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccessStrong}}" />
                         </Trigger>
                         <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Warning}">
-                            <Setter TargetName="MetricValuePresenter" Property="TextElement.Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.WarningDark}}" />
+                            <Setter TargetName="MetricValuePresenter" Property="TextElement.Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarningStrong}}" />
                         </Trigger>
                         <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Danger}">
-                            <Setter TargetName="MetricValuePresenter" Property="TextElement.Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                            <Setter TargetName="MetricValuePresenter" Property="TextElement.Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -358,9 +358,9 @@
     </Style>
 
     <Style TargetType="{x:Type controls:XInfoBar}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.InfoVeryLight}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfoSubtle}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.InfoLight}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfoSubtleHover}}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="12" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -443,16 +443,16 @@
                             <Setter TargetName="CloseColumn" Property="Width" Value="0" />
                         </Trigger>
                         <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Success}">
-                            <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SuccessVeryLight}}" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.SuccessLight}}" />
+                            <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccessSubtle}}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccessSubtleHover}}" />
                         </Trigger>
                         <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Warning}">
-                            <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.WarningVeryLight}}" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.WarningLight}}" />
+                            <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarningSubtle}}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarningSubtleHover}}" />
                         </Trigger>
                         <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Danger}">
-                            <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.DangerVeryLight}}" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.DangerLight}}" />
+                            <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDangerSubtle}}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDangerSubtleHover}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

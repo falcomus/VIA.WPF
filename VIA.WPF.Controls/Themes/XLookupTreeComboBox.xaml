@@ -173,7 +173,7 @@
                                 MaxHeight="{TemplateBinding MaxDropDownHeight}"
                                 Margin="0,4,0,0"
                                 Padding="6"
-                                Background="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}"
+                                Background="{DynamicResource {x:Static themes:XBrushKeys.SurfaceOverlay}}"
                                 BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="4">
@@ -239,7 +239,7 @@
                             MinHeight="16"
                             Margin="0,4,0,0"
                             FontSize="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}"
-                            Foreground="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                            Foreground="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}"
                             Text="{Binding (Validation.Errors), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource FirstValidationErrorConverter}}"
                             TextTrimming="CharacterEllipsis"
                             TextWrapping="NoWrap"
@@ -267,7 +267,7 @@
                         </Trigger>
 
                         <Trigger Property="Validation.HasError" Value="True">
-                            <Setter TargetName="FieldBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                            <Setter TargetName="FieldBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
                             <Setter TargetName="FieldBorder" Property="BorderThickness" Value="2" />
                             <Setter TargetName="ValidationErrorPresenter" Property="Visibility" Value="Visible" />
                         </Trigger>

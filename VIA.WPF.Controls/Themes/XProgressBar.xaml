@@ -184,7 +184,7 @@
 
         <Style.Triggers>
             <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Default}">
-                <Setter Property="ProgressBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.ControlBorderStrong}}" />
+                <Setter Property="ProgressBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderStrong}}" />
             </Trigger>
 
             <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Primary}">
@@ -196,19 +196,19 @@
             </Trigger>
 
             <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Success}">
-                <Setter Property="ProgressBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+                <Setter Property="ProgressBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccess}}" />
             </Trigger>
 
             <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Warning}">
-                <Setter Property="ProgressBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+                <Setter Property="ProgressBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarning}}" />
             </Trigger>
 
             <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Danger}">
-                <Setter Property="ProgressBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                <Setter Property="ProgressBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
             </Trigger>
 
             <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Info}">
-                <Setter Property="ProgressBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                <Setter Property="ProgressBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfo}}" />
             </Trigger>
         </Style.Triggers>
     </Style>

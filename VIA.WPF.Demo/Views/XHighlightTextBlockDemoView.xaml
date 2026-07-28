@@ -134,9 +134,9 @@
                                         <via:XHighlightTextBlock
                                             DisplayText="The badge can use theme resources for both background and foreground."
                                             FontSize="16"
-                                            HighlightBrush="{DynamicResource {x:Static via:XBrushKeys.PrimaryVeryLight}}"
+                                            HighlightBrush="{DynamicResource {x:Static via:XBrushKeys.PrimarySubtle}}"
                                             HighlightCornerRadius="5"
-                                            HighlightForeground="{DynamicResource {x:Static via:XBrushKeys.PrimaryDark}}"
+                                            HighlightForeground="{DynamicResource {x:Static via:XBrushKeys.PrimaryStrong}}"
                                             HighlightPadding="4,1"
                                             HighlightRenderMode="Badge"
                                             HighlightText="theme"

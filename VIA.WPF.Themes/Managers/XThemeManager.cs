@@ -309,15 +309,23 @@ public sealed class XThemeManager : INotifyPropertyChanged
         this.ApplyBrush(XBrushKeys.StatusSuccess, theme.Success.GetBaseColor(mode));
         this.ApplyBrush(XBrushKeys.StatusSuccessForeground, theme.Success.GetTextColor(mode));
         this.ApplyBrush(XBrushKeys.StatusSuccessSubtle, theme.Success.GetVeryLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusSuccessSubtleHover, theme.Success.GetLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusSuccessStrong, theme.Success.GetDarkVariantColor(mode));
         this.ApplyBrush(XBrushKeys.StatusWarning, theme.Warning.GetBaseColor(mode));
         this.ApplyBrush(XBrushKeys.StatusWarningForeground, theme.Warning.GetTextColor(mode));
         this.ApplyBrush(XBrushKeys.StatusWarningSubtle, theme.Warning.GetVeryLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusWarningSubtleHover, theme.Warning.GetLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusWarningStrong, theme.Warning.GetDarkVariantColor(mode));
         this.ApplyBrush(XBrushKeys.StatusDanger, theme.Danger.GetBaseColor(mode));
         this.ApplyBrush(XBrushKeys.StatusDangerForeground, theme.Danger.GetTextColor(mode));
         this.ApplyBrush(XBrushKeys.StatusDangerSubtle, theme.Danger.GetVeryLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusDangerSubtleHover, theme.Danger.GetLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusDangerStrong, theme.Danger.GetDarkVariantColor(mode));
         this.ApplyBrush(XBrushKeys.StatusInfo, theme.Info.GetBaseColor(mode));
         this.ApplyBrush(XBrushKeys.StatusInfoForeground, theme.Info.GetTextColor(mode));
         this.ApplyBrush(XBrushKeys.StatusInfoSubtle, theme.Info.GetVeryLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusInfoSubtleHover, theme.Info.GetLightVariantColor(mode));
+        this.ApplyBrush(XBrushKeys.StatusInfoStrong, theme.Info.GetDarkVariantColor(mode));
 
         this.ApplyBrush(XBrushKeys.SurfaceOverlay, theme.Surface.GetVeryLightVariantColor(mode));
         this.ApplyBrush(XBrushKeys.TextDisabled, theme.DisabledForeground.GetColor(mode));

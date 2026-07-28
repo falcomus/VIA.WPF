@@ -120,7 +120,7 @@
                                                         </Trigger>
 
                                                         <Trigger Property="IsEnabled" Value="False">
-                                                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledForeground}}" />
+                                                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextDisabled}}" />
                                                             <Setter TargetName="ItemBorder" Property="Opacity" Value="0.62" />
                                                         </Trigger>
                                                     </ControlTemplate.Triggers>
@@ -223,7 +223,7 @@
                             MinHeight="16"
                             Margin="0,4,0,0"
                             FontSize="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}"
-                            Foreground="{DynamicResource {x:Static themes:XBrushKeys.Danger}}"
+                            Foreground="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}"
                             Text="{Binding (Validation.Errors), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource FirstValidationErrorConverter}}"
                             TextTrimming="CharacterEllipsis"
                             TextWrapping="NoWrap"
@@ -297,7 +297,7 @@
                         </Trigger>
 
                         <Trigger Property="Validation.HasError" Value="True">
-                            <Setter TargetName="PART_ComboBox" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                            <Setter TargetName="PART_ComboBox" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
                             <Setter TargetName="PART_ComboBox" Property="BorderThickness" Value="2" />
                             <Setter TargetName="ValidationErrorPresenter" Property="Visibility" Value="Visible" />
                         </Trigger>
@@ -308,7 +308,7 @@
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledForeground}}" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextDisabled}}" />
                             <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBackground}}" />
                             <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBorder}}" />
                             <Setter TargetName="PART_ComboBox" Property="Opacity" Value="0.75" />

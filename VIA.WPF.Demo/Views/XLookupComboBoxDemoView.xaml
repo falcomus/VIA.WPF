@@ -53,7 +53,7 @@
                             Rows="Auto,Auto,Auto">
                             <via:XBorder
                                 Padding="16"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="8"
                                 Elevation="Low">
@@ -84,7 +84,7 @@
                             <via:XBorder
                                 Grid.Column="1"
                                 Padding="16"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="8"
                                 Elevation="Low">
@@ -112,7 +112,7 @@
                             <via:XBorder
                                 Grid.Row="1"
                                 Padding="16"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="8"
                                 Elevation="Low">
@@ -125,7 +125,7 @@
                                         Header="Filter"
                                         ResetIconSize="12"
                                         Icon="{via:MaterialIcon Kind=FilterOutline}"
-                                        ResetButtonForeground="{DynamicResource {x:Static via:XBrushKeys.Danger}}"
+                                        ResetButtonForeground="{DynamicResource {x:Static via:XBrushKeys.StatusDanger}}"
                                         ItemsSource="{Binding Projects}"
                                         Placeholder="Any project"
                                         SelectedValuePath="Id"
@@ -138,7 +138,7 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Padding="16"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="8"
                                 Elevation="Low">
@@ -166,8 +166,8 @@
 
                                     <via:XBorder
                                         Padding="10"
-                                        Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceLight}}"
-                                        BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                        Background="{DynamicResource {x:Static via:XBrushKeys.SurfaceRaised}}"
+                                        BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                         BorderThickness="1"
                                         CornerRadius="6">
                                         <via:XStackPanel Spacing="4">
@@ -181,7 +181,7 @@
                                 Grid.Row="2"
                                 Grid.ColumnSpan="2"
                                 Padding="16"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="8"
                                 Elevation="Low">

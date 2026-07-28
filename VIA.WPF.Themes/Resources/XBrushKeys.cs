@@ -286,6 +286,16 @@ public static class XBrushKeys
     public static ComponentResourceKey StatusSuccessSubtle { get; } = new(typeof(XBrushKeys), nameof(StatusSuccessSubtle));
 
     /// <summary>
+    /// Gets the canonical resource key for a hovered subtle successful status container.
+    /// </summary>
+    public static ComponentResourceKey StatusSuccessSubtleHover { get; } = new(typeof(XBrushKeys), nameof(StatusSuccessSubtleHover));
+
+    /// <summary>
+    /// Gets the canonical resource key for a strong successful status.
+    /// </summary>
+    public static ComponentResourceKey StatusSuccessStrong { get; } = new(typeof(XBrushKeys), nameof(StatusSuccessStrong));
+
+    /// <summary>
     /// Gets the canonical resource key for a warning status.
     /// </summary>
     public static ComponentResourceKey StatusWarning { get; } = new(typeof(XBrushKeys), nameof(StatusWarning));
@@ -299,6 +309,16 @@ public static class XBrushKeys
     /// Gets the canonical resource key for a subtle warning status container.
     /// </summary>
     public static ComponentResourceKey StatusWarningSubtle { get; } = new(typeof(XBrushKeys), nameof(StatusWarningSubtle));
+
+    /// <summary>
+    /// Gets the canonical resource key for a hovered subtle warning status container.
+    /// </summary>
+    public static ComponentResourceKey StatusWarningSubtleHover { get; } = new(typeof(XBrushKeys), nameof(StatusWarningSubtleHover));
+
+    /// <summary>
+    /// Gets the canonical resource key for a strong warning status.
+    /// </summary>
+    public static ComponentResourceKey StatusWarningStrong { get; } = new(typeof(XBrushKeys), nameof(StatusWarningStrong));
 
     /// <summary>
     /// Gets the canonical resource key for a dangerous or error status.
@@ -316,6 +336,16 @@ public static class XBrushKeys
     public static ComponentResourceKey StatusDangerSubtle { get; } = new(typeof(XBrushKeys), nameof(StatusDangerSubtle));
 
     /// <summary>
+    /// Gets the canonical resource key for a hovered subtle dangerous or error status container.
+    /// </summary>
+    public static ComponentResourceKey StatusDangerSubtleHover { get; } = new(typeof(XBrushKeys), nameof(StatusDangerSubtleHover));
+
+    /// <summary>
+    /// Gets the canonical resource key for a strong dangerous or error status.
+    /// </summary>
+    public static ComponentResourceKey StatusDangerStrong { get; } = new(typeof(XBrushKeys), nameof(StatusDangerStrong));
+
+    /// <summary>
     /// Gets the canonical resource key for an informational status.
     /// </summary>
     public static ComponentResourceKey StatusInfo { get; } = new(typeof(XBrushKeys), nameof(StatusInfo));
@@ -329,6 +359,16 @@ public static class XBrushKeys
     /// Gets the canonical resource key for a subtle informational status container.
     /// </summary>
     public static ComponentResourceKey StatusInfoSubtle { get; } = new(typeof(XBrushKeys), nameof(StatusInfoSubtle));
+
+    /// <summary>
+    /// Gets the canonical resource key for a hovered subtle informational status container.
+    /// </summary>
+    public static ComponentResourceKey StatusInfoSubtleHover { get; } = new(typeof(XBrushKeys), nameof(StatusInfoSubtleHover));
+
+    /// <summary>
+    /// Gets the canonical resource key for a strong informational status.
+    /// </summary>
+    public static ComponentResourceKey StatusInfoStrong { get; } = new(typeof(XBrushKeys), nameof(StatusInfoStrong));
 
     /// <summary>
     /// Gets the resource key for the application canvas brush.

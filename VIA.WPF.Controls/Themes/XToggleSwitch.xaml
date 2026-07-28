@@ -93,10 +93,14 @@
                             <Setter TargetName="TrackBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatePressed}}" />
                         </Trigger>
 
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter TargetName="KeyboardFocusRing" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="TrackBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
                             <Setter TargetName="TrackBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.Primary}}" />
-                            <Setter TargetName="Thumb" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryDark}}" />
+                            <Setter TargetName="Thumb" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryStrong}}" />
                         </Trigger>
 
                         <MultiTrigger>
@@ -104,14 +108,16 @@
                                 <Condition Property="IsMouseOver" Value="True" />
                                 <Condition Property="IsChecked" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TrackBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryDark}}" />
-                            <Setter TargetName="TrackBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryDark}}" />
+                            <Setter TargetName="TrackBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryStrong}}" />
+                            <Setter TargetName="TrackBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PrimaryStrong}}" />
                         </MultiTrigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="TrackBorder" Property="Opacity" Value="0.50" />
-                            <Setter TargetName="Thumb" Property="Opacity" Value="0.60" />
-                            <Setter Property="Opacity" Value="0.65" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextDisabled}}" />
+                            <Setter TargetName="TrackBorder" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBackground}}" />
+                            <Setter TargetName="TrackBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBorder}}" />
+                            <Setter TargetName="Thumb" Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceSunken}}" />
+                            <Setter TargetName="Thumb" Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.DisabledBorder}}" />
                         </Trigger>
 
                         <Trigger Property="Size" Value="{x:Static controls:XControlSize.Small}">

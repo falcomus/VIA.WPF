@@ -49,10 +49,10 @@ New code uses `PrimaryForeground`, `PrimarySubtle`, `PrimarySubtleHover`, and `P
 
 New code uses:
 
-- `StatusSuccess`, `StatusSuccessForeground`, `StatusSuccessSubtle`;
-- `StatusWarning`, `StatusWarningForeground`, `StatusWarningSubtle`;
-- `StatusDanger`, `StatusDangerForeground`, `StatusDangerSubtle`;
-- `StatusInfo`, `StatusInfoForeground`, `StatusInfoSubtle`.
+- `StatusSuccess`, `StatusSuccessForeground`, `StatusSuccessSubtle`, `StatusSuccessSubtleHover`, `StatusSuccessStrong`;
+- `StatusWarning`, `StatusWarningForeground`, `StatusWarningSubtle`, `StatusWarningSubtleHover`, `StatusWarningStrong`;
+- `StatusDanger`, `StatusDangerForeground`, `StatusDangerSubtle`, `StatusDangerSubtleHover`, `StatusDangerStrong`;
+- `StatusInfo`, `StatusInfoForeground`, `StatusInfoSubtle`, `StatusInfoSubtleHover`, `StatusInfoStrong`.
 
 Status colors communicate meaning and are not decorative accents. Teal and Emerald use a blue information ramp so that `StatusInfo` stays distinct from their primary color.
 
@@ -80,6 +80,10 @@ The seed pairs use established stepped color ramps: a darker step for Light Mode
 Application-specific aliases may temporarily exist during migration but must directly reference an `XBrushKeys` resource. They may not contain independent colors.
 
 Domain colors are outside this contract when they are user-selected or persisted as document content. Examples include mockup control fills, chart series, and asset tints. Rendering colors that describe application chrome or designer state remain theme colors and must resolve through VIA.WPF.
+
+The VIA.WPF control, windowing, and demo XAML now consumes the canonical roles directly. The legacy color-set keys remain public compatibility resources for existing applications, but new VIA.WPF templates do not depend on them.
+
+The demo welcome dashboard contains isolated canonical Light and Dark resource scopes. They render the same workbench composition side by side and must remain independent of the application’s currently selected mode.
 
 ## Resource precedence
 

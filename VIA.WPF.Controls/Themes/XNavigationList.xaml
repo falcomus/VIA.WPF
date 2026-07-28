@@ -112,8 +112,8 @@
             <Trigger Property="Variant" Value="{x:Static controls:XNavigationListVariant.Surface}">
                 <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.SurfaceRaised}}" />
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static themes:XBrushKeys.TextPrimary}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.PanelBorder}}" />
-                <Setter Property="SelectedItemBackground" Value="{DynamicResource {x:Static themes:XBrushKeys.SelectionBackground}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:XBrushKeys.BorderSubtle}}" />
+                <Setter Property="SelectedItemBackground" Value="{DynamicResource {x:Static themes:XBrushKeys.StateSelected}}" />
                 <Setter Property="SelectedItemForeground" Value="{DynamicResource {x:Static themes:XBrushKeys.SelectionForeground}}" />
                 <Setter Property="ItemHoverBackground" Value="{DynamicResource {x:Static themes:XBrushKeys.StateHover}}" />
             </Trigger>

@@ -27,7 +27,7 @@
 
         <Style x:Key="PerformanceRatingTextBlockStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.BorderText}}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}" />
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Green">
                     <Setter Property="Foreground" Value="#15A34A" />

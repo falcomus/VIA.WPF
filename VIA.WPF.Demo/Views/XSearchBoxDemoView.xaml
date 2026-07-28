@@ -105,7 +105,7 @@
                                     Width="300"
                                     HorizontalAlignment="Left"
                                     Placeholder="Neutral reset color"
-                                    ResetButtonForeground="{DynamicResource {x:Static via:XBrushKeys.BorderText}}"
+                                    ResetButtonForeground="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}"
                                     SearchIcon="{via:BootstrapIcon Kind=Sliders}"
                                     Text="neutral" />
                             </via:XStackPanel>

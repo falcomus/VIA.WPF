@@ -15,8 +15,6 @@
         <ResourceDictionary Source="/VIA.WPF.Controls;component/Themes/XDataGrid/XDataGrid.FilterPopup.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <SolidColorBrush x:Key="FilterIconBrush" Color="#A080828A" />
-
     <Style x:Key="XDataGridColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -93,7 +91,7 @@
                                     ClickMode="Release"
                                     CornerRadius="3"
                                     Focusable="False"
-                                    Foreground="{StaticResource FilterIconBrush}"
+                                    Foreground="{DynamicResource {x:Static via:XBrushKeys.TextTertiary}}"
                                     Icon="{via:MaterialIcon Kind=Filter}"
                                     IconSize="10"
                                     Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:XDataGrid}}}"

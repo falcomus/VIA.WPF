@@ -86,19 +86,19 @@
             </Trigger>
 
             <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Success}">
-                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Success}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusSuccess}}" />
             </Trigger>
 
             <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Warning}">
-                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Warning}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusWarning}}" />
             </Trigger>
 
             <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Danger}">
-                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Danger}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusDanger}}" />
             </Trigger>
 
             <Trigger Property="Variant" Value="{x:Static controls:XControlVariant.Info}">
-                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.Info}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static themes:XBrushKeys.StatusInfo}}" />
             </Trigger>
         </Style.Triggers>
     </Style>

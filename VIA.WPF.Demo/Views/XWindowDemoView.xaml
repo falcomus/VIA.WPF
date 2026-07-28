@@ -48,7 +48,7 @@
                         <via:XBorder
                             Padding="20"
                             Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                             BorderThickness="1"
                             CornerRadius="8"
                             Elevation="Medium">
@@ -173,7 +173,7 @@
                                                 <via:XBorder
                                                     Padding="16"
                                                     Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                                    BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                                     BorderThickness="1"
                                                     CornerRadius="6">
                                                     <via:XStackPanel Spacing="10">
@@ -252,7 +252,7 @@
                         <via:XBorder
                             Padding="18"
                             Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                            BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                             BorderThickness="1"
                             CornerRadius="8"
                             Elevation="Low">
@@ -323,7 +323,7 @@
                             <via:XBorder
                                 Padding="18"
                                 Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="8"
                                 Elevation="Low">
@@ -341,7 +341,7 @@
                                 Grid.Column="1"
                                 Padding="18"
                                 Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="8"
                                 Elevation="Low">
@@ -359,7 +359,7 @@
                                 Grid.Column="2"
                                 Padding="18"
                                 Background="{DynamicResource {x:Static via:XBrushKeys.Surface}}"
-                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.Border}}"
+                                BorderBrush="{DynamicResource {x:Static via:XBrushKeys.BorderDefault}}"
                                 BorderThickness="1"
                                 CornerRadius="8"
                                 Elevation="Low">
