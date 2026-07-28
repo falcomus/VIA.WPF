@@ -590,6 +590,17 @@ public class XDatePicker : Control
         this.textBox?.SelectAll();
     }
 
+    /// <inheritdoc />
+    protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+    {
+        base.OnPropertyChanged(e);
+
+        if (e.Property == LanguageProperty)
+        {
+            this.SynchronizeTextFromSelectedDate();
+        }
+    }
+
     /// <summary>
     /// Handles changes to the enabled state of the control.
     /// </summary>

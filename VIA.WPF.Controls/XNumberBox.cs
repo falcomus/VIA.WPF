@@ -555,6 +555,17 @@ public class XNumberBox : Control
     }
 
     /// <inheritdoc />
+    protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+    {
+        base.OnPropertyChanged(e);
+
+        if (e.Property == LanguageProperty)
+        {
+            this.SynchronizeTextFromValue();
+        }
+    }
+
+    /// <inheritdoc />
     protected override void OnMouseWheel(MouseWheelEventArgs e)
     {
         base.OnMouseWheel(e);

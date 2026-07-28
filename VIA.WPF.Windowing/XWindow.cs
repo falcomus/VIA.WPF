@@ -5,6 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using CommunityToolkit.Mvvm.Messaging;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
 using System.Windows;
@@ -12,6 +13,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using VIA.WPF.Controls.Navigation;
@@ -1888,6 +1890,14 @@ public class XWindow : Window, IXModalOverlayHost
             XLocalizationService.Current.SetCulture(
                 selectedLanguage.Culture,
                 window.ApplyLanguageFormattingCulture);
+
+            CultureInfo formattingCulture = window.ApplyLanguageFormattingCulture
+                ? selectedLanguage.Culture
+                : CultureInfo.CurrentCulture;
+
+            window.SetCurrentValue(
+                LanguageProperty,
+                XmlLanguage.GetLanguage(formattingCulture.IetfLanguageTag));
         }
     }
 

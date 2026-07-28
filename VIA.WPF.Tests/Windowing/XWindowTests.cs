@@ -7,8 +7,10 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
+using VIA.WPF.Controls;
 using VIA.WPF.Localization;
 using VIA.WPF.Tests.Helpers;
 using VIA.WPF.Windowing;
@@ -319,6 +321,83 @@ public sealed class XWindowTests
                     CultureInfo.DefaultThreadCurrentUICulture = previousDefaultThreadUICulture;
                 }
 
+            });
+    }
+
+    /// <summary>
+    /// Verifies that the selected language controls inherited WPF binding culture and VIA.WPF input formatting.
+    /// </summary>
+    [Fact]
+    public void SelectedLanguage_ShouldApplyFormattingCultureToVisualTree()
+    {
+        WpfTestHelper.Run(
+            () =>
+            {
+                XLocalizationService localizationService = XLocalizationService.Current;
+                CultureInfo previousServiceUICulture = localizationService.CurrentUICulture;
+                bool previousApplyFormattingCulture = localizationService.ApplyFormattingCulture;
+                CultureInfo previousCurrentCulture = CultureInfo.CurrentCulture;
+                CultureInfo previousCurrentUICulture = CultureInfo.CurrentUICulture;
+                CultureInfo? previousDefaultThreadCulture = CultureInfo.DefaultThreadCurrentCulture;
+                CultureInfo? previousDefaultThreadUICulture = CultureInfo.DefaultThreadCurrentUICulture;
+
+                try
+                {
+                    const double Value = 1234.5d;
+                    XNumberBox numberBox = new()
+                    {
+                        FormatString = "N2",
+                        Maximum = 10000d,
+                        Value = Value
+                    };
+                    TextBlock formattedText = new();
+                    BindingOperations.SetBinding(
+                        formattedText,
+                        TextBlock.TextProperty,
+                        new Binding
+                        {
+                            Source = Value,
+                            StringFormat = "N2"
+                        });
+
+                    StackPanel panel = new();
+                    panel.Children.Add(numberBox);
+                    panel.Children.Add(formattedText);
+
+                    XWindow window = new()
+                    {
+                        Content = panel,
+                        ApplyLanguageFormattingCulture = true,
+                        SelectedLanguage = XLanguages.German
+                    };
+
+                    formattedText.GetBindingExpression(TextBlock.TextProperty)?.UpdateTarget();
+
+                    CultureInfo germanCulture = CultureInfo.GetCultureInfo("de-DE");
+                    Assert.Equal(germanCulture.IetfLanguageTag, window.Language.IetfLanguageTag, ignoreCase: true);
+                    Assert.Equal(germanCulture.IetfLanguageTag, numberBox.Language.IetfLanguageTag, ignoreCase: true);
+                    Assert.Equal(Value.ToString("N2", germanCulture), numberBox.Text);
+                    Assert.Equal(Value.ToString("N2", germanCulture), formattedText.Text);
+
+                    window.SelectedLanguage = XLanguages.English;
+                    formattedText.GetBindingExpression(TextBlock.TextProperty)?.UpdateTarget();
+
+                    CultureInfo englishCulture = XLanguages.English.Culture;
+                    Assert.Equal(englishCulture.IetfLanguageTag, window.Language.IetfLanguageTag, ignoreCase: true);
+                    Assert.Equal(Value.ToString("N2", englishCulture), numberBox.Text);
+                    Assert.Equal(Value.ToString("N2", englishCulture), formattedText.Text);
+                }
+                finally
+                {
+                    localizationService.SetCulture(
+                        previousServiceUICulture,
+                        previousApplyFormattingCulture);
+
+                    CultureInfo.CurrentCulture = previousCurrentCulture;
+                    CultureInfo.CurrentUICulture = previousCurrentUICulture;
+                    CultureInfo.DefaultThreadCurrentCulture = previousDefaultThreadCulture;
+                    CultureInfo.DefaultThreadCurrentUICulture = previousDefaultThreadUICulture;
+                }
             });
     }
 

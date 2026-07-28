@@ -608,6 +608,19 @@ public class XTimePicker : Control
         this.textBox?.Focus();
         this.textBox?.SelectAll();
     }
+
+    /// <inheritdoc />
+    protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+    {
+        base.OnPropertyChanged(e);
+
+        if (e.Property == LanguageProperty)
+        {
+            this.RebuildHourItems();
+            this.RebuildMinuteItems();
+            this.SynchronizeTextFromSelectedTime();
+        }
+    }
     #endregion
 
     #region ### Private Methods ###
