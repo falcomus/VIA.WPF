@@ -189,6 +189,7 @@
                                 Focusable="False"
                                 IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                 Placement="Bottom"
+                                PlacementTarget="{Binding ElementName=RootBorder}"
                                 PopupAnimation="Slide">
                                 <Border
                                     x:Name="PopupBorder"

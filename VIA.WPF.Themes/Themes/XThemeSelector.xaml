@@ -137,6 +137,7 @@
                             Focusable="False"
                             IsOpen="{TemplateBinding IsDropDownOpen}"
                             Placement="Bottom"
+                            PlacementTarget="{Binding ElementName=RootBorder}"
                             PopupAnimation="Slide">
                             <Border
                                 x:Name="PopupBorder"
