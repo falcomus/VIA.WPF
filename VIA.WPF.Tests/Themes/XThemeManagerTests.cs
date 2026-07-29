@@ -6,6 +6,7 @@
 
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using VIA.WPF.Tests.Helpers;
 using VIA.WPF.Themes;
@@ -240,6 +241,61 @@ public sealed class XThemeManagerTests
                 {
                     changedProperties.Add(e.PropertyName);
                 }
+            });
+    }
+
+    /// <summary>
+    /// Verifies that observers are notified only after the complete runtime dictionary is active.
+    /// </summary>
+    [Fact]
+    public void PropertyChanged_ShouldObserveCommittedThemeResources()
+    {
+        WpfTestHelper.Run(
+            () =>
+            {
+                ResourceDictionary resources = [];
+                XThemeManager manager = new();
+                Color? observedPrimary = null;
+
+                manager.PropertyChanged += (_, e) =>
+                {
+                    if (e.PropertyName == nameof(XThemeManager.CurrentTheme))
+                    {
+                        observedPrimary = GetBrush(resources, XBrushKeys.Primary).Color;
+                    }
+                };
+
+                manager.ApplyTheme(XThemePresets.Teal, resources);
+
+                Assert.Equal(XThemePresets.Teal.Primary.Light, observedPrimary);
+            });
+    }
+
+    /// <summary>
+    /// Verifies that dynamic resource consumers follow the atomically replaced runtime dictionary.
+    /// </summary>
+    [Fact]
+    public void ApplyTheme_ShouldRefreshDynamicResourceConsumers()
+    {
+        WpfTestHelper.Run(
+            () =>
+            {
+                ResourceDictionary resources = [];
+                Border consumer = new();
+                XThemeManager manager = new();
+
+                consumer.Resources.MergedDictionaries.Add(resources);
+                consumer.SetResourceReference(Border.BackgroundProperty, XBrushKeys.Primary);
+
+                manager.ApplyTheme(XThemePresets.Default, resources);
+                Assert.Equal(
+                    XThemePresets.Default.Primary.Light,
+                    Assert.IsType<SolidColorBrush>(consumer.Background).Color);
+
+                manager.ApplyTheme(XThemePresets.Teal, resources);
+                Assert.Equal(
+                    XThemePresets.Teal.Primary.Light,
+                    Assert.IsType<SolidColorBrush>(consumer.Background).Color);
             });
     }
 

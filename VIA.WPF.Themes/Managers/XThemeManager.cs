@@ -29,6 +29,7 @@ public sealed class XThemeManager : INotifyPropertyChanged
     #region ### Private Fields ###
     private XThemeMode _currentMode;
     private XTheme? _currentTheme;
+    private ResourceDictionary? _resourceHost;
     private ResourceDictionary? _resourceDictionary;
     #endregion
 
@@ -54,38 +55,12 @@ public sealed class XThemeManager : INotifyPropertyChanged
     /// <summary>
     /// Gets the currently applied theme.
     /// </summary>
-    public XTheme? CurrentTheme
-    {
-        get => this._currentTheme;
-        private set
-        {
-            if (ReferenceEquals(this._currentTheme, value))
-            {
-                return;
-            }
-
-            this._currentTheme = value;
-            this.OnPropertyChanged();
-        }
-    }
+    public XTheme? CurrentTheme => this._currentTheme;
 
     /// <summary>
     /// Gets the currently applied theme mode.
     /// </summary>
-    public XThemeMode CurrentMode
-    {
-        get => this._currentMode;
-        private set
-        {
-            if (this._currentMode == value)
-            {
-                return;
-            }
-
-            this._currentMode = value;
-            this.OnPropertyChanged();
-        }
-    }
+    public XThemeMode CurrentMode => this._currentMode;
 
     /// <summary>
     /// Gets or sets the default visual theme transition duration.
@@ -125,10 +100,17 @@ public sealed class XThemeManager : INotifyPropertyChanged
 
         EnsureGlobalInfrastructureResources(resources);
 
+        this._resourceHost = resources;
         this._resourceDictionary = GetOrCreateThemeDictionary(resources);
-        this.CurrentTheme = theme;
+        bool themeChanged = !ReferenceEquals(this._currentTheme, theme);
+        this._currentTheme = theme;
 
         this.ApplyCurrentState();
+
+        if (themeChanged)
+        {
+            this.OnPropertyChanged(nameof(this.CurrentTheme));
+        }
     }
 
     /// <summary>
@@ -142,8 +124,9 @@ public sealed class XThemeManager : INotifyPropertyChanged
             return;
         }
 
-        this.CurrentMode = mode;
+        this._currentMode = mode;
         this.ApplyCurrentState();
+        this.OnPropertyChanged(nameof(this.CurrentMode));
     }
 
     /// <summary>
@@ -158,7 +141,36 @@ public sealed class XThemeManager : INotifyPropertyChanged
     #region ### Private Methods ###
     private void ApplyCurrentState()
     {
-        if (this.CurrentTheme is null || this._resourceDictionary is null)
+        if (this.CurrentTheme is null ||
+            this._resourceHost is null ||
+            this._resourceDictionary is null)
+        {
+            return;
+        }
+
+        ResourceDictionary currentDictionary = this._resourceDictionary;
+        ResourceDictionary nextDictionary = new()
+        {
+            [ThemeDictionaryMarkerKey] = true
+        };
+
+        this._resourceDictionary = nextDictionary;
+
+        try
+        {
+            this.PopulateCurrentState();
+            ReplaceThemeDictionary(this._resourceHost, currentDictionary, nextDictionary);
+        }
+        catch
+        {
+            this._resourceDictionary = currentDictionary;
+            throw;
+        }
+    }
+
+    private void PopulateCurrentState()
+    {
+        if (this.CurrentTheme is null)
         {
             return;
         }
@@ -245,6 +257,22 @@ public sealed class XThemeManager : INotifyPropertyChanged
         this.ApplyModeColor(this.CurrentTheme.BreadcrumbSecondaryForeground, XBrushKeys.BreadcrumbSecondaryForeground);
 
         this.ApplySemanticContractBrushes();
+    }
+
+    private static void ReplaceThemeDictionary(
+        ResourceDictionary resources,
+        ResourceDictionary currentDictionary,
+        ResourceDictionary nextDictionary)
+    {
+        int index = resources.MergedDictionaries.IndexOf(currentDictionary);
+
+        if (index >= 0)
+        {
+            resources.MergedDictionaries[index] = nextDictionary;
+            return;
+        }
+
+        resources.MergedDictionaries.Add(nextDictionary);
     }
 
     private void ApplySemanticContractBrushes()
