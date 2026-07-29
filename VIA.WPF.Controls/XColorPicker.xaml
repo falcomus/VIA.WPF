@@ -56,8 +56,8 @@
             BorderBrush="{DynamicResource {x:Static themes:XBrushKeys.Border}}"
             BorderThickness="1"
             CheckerSize="8"
-            CornerRadius="8">
-            <Rectangle RadiusX="8" RadiusY="8">
+            CornerRadius="5">
+            <Rectangle RadiusX="5" RadiusY="5">
                 <Rectangle.Fill>
                     <SolidColorBrush Color="{Binding SelectedColor, ElementName=Root}" />
                 </Rectangle.Fill>
@@ -83,16 +83,17 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="R" />
+                <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="R" Margin="0 0 0 5"/>
                 <controls:XSlider
                     x:Name="PART_RedSlider"
                     Grid.Column="1"
-                    Margin="0,0,15,0"
+                    Margin="10,0,15,0"
                     Style="{StaticResource ColorChannelSliderStyle}"
                     Value="{Binding Red, ElementName=Root, Mode=TwoWay}" />
                 <controls:XNumberBox
                     x:Name="PART_RedNumberBox"
                     Grid.Column="2"
+                    Width="70"
                     MinWidth="0"
                     Style="{StaticResource ColorChannelNumberBoxStyle}"
                     Text="{Binding Red, ElementName=Root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -104,16 +105,17 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="G" />
+                <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="G" Margin="0 0 0 5"/>
                 <controls:XSlider
                     x:Name="PART_GreenSlider"
                     Grid.Column="1"
-                    Margin="0,0,15,0"
+                    Margin="10,0,15,0"
                     Style="{StaticResource ColorChannelSliderStyle}"
                     Value="{Binding Green, ElementName=Root, Mode=TwoWay}" />
                 <controls:XNumberBox
                     x:Name="PART_GreenNumberBox"
                     Grid.Column="2"
+                    Width="70"
                     Style="{StaticResource ColorChannelNumberBoxStyle}"
                     Text="{Binding Green, ElementName=Root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
@@ -124,16 +126,17 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="B" />
+                <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="B" Margin="0 0 0 5"/>
                 <controls:XSlider
                     x:Name="PART_BlueSlider"
                     Grid.Column="1"
-                    Margin="0,0,15,0"
+                    Margin="10,0,15,0"
                     Style="{StaticResource ColorChannelSliderStyle}"
                     Value="{Binding Blue, ElementName=Root, Mode=TwoWay}" />
                 <controls:XNumberBox
                     x:Name="PART_BlueNumberBox"
                     Grid.Column="2"
+                    Width="70"
                     Style="{StaticResource ColorChannelNumberBoxStyle}"
                     Text="{Binding Blue, ElementName=Root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
@@ -144,23 +147,24 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="A" />
+                <TextBlock Style="{StaticResource ColorChannelLabelStyle}" Text="A" Margin="0 0 0 5"/>
                 <controls:XSlider
                     x:Name="PART_AlphaSlider"
                     Grid.Column="1"
-                    Margin="0,0,15,0"
+                    Margin="10,0,15,0"
                     Style="{StaticResource ColorChannelSliderStyle}"
                     Value="{Binding Alpha, ElementName=Root, Mode=TwoWay}" />
                 <controls:XNumberBox
                     x:Name="PART_AlphaNumberBox"
                     Grid.Column="2"
+                    Width="70"
                     Style="{StaticResource ColorChannelNumberBoxStyle}"
                     Text="{Binding Alpha, ElementName=Root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
 
             <Grid Grid.Row="8">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="38" />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock
@@ -173,6 +177,7 @@
                     Grid.Column="1"
                     VerticalContentAlignment="Center"
                     Size="Medium"
+                    Margin="15 0 0 0"
                     Text="{Binding Hex, ElementName=Root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
         </Grid>

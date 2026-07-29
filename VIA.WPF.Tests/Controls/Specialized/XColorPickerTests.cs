@@ -97,7 +97,7 @@ public sealed class XColorPickerTests
 
                     Assert.Equal(TextAlignment.Right, redEditor.TextAlignment);
                     Assert.Equal(0d, redNumberBox.MinWidth);
-                    Assert.Equal(92d, redNumberBox.Width);
+                    Assert.Equal(70d, redNumberBox.Width);
 
                     redNumberBox.Text = "73";
                     host.Dispatcher.Invoke(static () => { }, DispatcherPriority.DataBind);
