@@ -195,6 +195,31 @@ public sealed class XThemePresetsTests
     }
 
     /// <summary>
+    /// Verifies that every preset retains a recognizable identity in both modes.
+    /// </summary>
+    [Fact]
+    public void BuiltInThemes_ShouldProvideDistinctPrimaryIdentities()
+    {
+        IReadOnlyList<XTheme> themes = XThemePresets.BuiltInThemes;
+
+        for (int firstIndex = 0; firstIndex < themes.Count; firstIndex++)
+        {
+            for (int secondIndex = firstIndex + 1; secondIndex < themes.Count; secondIndex++)
+            {
+                XTheme first = themes[firstIndex];
+                XTheme second = themes[secondIndex];
+
+                Assert.True(
+                    GetColorDistance(first.Primary.Light, second.Primary.Light) >= 30d,
+                    $"{first.Name} and {second.Name} light primary colors must remain distinct.");
+                Assert.True(
+                    GetColorDistance(first.Primary.Dark, second.Primary.Dark) >= 30d,
+                    $"{first.Name} and {second.Name} dark primary colors must remain distinct.");
+            }
+        }
+    }
+
+    /// <summary>
     /// Verifies that editable and selected areas remain distinct from their containing surfaces.
     /// </summary>
     [Fact]
@@ -242,14 +267,20 @@ public sealed class XThemePresetsTests
         string firstRole,
         string secondRole)
     {
-        double red = first.R - second.R;
-        double green = first.G - second.G;
-        double blue = first.B - second.B;
-        double distance = Math.Sqrt((red * red) + (green * green) + (blue * blue));
+        double distance = GetColorDistance(first, second);
 
         Assert.True(
             distance >= 28d,
             $"{theme.Name} {mode.ToString().ToLowerInvariant()} {firstRole} and {secondRole} colors must remain distinct.");
+    }
+
+    private static double GetColorDistance(Color first, Color second)
+    {
+        double red = first.R - second.R;
+        double green = first.G - second.G;
+        double blue = first.B - second.B;
+
+        return Math.Sqrt((red * red) + (green * green) + (blue * blue));
     }
 
     private static double GetContrastRatio(Color first, Color second)

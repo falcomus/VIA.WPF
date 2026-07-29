@@ -25,16 +25,16 @@ internal static class XThemePresetCrimson
             new XThemePalette
             {
                 Name = "Crimson",
-                PrimaryLight = Color.FromRgb(190, 18, 60),
-                PrimaryDark = Color.FromRgb(251, 113, 133),
+                PrimaryLight = Color.FromRgb(185, 28, 28),
+                PrimaryDark = Color.FromRgb(248, 113, 113),
                 AccentLight = Color.FromRgb(180, 83, 9),
                 AccentDark = Color.FromRgb(251, 191, 36),
-                BackgroundLight = Color.FromRgb(247, 242, 243),
-                BackgroundDark = Color.FromRgb(28, 23, 25),
+                BackgroundLight = Color.FromRgb(248, 243, 242),
+                BackgroundDark = Color.FromRgb(29, 23, 23),
                 SurfaceLight = Color.FromRgb(255, 255, 255),
-                SurfaceDark = Color.FromRgb(42, 35, 38),
-                NavigationLight = Color.FromRgb(76, 5, 25),
-                NavigationDark = Color.FromRgb(36, 22, 26),
+                SurfaceDark = Color.FromRgb(43, 35, 35),
+                NavigationLight = Color.FromRgb(84, 17, 17),
+                NavigationDark = Color.FromRgb(38, 22, 22),
             });
     }
     #endregion

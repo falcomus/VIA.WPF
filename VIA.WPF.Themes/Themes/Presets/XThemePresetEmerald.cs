@@ -25,18 +25,18 @@ internal static class XThemePresetEmerald
             new XThemePalette
             {
                 Name = "Emerald",
-                PrimaryLight = Color.FromRgb(4, 120, 87),
-                PrimaryDark = Color.FromRgb(110, 231, 183),
+                PrimaryLight = Color.FromRgb(21, 128, 61),
+                PrimaryDark = Color.FromRgb(134, 239, 172),
                 AccentLight = Color.FromRgb(79, 70, 229),
                 AccentDark = Color.FromRgb(165, 180, 252),
                 InfoLight = Color.FromRgb(3, 105, 161),
                 InfoDark = Color.FromRgb(125, 211, 252),
-                BackgroundLight = Color.FromRgb(241, 246, 244),
-                BackgroundDark = Color.FromRgb(19, 27, 24),
+                BackgroundLight = Color.FromRgb(241, 247, 242),
+                BackgroundDark = Color.FromRgb(19, 28, 22),
                 SurfaceLight = Color.FromRgb(255, 255, 255),
-                SurfaceDark = Color.FromRgb(34, 44, 40),
-                NavigationLight = Color.FromRgb(6, 78, 59),
-                NavigationDark = Color.FromRgb(8, 31, 28),
+                SurfaceDark = Color.FromRgb(34, 45, 38),
+                NavigationLight = Color.FromRgb(20, 83, 45),
+                NavigationDark = Color.FromRgb(10, 34, 24),
             });
     }
     #endregion
