@@ -139,12 +139,11 @@
                                         <controls:XBadge
                                             x:Name="Badge"
                                             Grid.Column="1"
-                                            Width="21"
                                             Height="21"
                                             MinWidth="21"
                                             MinHeight="21"
                                             Margin="8,0,0,0"
-                                            Padding="0"
+                                            Padding="5,0"
                                             VerticalAlignment="Center"
                                             Appearance="Solid"
                                             BorderThickness="0"
