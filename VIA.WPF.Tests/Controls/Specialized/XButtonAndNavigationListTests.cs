@@ -158,6 +158,72 @@ public sealed class XButtonAndNavigationListTests
                 }
             });
     }
+
+    /// <summary>
+    /// Verifies the predictable title priority used for data items without an explicit item template.
+    /// </summary>
+    [Fact]
+    public void XNavigationList_ShouldPreferDisplayNameThenNameBeforeToString()
+    {
+        WpfTestHelper.Run(
+            () =>
+            {
+                TestNavigationList list = new();
+
+                XNavigationListItem groupContainer = list.Prepare(new ScreenNavigationGroupSample());
+                XNavigationListItem screenContainer = list.Prepare(new ScreenSample());
+
+                Assert.Equal("Authentication", groupContainer.Title);
+                Assert.Equal("Login", screenContainer.Title);
+            });
+    }
+
+    /// <summary>
+    /// Verifies that an explicitly supplied container title remains authoritative.
+    /// </summary>
+    [Fact]
+    public void XNavigationList_ShouldPreserveExplicitContainerTitle()
+    {
+        WpfTestHelper.Run(
+            () =>
+            {
+                TestNavigationList list = new();
+                XNavigationListItem item = new() { Title = "Explicit title" };
+
+                list.Prepare(item, new ScreenSample());
+
+                Assert.Equal("Explicit title", item.Title);
+            });
+    }
     #endregion
+
+    private sealed class TestNavigationList : XNavigationList
+    {
+        public XNavigationListItem Prepare(object item)
+        {
+            XNavigationListItem container = new();
+            this.PrepareContainerForItemOverride(container, item);
+            return container;
+        }
+
+        public void Prepare(XNavigationListItem container, object item)
+        {
+            this.PrepareContainerForItemOverride(container, item);
+        }
+    }
+
+    private sealed class ScreenNavigationGroupSample
+    {
+        public string DisplayName => "Authentication";
+
+        public override string ToString() => "Mockup.Grouping.ScreenNavigationGroup";
+    }
+
+    private sealed class ScreenSample
+    {
+        public string Name => "Login";
+
+        public override string ToString() => "Mockup.Screen";
+    }
 }
 #endregion

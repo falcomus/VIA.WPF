@@ -129,8 +129,12 @@
                                             FontSize="{TemplateBinding FontSize}"
                                             FontWeight="{TemplateBinding FontWeight}"
                                             Foreground="{TemplateBinding Foreground}"
+                                            LineHeight="18"
+                                            MaxHeight="36"
                                             Text="{TemplateBinding Title}"
-                                            TextTrimming="CharacterEllipsis" />
+                                            TextTrimming="CharacterEllipsis"
+                                            TextWrapping="Wrap"
+                                            ToolTip="{TemplateBinding Title}" />
 
                                         <controls:XBadge
                                             x:Name="Badge"
@@ -216,8 +220,12 @@
                                         FontSize="{DynamicResource {x:Static themes:XTypographyKeys.FontSizeBodySmall}}"
                                         FontWeight="Normal"
                                         Foreground="{DynamicResource {x:Static themes:XBrushKeys.TextSecondary}}"
+                                        LineHeight="16"
+                                        MaxHeight="32"
                                         Text="{TemplateBinding SubTitle}"
                                         TextTrimming="CharacterEllipsis"
+                                        TextWrapping="Wrap"
+                                        ToolTip="{TemplateBinding SubTitle}"
                                         Visibility="Collapsed" />
                                 </Grid>
                             </Grid>

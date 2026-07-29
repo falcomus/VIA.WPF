@@ -435,16 +435,16 @@ public class XNavigationList : ListBox
     #region ### Private Methods ###
     private void BindListItem(XNavigationListItem listItem, object item)
     {
-        if (listItem.ReadLocalValue(XNavigationListItem.TitleProperty) == DependencyProperty.UnsetValue)
+        if (!HasExplicitValueOrBinding(listItem, XNavigationListItem.TitleProperty))
         {
-            string titlePath = HasReadableProperty(item, "Title") ? "Title" : ".";
+            string? titlePath = GetFirstReadableProperty(item, "Title", "DisplayName", "Name");
             BindingOperations.SetBinding(
                 listItem,
                 XNavigationListItem.TitleProperty,
-                CreateItemBinding(item, titlePath, item.ToString() ?? string.Empty));
+                CreateItemBinding(item, titlePath ?? ".", item.ToString() ?? string.Empty));
         }
 
-        if (listItem.ReadLocalValue(XNavigationListItem.SubTitleProperty) == DependencyProperty.UnsetValue)
+        if (!HasExplicitValueOrBinding(listItem, XNavigationListItem.SubTitleProperty))
         {
             string? subTitlePath = HasReadableProperty(item, "SubTitle")
                 ? "SubTitle"
@@ -473,7 +473,7 @@ public class XNavigationList : ListBox
         BindIfReadable(listItem, XNavigationListItem.DeleteCommandParameterProperty, item, "DeleteCommandParameter", null);
         BindIfReadable(listItem, IsEnabledProperty, item, "IsEnabled", true);
 
-        if (listItem.ReadLocalValue(VisibilityProperty) == DependencyProperty.UnsetValue
+        if (!HasExplicitValueOrBinding(listItem, VisibilityProperty)
             && HasReadableProperty(item, "IsVisible"))
         {
             BindingOperations.SetBinding(
@@ -497,7 +497,7 @@ public class XNavigationList : ListBox
         string propertyName,
         object? fallbackValue)
     {
-        if (target.ReadLocalValue(dependencyProperty) != DependencyProperty.UnsetValue
+        if (HasExplicitValueOrBinding(target, dependencyProperty)
             || !HasReadableProperty(item, propertyName))
         {
             return;
@@ -520,11 +520,22 @@ public class XNavigationList : ListBox
         };
     }
 
+    private static bool HasExplicitValueOrBinding(DependencyObject target, DependencyProperty dependencyProperty)
+    {
+        return target.ReadLocalValue(dependencyProperty) != DependencyProperty.UnsetValue
+            || BindingOperations.IsDataBound(target, dependencyProperty);
+    }
+
     private static bool HasReadableProperty(object item, string propertyName)
     {
         return item.GetType()
             .GetProperty(propertyName, BindingFlags.Instance | BindingFlags.Public)
             ?.CanRead == true;
+    }
+
+    private static string? GetFirstReadableProperty(object item, params string[] propertyNames)
+    {
+        return propertyNames.FirstOrDefault(propertyName => HasReadableProperty(item, propertyName));
     }
 
     private static void ClearBindingIfOwnedByItem(DependencyObject dependencyObject, DependencyProperty dependencyProperty, object item)
