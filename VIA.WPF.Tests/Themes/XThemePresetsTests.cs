@@ -179,18 +179,56 @@ public sealed class XThemePresetsTests
         foreach (XTheme theme in XThemePresets.BuiltInThemes)
         {
             Assert.True(
-                GetContrastRatio(theme.Background.Light, theme.Surface.Light) >= 1.05d,
+                GetContrastRatio(theme.Background.Light, theme.Surface.Light) >= 1.07d,
                 $"{theme.Name} light surface must be visibly separated from its canvas.");
             Assert.True(
-                GetContrastRatio(theme.Surface.Light, theme.PanelBorder.Light) >= 1.30d,
+                GetContrastRatio(theme.Surface.Light, theme.PanelBorder.Light) >= 1.55d,
                 $"{theme.Name} light panel border must be visible on its surface.");
 
             Assert.True(
-                GetContrastRatio(theme.Background.Dark, theme.Surface.Dark) >= 1.10d,
+                GetContrastRatio(theme.Background.Dark, theme.Surface.Dark) >= 1.12d,
                 $"{theme.Name} dark surface must be visibly separated from its canvas.");
             Assert.True(
-                GetContrastRatio(theme.Surface.Dark, theme.PanelBorder.Dark) >= 1.30d,
+                GetContrastRatio(theme.Surface.Dark, theme.PanelBorder.Dark) >= 1.65d,
                 $"{theme.Name} dark panel border must be visible on its surface.");
+        }
+    }
+
+    /// <summary>
+    /// Verifies that editable and selected areas remain distinct from their containing surfaces.
+    /// </summary>
+    [Fact]
+    public void BuiltInThemes_ShouldSeparateInteractiveAreasFromContainers()
+    {
+        foreach (XTheme theme in XThemePresets.BuiltInThemes)
+        {
+            Assert.True(
+                GetContrastRatio(theme.Surface.Dark, theme.InputBackground.Dark) >= 1.10d,
+                $"{theme.Name} dark input must be separated from its containing surface.");
+
+            Assert.True(
+                GetContrastRatio(theme.InputBackground.Light, theme.ControlBorder.Light) >= 1.75d,
+                $"{theme.Name} light control border must be visible on an input.");
+            Assert.True(
+                GetContrastRatio(theme.InputBackground.Dark, theme.ControlBorder.Dark) >= 1.75d,
+                $"{theme.Name} dark control border must be visible on an input.");
+
+            Assert.True(
+                GetContrastRatio(theme.SelectionBackground.Light, theme.SelectionBorder.Light) >= 1.35d,
+                $"{theme.Name} light selection border must be visible on a selection.");
+            Assert.True(
+                GetContrastRatio(theme.SelectionBackground.Dark, theme.SelectionBorder.Dark) >= 1.35d,
+                $"{theme.Name} dark selection border must be visible on a selection.");
+
+            Assert.Equal(byte.MaxValue, theme.SelectionBorder.Light.A);
+            Assert.Equal(byte.MaxValue, theme.SelectionBorder.Dark.A);
+
+            Assert.True(
+                GetContrastRatio(theme.NavigationPanelBackground.Light, theme.NavigationPanelBorder.Light) >= 1.40d,
+                $"{theme.Name} light navigation border must be visible on its panel.");
+            Assert.True(
+                GetContrastRatio(theme.NavigationPanelBackground.Dark, theme.NavigationPanelBorder.Dark) >= 1.40d,
+                $"{theme.Name} dark navigation border must be visible on its panel.");
         }
     }
     #endregion

@@ -31,18 +31,21 @@ internal static class XThemePresetFactory
         Color secondaryTextLight = Color.FromRgb(82, 96, 109);
         Color secondaryTextDark = Color.FromRgb(180, 187, 196);
 
-        Color surfaceLight = Mix(palette.BackgroundLight, palette.SurfaceLight, 0.76d);
-        Color surfaceDark = Mix(palette.BackgroundDark, palette.SurfaceDark, 0.76d);
+        // Material-style depth starts with a tinted canvas and increasingly prominent
+        // containers. Keep the main surface close to its palette seed so cards and panels
+        // remain visibly distinct from the canvas in every preset.
+        Color surfaceLight = Mix(palette.BackgroundLight, palette.SurfaceLight, 0.88d);
+        Color surfaceDark = Mix(palette.BackgroundDark, palette.SurfaceDark, 0.88d);
         Color inputBackgroundLight = palette.SurfaceLight;
-        Color inputBackgroundDark = Mix(surfaceDark, surfaceTextDark, 0.035d);
+        Color inputBackgroundDark = Mix(surfaceDark, surfaceTextDark, 0.055d);
 
         Color controlBorderLight = Mix(inputBackgroundLight, secondaryTextLight, 0.42d);
         Color controlBorderDark = Mix(inputBackgroundDark, secondaryTextDark, 0.34d);
         Color controlBorderStrongLight = Mix(inputBackgroundLight, secondaryTextLight, 0.64d);
         Color controlBorderStrongDark = Mix(inputBackgroundDark, secondaryTextDark, 0.50d);
 
-        Color panelBorderLight = Mix(surfaceLight, secondaryTextLight, 0.30d);
-        Color panelBorderDark = Mix(surfaceDark, secondaryTextDark, 0.24d);
+        Color panelBorderLight = Mix(surfaceLight, secondaryTextLight, 0.34d);
+        Color panelBorderDark = Mix(surfaceDark, secondaryTextDark, 0.30d);
         Color panelBorderStrongLight = Mix(surfaceLight, secondaryTextLight, 0.52d);
         Color panelBorderStrongDark = Mix(surfaceDark, secondaryTextDark, 0.44d);
 
@@ -64,6 +67,8 @@ internal static class XThemePresetFactory
         Color navigationPanelBackgroundDark = Resolve(palette.NavigationPanelBackgroundDark, palette.NavigationDark);
         Color navigationPanelItemSelectedBackgroundLight = Resolve(palette.NavigationPanelItemSelectedBackgroundLight, navigationSelectedLight);
         Color navigationPanelItemSelectedBackgroundDark = Resolve(palette.NavigationPanelItemSelectedBackgroundDark, navigationSelectedDark);
+        Color navigationPanelBorderLight = Mix(navigationPanelBackgroundLight, Colors.White, 0.18d);
+        Color navigationPanelBorderDark = Mix(navigationPanelBackgroundDark, Colors.White, 0.14d);
 
         return new XTheme
         {
@@ -98,8 +103,8 @@ internal static class XThemePresetFactory
             SelectionBorder = Pair(
                 palette.SelectionBorderLight,
                 palette.SelectionBorderDark,
-                WithAlpha(palette.PrimaryLight, 75),
-                WithAlpha(palette.PrimaryDark, 75)),
+                palette.PrimaryLight,
+                palette.PrimaryDark),
             SelectionForeground = Pair(palette.SelectionForegroundLight, palette.SelectionForegroundDark, surfaceTextLight, surfaceTextDark),
             HoverBackground = Pair(palette.HoverBackgroundLight, palette.HoverBackgroundDark, hoverBackgroundLight, hoverBackgroundDark),
             HoverBorder = Pair(palette.HoverBorderLight, palette.HoverBorderDark, controlBorderStrongLight, controlBorderStrongDark),
@@ -193,7 +198,11 @@ internal static class XThemePresetFactory
                 palette.NavigationPanelForegroundDark,
                 Readable(navigationPanelBackgroundLight),
                 Readable(navigationPanelBackgroundDark)),
-            NavigationPanelBorder = Pair(palette.NavigationPanelBorderLight, palette.NavigationPanelBorderDark, Colors.Transparent, Colors.Transparent),
+            NavigationPanelBorder = Pair(
+                palette.NavigationPanelBorderLight,
+                palette.NavigationPanelBorderDark,
+                navigationPanelBorderLight,
+                navigationPanelBorderDark),
             NavigationPanelItemHoverBackground = Pair(palette.NavigationPanelItemHoverBackgroundLight, palette.NavigationPanelItemHoverBackgroundDark, navigationHoverLight, navigationHoverDark),
             NavigationPanelItemSelectedBackground = Pair(navigationPanelItemSelectedBackgroundLight, navigationPanelItemSelectedBackgroundDark),
             NavigationPanelItemSelectedForeground = Pair(

@@ -64,7 +64,7 @@ public sealed class XThemeManagerTests
                 Assert.Equal(theme.Primary.TextLight, primaryTextBrush.Color);
                 Assert.Equal(theme.Background.Light, backgroundBrush.Color);
                 Assert.Equal(theme.Background.Light, canvasBrush.Color);
-                Assert.Equal(theme.Surface.VeryLightVariantLight, raisedSurfaceBrush.Color);
+                Assert.NotEqual(theme.Surface.Light, raisedSurfaceBrush.Color);
                 Assert.Equal(theme.FocusBorder.Light, focusRingBrush.Color);
                 Assert.Equal(theme.Primary.Light, navigationIndicatorBrush.Color);
                 Assert.Equal(theme.Success.LightVariantLight, successHoverBrush.Color);
@@ -192,6 +192,27 @@ public sealed class XThemeManagerTests
     }
 
     /// <summary>
+    /// Verifies that raised and overlay containers use progressively stronger tonal elevation.
+    /// </summary>
+    [Fact]
+    public void ApplyTheme_ShouldProvideTonalSurfaceHierarchyForAllBuiltInThemes()
+    {
+        WpfTestHelper.Run(
+            () =>
+            {
+                foreach (XTheme theme in XThemePresets.BuiltInThemes)
+                {
+                    ResourceDictionary resources = [];
+                    XThemeManager manager = new();
+                    manager.ApplyTheme(theme, resources);
+
+                    AssertTonalHierarchy(theme, XThemeMode.Light, manager, resources);
+                    AssertTonalHierarchy(theme, XThemeMode.Dark, manager, resources);
+                }
+            });
+    }
+
+    /// <summary>
     /// Verifies that public properties raise property change notifications when changed.
     /// </summary>
     [Fact]
@@ -237,6 +258,38 @@ public sealed class XThemeManagerTests
     #endregion
 
     #region ### Private Methods ###
+    private static void AssertTonalHierarchy(
+        XTheme theme,
+        XThemeMode mode,
+        XThemeManager manager,
+        ResourceDictionary resources)
+    {
+        manager.SetMode(mode);
+
+        Color surface = GetBrush(resources, XBrushKeys.Surface).Color;
+        Color raised = GetBrush(resources, XBrushKeys.SurfaceRaised).Color;
+        Color overlay = GetBrush(resources, XBrushKeys.SurfaceOverlay).Color;
+
+        double raisedDistance = GetColorDistance(surface, raised);
+        double overlayDistance = GetColorDistance(surface, overlay);
+
+        Assert.True(
+            raisedDistance >= 3d,
+            $"{theme.Name} {mode.ToString().ToLowerInvariant()} raised surface must differ from its base surface.");
+        Assert.True(
+            overlayDistance > raisedDistance,
+            $"{theme.Name} {mode.ToString().ToLowerInvariant()} overlay must have more tonal emphasis than a raised surface.");
+    }
+
+    private static double GetColorDistance(Color first, Color second)
+    {
+        double red = first.R - second.R;
+        double green = first.G - second.G;
+        double blue = first.B - second.B;
+
+        return Math.Sqrt((red * red) + (green * green) + (blue * blue));
+    }
+
     private static SolidColorBrush GetBrush(ResourceDictionary resources, object key)
     {
         object? value = FindResourceValue(resources, key);

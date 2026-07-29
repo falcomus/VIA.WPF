@@ -36,9 +36,8 @@ internal static class XThemePresetGraphite
                 NavigationLight = Color.FromRgb(17, 24, 39),
                 NavigationDark = Color.FromRgb(11, 17, 29),
 
-                SelectionBorderLight = Colors.DodgerBlue.WithAlpha(100),
-                SelectionBorderDark = Colors.DodgerBlue.WithAlpha(60),
-                
+                SelectionBorderLight = Color.FromRgb(3, 105, 161),
+                SelectionBorderDark = Color.FromRgb(125, 211, 252),
             });
     }
     #endregion

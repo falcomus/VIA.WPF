@@ -18,11 +18,11 @@
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.BackgroundText}" Color="#FF181E26" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.BackgroundLight}" Color="#FFF7F9FB" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.BackgroundDark}" Color="#FFDEE0E3" />
-    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.Surface}" Color="#FFFCFCFD" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.Surface}" Color="#FFFDFEFE" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.SurfaceText}" Color="#FF1C232C" />
-    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.SurfaceVeryLight}" Color="#FFFEFEFE" />
-    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.SurfaceLight}" Color="#FFFDFDFE" />
-    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.SurfaceDark}" Color="#FFE8E8E9" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.SurfaceVeryLight}" Color="#FFFEFFFF" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.SurfaceLight}" Color="#FFFEFEFE" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.SurfaceDark}" Color="#FFE9EAEA" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.Border}" Color="#FFA6AEB8" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.BorderText}" Color="#FF52606D" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.BorderLight}" Color="#FFCDD2D7" />
@@ -81,8 +81,8 @@
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusInfoSubtleHover}" Color="#FFC7E2E4" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatusInfoStrong}" Color="#FF04646E" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.Canvas}" Color="#FFF1F4F7" />
-    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.SurfaceRaised}" Color="#FFFEFEFE" />
-    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.SurfaceOverlay}" Color="#FFFEFEFE" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.SurfaceRaised}" Color="#FFF8FAFB" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.SurfaceOverlay}" Color="#FFF4F7F9" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.SurfaceSunken}" Color="#FFDEE0E3" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.TextPrimary}" Color="#FF1C232C" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.TextSecondary}" Color="#FF52606D" />
@@ -93,7 +93,7 @@
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.BorderDefault}" Color="#FFA6AEB8" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.BorderStrong}" Color="#FF707A86" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.FocusRing}" Color="#FF355C91" />
-    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.FocusRingInner}" Color="#FFFCFCFD" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.FocusRingInner}" Color="#FFFDFEFE" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StateHover}" Color="#FFE8ECF1" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StatePressed}" Color="#FFDAE0E7" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.StateSelected}" Color="#FFDEE9F7" />
@@ -139,7 +139,7 @@
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.BreadcrumbBackground}" Color="#00FFFFFF" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.BreadcrumbForeground}" Color="#FF1C232C" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.BreadcrumbSecondaryForeground}" Color="#FF52606D" />
-    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.TabHeaderBackground}" Color="#FFFCFCFD" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.TabHeaderBackground}" Color="#FFFDFEFE" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.TabHeaderForeground}" Color="#FF1C232C" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.TabHeaderBorder}" Color="#FFC5CCD5" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.TabItemBackground}" Color="#00FFFFFF" />
@@ -153,7 +153,7 @@
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.TabItemBorderSelected}" Color="#FF87919D" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.TabItemUnderline}" Color="#00FFFFFF" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.TabItemUnderlineSelected}" Color="#FF355C91" />
-    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.TabContentBackground}" Color="#FFFCFCFD" />
+    <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.TabContentBackground}" Color="#FFFDFEFE" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.TabContentBorder}" Color="#FFC5CCD5" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.TabActionButtonForeground}" Color="#FF52606D" />
     <SolidColorBrush x:Key="{x:Static themes:XBrushKeys.TabActionButtonForegroundHover}" Color="#FF1C232C" />

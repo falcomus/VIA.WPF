@@ -20,6 +20,10 @@ public sealed class XThemeManager : INotifyPropertyChanged
 {
     #region ### Private Constants ###
     private const string ThemeDictionaryMarkerKey = "VIA.WPF.Theme.Runtime.Marker";
+    private const double RaisedSurfaceTintLight = 0.025d;
+    private const double RaisedSurfaceTintDark = 0.055d;
+    private const double OverlaySurfaceTintLight = 0.045d;
+    private const double OverlaySurfaceTintDark = 0.085d;
     #endregion
 
     #region ### Private Fields ###
@@ -252,9 +256,22 @@ public sealed class XThemeManager : INotifyPropertyChanged
 
         XTheme theme = this.CurrentTheme;
         XThemeMode mode = this.CurrentMode;
+        Color surface = theme.Surface.GetBaseColor(mode);
+        Color primary = theme.Primary.GetBaseColor(mode);
 
         this.ApplyBrush(XBrushKeys.Canvas, theme.Background.GetBaseColor(mode));
-        this.ApplyBrush(XBrushKeys.SurfaceRaised, theme.Surface.GetVeryLightVariantColor(mode));
+        this.ApplyBrush(
+            XBrushKeys.SurfaceRaised,
+            XThemeColorUtility.Mix(
+                surface,
+                primary,
+                mode == XThemeMode.Light ? RaisedSurfaceTintLight : RaisedSurfaceTintDark));
+        this.ApplyBrush(
+            XBrushKeys.SurfaceOverlay,
+            XThemeColorUtility.Mix(
+                surface,
+                primary,
+                mode == XThemeMode.Light ? OverlaySurfaceTintLight : OverlaySurfaceTintDark));
         this.ApplyBrush(XBrushKeys.SurfaceSunken, theme.Background.GetDarkVariantColor(mode));
 
         this.ApplyBrush(XBrushKeys.TextPrimary, theme.Surface.GetTextColor(mode));
