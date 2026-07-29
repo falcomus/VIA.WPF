@@ -103,8 +103,6 @@
                                 VerticalAlignment="Center"
                                 Command="{Binding Toolbar.DeleteCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                 Content="{TemplateBinding DeleteButtonContent}"
-                                Foreground="{themes:AppThemeBinding Light='White',
-                                                                    Dark='Black'}"
                                 Icon="{via:FluentIcon Kind=Delete}"
                                 IconSize="{Binding EffectiveDeleteButtonIconSize, RelativeSource={RelativeSource TemplatedParent}}"
                                 Variant="Danger"

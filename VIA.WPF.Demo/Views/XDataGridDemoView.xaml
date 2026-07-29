@@ -30,13 +30,13 @@
             <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.TextSecondary}}" />
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Green">
-                    <Setter Property="Foreground" Value="#15A34A" />
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.StatusSuccessStrong}}" />
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Yellow">
-                    <Setter Property="Foreground" Value="#B45309" />
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.StatusWarningStrong}}" />
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Red">
-                    <Setter Property="Foreground" Value="#B91C1C" />
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static via:XBrushKeys.StatusDangerStrong}}" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
